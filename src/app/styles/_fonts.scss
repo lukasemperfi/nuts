@@ -1,0 +1,45 @@
+// PT Sans Font Family
+@font-face {
+  font-family: "PT Sans";
+  src: url("../../shared/assets/fonts/pt-sans/pt-sans-regular.woff2")
+      format("woff2"),
+    url("../../shared/assets/fonts/pt-sans/pt-sans-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Playfair Display Font Family
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../../shared/assets/fonts/playfair-display/playfair-display-bold.woff2")
+      format("woff2"),
+    url("../../shared/assets/fonts/playfair-display/playfair-display-bold.woff")
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("../../shared/assets/fonts/playfair-display/playfair-display-regular.woff2")
+      format("woff2"),
+    url("../../shared/assets/fonts/playfair-display/playfair-display-regular.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Post No Bills Jaffna Font Family
+@font-face {
+  font-family: "Post No Bills Jaffna";
+  src: url("../../shared/assets/fonts/post-no-bills-jaffna/post-no-bills-jaffna-bold.woff2")
+      format("woff2"),
+    url("../../shared/assets/fonts/post-no-bills-jaffna/post-no-bills-jaffna-bold.woff")
+      format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

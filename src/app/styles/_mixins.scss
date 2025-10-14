@@ -1,0 +1,114 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "variables" as variables;
+
+$breakpoints: (
+  sm: variables.$breakpoint-sm,
+  md: variables.$breakpoint-md,
+  lg: variables.$breakpoint-lg,
+  xl: variables.$breakpoint-xl,
+);
+
+$breakpoints-down: (
+  sm: variables.$breakpoint-sm - 1,
+  md: variables.$breakpoint-md - 1,
+  lg: variables.$breakpoint-lg - 1,
+  xl: variables.$breakpoint-xl - 1,
+);
+
+@mixin respond-to($bp, $direction: "min", $unit: "px") {
+  $operator: if($direction == "max", "max-width", "min-width");
+  $breakpoints-map: if($direction == "max", $breakpoints-down, $breakpoints);
+
+  @if meta.type-of($bp) == "number" {
+    @media (#{$operator}: #{$bp}#{$unit}) {
+      @content;
+    }
+  } @else {
+    @media (#{$operator}: map.get($breakpoints-map, $bp)) {
+      @content;
+    }
+  }
+}
+
+///////////////////////////////////////
+
+@function round-decimal($number, $digits: 3) {
+  $multiplier: math.pow(10, $digits);
+  @return math.div(math.round($number * $multiplier), $multiplier);
+}
+
+@function to-percent($pos, $val, $cw, $ch) {
+  @if ($pos == top or $pos == bottom) {
+    @return round-decimal(math.div($val, $ch) * 100%, 3);
+  } @else if ($pos == left or $pos == right) {
+    @return round-decimal(math.div($val, $cw) * 100%, 3);
+  }
+}
+
+@mixin position-percent(
+  $pos1,
+  $val1,
+  $pos2,
+  $val2,
+  $container-w,
+  $container-h
+) {
+  #{$pos1}: to-percent($pos1, $val1, $container-w, $container-h);
+  #{$pos2}: to-percent($pos2, $val2, $container-w, $container-h);
+}
+
+/////////////////////////
+
+@mixin responsive-size(
+  $width,
+  $height,
+  $max-size,
+  $viewport-width,
+  $dimension: "width"
+) {
+  $property: if($dimension == "height", height, width);
+  $base-size: if($dimension == "height", $height, $width);
+
+  #{$property}: clamp(
+    #{$base-size}px,
+    #{round-decimal(math.div($base-size * 100, $viewport-width), 3)}vw,
+    #{$max-size}px
+  );
+  aspect-ratio: #{$width} / #{$height};
+}
+
+///////////////////////
+@function strip-unit($value) {
+  @if meta.type-of($value) == "number" and not math.is-unitless($value) {
+    @return math.div($value, ($value * 0 + 1));
+  }
+  @return $value;
+}
+
+@function calcFluidValue($f-min, $f-max, $w-min, $w-max) {
+  $f-min-unit: math.unit($f-min);
+  $f-max-unit: math.unit($f-max);
+  $w-min-unit: math.unit($w-min);
+  $w-max-unit: math.unit($w-max);
+
+  $f-min-num: strip-unit($f-min);
+  $f-max-num: strip-unit($f-max);
+  $w-min-num: strip-unit($w-min);
+  $w-max-num: strip-unit($w-max);
+
+  $k: math.div($f-max-num - $f-min-num, $w-max-num - $w-min-num);
+  $b: $f-min-num - $k * $w-min-num;
+
+  $actual-min: if($f-min-num < $f-max-num, $f-min-num, $f-max-num);
+  $actual-max: if($f-min-num > $f-max-num, $f-min-num, $f-max-num);
+  $actual-min-unit: if($f-min-num < $f-max-num, $f-min-unit, $f-max-unit);
+  $actual-max-unit: if($f-min-num > $f-max-num, $f-min-unit, $f-max-unit);
+
+  @return clamp(
+    #{$actual-min}#{$actual-min-unit},
+    calc(#{$k * 100}vw + #{$b}#{$f-min-unit}),
+    #{$actual-max}#{$actual-max-unit}
+  );
+}

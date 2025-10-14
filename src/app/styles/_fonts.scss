@@ -1,44 +1,43 @@
-// PT Sans Font Family
 @font-face {
-  font-family: "PT Sans";
-  src: url("../../shared/assets/fonts/pt-sans/pt-sans-regular.woff2")
-      format("woff2"),
-    url("../../shared/assets/fonts/pt-sans/pt-sans-regular.woff") format("woff");
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-Light.woff") format("woff"),
+    url("../assets/fonts/montserrat/Montserrat-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-Regular.woff") format("woff"),
+    url("../assets/fonts/montserrat/Montserrat-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-// Playfair Display Font Family
 @font-face {
-  font-family: "Playfair Display";
-  src: url("../../shared/assets/fonts/playfair-display/playfair-display-bold.woff2")
-      format("woff2"),
-    url("../../shared/assets/fonts/playfair-display/playfair-display-bold.woff")
-      format("woff");
-  font-weight: 700;
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-Medium.woff") format("woff"),
+    url("../assets/fonts/montserrat/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Playfair Display";
-  src: url("../../shared/assets/fonts/playfair-display/playfair-display-regular.woff2")
-      format("woff2"),
-    url("../../shared/assets/fonts/playfair-display/playfair-display-regular.woff")
-      format("woff");
-  font-weight: 400;
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-SemiBold.woff") format("woff"),
+    url("../assets/fonts/montserrat/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
-// Post No Bills Jaffna Font Family
 @font-face {
-  font-family: "Post No Bills Jaffna";
-  src: url("../../shared/assets/fonts/post-no-bills-jaffna/post-no-bills-jaffna-bold.woff2")
-      format("woff2"),
-    url("../../shared/assets/fonts/post-no-bills-jaffna/post-no-bills-jaffna-bold.woff")
-      format("woff");
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-Bold.woff") format("woff"),
+    url("../assets/fonts/montserrat/Montserrat-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

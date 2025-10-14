@@ -1,32 +1,4 @@
-// Colors
-$gray: #969696;
-$light-gray: #d0d0d0;
-$white: #ffffff;
-
-$black-100: #000000;
-$black-90: #0f0f0f;
-$black-80: #191b1c;
-
-// Semantic Colors
-
-$color-primary: $white;
-$color-secondary: $gray;
-$color-third: $light-gray;
-$page-background: $black-100;
-
-// Fonts
-$font-family-primary: "PT Sans", sans-serif;
-$font-family-secondary: "Playfair Display", sans-serif;
-$font-family-third: "Post No Bills Jaffna", sans-serif;
-
-// Breakpoints
-$breakpoint-xs: 23.4375rem;
-$breakpoint-sm: 48rem;
-$breakpoint-md: 64rem;
-$breakpoint-lg: 90rem;
-$breakpoint-xl: 120rem;
-
-// Container max-width
-$container-1920: 120rem;
-$container-1142: 71.375rem;
-$container-padding: 1rem;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1440px;
+$breakpoint-xl: 1920px;

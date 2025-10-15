@@ -23,7 +23,12 @@ $breakpoints-down: (
   $operator: if($direction == "max", "max-width", "min-width");
   $breakpoints-map: if($direction == "max", $breakpoints-down, $breakpoints);
 
-  @if meta.type-of($bp) == "number" and math.is-unitless($bp) {
+  @if map.has-key($breakpoints-map, $bp) {
+    $value: map.get($breakpoints-map, $bp);
+    @media (#{$operator}: #{$value}) {
+      @content;
+    }
+  } @else if meta.type-of($bp) == "number" and math.is-unitless($bp) {
     @media (#{$operator}: #{$bp}px) {
       @content;
     }
@@ -32,13 +37,7 @@ $breakpoints-down: (
       @content;
     }
   } @else {
-    $value: map.get($breakpoints-map, $bp);
-    @if $value == null {
-      @error "Unknown breakpoint `#{$bp}`.";
-    }
-    @media (#{$operator}: #{$value}) {
-      @content;
-    }
+    @error "Unknown breakpoint `#{$bp}`.";
   }
 }
 

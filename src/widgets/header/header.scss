@@ -4,6 +4,14 @@
   $bp-lg: $container-width - 1;
   $bp-md: 599px;
   $cart-btn-margin-left: 65px;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: var(--z-index-header);
+  background-color: var(--background);
   &__container {
     max-width: $container-width;
     padding-inline: 12px;

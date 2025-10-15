@@ -1,0 +1,19 @@
+{%from "src/shared/ui/icons/icons.html" import arrowDown%}
+
+{% macro dropdown(name, options, class) %}
+<div class="dropdown {{ class }}" data-name="{{ name }}">
+    <button type="button" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="dropdown__selected">{{ options[0].label }}</span>
+        {{ arrowDown(class="dropdown__icon") }}
+    </button>
+    <ul class="dropdown__dropdown" role="listbox">
+        {% for option in options %}
+        <li class="dropdown__option" role="option" data-value="{{ option.value }}">
+            {{ option.label }}
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="hidden" name="{{ name }}" value="{{ options[0].value }}">
+</div>
+
+{% endmacro %}

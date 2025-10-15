@@ -1,0 +1,114 @@
+.dropdown {
+  --select-border-radius: 88px;
+  --select-text-color: var(--foreground);
+  --select-border-color: #c4c4c4;
+  --select-bg-hover: var(--accent);
+
+  position: relative;
+  display: inline-block;
+  color: var(--select-text-color);
+
+  &__button {
+    appearance: none;
+    background: transparent;
+    color: var(--select-text-color);
+
+    font-weight: 600;
+    font-size: 13px;
+    font-family: var(--font-family-primary);
+    padding-block: 6px;
+    padding-left: 13px;
+    padding-right: 13px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &[aria-expanded="true"] {
+      .dropdown__icon {
+        transform: translateY(-50%) rotate(180deg);
+        transition: none;
+      }
+    }
+  }
+
+  &__selected {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: currentColor;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 8px 0;
+    margin: 0;
+    list-style: none;
+    overflow-y: hidden;
+    width: fit-content;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+
+    .dropdown__button[aria-expanded="true"] + & {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  &__option {
+    padding: 8px 13px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    &:hover {
+      background-color: var(--select-bg-hover);
+      color: var(--foreground-secondary);
+    }
+
+    &[aria-selected="true"] {
+      background-color: var(--select-bg-hover);
+    }
+  }
+}

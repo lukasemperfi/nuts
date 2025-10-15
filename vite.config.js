@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import { glob } from "glob";
 import nunjucks from "vite-plugin-nunjucks";
+import FullReload from "vite-plugin-full-reload";
 
 const pagesDir = resolve(__dirname, "src/pages");
 const outDir = "../../dist";
@@ -34,12 +35,13 @@ export default defineConfig({
       input: getHtmlEntries(),
     },
   },
-  plugins: [nunjucks()],
+  plugins: [nunjucks(), FullReload(["src/**/*"])],
   css: {
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @use "@/app/styles/variables" as *;
+          @use "@/app/styles/variables" as variables;
+          @use "@/app/styles/mixins" as mixins;
         `,
       },
     },

@@ -1,6 +1,7 @@
 {%from "src/shared/ui/socials/socials.html" import socials%}
 {%from "src/shared/ui/icons/icons.html" import arrowDown%}
 {%from "src/shared/ui/dropdown/dropdown.html" import dropdown%}
+{%from "src/shared/ui/logo/logo.html" import logo%}
 
 {%macro header()%}
 <header class="header">
@@ -29,10 +30,11 @@
                 class="top-header__lang")}}
 
             </div>
-
         </div>
     </div>
-    <div class="header__middle"></div>
+    <div class="header__middle">
+        {{logo()}}
+    </div>
     <div class="header__bottom"></div>
 </header>
 {%endmacro%}

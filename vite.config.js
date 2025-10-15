@@ -28,14 +28,23 @@ export default defineConfig({
   },
   base: baseUrl,
   root: pagesDir,
+  publicDir: resolve(__dirname, "src/shared/assets"),
   build: {
     outDir: outDir,
     emptyOutDir: true,
     rollupOptions: {
       input: getHtmlEntries(),
     },
+    assetsDir: "assets",
   },
-  plugins: [nunjucks(), FullReload(["src/**/*"])],
+  plugins: [
+    nunjucks({
+      variables: {
+        assetsPath: "/src",
+      },
+    }),
+    FullReload(["src/**/*"]),
+  ],
   css: {
     preprocessorOptions: {
       scss: {

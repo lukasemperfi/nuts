@@ -45,14 +45,14 @@ export default defineConfig({
     }),
     FullReload(["src/**/*"]),
   ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @use "@/app/styles/variables" as variables;
-          @use "@/app/styles/mixins" as mixins;
-        `,
-      },
-    },
-  },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `
+  //         @use "@/app/styles/variables" as *;
+  //         @use "@/app/styles/mixins" as *;
+  //       `,
+  //     },
+  //   },
+  // },
 });

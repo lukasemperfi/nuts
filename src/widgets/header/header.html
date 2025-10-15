@@ -2,6 +2,7 @@
 {%from "src/shared/ui/icons/icons.html" import arrowDown%}
 {%from "src/shared/ui/dropdown/dropdown.html" import dropdown%}
 {%from "src/shared/ui/logo/logo.html" import logo%}
+{%from "src/shared/ui/contacts-block/contacts-block.html" import contactsBlock%}
 
 {%macro header()%}
 <header class="header">
@@ -32,8 +33,13 @@
             </div>
         </div>
     </div>
-    <div class="header__middle">
-        {{logo()}}
+    <div class="header__middle middle-header">
+        <div class="header__container">
+            <div class="middle-header__content">
+                {{logo()}}
+                {{contactsBlock(highlightCode=true)}}
+            </div>
+        </div>
     </div>
     <div class="header__bottom"></div>
 </header>

@@ -3,6 +3,7 @@
 {%from "src/shared/ui/dropdown/dropdown.html" import dropdown%}
 {%from "src/shared/ui/logo/logo.html" import logo%}
 {%from "src/shared/ui/contacts-block/contacts-block.html" import contactsBlock%}
+{%from "src/shared/ui/button/button.html" import button%}
 
 {%macro header()%}
 <header class="header">
@@ -38,6 +39,7 @@
             <div class="middle-header__content">
                 {{logo()}}
                 {{contactsBlock(highlightCode=true)}}
+                {{button(text="Заказать звонок", class="button_primary button_size-sm")}}
             </div>
         </div>
     </div>

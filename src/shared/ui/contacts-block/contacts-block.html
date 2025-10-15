@@ -1,5 +1,5 @@
-{%macro contactsBlock(highlightCode=false, reverse=false)%}
-<div class="contacts-block {% if reverse %}contacts-block_reverse{% endif %}">
+{%macro contactsBlock(highlightCode=false, reverse=false, class)%}
+<div class="contacts-block {% if reverse %}contacts-block_reverse{% endif %} {% if class %}{{class}}{% endif %}">
     <div class="contacts-block__messengers">
         <a href="#" class="contacts-block__messenger">
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -38,8 +38,17 @@
         <div class="header__container">
             <div class="middle-header__content">
                 {{logo()}}
-                {{contactsBlock(highlightCode=true)}}
-                {{button(text="Заказать звонок", class="button_primary button_size-sm")}}
+                {{contactsBlock(highlightCode=true, class="middle-header__contacts-block")}}
+                {{button(text="Заказать звонок", class="button_primary button_size-sm middle-header__button")}}
+                <div class="middle-header__text">Ждем Вашего звонка ежедневно с 9 до 18</div>
+                <button class="middle-header__cart-btn cart-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.5734 23.255L21.2009 6.27062C21.1738 5.93557 20.894 5.67742 20.5578 5.67742H16.8732V4.86065C16.8732 2.18047 14.7215 0 12.0412 0H11.9561C9.2759 0 7.06678 2.18047 7.06678 4.86065V5.67742H3.43951C3.10334 5.67742 2.82351 5.93557 2.79642 6.27062L1.42007 23.3029C1.40554 23.4825 1.46678 23.6599 1.58893 23.7923C1.71108 23.9246 1.88313 24 2.06317 24H21.9341C21.9347 24 21.9353 24 21.9359 24C22.2922 24 22.581 23.7112 22.581 23.3548C22.581 23.3209 22.5784 23.2875 22.5734 23.255ZM8.3571 4.86065C8.3571 2.89196 9.98738 1.29032 11.9561 1.29032H12.0412C14.0099 1.29032 15.5829 2.89196 15.5829 4.86065V5.67742H8.3571V4.86065Z"
+                            fill="#337D5A" />
+                    </svg>
+                    <span class="cart-btn_counter">0</span>
+                </button>
             </div>
         </div>
     </div>

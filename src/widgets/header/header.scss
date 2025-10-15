@@ -77,7 +77,53 @@
     &__content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      // justify-content: space-between;
+    }
+
+    &__contacts-block {
+      margin-left: 329px;
+    }
+
+    &__button {
+      margin-left: 93px;
+    }
+
+    &__text {
+      font-family: var(--font-family-secondary);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      color: var(--muted-text);
+      display: inline-flex;
+      max-width: 143px;
+      margin-left: 14px;
+    }
+
+    &__cart-btn {
+      margin-left: auto;
+      margin-right: 5px;
+    }
+
+    .cart-btn {
+      position: relative;
+
+      &_counter {
+        position: absolute;
+        top: 0;
+        right: -5px;
+        min-width: 15px;
+        height: 15px;
+        border-radius: 9999px;
+        background-color: #93b474;
+        font-family: var(--font-family-secondary);
+        font-weight: 700;
+        font-size: 8px;
+        color: var(--foreground-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 4px;
+      }
     }
   }
 }

@@ -6,6 +6,7 @@
 $breakpoints: (
   sm: variables.$breakpoint-sm,
   md: variables.$breakpoint-md,
+  lg-sm: variables.$breakpoint-lg-sm,
   lg: variables.$breakpoint-lg,
   xl: variables.$breakpoint-xl,
 );
@@ -13,20 +14,29 @@ $breakpoints: (
 $breakpoints-down: (
   sm: variables.$breakpoint-sm - 1,
   md: variables.$breakpoint-md - 1,
+  lg-sm: variables.$breakpoint-lg-sm - 1,
   lg: variables.$breakpoint-lg - 1,
   xl: variables.$breakpoint-xl - 1,
 );
 
-@mixin respond-to($bp, $direction: "min", $unit: "px") {
+@mixin respond-to($bp, $direction: "max") {
   $operator: if($direction == "max", "max-width", "min-width");
   $breakpoints-map: if($direction == "max", $breakpoints-down, $breakpoints);
 
-  @if meta.type-of($bp) == "number" {
-    @media (#{$operator}: #{$bp}#{$unit}) {
+  @if meta.type-of($bp) == "number" and math.is-unitless($bp) {
+    @media (#{$operator}: #{$bp}px) {
+      @content;
+    }
+  } @else if meta.type-of($bp) == "number" or meta.type-of($bp) == "string" {
+    @media (#{$operator}: #{$bp}) {
       @content;
     }
   } @else {
-    @media (#{$operator}: map.get($breakpoints-map, $bp)) {
+    $value: map.get($breakpoints-map, $bp);
+    @if $value == null {
+      @error "Unknown breakpoint `#{$bp}`.";
+    }
+    @media (#{$operator}: #{$value}) {
       @content;
     }
   }

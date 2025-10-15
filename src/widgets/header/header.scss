@@ -1,6 +1,10 @@
+@use "@/app/styles/mixins" as mixins;
 .header {
+  $container-width: 1314px;
+  $bp-lg: $container-width - 1;
+  $cart-btn-margin-left: 65px;
   &__container {
-    max-width: 1314px;
+    max-width: $container-width;
     padding-inline: 12px;
     margin: 0 auto;
   }
@@ -19,6 +23,12 @@
       font-size: 14px;
       color: var(--accent);
       margin-left: 457px;
+      white-space: nowrap;
+
+      @include mixins.respond-to($bp-lg) {
+        margin-left: 0;
+        margin: 0 auto;
+      }
     }
 
     &__link {
@@ -57,6 +67,10 @@
       gap: 26px;
       align-items: center;
       margin-left: auto;
+
+      @include mixins.respond-to($bp-lg) {
+        margin-left: 0;
+      }
     }
 
     &__login {
@@ -68,11 +82,15 @@
     &__lang {
       margin-left: 35px;
       min-width: 45px;
+
+      @include mixins.respond-to($bp-lg) {
+        // margin-left: 0;
+      }
     }
   }
 
   .middle-header {
-    padding-block: 17px;
+    padding-block: 16px;
 
     &__content {
       display: flex;
@@ -82,10 +100,19 @@
 
     &__contacts-block {
       margin-left: 329px;
+
+      @include mixins.respond-to($bp-lg) {
+        margin-left: 0;
+        margin: 0 auto;
+      }
     }
 
     &__button {
       margin-left: 93px;
+
+      @include mixins.respond-to($bp-lg) {
+        margin-left: -47px;
+      }
     }
 
     &__text {
@@ -97,11 +124,16 @@
       display: inline-flex;
       max-width: 143px;
       margin-left: 14px;
+      white-space: nowrap;
     }
 
     &__cart-btn {
       margin-left: auto;
       margin-right: 5px;
+
+      @include mixins.respond-to($bp-lg) {
+        margin-left: $cart-btn-margin-left;
+      }
     }
 
     .cart-btn {
@@ -123,6 +155,18 @@
         align-items: center;
         justify-content: center;
         padding-inline: 4px;
+      }
+    }
+  }
+
+  .bottom-header {
+    padding-block: 9px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+
+    .nav-menu__link {
+      @include mixins.respond-to($bp-lg) {
+        font-size: 14px;
+        --padding-inline: 18.5px;
       }
     }
   }

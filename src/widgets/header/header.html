@@ -4,6 +4,17 @@
 {%from "src/shared/ui/logo/logo.html" import logo%}
 {%from "src/shared/ui/contacts-block/contacts-block.html" import contactsBlock%}
 {%from "src/shared/ui/button/button.html" import button%}
+{%from "src/shared/ui/nav-menu/nav-menu.html" import navMenu%}
+
+
+{%set navItems = [
+{href: "#", label: "Магазин"},
+{href: "#", label: "О производстве"},
+{href: "#", label: "Оплата и доставка"},
+{href: "#", label: "Оптовым и корпоративным клиентам"},
+{href: "#", label: "Новости и статьи"},
+{href: "#", label: "Контакты"}
+]%}
 
 {%macro header()%}
 <header class="header">
@@ -40,7 +51,7 @@
                 {{logo()}}
                 {{contactsBlock(highlightCode=true, class="middle-header__contacts-block")}}
                 {{button(text="Заказать звонок", class="button_primary button_size-sm middle-header__button")}}
-                <div class="middle-header__text">Ждем Вашего звонка ежедневно с 9 до 18</div>
+                <div class="middle-header__text">Ждем Вашего звонка<br>ежедневно с 9 до 18</div>
                 <button class="middle-header__cart-btn cart-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -52,6 +63,10 @@
             </div>
         </div>
     </div>
-    <div class="header__bottom"></div>
+    <div class="header__bottom bottom-header">
+        <div class="header__container">
+            {{navMenu(navItems, "nav-menu_horizontal")}}
+        </div>
+    </div>
 </header>
 {%endmacro%}

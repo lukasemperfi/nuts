@@ -1,0 +1,57 @@
+@use "@/app/styles/_mixins.scss" as mixins;
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: mixins.fluidValue(417px, 600px, 360px, 1920px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    font-family: var(--font-family-primary);
+    font-weight: 800;
+    font-size: mixins.fluidValue(28px, 62px, 360px, 1920px);
+    letter-spacing: 0.01em;
+    color: var(--foreground-secondary);
+    margin-bottom: mixins.fluidValue(14px, 32px, 360px, 1920px);
+  }
+
+  &__description {
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    font-size: mixins.fluidValue(17px, 25px, 360px, 1920px);
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: var(--foreground-secondary);
+    max-width: mixins.fluidValue(253px, 538px, 360px, 1920px);
+    margin-bottom: mixins.fluidValue(22px, 39px, 360px, 1920px);
+  }
+
+  &__icon {
+    width: mixins.fluidValue(45px, 61px, 360px, 1920px);
+    height: mixins.fluidValue(45px, 61px, 360px, 1920px);
+  }
+}

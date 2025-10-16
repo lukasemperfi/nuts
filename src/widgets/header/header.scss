@@ -29,6 +29,7 @@
   .top-header {
     background-color: var(--background-secondary);
     padding-block: 5px;
+    padding-bottom: 6px;
 
     @include mixins.respond-to(md) {
       padding-block: 0px;
@@ -276,7 +277,7 @@
   }
 
   .bottom-header {
-    padding-block: 9px;
+    padding-top: 11px;
 
     @include mixins.respond-to(md) {
       padding-block: 7px;

@@ -96,7 +96,7 @@ $breakpoints-down: (
   @return $value;
 }
 
-@function calcFluidValue($f-min, $f-max, $w-min, $w-max) {
+@function fluidValue($f-min, $f-max, $w-min, $w-max) {
   $f-min-unit: math.unit($f-min);
   $f-max-unit: math.unit($f-max);
   $w-min-unit: math.unit($w-min);

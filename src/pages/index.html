@@ -1,5 +1,5 @@
 {%from "src/widgets/header/header.html" import header%}
-
+{%from "src/widgets/header/mobile-menu.html" import mobileMenu%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -145,6 +145,10 @@
 
     </main>
     <footer>footer</footer>
+
+    <div class="portal-root">
+        {{mobileMenu()}}
+    </div>
     <script type="module" src="./main.js"></script>
     <script type="module" src="./home/home.js"></script>
 </body>

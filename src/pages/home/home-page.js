@@ -1,4 +1,3 @@
-import "./home-page.scss";
 import { initDropdown } from "@/shared/ui/dropdown/dropdown.js";
 import { initHeader } from "@/widgets/header/header.js";
 

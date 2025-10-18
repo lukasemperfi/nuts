@@ -1,7 +1,7 @@
 @use "@/app/styles/mixins" as mixins;
+@use "@/app/styles/variables" as variables;
 .header {
-  $container-width: 1314px;
-  $bp-lg: $container-width - 1;
+  $bp-lg: variables.$container-width - 1;
   $bp-md: 599px;
   $cart-btn-margin-left: 65px;
 
@@ -12,11 +12,6 @@
   width: 100%;
   z-index: var(--z-index-header);
   background-color: var(--background);
-  &__container {
-    max-width: $container-width;
-    padding-inline: 12px;
-    margin: 0 auto;
-  }
 
   .promo {
     font-family: var(--font-family-secondary);

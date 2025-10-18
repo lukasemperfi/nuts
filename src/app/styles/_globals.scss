@@ -1,3 +1,4 @@
+@use "@/app/styles/variables" as variables;
 body {
   font-family: var(--font-family-primary);
   background-color: var(--background);
@@ -7,8 +8,8 @@ body {
   scroll-behavior: smooth;
 }
 
-.container {
-  max-width: 1314px;
+.page-container {
+  max-width: variables.$container-width;
+  padding-inline: 12px;
   margin: 0 auto;
-  padding: 0 12px;
 }

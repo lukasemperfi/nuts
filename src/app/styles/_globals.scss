@@ -1,4 +1,5 @@
 @use "@/app/styles/variables" as variables;
+@use "@/app/styles/functions" as functions;
 body {
   font-family: var(--font-family-primary);
   background-color: var(--background);
@@ -12,4 +13,40 @@ body {
   max-width: variables.$container-width;
   padding-inline: 12px;
   margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-family-primary);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-align: center;
+  margin-bottom: functions.fluidValue(14px, 30px, 360px, 1920px);
+  color: var(--foreground);
+}
+
+.title-h2 {
+  @extend .title;
+  font-size: functions.fluidValue(20px, 45px, 360px, 1920px);
+
+  &_color_secondary {
+    color: var(--foreground-secondary);
+  }
+}
+
+.title-description {
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  line-height: functions.fluidValue(18px, 27px, 360px, 1920px);
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: var(--foreground);
+}
+
+.title-h2-description {
+  @extend .title-description;
+  font-size: functions.fluidValue(14px, 18px, 360px, 1920px);
+
+  &_color_secondary {
+    color: var(--foreground-secondary);
+  }
 }

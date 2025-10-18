@@ -1,0 +1,45 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.products {
+  padding-top: 83px;
+  padding-bottom: 83px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__description {
+    max-width: 605px;
+    margin-bottom: 65px;
+  }
+  &__button {
+    margin-top: 71px;
+    display: flex;
+    margin-inline: auto;
+  }
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  row-gap: 49px; //remove
+
+  @include mixins.respond-to(lg-sm) {
+    gap: 12px;
+  }
+
+  @include mixins.respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__item {
+    width: 100%;
+    // height: 100%;
+    aspect-ratio: 410 / 534;
+    background-color: rgba(253, 126, 126, 0.616);
+  }
+}

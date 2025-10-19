@@ -61,6 +61,12 @@
   &:hover {
     border: 1.5px solid var(--border-color);
     box-shadow: 0px 0px 2px 0px var(--border-color);
+
+    .product-card-swiper__next,
+    .product-card-swiper__prev {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &__flag {
@@ -77,6 +83,7 @@
     position: absolute;
     top: 20px;
     left: -2px;
+    z-index: 1;
     width: 82px;
     aspect-ratio: 2.636;
     clip-path: shape(
@@ -92,16 +99,78 @@
     );
   }
 
+  &__zoom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background-color: #93b474;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.1s ease-in, opacity 0.1s ease-in,
+      visibility 0.1s ease-in;
+    opacity: 0;
+    visibility: hidden;
+
+    &:hover {
+      box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.15);
+    }
+  }
+
   &__image-wrapper {
     width: 100%;
     aspect-ratio: 408 / 278;
-    // height: functions.fluidValue(174.9px, 278px, 360px, 1920px);
     background: #fcfcfc;
     display: flex;
     align-items: center;
     justify-content: center;
-    // padding-block: 20px;
-    // padding-inline: 50px;
+    position: relative;
+  }
+
+  &__image-wrapper:hover .product-card__zoom {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .product-card-swiper__next,
+  .product-card-swiper__prev {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease-in, visibility 0.1s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    path {
+      fill: var(--foreground-tertiary);
+    }
+  }
+
+  .product-card-swiper__prev {
+    left: 14px;
+    top: 50%;
+  }
+
+  .product-card-swiper__next {
+    right: 14px;
+    top: 50%;
+  }
+
+  .swiper-button-disabled {
+    cursor: auto;
+    path {
+      fill: #c4c4c4;
+    }
   }
 
   &__middle {

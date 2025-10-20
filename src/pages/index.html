@@ -4,6 +4,8 @@
 {%from "src/pages/home/sections/products/products.html" import products%}
 {%from "src/pages/home/sections/manufacturer/manufacturer.html" import manufacturerSection%}
 {%from "src/pages/home/sections/stats/stats.html" import statsSection%}
+{%from "src/pages/home/sections/goal/goal.html" import goal%}
+{%from "src/widgets/eco/eco.html" import eco%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +24,8 @@
         {{products()}}
         {{manufacturerSection()}}
         {{statsSection()}}
+        {{goal()}}
+        {{eco()}}
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Eligendi, quas distinctio

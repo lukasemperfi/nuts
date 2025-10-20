@@ -8,6 +8,13 @@
   justify-content: center;
   align-items: center;
 
+  &_size_lg {
+    // height: functions.fluidValue(514px, 740px, 360px, 1920px);
+    aspect-ratio: 1920/740;
+    height: auto;
+    padding-block: functions.fluidValue(70px, 150px, 360px, 1920px);
+  }
+
   &__image-wrapper {
     position: absolute;
     top: 0;
@@ -37,6 +44,13 @@
     letter-spacing: 0.01em;
     color: var(--foreground-secondary);
     margin-bottom: functions.fluidValue(14px, 32px, 360px, 1920px);
+    text-align: center;
+
+    &_h2 {
+      font-size: functions.fluidValue(20px, 45px, 360px, 1920px);
+      max-width: functions.fluidValue(310px, 1040px, 360px, 1920px);
+      margin-bottom: 0;
+    }
   }
 
   &__description {
@@ -48,10 +62,50 @@
     color: var(--foreground-secondary);
     max-width: functions.fluidValue(253px, 538px, 360px, 1920px);
     margin-bottom: functions.fluidValue(22px, 39px, 360px, 1920px);
+
+    &_h2 {
+      font-weight: 500;
+      font-size: functions.fluidValue(15px, 22px, 360px, 1920px);
+      line-height: functions.fluidValue(20px, 30px, 360px, 1920px);
+      max-width: functions.fluidValue(296px, 630px, 360px, 1920px);
+    }
   }
 
   &__icon {
     width: functions.fluidValue(45px, 61px, 360px, 1920px);
     height: functions.fluidValue(45px, 61px, 360px, 1920px);
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    margin-top: functions.fluidValue(22px, 73px, 360px, 1920px);
+  }
+
+  &__label {
+    font-family: var(--font-family-primary);
+    font-style: italic;
+    font-weight: 500;
+    font-size: functions.fluidValue(13px, 24px, 360px, 1920px);
+    letter-spacing: 0.01em;
+    color: var(--foreground-secondary);
+  }
+
+  &__wrapper-top-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .banner__icon {
+      margin-bottom: functions.fluidValue(16px, 45px, 360px, 1920px);
+      width: functions.fluidValue(46px, 70px, 360px, 1920px);
+      height: functions.fluidValue(50px, 74px, 360px, 1920px);
+    }
+
+    .banner__title_h2 {
+      margin-bottom: functions.fluidValue(12px, 19px, 360px, 1920px);
+    }
   }
 }

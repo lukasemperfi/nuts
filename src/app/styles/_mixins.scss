@@ -115,3 +115,11 @@ $breakpoints-down: (
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+////////////////////////////
+@mixin prevent-text-selection() {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

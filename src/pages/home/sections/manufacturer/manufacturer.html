@@ -1,3 +1,13 @@
+{%from "src/shared/ui/icons/icons.html" import rightArrow%}
+{%from "src/shared/ui/icons/icons.html" import leftArrow%}
+
+{%set images = [
+{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'},
+{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'},
+{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'},
+{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'}
+]%}
+
 {%macro manufacturerSection()%}
 <section class="manufacturer">
     <div class="page-container">
@@ -14,19 +24,28 @@
                         посадочного материала, саженцов привитого и непривитого
                         грецкого ореха, фундука и шиповника.
                     </p>
+
                 </div>
                 <a class="button button_secondary button_size-md manufacturer__button" href="#"
                     name="manufacturer">Подробнее</a>
             </div>
             <div class="manufacturer__col-2">
-                <div class="manufacturer__swiper swiper">
+                <div class="manufacturer__swiper swiper manufacturer-slider">
                     <div class="swiper-wrapper">
+                        {% for image in images %}
                         <div class="swiper-slide">
-                            <img class="manufacturer__img" src="/images/home-page/manufacturer/image-1.jpg"
-                                alt="manufacturer-1">
+                            <img class="manufacturer__img" src="{{ image.src }}" alt="{{image.alt}}">
                         </div>
+                        {% endfor %}
+                    </div>
+                    <div class="manufacturer-slider__prev">
+                        {{ leftArrow('manufacturer-slider__icon') }}
+                    </div>
+                    <div class="manufacturer-slider__next">
+                        {{ rightArrow('manufacturer-slider__icon') }}
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

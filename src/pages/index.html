@@ -3,6 +3,8 @@
 {%from "src/pages/home/sections/hero/hero.html" import hero%}
 {%from "src/pages/home/sections/products/products.html" import products%}
 {%from "src/pages/home/sections/manufacturer/manufacturer.html" import manufacturerSection%}
+{%from "src/pages/home/sections/stats/stats.html" import statsSection%}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +21,7 @@
         {{hero()}}
         {{products()}}
         {{manufacturerSection()}}
+        {{statsSection()}}
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Eligendi, quas distinctio

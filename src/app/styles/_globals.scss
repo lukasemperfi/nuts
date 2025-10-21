@@ -51,6 +51,7 @@ body {
 .title-h2-description {
   @extend .title-description;
   font-size: functions.fluidValue(14px, 18px, 360px, 1920px);
+  margin-inline: auto;
 
   &_color_secondary {
     color: var(--foreground-secondary);

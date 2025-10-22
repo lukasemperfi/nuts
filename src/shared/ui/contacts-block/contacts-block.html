@@ -1,4 +1,5 @@
-{%macro contactsBlock(highlightCode=false, reverse=false, class)%}
+{%macro contactsBlock(highlightCode=false, reverse=false, class,phone1Code="(044)",
+phone1="750-50-11",phone2Code="(097)", phone2="775-50-51")%}
 <div class="contacts-block {% if reverse %}contacts-block_reverse{% endif %} {% if class %}{{class}}{% endif %}">
     <div class="contacts-block__messengers">
         <a href="#" class="contacts-block__messenger">
@@ -59,11 +60,9 @@
     </div>
     <div class="contacts-block__phones">
         <a class="contacts-block__phone" href="tel:+79999999999"><span {% if highlightCode
-                %}class="contacts-block_highlight-code" {% endif %}>+38
-                (044)</span>&nbsp;750-50-11</a>
+                %}class="contacts-block_highlight-code" {% endif %}>+38&nbsp;{{phone1Code}}</span>&nbsp;{{phone1}}</a>
         <a class="contacts-block__phone" href="tel:+79999999999"><span {% if highlightCode
-                %}class="contacts-block_highlight-code" {% endif %}>+38
-                (097)</span>&nbsp;775-50-51</a>
+                %}class="contacts-block_highlight-code" {% endif %}>+38&nbsp;{{phone2Code}}</span>&nbsp;{{phone2}}</a>
     </div>
 </div>
 {%endmacro%}

@@ -1,0 +1,47 @@
+{%import "src/shared/ui/icons/icons.html" as icons%}
+{%from "src/shared/ui/contacts-block/contacts-block.html" import contactsBlock%}
+
+{% macro contactsSection()%}
+<section class="contacts-section">
+    <div class="page-container">
+        <div class="contacts-section__content">
+            <div class="contacts-section__col-1">
+                <div class="contacts-section__title title-h2">Контакты</div>
+                <div class="contacts-section__info info">
+                    <div class="info__item info-item">
+                        <div class="info-item__icon-wrapper">{{icons.phone()}}</div>
+                        <div class="info-item__content">
+                            {{contactsBlock(reverse=true, phone1Code="(095)", phone1="711 11 11", phone2Code="(095)",
+                            phone2="711 11 11")}}
+                        </div>
+                    </div>
+                    <div class="info__item info-item">
+                        <div class="info-item__icon-wrapper">{{icons.envelope()}}</div>
+                        <div class="info-item__label">
+                            nuts@nbsc.com.ua
+                        </div>
+                    </div>
+                    <div class="info__item info-item info-item_type_secondary">
+                        <div class="info-item__icon-wrapper">{{icons.house()}}</div>
+                        <div class="info-item__title">Офис и отдел продаж</div>
+                        <div class="info-item__label">
+                            Украина, г. Одесса,<br> ул. Космонавтов, 32
+                        </div>
+                    </div>
+                    <div class="info__item info-item info-item_type_secondary">
+                        <div class="info-item__icon-wrapper">{{icons.tree()}}</div>
+                        <div class="info-item__title">Производство</div>
+                        <div class="info-item__label">
+                            Украина, Одесская обл,<br> с. Яськи, ул. Центральная, 232
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="contacts-section__col-2">
+                <div class="contacts-section__map">map</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}

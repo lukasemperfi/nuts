@@ -1,5 +1,6 @@
 .nav-menu {
   &_horizontal {
+    --link-padding-inline: 34.5px;
     display: flex;
     justify-content: center;
 
@@ -10,9 +11,7 @@
     }
 
     .nav-menu__link {
-      --padding-inline: 34.5px;
-
-      padding-inline: var(--padding-inline);
+      padding-inline: var(--link-padding-inline);
       font-family: var(--font-family-primary);
       font-weight: 500;
       font-size: 15px;
@@ -20,22 +19,25 @@
       color: var(--foreground);
       padding-block: 13px;
       position: relative;
+      white-space: nowrap;
 
       &:hover {
         text-shadow: 0.1px 0 0 currentColor;
         color: var(--background-tertiary);
       }
 
-      &:hover::after {
-        content: "";
-        display: block;
-        width: calc(100% - (var(--padding-inline) * 2) + 14px);
-        height: 3px;
-        background-color: var(--background-tertiary);
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+      &_hover_secondary {
+        &:hover::after {
+          content: "";
+          display: block;
+          width: calc(100% - (var(--link-padding-inline) * 2) + 14px);
+          height: 3px;
+          background-color: var(--background-tertiary);
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
       }
     }
   }

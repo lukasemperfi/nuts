@@ -1,0 +1,32 @@
+{%from "src/widgets/header/header.html" import header%}
+{%from "src/widgets/header/mobile-menu.html" import mobileMenu%}
+{%from "src/widgets/contacts-section/contacts-section.html" import contactsSection%}
+{%from "src/widgets/footer/footer.html" import footer%}
+
+{%from "src/pages/catalog/sections/hero/hero.html" import hero%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Page</title>
+    <link rel="stylesheet" href="./catalog.scss">
+</head>
+
+<body>
+    {{header()}}
+    <main>
+        {{hero()}}
+        {{contactsSection()}}
+        {{footer()}}
+    </main>
+    <div class="portal-root">
+        {{mobileMenu()}}
+    </div>
+    <script type="module" src="./catalog.js"></script>
+</body>
+
+</html>

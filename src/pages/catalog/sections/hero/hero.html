@@ -1,0 +1,23 @@
+{%macro hero()%}
+<section class="hero">
+    <div class="banner hero__banner banner_size_sm">
+        <div class="banner__image-wrapper">
+            <img class="banner__image" src="/images/catalog-page/hero-banner.jpg" alt="banner" loading="eager"
+                fetchpriority="high">
+        </div>
+        <div class="banner__title">Каталог продукции</div>
+    </div>
+    {{breadcrumbs()}}
+</section>
+{%endmacro%}
+
+
+{%macro breadcrumbs(class="")%}
+<div class="breadcrumbs {{class}}">
+    <div class="page-container">
+        <div class="breadcrumbs__content">
+            Главная -> Магазин
+        </div>
+    </div>
+</div>
+{%endmacro%}

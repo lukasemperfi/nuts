@@ -4,6 +4,7 @@
 {%from "src/widgets/footer/footer.html" import footer%}
 
 {%from "src/pages/catalog/sections/hero/hero.html" import hero%}
+{%from "src/pages/catalog/sections/walnut/walnut.html" import walnutSection%}
 
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
     {{header()}}
     <main>
         {{hero()}}
+        {{walnutSection()}}
         {{contactsSection()}}
         {{footer()}}
     </main>

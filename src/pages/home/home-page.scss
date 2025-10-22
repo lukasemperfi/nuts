@@ -1,4 +1,5 @@
 @use "@/app/styles/index.scss" as *;
+@use "swiper/css";
 @use "@/widgets/header/header.scss" as *;
 @use "@/shared/ui/socials/socials.scss" as *;
 @use "@/shared/ui/dropdown/dropdown.scss" as *;
@@ -8,9 +9,9 @@
 @use "@/shared/ui/nav-menu/nav-menu.scss" as *;
 @use "@/widgets/banner/banner.scss" as *;
 @use "@/pages/home/sections/products/products.scss" as *;
-@use "swiper/css";
 @use "@/pages/home/sections/manufacturer/manufacturer.scss" as *;
 @use "@/pages/home/sections/stats/stats.scss" as *;
 @use "@/pages/home/sections/products-benefits/products-benefits.scss" as *;
 @use "@/widgets/contacts-section/contacts-section.scss" as *;
 @use "@/widgets/footer/footer.scss" as *;
+@use "@/widgets/news-section/news-section.scss" as *;

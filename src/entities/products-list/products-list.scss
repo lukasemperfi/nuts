@@ -1,0 +1,17 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: functions.fluidValue(12px, 30px, 360px, 1920px);
+
+  @include mixins.respond-to(md) {
+    grid-template-columns: repeat(auto-fit, minmax(min(336px, 100%), 1fr));
+  }
+
+  @include mixins.respond-to(713px) {
+    grid-template-columns: minmax(auto, 410px);
+    justify-content: center;
+  }
+}

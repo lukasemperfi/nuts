@@ -9,27 +9,27 @@ const products = [
     id: 1,
     images: [
       {
-        src: "/images/products/product-card-image-1.png",
+        src: "/nuts/images/products/product-card-image-1.png",
         alt: "product-card-image-1",
       },
       {
-        src: "/images/products/product-card-image-2.png",
+        src: "/nuts/images/products/product-card-image-2.png",
         alt: "product-card-image-2",
       },
       {
-        src: "/images/products/product-card-image-3.png",
+        src: "/nuts/images/products/product-card-image-3.png",
         alt: "product-card-image-3",
       },
       {
-        src: "/images/products/product-card-image-4.png",
+        src: "/nuts/images/products/product-card-image-4.png",
         alt: "product-card-image-4",
       },
       {
-        src: "/images/products/product-card-image-5.png",
+        src: "/nuts/images/products/product-card-image-5.png",
         alt: "product-card-image-5",
       },
       {
-        src: "/images/products/product-card-image-6.png",
+        src: "/nuts/images/products/product-card-image-6.png",
         alt: "product-card-image-6",
       },
     ],
@@ -46,27 +46,27 @@ const products = [
     id: 2,
     images: [
       {
-        src: "/images/products/product-card-image-1.png",
+        src: "/nuts/images/products/product-card-image-1.png",
         alt: "product-card-image-1",
       },
       {
-        src: "/images/products/product-card-image-2.png",
+        src: "/nuts/images/products/product-card-image-2.png",
         alt: "product-card-image-2",
       },
       {
-        src: "/images/products/product-card-image-3.png",
+        src: "/nuts/images/products/product-card-image-3.png",
         alt: "product-card-image-3",
       },
       {
-        src: "/images/products/product-card-image-4.png",
+        src: "/nuts/images/products/product-card-image-4.png",
         alt: "product-card-image-4",
       },
       {
-        src: "/images/products/product-card-image-5.png",
+        src: "/nuts/images/products/product-card-image-5.png",
         alt: "product-card-image-5",
       },
       {
-        src: "/images/products/product-card-image-6.png",
+        src: "/nuts/images/products/product-card-image-6.png",
         alt: "product-card-image-6",
       },
     ],
@@ -83,27 +83,27 @@ const products = [
     id: 3,
     images: [
       {
-        src: "/images/products/product-card-image-1.png",
+        src: "/nuts/images/products/product-card-image-1.png",
         alt: "product-card-image-1",
       },
       {
-        src: "/images/products/product-card-image-2.png",
+        src: "/nuts/images/products/product-card-image-2.png",
         alt: "product-card-image-2",
       },
       {
-        src: "/images/products/product-card-image-3.png",
+        src: "/nuts/images/products/product-card-image-3.png",
         alt: "product-card-image-3",
       },
       {
-        src: "/images/products/product-card-image-4.png",
+        src: "/nuts/images/products/product-card-image-4.png",
         alt: "product-card-image-4",
       },
       {
-        src: "/images/products/product-card-image-5.png",
+        src: "/nuts/images/products/product-card-image-5.png",
         alt: "product-card-image-5",
       },
       {
-        src: "/images/products/product-card-image-6.png",
+        src: "/nuts/images/products/product-card-image-6.png",
         alt: "product-card-image-6",
       },
     ],
@@ -120,27 +120,27 @@ const products = [
     id: 4,
     images: [
       {
-        src: "/images/products/product-card-image-1.png",
+        src: "/nuts/images/products/product-card-image-1.png",
         alt: "product-card-image-1",
       },
       {
-        src: "/images/products/product-card-image-2.png",
+        src: "/nuts/images/products/product-card-image-2.png",
         alt: "product-card-image-2",
       },
       {
-        src: "/images/products/product-card-image-3.png",
+        src: "/nuts/images/products/product-card-image-3.png",
         alt: "product-card-image-3",
       },
       {
-        src: "/images/products/product-card-image-4.png",
+        src: "/nuts/images/products/product-card-image-4.png",
         alt: "product-card-image-4",
       },
       {
-        src: "/images/products/product-card-image-5.png",
+        src: "/nuts/images/products/product-card-image-5.png",
         alt: "product-card-image-5",
       },
       {
-        src: "/images/products/product-card-image-6.png",
+        src: "/nuts/images/products/product-card-image-6.png",
         alt: "product-card-image-6",
       },
     ],
@@ -157,27 +157,27 @@ const products = [
     id: 5,
     images: [
       {
-        src: "/images/products/product-card-image-1.png",
+        src: "/nuts/images/products/product-card-image-1.png",
         alt: "product-card-image-1",
       },
       {
-        src: "/images/products/product-card-image-2.png",
+        src: "/nuts/images/products/product-card-image-2.png",
         alt: "product-card-image-2",
       },
       {
-        src: "/images/products/product-card-image-3.png",
+        src: "/nuts/images/products/product-card-image-3.png",
         alt: "product-card-image-3",
       },
       {
-        src: "/images/products/product-card-image-4.png",
+        src: "/nuts/images/products/product-card-image-4.png",
         alt: "product-card-image-4",
       },
       {
-        src: "/images/products/product-card-image-5.png",
+        src: "/nuts/images/products/product-card-image-5.png",
         alt: "product-card-image-5",
       },
       {
-        src: "/images/products/product-card-image-6.png",
+        src: "/nuts/images/products/product-card-image-6.png",
         alt: "product-card-image-6",
       },
     ],
@@ -194,27 +194,27 @@ const products = [
     id: 6,
     images: [
       {
-        src: "/images/products/product-card-image-1.png",
+        src: "/nuts/images/products/product-card-image-1.png",
         alt: "product-card-image-1",
       },
       {
-        src: "/images/products/product-card-image-2.png",
+        src: "/nuts/images/products/product-card-image-2.png",
         alt: "product-card-image-2",
       },
       {
-        src: "/images/products/product-card-image-3.png",
+        src: "/nuts/images/products/product-card-image-3.png",
         alt: "product-card-image-3",
       },
       {
-        src: "/images/products/product-card-image-4.png",
+        src: "/nuts/images/products/product-card-image-4.png",
         alt: "product-card-image-4",
       },
       {
-        src: "/images/products/product-card-image-5.png",
+        src: "/nuts/images/products/product-card-image-5.png",
         alt: "product-card-image-5",
       },
       {
-        src: "/images/products/product-card-image-6.png",
+        src: "/nuts/images/products/product-card-image-6.png",
         alt: "product-card-image-6",
       },
     ],

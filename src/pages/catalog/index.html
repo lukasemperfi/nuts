@@ -5,6 +5,7 @@
 
 {%from "src/pages/catalog/sections/hero/hero.html" import hero%}
 {%from "src/pages/catalog/sections/walnut/walnut.html" import walnutSection%}
+{%from "src/pages/catalog/sections/products/products.html" import products%}
 
 
 <!DOCTYPE html>
@@ -21,6 +22,7 @@
     {{header()}}
     <main>
         {{hero()}}
+        {{products()}}
         {{walnutSection()}}
         {{contactsSection()}}
         {{footer()}}

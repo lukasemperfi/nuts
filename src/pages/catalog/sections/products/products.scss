@@ -1,0 +1,22 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.products {
+  padding-top: 83px;
+  padding-bottom: 108px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__description {
+    max-width: 605px;
+    margin-bottom: 65px;
+  }
+  &__button {
+    margin-top: 71px;
+    display: flex;
+    margin-inline: auto;
+  }
+}

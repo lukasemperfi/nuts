@@ -10,6 +10,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +18,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-  <script type="module" crossorigin src="/nuts/assets/src/pages-ChVf2Wn-.js"></script>
-  <link rel="stylesheet" crossorigin href="/nuts/assets/pages-Cc10BdRJ.css">
+  <script type="module" crossorigin src="/nuts/assets/src/pages-B8nsHuj5.js"></script>
+  <link rel="modulepreload" crossorigin href="/nuts/assets/navigation-B7lrwbkm.js">
+  <link rel="stylesheet" crossorigin href="/nuts/assets/pages-G7llX2WB.css">
 </head>
 
 <body>
@@ -249,7 +251,7 @@
     <ul class="nav-menu__list">
         
         <li class="nav-menu__item">
-            <a class="nav-menu__link nav-menu__link_hover_secondary" href="#" name="Магазин">Магазин</a>
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/catalog/" name="Магазин">Магазин</a>
         </li>
         
         <li class="nav-menu__item">
@@ -286,22 +288,28 @@
         
 <section class="hero">
     <div class="banner hero__banner">
-        <div class="banner__image-wrapper">
-            <img class="banner__image" src="/nuts/images/home-page/hero-banner.jpg" alt="banner" loading="eager"
-                fetchpriority="high">
-        </div>
-        <div class="banner__content">
-            <div class="banner__title">Орех Причерноморья</div>
-            <div class="banner__description">
-                Единственный в Украине сад совместного
-                выращивание фундука и грецкого ореха
+        <div class="banner__poster">
+            <div class="banner__image-wrapper">
+                <img class="banner__image" src="/nuts/images/home-page/hero-banner.jpg" alt="banner" loading="eager"
+                    fetchpriority="high">
             </div>
-            <svg class="banner__icon" width="61" height="61" viewBox="0 0 61 61" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
-                <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white" />
-            </svg>
+            <div class="banner__content">
+                <div class="banner__title">Орех Причерноморья</div>
+                <div class="banner__description">
+                    Единственный в Украине сад совместного
+                    выращивание фундука и грецкого ореха
+                </div>
+                <button class="banner__button">
+                    <svg class="banner__icon" width="61" height="61" viewBox="0 0 61 61" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
+                        <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white" />
+                    </svg>
+                </button>
+
+            </div>
         </div>
+        <video class="banner__video" data-src="/videos/home-page/hero.mp4" controls playsinline></video>
     </div>
 </section>
 
@@ -1312,19 +1320,75 @@
                     <div class="swiper-wrapper">
                         
                         <div class="swiper-slide">
-                            <img class="manufacturer__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                            <div class="manufacturer__card card">
+                                <img class="card__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                                <video class="card__video" data-src="/videos/home-page/manufacturer.mp4"
+                                    playsinline></video>
+                                <button class="card__button">
+                                    
+
+<svg class="" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
+    <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white" />
+</svg>
+
+
+                                </button>
+                            </div>
                         </div>
                         
                         <div class="swiper-slide">
-                            <img class="manufacturer__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                            <div class="manufacturer__card card">
+                                <img class="card__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                                <video class="card__video" data-src="/videos/home-page/manufacturer.mp4"
+                                    playsinline></video>
+                                <button class="card__button">
+                                    
+
+<svg class="" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
+    <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white" />
+</svg>
+
+
+                                </button>
+                            </div>
                         </div>
                         
                         <div class="swiper-slide">
-                            <img class="manufacturer__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                            <div class="manufacturer__card card">
+                                <img class="card__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                                <video class="card__video" data-src="/videos/home-page/manufacturer.mp4"
+                                    playsinline></video>
+                                <button class="card__button">
+                                    
+
+<svg class="" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
+    <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white" />
+</svg>
+
+
+                                </button>
+                            </div>
                         </div>
                         
                         <div class="swiper-slide">
-                            <img class="manufacturer__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                            <div class="manufacturer__card card">
+                                <img class="card__img" src="/nuts/images/home-page/manufacturer/image-1.jpg" alt="manufacturer-1">
+                                <video class="card__video" data-src="/videos/home-page/manufacturer.mp4"
+                                    playsinline></video>
+                                <button class="card__button">
+                                    
+
+<svg class="" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
+    <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white" />
+</svg>
+
+
+                                </button>
+                            </div>
                         </div>
                         
                     </div>
@@ -1380,15 +1444,17 @@
         
 <section class="goal">
     <div class="banner banner_size_lg goal__banner ">
-        <div class="banner__image-wrapper">
-            <img class="banner__image" src="/nuts/images/home-page/goal-banner.jpg" alt="banner" loading="eager"
-                fetchpriority="high">
-        </div>
-        <div class="banner__content">
-            <div class="banner__title banner__title_h2">Наша главная цель - получить максимальную прибыль с одного
-                гектара</div>
-            <div class="banner__btn-wrapper">
-                
+        <div class="banner__poster">
+            <div class="banner__image-wrapper">
+                <img class="banner__image" src="/nuts/images/home-page/goal-banner.jpg" alt="banner" loading="eager"
+                    fetchpriority="high">
+            </div>
+            <div class="banner__content">
+                <div class="banner__title banner__title_h2">Наша главная цель - получить максимальную прибыль с одного
+                    гектара</div>
+
+                <button class="banner__button banner__btn-wrapper">
+                    
 
 <svg class="banner__icon" width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="30.5" cy="30.5" r="29.5" stroke="white" stroke-width="2" />
@@ -1396,10 +1462,13 @@
 </svg>
 
 
-                <div class="banner__label">Смотреть видео о производстве</div>
-            </div>
+                    <div class="banner__label">Смотреть видео о производстве</div>
+                </button>
 
+
+            </div>
         </div>
+        <video class="banner__video" data-src="/videos/home-page/goal.mp4" controls playsinline></video>
     </div>
 </section>
 
@@ -1661,6 +1730,259 @@
 </section>
 
         
+
+<section class="news-section">
+    <div class="page-container">
+        <div class="news-section__header">
+            <div class="news-section__title title-h2">Новости</div>
+            <div class="news-section__description title-h2-description">
+                Свежие новости и полезная информация
+            </div>
+            <div class="news-section-slider__nav news-section-slider__nav-outside">
+                <div class="news-section-slider__prev">
+                    
+<svg class="news-section-slider__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M14.1667 8.83301L15.45 10.1163L8.4833 17.083H27V18.9163H8.4833L15.45 25.883L14.1667 27.1663L5 17.9997L14.1667 8.83301Z"
+        fill="currentColor" />
+</svg>
+
+                </div>
+                <div class="news-section-slider__next">
+                    
+<svg class="news-section-slider__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M19.8333 8.83301L18.55 10.1163L25.5167 17.083H7V18.9163H25.5167L18.55 25.883L19.8333 27.1663L29 17.9997L19.8333 8.83301Z"
+        fill="currentColor" />
+</svg>
+
+                </div>
+            </div>
+        </div>
+        <div class="news-section__main">
+            <div class="news-section__swiper swiper news-section-slider">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="news-section-card">
+                            <div class="news-section-card__image-wrapper">
+                                <img class="news-section-card__img" src="/nuts/images/news-section/image-1.jpg" alt="News Image 1">
+                            </div>
+                            <div class="news-section-card__content">
+                                <div class="news-section-card__date">12.04.2019</div>
+                                <div class="news-section-card__title">Центр поддержки экспорта, в студии Павел Тулба</div>
+                                <div class="news-section-card__description">Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
+смотря на большой спрос в Европе и отличную...</div>
+                                <a class="news-section-card__link" href="#"
+                                    name="news-section-card-link">Читать
+                                    
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_160_53)">
+        <path
+            d="M17.7938 9.49771C17.7936 9.49792 17.7934 9.49816 17.7931 9.49838L14.1192 13.1546C13.8439 13.4285 13.3988 13.4275 13.1248 13.1522C12.8508 12.877 12.8519 12.4318 13.1271 12.1579L15.5938 9.70313H0.703125C0.314789 9.70313 0 9.38834 0 9C0 8.61166 0.314789 8.29688 0.703125 8.29688H15.5938L13.1272 5.84212C12.8519 5.56819 12.8509 5.123 13.1248 4.84776C13.3988 4.57246 13.844 4.57151 14.1192 4.84537L17.7932 8.50163C17.7934 8.50184 17.7936 8.50208 17.7938 8.50229C18.0692 8.77714 18.0683 9.22377 17.7938 9.49771Z"
+            fill="#1A2F3F" />
+    </g>
+    <defs>
+        <clipPath id="clip0_160_53">
+            <rect width="18" height="18" fill="white" transform="matrix(1 0 0 -1 0 18)" />
+        </clipPath>
+    </defs>
+</svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="news-section-card">
+                            <div class="news-section-card__image-wrapper">
+                                <img class="news-section-card__img" src="/nuts/images/news-section/image-2.jpg" alt="News Image 2">
+                            </div>
+                            <div class="news-section-card__content">
+                                <div class="news-section-card__date">12.04.2019</div>
+                                <div class="news-section-card__title">В Одесской области состоялся масштабный торгово - экспортный форум</div>
+                                <div class="news-section-card__description">Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
+смотря на большой спрос в Европе и отличную...</div>
+                                <a class="news-section-card__link" href="#"
+                                    name="news-section-card-link">Читать
+                                    
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_160_53)">
+        <path
+            d="M17.7938 9.49771C17.7936 9.49792 17.7934 9.49816 17.7931 9.49838L14.1192 13.1546C13.8439 13.4285 13.3988 13.4275 13.1248 13.1522C12.8508 12.877 12.8519 12.4318 13.1271 12.1579L15.5938 9.70313H0.703125C0.314789 9.70313 0 9.38834 0 9C0 8.61166 0.314789 8.29688 0.703125 8.29688H15.5938L13.1272 5.84212C12.8519 5.56819 12.8509 5.123 13.1248 4.84776C13.3988 4.57246 13.844 4.57151 14.1192 4.84537L17.7932 8.50163C17.7934 8.50184 17.7936 8.50208 17.7938 8.50229C18.0692 8.77714 18.0683 9.22377 17.7938 9.49771Z"
+            fill="#1A2F3F" />
+    </g>
+    <defs>
+        <clipPath id="clip0_160_53">
+            <rect width="18" height="18" fill="white" transform="matrix(1 0 0 -1 0 18)" />
+        </clipPath>
+    </defs>
+</svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="news-section-card">
+                            <div class="news-section-card__image-wrapper">
+                                <img class="news-section-card__img" src="/nuts/images/news-section/image-3.jpg" alt="News Image 3">
+                            </div>
+                            <div class="news-section-card__content">
+                                <div class="news-section-card__date">12.04.2019</div>
+                                <div class="news-section-card__title">Сертификация органического производителя</div>
+                                <div class="news-section-card__description">Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
+смотря на большой спрос в Европе и отличную...</div>
+                                <a class="news-section-card__link" href="#"
+                                    name="news-section-card-link">Читать
+                                    
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_160_53)">
+        <path
+            d="M17.7938 9.49771C17.7936 9.49792 17.7934 9.49816 17.7931 9.49838L14.1192 13.1546C13.8439 13.4285 13.3988 13.4275 13.1248 13.1522C12.8508 12.877 12.8519 12.4318 13.1271 12.1579L15.5938 9.70313H0.703125C0.314789 9.70313 0 9.38834 0 9C0 8.61166 0.314789 8.29688 0.703125 8.29688H15.5938L13.1272 5.84212C12.8519 5.56819 12.8509 5.123 13.1248 4.84776C13.3988 4.57246 13.844 4.57151 14.1192 4.84537L17.7932 8.50163C17.7934 8.50184 17.7936 8.50208 17.7938 8.50229C18.0692 8.77714 18.0683 9.22377 17.7938 9.49771Z"
+            fill="#1A2F3F" />
+    </g>
+    <defs>
+        <clipPath id="clip0_160_53">
+            <rect width="18" height="18" fill="white" transform="matrix(1 0 0 -1 0 18)" />
+        </clipPath>
+    </defs>
+</svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="news-section-card">
+                            <div class="news-section-card__image-wrapper">
+                                <img class="news-section-card__img" src="/nuts/images/news-section/image-1.jpg" alt="News Image 4">
+                            </div>
+                            <div class="news-section-card__content">
+                                <div class="news-section-card__date">12.04.2019</div>
+                                <div class="news-section-card__title">Центр поддержки экспорта, в студии Павел Тулба</div>
+                                <div class="news-section-card__description">Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
+смотря на большой спрос в Европе и отличную...</div>
+                                <a class="news-section-card__link" href="#"
+                                    name="news-section-card-link">Читать
+                                    
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_160_53)">
+        <path
+            d="M17.7938 9.49771C17.7936 9.49792 17.7934 9.49816 17.7931 9.49838L14.1192 13.1546C13.8439 13.4285 13.3988 13.4275 13.1248 13.1522C12.8508 12.877 12.8519 12.4318 13.1271 12.1579L15.5938 9.70313H0.703125C0.314789 9.70313 0 9.38834 0 9C0 8.61166 0.314789 8.29688 0.703125 8.29688H15.5938L13.1272 5.84212C12.8519 5.56819 12.8509 5.123 13.1248 4.84776C13.3988 4.57246 13.844 4.57151 14.1192 4.84537L17.7932 8.50163C17.7934 8.50184 17.7936 8.50208 17.7938 8.50229C18.0692 8.77714 18.0683 9.22377 17.7938 9.49771Z"
+            fill="#1A2F3F" />
+    </g>
+    <defs>
+        <clipPath id="clip0_160_53">
+            <rect width="18" height="18" fill="white" transform="matrix(1 0 0 -1 0 18)" />
+        </clipPath>
+    </defs>
+</svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="news-section-card">
+                            <div class="news-section-card__image-wrapper">
+                                <img class="news-section-card__img" src="/nuts/images/news-section/image-2.jpg" alt="News Image 5">
+                            </div>
+                            <div class="news-section-card__content">
+                                <div class="news-section-card__date">12.04.2019</div>
+                                <div class="news-section-card__title">В Одесской области состоялся масштабный торгово - экспортный форум</div>
+                                <div class="news-section-card__description">Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
+смотря на большой спрос в Европе и отличную...</div>
+                                <a class="news-section-card__link" href="#"
+                                    name="news-section-card-link">Читать
+                                    
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_160_53)">
+        <path
+            d="M17.7938 9.49771C17.7936 9.49792 17.7934 9.49816 17.7931 9.49838L14.1192 13.1546C13.8439 13.4285 13.3988 13.4275 13.1248 13.1522C12.8508 12.877 12.8519 12.4318 13.1271 12.1579L15.5938 9.70313H0.703125C0.314789 9.70313 0 9.38834 0 9C0 8.61166 0.314789 8.29688 0.703125 8.29688H15.5938L13.1272 5.84212C12.8519 5.56819 12.8509 5.123 13.1248 4.84776C13.3988 4.57246 13.844 4.57151 14.1192 4.84537L17.7932 8.50163C17.7934 8.50184 17.7936 8.50208 17.7938 8.50229C18.0692 8.77714 18.0683 9.22377 17.7938 9.49771Z"
+            fill="#1A2F3F" />
+    </g>
+    <defs>
+        <clipPath id="clip0_160_53">
+            <rect width="18" height="18" fill="white" transform="matrix(1 0 0 -1 0 18)" />
+        </clipPath>
+    </defs>
+</svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="news-section-card">
+                            <div class="news-section-card__image-wrapper">
+                                <img class="news-section-card__img" src="/nuts/images/news-section/image-3.jpg" alt="News Image 6">
+                            </div>
+                            <div class="news-section-card__content">
+                                <div class="news-section-card__date">12.04.2019</div>
+                                <div class="news-section-card__title">Сертификация органического производителя</div>
+                                <div class="news-section-card__description">Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
+смотря на большой спрос в Европе и отличную...</div>
+                                <a class="news-section-card__link" href="#"
+                                    name="news-section-card-link">Читать
+                                    
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_160_53)">
+        <path
+            d="M17.7938 9.49771C17.7936 9.49792 17.7934 9.49816 17.7931 9.49838L14.1192 13.1546C13.8439 13.4285 13.3988 13.4275 13.1248 13.1522C12.8508 12.877 12.8519 12.4318 13.1271 12.1579L15.5938 9.70313H0.703125C0.314789 9.70313 0 9.38834 0 9C0 8.61166 0.314789 8.29688 0.703125 8.29688H15.5938L13.1272 5.84212C12.8519 5.56819 12.8509 5.123 13.1248 4.84776C13.3988 4.57246 13.844 4.57151 14.1192 4.84537L17.7932 8.50163C17.7934 8.50184 17.7936 8.50208 17.7938 8.50229C18.0692 8.77714 18.0683 9.22377 17.7938 9.49771Z"
+            fill="#1A2F3F" />
+    </g>
+    <defs>
+        <clipPath id="clip0_160_53">
+            <rect width="18" height="18" fill="white" transform="matrix(1 0 0 -1 0 18)" />
+        </clipPath>
+    </defs>
+</svg>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="news-section-slider__nav news-section-slider__nav-inside">
+                    <div class="news-section-slider__prev">
+                        
+<svg class="news-section-slider__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M14.1667 8.83301L15.45 10.1163L8.4833 17.083H27V18.9163H8.4833L15.45 25.883L14.1667 27.1663L5 17.9997L14.1667 8.83301Z"
+        fill="currentColor" />
+</svg>
+
+                    </div>
+                    <div class="news-section-slider__next">
+                        
+<svg class="news-section-slider__icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M19.8333 8.83301L18.55 10.1163L25.5167 17.083H7V18.9163H25.5167L18.55 25.883L19.8333 27.1663L29 17.9997L19.8333 8.83301Z"
+        fill="currentColor" />
+</svg>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="news-section__bottom">
+            <a class="news-section__all-news-link button button_secondary button_size-md" href="#"
+                name="news-section-all-news-link">
+                Смотреть все новости
+            </a>
+        </div>
+    </div>
+</section>
+
+
+        
 <section class="contacts-section">
     <div class="page-container">
         <div class="contacts-section__content">
@@ -1806,7 +2128,8 @@
 
             </div>
             <div class="contacts-section__col-2">
-                <div class="contacts-section__map">map</div>
+                <iframe class="contacts-section__map"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=30.720439553260807%2C46.42226509089123%2C30.729398131370548%2C46.42558570182441&amp;layer=mapnik&amp;marker=46.42392542164024%2C30.724918842315674"></iframe>
             </div>
         </div>
     </div>

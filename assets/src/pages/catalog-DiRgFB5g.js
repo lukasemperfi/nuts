@@ -1,0 +1,1 @@
+import{i as n,N as t,a as i}from"../../navigation-B7lrwbkm.js";const e=()=>{a()};function a(){return n(".walnut-slider",{slidesPerView:"auto",navigation:{nextEl:".walnut-slider__next",prevEl:".walnut-slider__prev"},modules:[t]})}document.addEventListener("DOMContentLoaded",()=>{i(".top-header__lang"),e()});

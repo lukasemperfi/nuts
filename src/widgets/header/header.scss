@@ -275,7 +275,13 @@
     padding-top: 11px;
 
     @include mixins.respond-to(md) {
-      padding-block: 7px;
+      display: none;
+    }
+
+    @include mixins.respond-to($bp-md) {
+      padding-top: 7px;
+      padding-bottom: 10px;
+      display: block;
     }
 
     .nav-menu {
@@ -287,7 +293,7 @@
     .nav-menu__link {
       @include mixins.respond-to($bp-lg) {
         font-size: 14px;
-        --padding-inline: 18.5px;
+        --link-padding-inline: 18.5px;
       }
     }
 

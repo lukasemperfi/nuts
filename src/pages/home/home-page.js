@@ -3,6 +3,8 @@ import { initHeader } from "@/widgets/header/header.js";
 import { initProducts } from "./sections/products/products.js";
 import { initManufacturerSection } from "./sections/manufacturer/manufacturer.js";
 import { initNewsSection } from "@/widgets/news-section/news-section.js";
+import { initHero } from "./sections/hero/hero.js";
+import { initGoal } from "./sections/goal/goal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initDropdown(".top-header__lang");
@@ -10,4 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initProducts();
   initManufacturerSection();
   initNewsSection();
+  initHero();
+  initGoal();
 });

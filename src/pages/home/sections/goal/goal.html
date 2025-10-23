@@ -3,19 +3,24 @@
 {%macro goal()%}
 <section class="goal">
     <div class="banner banner_size_lg goal__banner ">
-        <div class="banner__image-wrapper">
-            <img class="banner__image" src="/images/home-page/goal-banner.jpg" alt="banner" loading="eager"
-                fetchpriority="high">
-        </div>
-        <div class="banner__content">
-            <div class="banner__title banner__title_h2">Наша главная цель - получить максимальную прибыль с одного
-                гектара</div>
-            <div class="banner__btn-wrapper">
-                {{play("banner__icon")}}
-                <div class="banner__label">Смотреть видео о производстве</div>
+        <div class="banner__poster">
+            <div class="banner__image-wrapper">
+                <img class="banner__image" src="/images/home-page/goal-banner.jpg" alt="banner" loading="eager"
+                    fetchpriority="high">
             </div>
+            <div class="banner__content">
+                <div class="banner__title banner__title_h2">Наша главная цель - получить максимальную прибыль с одного
+                    гектара</div>
 
+                <button class="banner__button banner__btn-wrapper">
+                    {{play("banner__icon")}}
+                    <div class="banner__label">Смотреть видео о производстве</div>
+                </button>
+
+
+            </div>
         </div>
+        <video class="banner__video" data-src="/videos/home-page/goal.mp4" controls playsinline></video>
     </div>
 </section>
 {%endmacro%}

@@ -1,3 +1,6 @@
+import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
+import { Navigation } from "swiper/modules";
+
 export function createProductCard(product) {
   const {
     images,
@@ -31,13 +34,33 @@ export function createProductCard(product) {
                 </div>
             </div>
             <div class="product-card-swiper__next">
-                <!-- SVG next icon -->
+            <svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M13.4167 20.083L12.075 18.7414L19.3584 11.458H0V9.54137H19.3584L12.075 2.25801L13.4167 0.916374L23 10.4997L13.4167 20.083Z"
+                fill="none" />
+        </svg>
             </div>
             <div class="product-card-swiper__prev">
-                <!-- SVG prev icon -->
+            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M9.58332 21.083L10.925 19.7414L3.64164 12.458H23V10.5414H3.64164L10.925 3.25801L9.58332 1.91637L0 11.4997L9.58332 21.083Z"
+                fill="none" />
+        </svg>
             </div>
             <div class="product-card__zoom">
-                <!-- SVG zoom icon -->
+                
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_241_161)">
+                <path
+                    d="M18.3691 17.3004L13.9977 12.9289C15.0813 11.6078 15.7344 9.91562 15.7344 8.07129C15.7344 3.84082 12.3018 0.408203 8.07129 0.408203C3.83711 0.408203 0.408203 3.84082 0.408203 8.07129C0.408203 12.3018 3.83711 15.7344 8.07129 15.7344C9.91562 15.7344 11.6041 15.085 12.9252 14.0014L17.2967 18.3691C17.5936 18.666 18.0723 18.666 18.3691 18.3691C18.666 18.076 18.666 17.5936 18.3691 17.3004ZM8.07129 14.2092C4.6832 14.2092 1.92969 11.4557 1.92969 8.07129C1.92969 4.68691 4.6832 1.92969 8.07129 1.92969C11.4557 1.92969 14.2129 4.68691 14.2129 8.07129C14.2129 11.4557 11.4557 14.2092 8.07129 14.2092Z"
+                    fill="white" />
+            </g>
+            <defs>
+                <clipPath>
+                    <rect width="19" height="19" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
             </div>
         </div>
         <div class="product-card__middle">
@@ -90,20 +113,22 @@ export function createProductCard(product) {
         </div>
     `;
 
+  initProductCardSwiper(card);
+
   return card;
 }
 
-// const product = {
-//     images: [
-//         { src: '/images/product1.jpg', alt: 'Product 1' },
-//         { src: '/images/product2.jpg', alt: 'Product 2' }
-//     ],
-//     title: 'Грецкий орех',
-//     sku: '0091',
-//     description: 'Орех сладкий, классический, очищенный',
-//     weight: '40г.',
-//     packaging: 'вакуумная',
-//     priceNew: '1999',
-//     priceOld: '2100',
-//     flag: 'Акция'
-// };
+function initProductCardSwiper(cardElement) {
+  const swiperEl = cardElement.querySelector(".product-card-swiper");
+
+  if (!swiperEl) return null;
+
+  return initSwiper(swiperEl, {
+    slidesPerView: 1,
+    navigation: {
+      nextEl: cardElement.querySelector(".product-card-swiper__next"),
+      prevEl: cardElement.querySelector(".product-card-swiper__prev"),
+    },
+    modules: [Navigation],
+  });
+}

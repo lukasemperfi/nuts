@@ -1,22 +1,8 @@
-import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
-import { Navigation } from "swiper/modules";
 import { renderProductList } from "@/entities/products-list/products-list";
 
 export const initProducts = () => {
-  initProductCardSwiper();
   renderProductList(products, ".products__catalog");
 };
-
-function initProductCardSwiper() {
-  return initSwiper(".product-card-swiper", {
-    slidesPerView: 1,
-    navigation: {
-      nextEl: ".product-card-swiper__next",
-      prevEl: ".product-card-swiper__prev",
-    },
-    modules: [Navigation],
-  });
-}
 
 const products = [
   {

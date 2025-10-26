@@ -5,6 +5,8 @@ import { initManufacturerSection } from "./sections/manufacturer/manufacturer.js
 import { initNewsSection } from "@/widgets/news-section/news-section.js";
 import { initHero } from "./sections/hero/hero.js";
 import { initGoal } from "./sections/goal/goal.js";
+import { store } from "@/app/store/index.js";
+import { productFiltersActions } from "../../feautures/product-filters/model/slice.js";
 // import { supabase } from "@/shared/api/supabase/client.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -32,3 +34,9 @@ async function fetchProducts() {
 
   return products;
 }
+
+store.subscribe("productFilters", (newState) => {
+  console.log("productFilters state changed:", newState);
+});
+
+store.dispatch(productFiltersActions.setSort("price-asc"));

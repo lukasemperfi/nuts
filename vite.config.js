@@ -43,9 +43,6 @@ export default defineConfig(({ mode }) => {
       },
       assetsDir: "assets",
     },
-    plugins: [
-      nunjucks({ variables: { "*": { baseUrl: "yyyy" } } }),
-      FullReload(["src/**/*"]),
-    ],
+    plugins: [nunjucks(), FullReload(["src/**/*"])],
   };
 });

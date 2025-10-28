@@ -1,7 +1,10 @@
-import { renderProductList } from "@/entities/products-list/products-list";
+// import { renderProductList } from "@/entities/products-list/products-list";
+
+import { productList } from "@/entities/product/ui/product-list/product-list";
 
 export const initProducts = () => {
-  renderProductList(products, ".products__catalog");
+  // renderProductList(products, ".products__catalog");
+  productList(".products__catalog");
 };
 
 const products = [

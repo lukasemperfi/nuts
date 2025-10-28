@@ -5,6 +5,7 @@ import { initManufacturerSection } from "./sections/manufacturer/manufacturer.js
 import { initNewsSection } from "@/widgets/news-section/news-section.js";
 import { initHero } from "./sections/hero/hero.js";
 import { initGoal } from "./sections/goal/goal.js";
+import { store } from "@/app/store/index.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initDropdown(".top-header__lang");
@@ -14,4 +15,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   initNewsSection();
   initHero();
   initGoal();
+
+  console.log("home page store state:", store.getState());
 });

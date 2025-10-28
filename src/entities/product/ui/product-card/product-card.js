@@ -8,29 +8,52 @@ export function createProductCard(product) {
     sku,
     description,
     weight,
+    weight_unit,
     packaging_types,
     discount_price,
     price,
+    price_unit,
     product_statuses,
   } = product;
+
+  const images = product_images.sort((a, b) => a.sort_order - b.sort_order);
+  const statuses = {
+    regular: {
+      name: "regular",
+      class: "",
+    },
+    sale: {
+      name: "Акция",
+      class: "product-card__status_sale",
+    },
+    new: {
+      name: "Новинка",
+      class: "product-card__status_new",
+    },
+  };
 
   const card = document.createElement("div");
   card.className = "product-card";
 
   card.innerHTML = `
         ${
-          product_statuses
-            ? `<div class="product-card__flag">${product_statuses.name}</div>`
+          product_statuses.name !== "regular"
+            ? `<div class="product-card__status ${
+                statuses[product_statuses.name].class
+              }">${statuses[product_statuses.name].name}</div>`
             : ""
         }
         <div class="product-card__image-wrapper">
             <div class="swiper product-card-swiper">
                 <div class="swiper-wrapper">
-                    ${product_images
+                    ${images
                       .map(
-                        (image) => `
+                        (image, index) => `
                         <div class="swiper-slide">
-                            <img class="product-card-swiper__image" src="${image.src}" alt="${image.alt}">
+                            <picture>
+                                <source type="image/webp" srcset="${image.image_path_webp}">
+                                <img class="product-card-swiper__image" src="${image.image_path_png}" loading="lazy" alt="image-${index}" >
+                            </picture>           
                         </div>
                     `
                       )
@@ -81,7 +104,7 @@ export function createProductCard(product) {
                     </div>
                     <div class="weight__value-wrapper">
                         <span class="weight__label">Масса:</span>
-                        <span class="weight__value">${weight}</span>
+                        <span class="weight__value">${weight}${weight_unit}.</span>
                     </div>
                 </div>
                 <div class="attributes__packaging packaging">
@@ -101,16 +124,20 @@ export function createProductCard(product) {
             <div class="bottom__price price">
                 <span class="price__label">Цена:</span>
                 <span class="price__value">
-                    <span class="price__new-price">
-                        <span class="price-number">${discount_price}</span>&nbsp;грн.
+                ${
+                  discount_price !== null
+                    ? `<span class="price__current-price">
+                      <span class="price-number">${discount_price}</span>&nbsp;${price_unit}.
+                  </span>`
+                    : ""
+                }
+                    <span class="${
+                      discount_price !== null
+                        ? "price__old-price"
+                        : "price__current-price"
+                    }">
+                        <span class="price-number">${price}</span>&nbsp;${price_unit}.
                     </span>
-                    ${
-                      price
-                        ? `<span class="price__old-price">
-                        <span class="price-number">${price}</span>&nbsp;грн.
-                    </span>`
-                        : ""
-                    }
                 </span>
             </div>
             <a class="bottom__button button button_primary button_size-sm" href="#" name="product-card-button">

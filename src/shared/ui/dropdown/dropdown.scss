@@ -1,3 +1,6 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
 .dropdown {
   --select-border-radius: 88px;
   --select-text-color: var(--foreground);
@@ -113,12 +116,12 @@
   }
 
   &__label {
-    // border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     padding-block: 13px;
   }
 
   &_select {
     --select-border-color: rgba(0, 0, 0, 0.1);
+    $font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
     display: block;
 
     .dropdown__button {
@@ -145,7 +148,7 @@
       padding-block: 13px;
       padding-inline: 16px;
       font-weight: 600;
-      font-size: 16px;
+      font-size: $font-size;
       letter-spacing: 0.01em;
       color: var(--foreground);
 
@@ -161,7 +164,7 @@
 
     .dropdown__option {
       font-weight: 600;
-      font-size: 16px;
+      font-size: $font-size;
       letter-spacing: 0.01em;
       color: var(--foreground);
       display: flex;

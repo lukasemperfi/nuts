@@ -2,8 +2,8 @@
 @use "@/app/styles/mixins" as mixins;
 
 .products {
-  padding-top: 71px;
-  padding-bottom: 108px;
+  padding-top: functions.fluidValue(45px, 71px, 360px, 1920px);
+  padding-bottom: functions.fluidValue(45px, 108px, 360px, 1920px);
 
   &__content {
     display: flex;
@@ -15,7 +15,9 @@
     margin-bottom: 65px;
   }
   &__button {
-    margin-top: 71px;
+    margin-top: functions.fluidValue(45px, 71px, 360px, 1920px);
+    padding-inline: functions.fluidValue(25px, 27px, 360px, 1920px);
+    padding-block: functions.fluidValue(14px, 16px, 360px, 1920px);
     display: flex;
     margin-inline: auto;
   }

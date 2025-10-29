@@ -1,4 +1,4 @@
-export const initDropdown = (selector) => {
+export const initDropdown = ({ selector }) => {
   const select = document.querySelector(selector);
   const isMultiple = select.dataset.multiple === "true";
   const button = select.querySelector(".dropdown__button");

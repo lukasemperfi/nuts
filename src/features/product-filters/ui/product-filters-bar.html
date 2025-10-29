@@ -41,22 +41,7 @@
                 </svg>
             </span>
         </button>
-        <button class="product-filters-bar__filter-btn filter-btn filter-btn_price filter-btn_price-mobile">
-            <span class="filter-btn__label">Стоимость</span>
-            <span class="filter-btn__icon-wrapper">
-                <svg class="filter-btn__icon filter-btn__icon_arrowDown" width="15" height="15" viewBox="0 0 15 15"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.75 8.75001L12.875 7.875L8.125 12.625V0L6.87502 0L6.87502 12.625L2.125 7.875L1.25002 8.75001L7.50001 15L13.75 8.75001Z"
-                        fill="currentColor" />
-                </svg>
-                <svg class="filter-btn__icon filter-btn__icon_arrowUp filter-btn__icon_active" width="15" height="15"
-                    viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.75 6.24999L12.875 7.125L8.125 2.37498V15H6.87502L6.87502 2.37498L2.125 7.125L1.25002 6.24999L7.50001 0L13.75 6.24999Z" />
-                </svg>
-            </span>
-        </button>
+        {{priceButton("filter-btn_price-mobile")}}
     </div>
 
     <div class="product-filters-bar__filters">
@@ -66,22 +51,7 @@
         {{dropdown(multiple="true",name="lang", options=weight, class="product-filters-bar__weight-select
         dropdown_select",
         placeholder="Масса")}}
-        <button class="product-filters-bar__filter-btn filter-btn filter-btn_price">
-            <span class="filter-btn__label">Стоимость</span>
-            <span class="filter-btn__icon-wrapper">
-                <svg class="filter-btn__icon filter-btn__icon_arrowDown" width="15" height="15" viewBox="0 0 15 15"
-                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.75 8.75001L12.875 7.875L8.125 12.625V0L6.87502 0L6.87502 12.625L2.125 7.875L1.25002 8.75001L7.50001 15L13.75 8.75001Z"
-                        fill="currentColor" />
-                </svg>
-                <svg class="filter-btn__icon filter-btn__icon_arrowUp filter-btn__icon_active" width="15" height="15"
-                    viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13.75 6.24999L12.875 7.125L8.125 2.37498V15H6.87502L6.87502 2.37498L2.125 7.125L1.25002 6.24999L7.50001 0L13.75 6.24999Z" />
-                </svg>
-            </span>
-        </button>
+        {{priceButton("filter-btn_price-desktop")}}
         <div class="product-filters-bar__actions filter-actions">
             {{button(text="Применить", class="button_primary button_size-sm filter-actions__apply-btn")}}
             <button class="filter-actions__reset-btn">
@@ -102,4 +72,25 @@
 
 
 </div>
+{%endmacro%}
+
+
+{% macro priceButton(class="")%}
+<button class="product-filters-bar__filter-btn filter-btn filter-btn_price {{class}}">
+    <span class="filter-btn__label">Стоимость</span>
+    <span class="filter-btn__icon-wrapper">
+        <svg class="filter-btn__icon filter-btn__icon_arrowDown" width="15" height="15" viewBox="0 0 15 15" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M13.75 8.75001L12.875 7.875L8.125 12.625V0L6.87502 0L6.87502 12.625L2.125 7.875L1.25002 8.75001L7.50001 15L13.75 8.75001Z"
+                fill="currentColor" />
+        </svg>
+        <svg class="filter-btn__icon filter-btn__icon_arrowUp filter-btn__icon_active" width="15" height="15"
+            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M13.75 6.24999L12.875 7.125L8.125 2.37498V15H6.87502L6.87502 2.37498L2.125 7.125L1.25002 6.24999L7.50001 0L13.75 6.24999Z" />
+        </svg>
+    </span>
+</button>
+
 {%endmacro%}

@@ -50,12 +50,14 @@
 
   &__flavor-select {
     min-width: 283px;
+    max-width: 283px;
     margin-left: 68px;
 
     @include mixins.respond-to(1230px) {
       margin-left: 0;
       width: 100%;
       min-width: 171px;
+      max-width: 100%;
     }
 
     @include mixins.respond-to(sm) {
@@ -65,11 +67,13 @@
 
   &__weight-select {
     min-width: 171px;
+    max-width: 171px;
     margin-left: 29px;
 
     @include mixins.respond-to(1230px) {
       margin-left: 0;
       width: 100%;
+      max-width: 100%;
     }
 
     @include mixins.respond-to(sm) {

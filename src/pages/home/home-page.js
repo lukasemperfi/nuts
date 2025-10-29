@@ -7,7 +7,7 @@ import { initHero } from "./sections/hero/hero.js";
 import { initGoal } from "./sections/goal/goal.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  initDropdown(".top-header__lang");
+  initDropdown({ selector: ".top-header__lang" });
   initHeader();
   initProducts();
   initManufacturerSection();

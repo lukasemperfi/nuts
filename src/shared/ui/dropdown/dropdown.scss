@@ -191,9 +191,12 @@
     .dropdown__icon {
       width: 14px;
       height: 14px;
-      fill: var(--border-color-secondary);
       position: static;
       transform: none;
+
+      path {
+        fill: var(--border-color-secondary);
+      }
     }
 
     .dropdown__checkbox {

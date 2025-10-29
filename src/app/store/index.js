@@ -1,4 +1,3 @@
-import { productFiltersSlice } from "@/feautures/product-filters/model/slice";
 import { productsSlice } from "@/entities/product/model/products-slice";
 
 class Store {
@@ -85,5 +84,4 @@ class Store {
 
 export const store = new Store();
 
-store.registerSlice(productFiltersSlice);
 store.registerSlice(productsSlice);

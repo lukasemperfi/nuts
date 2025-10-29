@@ -1,6 +1,11 @@
+{% from "src/features/product-filters/ui/product-filters-bar.html" import productFiltersBar%}
+
 {%macro products()%}
 <section class="products">
     <div class="page-container">
+        <div class="products__filters">
+            {{productFiltersBar()}}
+        </div>
         <div class="products__list">
             <div class="products__catalog"></div>
             <a class="button button_secondary button_size-md products__button" href="#" name="products-button">Загрузить

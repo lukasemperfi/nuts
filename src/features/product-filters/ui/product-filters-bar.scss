@@ -1,0 +1,87 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.product-filters-bar {
+  display: flex;
+  align-items: center;
+
+  &__flavor-select {
+    width: 283px;
+    margin-left: 68px;
+  }
+
+  &__weight-select {
+    width: 171px;
+    margin-left: 29px;
+  }
+
+  .filter-btn {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    color: var(--foreground);
+    display: flex;
+    gap: 13px;
+    align-items: center;
+
+    &__icon-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &__icon {
+      path {
+        fill: var(--muted-text);
+      }
+
+      &_active {
+        path {
+          fill: var(--accent);
+        }
+      }
+    }
+
+    &_price {
+      margin-left: 50px;
+    }
+  }
+
+  .filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 47px;
+    margin-left: auto;
+
+    &__apply-btn {
+      padding-block: 14px;
+      padding-inline: 34px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    &__reset-btn {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      color: var(--muted-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        color: var(--accent);
+        transition: all 0.3s ease;
+      }
+      &:hover path {
+        fill: var(--accent);
+        transition: all 0.3s ease;
+      }
+
+      svg path {
+        fill: var(--muted-text);
+      }
+    }
+  }
+}

@@ -1,19 +1,27 @@
 {%from "src/shared/ui/icons/icons.html" import arrowDown%}
 
-{% macro dropdown(name, options, class) %}
-<div class="dropdown {{ class }}" data-name="{{ name }}">
+{% macro dropdown(name, options, class="", placeholder="", multiple=false) %}
+<div class="dropdown {{ class }}" data-name="{{ name }}" {% if multiple %}data-multiple="true" {% endif %}>
     <button type="button" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false">
-        <span class="dropdown__selected">{{ options[0].label }}</span>
-        {{ arrowDown(class="dropdown__icon") }}
+        <span class="dropdown__selected">
+            {{ placeholder if placeholder else options[0].label }}
+        </span>
     </button>
+    <div class="dropdown__icon-wrapper">
+        {{ arrowDown(class="dropdown__icon") }}
+    </div>
+
     <ul class="dropdown__dropdown" role="listbox">
         {% for option in options %}
         <li class="dropdown__option" role="option" data-value="{{ option.value }}">
-            {{ option.label }}
+            <div class="dropdown__label">{{ option.label }}</div>
+            {% if multiple %}
+            <span class="dropdown__checkbox"></span>
+            {% endif %}
         </li>
         {% endfor %}
     </ul>
-    <input type="hidden" name="{{ name }}" value="{{ options[0].value }}">
-</div>
 
+    <input type="hidden" name="{{ name }}" value="">
+</div>
 {% endmacro %}

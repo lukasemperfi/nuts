@@ -62,8 +62,9 @@ export const initDropdown = ({ selector, onChange }) => {
 
     if (onChange) {
       const value = option.dataset.value;
+      const type = select.dataset.name;
 
-      onChange(value);
+      onChange(type, value);
     }
   });
 

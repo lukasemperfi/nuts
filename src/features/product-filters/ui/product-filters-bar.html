@@ -41,17 +41,17 @@
                 </svg>
             </span>
         </button>
-        {{priceButton("filter-btn_price-mobile")}}
+        {{priceButton("filter-btn_price-mobile", name="price")}}
     </div>
 
     <div class="product-filters-bar__filters">
         {{dropdown(multiple="true",name="flavor", options=flavors, class="product-filters-bar__flavor-select
         dropdown_select",
         placeholder="Вкус")}}
-        {{dropdown(multiple="true",name="lang", options=weight, class="product-filters-bar__weight-select
+        {{dropdown(multiple="true",name="weight", options=weight, class="product-filters-bar__weight-select
         dropdown_select",
         placeholder="Масса")}}
-        {{priceButton("filter-btn_price-desktop")}}
+        {{priceButton("filter-btn_price-desktop", name="price")}}
         <div class="product-filters-bar__actions filter-actions">
             {{button(text="Применить", class="button_primary button_size-sm filter-actions__apply-btn")}}
             <button class="filter-actions__reset-btn">
@@ -75,8 +75,8 @@
 {%endmacro%}
 
 
-{% macro priceButton(class="")%}
-<button class="product-filters-bar__filter-btn filter-btn filter-btn_price {{class}}">
+{% macro priceButton(class="", name="")%}
+<button class="product-filters-bar__filter-btn filter-btn filter-btn_price {{class}}" data-name="{{name}}">
     <span class="filter-btn__label">Стоимость</span>
     <span class="filter-btn__icon-wrapper">
         <svg class="filter-btn__icon filter-btn__icon_arrowDown" width="15" height="15" viewBox="0 0 15 15" fill="none"

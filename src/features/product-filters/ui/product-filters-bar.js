@@ -1,24 +1,56 @@
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
 
 export const initProductFilters = () => {
+  let filters = {
+    weight: [],
+    flavor: [],
+    price: "asc",
+  };
+
+  function updateFilter(type, value) {
+    if (type === "price") {
+      filters.price = value;
+      console.log(filters);
+      return;
+    }
+
+    const arr = filters[type];
+
+    if (arr.includes(value)) {
+      filters[type] = arr.filter((v) => v !== value);
+    } else {
+      filters[type].push(value);
+    }
+
+    console.log(filters);
+  }
+
+  function resetFilters() {
+    filters = {
+      weight: [],
+      flavor: [],
+      price: "asc",
+    };
+  }
+
   const flavorSelect = initDropdown({
     selector: ".product-filters-bar__flavor-select",
-    onChange: (value) => console.log(value),
+    onChange: (type, value) => updateFilter(type, value),
   });
 
   const weightSelect = initDropdown({
     selector: ".product-filters-bar__weight-select",
-    onChange: (value) => console.log(value),
+    onChange: (type, value) => updateFilter(type, value),
   });
 
   const desktopPriceButton = initPriceButton({
     selector: ".filter-btn_price-desktop",
-    onClick: (value) => console.log(value),
+    onClick: (type, value) => updateFilter(type, value),
   });
 
   const mobilePriceButton = initPriceButton({
     selector: ".filter-btn_price-mobile",
-    onClick: (value) => console.log(value),
+    onClick: (type, value) => updateFilter(type, value),
   });
 
   initResetButton({
@@ -28,6 +60,8 @@ export const initProductFilters = () => {
       weightSelect.reset();
       desktopPriceButton.reset();
       mobilePriceButton.reset();
+      resetFilters();
+      console.log(filters);
     },
   });
 };
@@ -64,7 +98,8 @@ export const initPriceButton = ({
     updateIcons();
 
     if (onClick) {
-      onClick(currentValue);
+      const type = button.dataset.name;
+      onClick(type, currentValue);
     }
   });
 

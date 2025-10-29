@@ -1,21 +1,34 @@
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
 
 export const initProductFilters = () => {
-  initDropdown({
+  const flavorSelect = initDropdown({
     selector: ".product-filters-bar__flavor-select",
     onChange: (value) => console.log(value),
   });
-  initDropdown({
+
+  const weightSelect = initDropdown({
     selector: ".product-filters-bar__weight-select",
     onChange: (value) => console.log(value),
   });
-  initPriceButton({
+
+  const desktopPriceButton = initPriceButton({
     selector: ".filter-btn_price-desktop",
     onClick: (value) => console.log(value),
   });
-  initPriceButton({
+
+  const mobilePriceButton = initPriceButton({
     selector: ".filter-btn_price-mobile",
     onClick: (value) => console.log(value),
+  });
+
+  initResetButton({
+    selector: ".filter-actions__reset-btn",
+    onClick: () => {
+      flavorSelect.reset();
+      weightSelect.reset();
+      desktopPriceButton.reset();
+      mobilePriceButton.reset();
+    },
   });
 };
 
@@ -52,6 +65,28 @@ export const initPriceButton = ({
 
     if (onClick) {
       onClick(currentValue);
+    }
+  });
+
+  const reset = () => {
+    currentValue = defaultValue;
+    updateIcons();
+  };
+
+  return {
+    reset,
+  };
+};
+
+export const initResetButton = ({ selector, onClick }) => {
+  const resetButton = document.querySelector(selector);
+  if (!resetButton) {
+    return;
+  }
+
+  resetButton.addEventListener("click", () => {
+    if (onClick) {
+      onClick();
     }
   });
 };

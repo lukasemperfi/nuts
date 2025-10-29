@@ -74,4 +74,14 @@ export const initDropdown = ({ selector, onChange }) => {
   });
 
   selectedText.dataset.placeholder = selectedText.textContent.trim();
+
+  const reset = () => {
+    options.forEach((opt) => opt.removeAttribute("aria-selected"));
+    selected = [];
+    updateSelected();
+  };
+
+  return {
+    reset,
+  };
 };

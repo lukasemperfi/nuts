@@ -1,13 +1,22 @@
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
 
 export const initProductFilters = () => {
-  initDropdown({selector:".product-filters-bar__flavor-select"});
-  initDropdown({selector:".product-filters-bar__weight-select"});
+  initDropdown({
+    selector: ".product-filters-bar__flavor-select",
+    onChange: (value) => console.log(value),
+  });
+  initDropdown({
+    selector: ".product-filters-bar__weight-select",
+    onChange: (value) => console.log(value),
+  });
   initPriceButton({
     selector: ".filter-btn_price-desktop",
     onClick: (value) => console.log(value),
   });
-  initPriceButton(".filter-btn_price-mobile");
+  initPriceButton({
+    selector: ".filter-btn_price-mobile",
+    onClick: (value) => console.log(value),
+  });
 };
 
 export const initPriceButton = ({

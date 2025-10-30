@@ -55,7 +55,9 @@ export async function fetchProducts(filters) {
   try {
     const updatedFilters = {
       ...filters,
-      weight: filters.weight.map((w) => Number(w)),
+      weight: Array.isArray(filters.weight)
+        ? filters.weight.map((w) => Number(w))
+        : [],
     };
     const products = await productsApi.getAllProducts(updatedFilters);
     store.dispatch({

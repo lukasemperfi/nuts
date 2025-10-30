@@ -1,4 +1,5 @@
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
+import { store } from "@/app/store";
 
 export const initProductFilters = () => {
   let filters = {
@@ -8,6 +9,11 @@ export const initProductFilters = () => {
   };
 
   loadFiltersFromURL();
+
+  store.dispatch({
+    type: "productFilters/setFilters",
+    payload: { ...filters },
+  });
 
   function updateFilter(type, value) {
     if (type === "price") {

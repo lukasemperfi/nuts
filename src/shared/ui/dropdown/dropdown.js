@@ -1,4 +1,4 @@
-export const initDropdown = ({ selector, onChange }) => {
+export const initDropdown = ({ selector, onChange, defaultValues = [] }) => {
   const select = document.querySelector(selector);
   const isMultiple = select.dataset.multiple === "true";
   const button = select.querySelector(".dropdown__button");
@@ -75,6 +75,17 @@ export const initDropdown = ({ selector, onChange }) => {
   });
 
   selectedText.dataset.placeholder = selectedText.textContent.trim();
+
+  if (defaultValues.length > 0) {
+    options.forEach((opt) => {
+      const value = opt.dataset.value;
+      if (defaultValues.includes(value)) {
+        opt.setAttribute("aria-selected", "true");
+        selected.push(opt);
+      }
+    });
+    updateSelected();
+  }
 
   const reset = () => {
     options.forEach((opt) => opt.removeAttribute("aria-selected"));

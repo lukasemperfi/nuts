@@ -36,6 +36,7 @@ export const initProductFilters = () => {
   const flavorSelect = initDropdown({
     selector: ".product-filters-bar__flavor-select",
     onChange: (type, value) => updateFilter(type, value),
+    defaultValues: ["fried", "salted"],
   });
 
   const weightSelect = initDropdown({

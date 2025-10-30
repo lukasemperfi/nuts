@@ -135,8 +135,7 @@ export const initPriceButton = ({ selector, defaultValue, onClick }) => {
   updateIcons();
 
   button.addEventListener("click", () => {
-    currentValue =
-      currentValue === "asc" ? "desc" : currentValue === "desc" ? "asc" : "asc";
+    currentValue = currentValue === "asc" ? "desc" : "asc";
     updateIcons();
 
     if (onClick) {

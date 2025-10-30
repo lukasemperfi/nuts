@@ -44,7 +44,7 @@ export const productsSlice = {
   },
 };
 
-export async function fetchProducts() {
+export async function fetchProducts(filters) {
   const currentState = store.getState().products;
   if (currentState.status === PRODUCTS_STATUS.LOADING) {
     return;
@@ -53,7 +53,11 @@ export async function fetchProducts() {
   store.dispatch({ type: "products/setLoading" });
 
   try {
-    const products = await productsApi.getAllProducts();
+    const updatedFilters = {
+      ...filters,
+      weight: filters.weight.map((w) => Number(w)),
+    };
+    const products = await productsApi.getAllProducts(updatedFilters);
     store.dispatch({
       type: "products/setProducts",
       payload: products,

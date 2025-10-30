@@ -2,11 +2,7 @@ import { supabase } from "@/shared/api/supabase/client.js";
 
 class Products {
   getAllProducts = async (filters = {}) => {
-    const {
-      flavorValues = ["raw"],
-      weightValues = [],
-      sortOrder = "desc",
-    } = filters;
+    const { flavorValues = [], weightValues = [], sortOrder = null } = filters;
 
     let query = supabase
       .from("products")
@@ -22,8 +18,7 @@ class Products {
         product_statuses (*)
       `
       )
-      .limit(6)
-      .order("price", { ascending: sortOrder === "asc" });
+      .limit(6);
 
     if (flavorValues.length > 0) {
       query = query.in("product_flavors.flavors.value", flavorValues);
@@ -31,6 +26,10 @@ class Products {
 
     if (weightValues.length > 0) {
       query = query.in("weight", weightValues);
+    }
+
+    if (sortOrder === "asc" || sortOrder === "desc") {
+      query = query.order("price", { ascending: sortOrder === "asc" });
     }
 
     const { data: products, error } = await query;

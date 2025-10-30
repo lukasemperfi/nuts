@@ -146,7 +146,7 @@ export const initPriceButton = ({ selector, defaultValue, onClick }) => {
   });
 
   const reset = () => {
-    currentValue = defaultValue || null;
+    currentValue = null;
     updateIcons();
   };
 

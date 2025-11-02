@@ -1,5 +1,6 @@
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
 import { store } from "@/app/store";
+import { productFiltersActions } from "../model/product-filters-slice";
 
 export const initProductFilters = () => {
   let filters = {
@@ -10,10 +11,8 @@ export const initProductFilters = () => {
 
   loadFiltersFromURL();
 
-  store.dispatch({
-    type: "productFilters/setFilters",
-    payload: { ...filters },
-  });
+  store.dispatch(productFiltersActions.setFilters(filters));
+  store.dispatch(productFiltersActions.setInitialized(true));
 
   function updateFilter(type, value) {
     if (type === "price") {

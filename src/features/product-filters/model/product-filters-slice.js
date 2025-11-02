@@ -2,14 +2,38 @@ export const productFiltersSlice = {
   name: "productFilters",
 
   initialState: {
-    weight: [],
-    flavor: [],
-    price: null,
+    filters: {
+      weight: [],
+      flavor: [],
+      price: null,
+    },
+    isInitialized: false,
   },
 
   reducers: {
-    setFilters: (state, action) => ({ ...state, ...action.payload }),
+    setFilters: (state, action) => ({
+      ...state,
+      filters: {
+        ...state.filters,
+        ...action.payload,
+      },
+    }),
+
+    setInitialized: (state, action) => ({
+      ...state,
+      isInitialized: action.payload,
+    }),
   },
 };
 
-export const productFiltersActions = {};
+export const productFiltersActions = {
+  setFilters: (payload) => ({
+    type: "productFilters/setFilters",
+    payload,
+  }),
+
+  setInitialized: (value) => ({
+    type: "productFilters/setInitialized",
+    payload: value,
+  }),
+};

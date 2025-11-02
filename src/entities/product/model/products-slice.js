@@ -55,15 +55,17 @@ export async function fetchProducts(filters) {
   try {
     const updatedFilters = {
       ...filters,
-      weight: Array.isArray(filters.weight)
-        ? filters.weight.map((w) => Number(w))
-        : [],
+      weight: filters?.weight?.map((w) => Number(w)) || [],
     };
-    const products = await productsApi.getAllProducts(updatedFilters);
+    console.log("Fetching products", updatedFilters);
+    // const products = await productsApi.getAllProducts(updatedFilters);
+    const products = [];
+
     store.dispatch({
       type: "products/setProducts",
       payload: products,
     });
+
     return products;
   } catch (err) {
     const errorMessage = err.message || "Unknown error occurred";

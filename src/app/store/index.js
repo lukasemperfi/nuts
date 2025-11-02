@@ -1,5 +1,6 @@
 import { productsSlice } from "@/entities/product/model/products-slice";
 import { productFiltersSlice } from "@/features/product-filters/model/product-filters-slice.js";
+import equal from "fast-deep-equal";
 
 class Store {
   constructor() {
@@ -36,6 +37,12 @@ class Store {
     const prevState = this.state[sliceName];
     const newState = reducer(prevState, action);
 
+    const isEqual = equal(prevState, newState);
+
+    if (isEqual) {
+      return;
+    }
+
     this.state[sliceName] = newState;
 
     console.log("from dispatch. state:", this.state);
@@ -50,6 +57,11 @@ class Store {
 
     this.listeners.get(sliceName).add(listener);
     console.log(`Подписана функция на событие: ${sliceName}`);
+
+    const currentState = this.state[sliceName];
+    if (currentState !== undefined) {
+      listener(currentState);
+    }
   }
 
   unsubscribe(sliceName, listener) {

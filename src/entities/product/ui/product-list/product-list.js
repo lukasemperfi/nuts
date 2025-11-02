@@ -23,11 +23,17 @@ export const productList = async (containerSelector) => {
     }
   });
 
-  if (state.items.length === 0 && state.status === PRODUCTS_STATUS.IDLE) {
-    await fetchProducts();
-  } else if (state.status === PRODUCTS_STATUS.SUCCEEDED) {
-    renderProductList(state.items, containerSelector);
-  }
+  store.subscribe("productFilters", async (newState) => {
+    const newFilters = newState.filters;
+    const isInitialized = newState.isInitialized;
+    console.log("Filters changed, fetching products:", newState);
+
+    if (!isInitialized) {
+      return;
+    }
+
+    await fetchProducts(newFilters);
+  });
 };
 
 export function renderProductList(products, containerSelector) {

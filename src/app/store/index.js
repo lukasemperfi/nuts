@@ -1,6 +1,5 @@
 import { productsSlice } from "@/entities/product/model/products-slice";
 import { productFiltersSlice } from "@/features/product-filters/model/product-filters-slice.js";
-import equal from "fast-deep-equal";
 
 class Store {
   constructor() {
@@ -38,6 +37,8 @@ class Store {
     const newState = reducer(prevState, action);
 
     this.state[sliceName] = newState;
+
+    console.log("From Dispatch. New State:", newState);
 
     this.notify(sliceName, newState);
   }

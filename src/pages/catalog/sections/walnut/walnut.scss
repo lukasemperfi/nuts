@@ -11,7 +11,7 @@
     grid-template-columns: 1fr 700px;
     grid-template-rows: 472px;
 
-    gap: 32px;
+    gap: 63px;
 
     @include mixins.respond-to(lg-sm) {
       grid-template-columns: 1fr;
@@ -55,14 +55,14 @@
     line-height: 45px;
     letter-spacing: 0.01em;
     color: var(--foreground);
-    margin-bottom: 18px;
+    margin-bottom: 10px;
   }
 
   &__description {
     font-family: var(--font-family-primary);
     font-weight: 500;
     font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
-    letter-spacing: 0.01em;
+
     color: var(--foreground);
     // max-width: 458px;
     line-height: 25px;
@@ -70,11 +70,25 @@
     gap: 29px;
     flex-direction: column;
     padding-right: 50px;
-    max-height: 300px;
+    max-height: 318px;
     overflow-y: auto;
+    padding-top: 7px;
 
     @include mixins.respond-to(lg-sm) {
-      // max-width: 100%;
+      padding-right: 10px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50px;
+      box-shadow: inset 0 0 0 2px var(--background-secondary);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 50px;
+      position: relative;
     }
   }
 

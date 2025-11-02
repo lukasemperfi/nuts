@@ -58,8 +58,8 @@ export async function fetchProducts(filters) {
       weight: filters?.weight?.map((w) => Number(w)) || [],
     };
     console.log("Fetching products", updatedFilters);
-    // const products = await productsApi.getAllProducts(updatedFilters);
-    const products = [];
+    const products = await productsApi.getAllProducts(updatedFilters);
+    // const products = [];
 
     store.dispatch({
       type: "products/setProducts",

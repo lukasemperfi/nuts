@@ -6,7 +6,7 @@ export const initProductFilters = () => {
   let filters = {
     weight: [],
     flavor: [],
-    price: null,
+    sort: null,
   };
 
   loadFiltersFromURL();
@@ -15,8 +15,8 @@ export const initProductFilters = () => {
   store.dispatch(productFiltersActions.setInitialized(true));
 
   function updateFilter(type, value) {
-    if (type === "price") {
-      filters.price = value;
+    if (type === "sort") {
+      filters.sort = value;
       updateURL();
       console.log(filters);
       return;
@@ -38,9 +38,12 @@ export const initProductFilters = () => {
   function resetFilters() {
     filters.weight = [];
     filters.flavor = [];
-    filters.price = null;
+    filters.sort = null;
 
     resetURL();
+
+    store.dispatch(productFiltersActions.resetFilters());
+    console.log("Фильтры сброшены:", filters);
   }
 
   function updateURL() {
@@ -50,8 +53,8 @@ export const initProductFilters = () => {
 
     filters.flavor.forEach((val) => params.append("flavor", val));
 
-    if (filters.price) {
-      params.set("price", filters.price);
+    if (filters.sort) {
+      params.set("sort", filters.sort);
     }
 
     const newUrl =
@@ -73,7 +76,7 @@ export const initProductFilters = () => {
 
     filters.weight = params.getAll("weight");
     filters.flavor = params.getAll("flavor");
-    filters.price = params.get("price") || null;
+    filters.sort = params.get("sort") || null;
   }
 
   const flavorSelect = initDropdown({
@@ -91,13 +94,21 @@ export const initProductFilters = () => {
   const desktopPriceButton = initPriceButton({
     selector: ".filter-btn_price-desktop",
     onClick: (type, value) => updateFilter(type, value),
-    defaultValue: filters.price,
+    defaultValue: filters.sort,
   });
 
   const mobilePriceButton = initPriceButton({
     selector: ".filter-btn_price-mobile",
     onClick: (type, value) => updateFilter(type, value),
-    defaultValue: filters.price,
+    defaultValue: filters.sort,
+  });
+
+  initApplyButton({
+    selector: ".filter-actions__apply-btn",
+    onClick: () => {
+      store.dispatch(productFiltersActions.setFilters(filters));
+      console.log("Applied filters:", filters);
+    },
   });
 
   initResetButton({
@@ -108,7 +119,6 @@ export const initProductFilters = () => {
       desktopPriceButton.reset();
       mobilePriceButton.reset();
       resetFilters();
-      console.log(filters);
     },
   });
 };
@@ -166,6 +176,19 @@ export const initResetButton = ({ selector, onClick }) => {
   }
 
   resetButton.addEventListener("click", () => {
+    if (onClick) {
+      onClick();
+    }
+  });
+};
+
+export const initApplyButton = ({ selector, onClick }) => {
+  const applyButton = document.querySelector(selector);
+  if (!applyButton) {
+    return;
+  }
+
+  applyButton.addEventListener("click", () => {
     if (onClick) {
       onClick();
     }

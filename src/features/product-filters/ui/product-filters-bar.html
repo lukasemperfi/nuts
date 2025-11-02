@@ -41,7 +41,7 @@
                 </svg>
             </span>
         </button>
-        {{priceButton("filter-btn_price-mobile", name="price")}}
+        {{priceButton("filter-btn_price-mobile", name="sort")}}
     </div>
 
     <div class="product-filters-bar__filters">
@@ -51,7 +51,7 @@
         {{dropdown(multiple="true",name="weight", options=weight, class="product-filters-bar__weight-select
         dropdown_select",
         placeholder="Масса")}}
-        {{priceButton("filter-btn_price-desktop", name="price")}}
+        {{priceButton("filter-btn_price-desktop", name="sort")}}
         <div class="product-filters-bar__actions filter-actions">
             {{button(text="Применить", class="button_primary button_size-sm filter-actions__apply-btn")}}
             <button class="filter-actions__reset-btn">

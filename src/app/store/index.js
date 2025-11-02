@@ -37,15 +37,7 @@ class Store {
     const prevState = this.state[sliceName];
     const newState = reducer(prevState, action);
 
-    const isEqual = equal(prevState, newState);
-
-    if (isEqual) {
-      return;
-    }
-
     this.state[sliceName] = newState;
-
-    console.log("from dispatch. state:", this.state);
 
     this.notify(sliceName, newState);
   }
@@ -82,12 +74,6 @@ class Store {
       console.log(`Нет подписчиков на событие: ${sliceName}`);
       return;
     }
-
-    console.log(
-      `\n=== Оповещение события: ${sliceName} с данными: ${JSON.stringify(
-        data
-      )} ===`
-    );
 
     this.listeners.get(sliceName).forEach((listener) => {
       listener(data);

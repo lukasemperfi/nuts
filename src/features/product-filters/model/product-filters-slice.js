@@ -5,7 +5,7 @@ export const productFiltersSlice = {
     filters: {
       weight: [],
       flavor: [],
-      price: null,
+      sort: null,
     },
     isInitialized: false,
   },
@@ -23,6 +23,15 @@ export const productFiltersSlice = {
       ...state,
       isInitialized: action.payload,
     }),
+
+    resetFilters: (state) => ({
+      ...state,
+      filters: {
+        weight: [],
+        flavor: [],
+        sort: null,
+      },
+    }),
   },
 };
 
@@ -35,5 +44,9 @@ export const productFiltersActions = {
   setInitialized: (value) => ({
     type: "productFilters/setInitialized",
     payload: value,
+  }),
+
+  resetFilters: () => ({
+    type: "productFilters/resetFilters",
   }),
 };

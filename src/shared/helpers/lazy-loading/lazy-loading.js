@@ -51,13 +51,20 @@ export function lazyLoadElements(selector = ".lazy", options = {}) {
 }
 
 function loadElement(element, selector) {
+  const isIframe = element.tagName.toLowerCase() === "iframe";
+  const base = import.meta.env.BASE_URL;
+
   if (element.dataset.src) {
-    element.src = element.dataset.src;
+    element.src = isIframe
+      ? element.dataset.src
+      : base + element.dataset.src.replace(/^\/+/, "");
     delete element.dataset.src;
   }
 
   if (element.dataset.srcset) {
-    element.srcset = element.dataset.srcset;
+    element.srcset = isIframe
+      ? element.dataset.srcset
+      : base + element.dataset.srcset.replace(/^\/+/, "");
     delete element.dataset.srcset;
   }
 

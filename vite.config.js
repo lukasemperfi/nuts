@@ -21,10 +21,11 @@ function getHtmlEntries() {
 }
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd());
-  const baseUrl = env.VITE_BASE_URL || "/";
+  const baseUrl = mode === "production" ? "/nuts/" : "/";
+  // const baseUrl = "/";
+
   console.log("baseUrl", baseUrl);
-  console.log("env", env);
+  console.log("mode", mode);
 
   return {
     base: baseUrl,

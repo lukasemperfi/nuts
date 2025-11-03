@@ -15,11 +15,11 @@ export function lazyLoadElements(selector = ".lazy", options = {}) {
     const observerCallback = (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const imgElement = entry.target;
+          const targetElement = entry.target;
 
-          loadElement(imgElement, selector);
+          loadElement(targetElement, selector);
 
-          const pictureElement = imgElement.closest("picture");
+          const pictureElement = targetElement.closest("picture");
           if (pictureElement) {
             const sources = pictureElement.querySelectorAll(
               "source[data-srcset]"
@@ -27,7 +27,7 @@ export function lazyLoadElements(selector = ".lazy", options = {}) {
             sources.forEach((source) => loadElement(source, selector));
           }
 
-          observer.unobserve(imgElement);
+          observer.unobserve(targetElement);
           observedCount--;
 
           if (observedCount === 0) {

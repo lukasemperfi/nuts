@@ -1,10 +1,10 @@
 import { initProductFilters } from "@/features/product-filters/ui/product-filters-bar";
-import { productList } from "@/entities/product/ui/product-list/product-list";
+import { filteredProductList } from "@/entities/product/ui/product-list/product-list";
 import { renderProductList } from "../../../../entities/product/ui/product-list/product-list";
 
 export const initProductsSection = () => {
   initProductFilters();
-  // productList(".products__catalog");
+  // filteredProductList(".products__catalog");
   renderProductList(productItems, ".products__catalog");
 };
 

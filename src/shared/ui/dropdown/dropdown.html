@@ -2,7 +2,7 @@
 
 {% macro dropdown(name, options, class="", placeholder="", multiple=false) %}
 <div class="dropdown {{ class }}" data-name="{{ name }}" {% if multiple %}data-multiple="true" {% endif %}>
-    <button type="button" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false">
+    <button type="button" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false" name="dropdown-button">
         <span class="dropdown__selected">
             {{ placeholder if placeholder else options[0].label }}
         </span>

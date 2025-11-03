@@ -21,7 +21,7 @@
     <div class="header__top top-header">
         <div class="page-container">
             <div class="top-header__content">
-                <a class="contacts-block__phone top-header__phone" href="tel:+79999999999">
+                <a class="contacts-block__phone top-header__phone" href="tel:+79999999999" name="phone">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_14178_3393)">
                             <path
@@ -36,7 +36,7 @@
                     </svg>
                     <span class="contacts-block_highlight-code">
                         +38&nbsp;(044)</span>750-50-11</a>
-                <button class="top-header__call-btn">Заказать звонок</button>
+                <button class="top-header__call-btn" name="call-button">Заказать звонок</button>
                 {{socials()}}
                 {{promo("top-header__promo")}}
                 {{auth("top-header__auth")}}
@@ -49,7 +49,7 @@
     <div class="header__middle middle-header">
         <div class="page-container">
             <div class="middle-header__content">
-                <button class="middle-header__burger-btn">
+                <button class="middle-header__burger-btn" name="burger-button">
                     <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_14178_3383)">
                             <path
@@ -73,7 +73,7 @@
                 {{contactsBlock(highlightCode=true, class="middle-header__contacts-block")}}
                 {{button(text="Заказать звонок", class="button_primary button_size-sm middle-header__button")}}
                 <div class="middle-header__text">Ждем Вашего звонка<br>ежедневно с 9 до 18</div>
-                <button class="middle-header__cart-btn cart-btn">
+                <button class="middle-header__cart-btn cart-btn" name="cart-button">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M22.5734 23.255L21.2009 6.27062C21.1738 5.93557 20.894 5.67742 20.5578 5.67742H16.8732V4.86065C16.8732 2.18047 14.7215 0 12.0412 0H11.9561C9.2759 0 7.06678 2.18047 7.06678 4.86065V5.67742H3.43951C3.10334 5.67742 2.82351 5.93557 2.79642 6.27062L1.42007 23.3029C1.40554 23.4825 1.46678 23.6599 1.58893 23.7923C1.71108 23.9246 1.88313 24 2.06317 24H21.9341C21.9347 24 21.9353 24 21.9359 24C22.2922 24 22.581 23.7112 22.581 23.3548C22.581 23.3209 22.5784 23.2875 22.5734 23.255ZM8.3571 4.86065C8.3571 2.89196 9.98738 1.29032 11.9561 1.29032H12.0412C14.0099 1.29032 15.5829 2.89196 15.5829 4.86065V5.67742H8.3571V4.86065Z"
@@ -101,7 +101,7 @@
 
 {%macro auth(class="")%}
 <div class="auth {{class}}">
-    <a href="#" class="auth__login">
+    <a href="#" class="auth__login" name="login">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M5.49977 5.37972C6.72278 5.37972 7.71432 4.17544 7.71432 2.68988C7.71432 1.20428 7.38879 0 5.49977 0C3.61076 0 3.28516 1.20428 3.28516 2.68988C3.28516 4.17544 4.2767 5.37972 5.49977 5.37972Z"
@@ -113,6 +113,6 @@
         </svg>
         <span class="auth__link">Вход</span>
     </a>
-    <a href="#" class="auth__link">Регистрация</a>
+    <a href="#" class="auth__link" name="registration">Регистрация</a>
 </div>
 {%endmacro%}

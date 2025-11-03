@@ -27,13 +27,13 @@ export const initBreadcrumbs = (containerSelector) => {
     if (isLast) {
       return `<li class="breadcrumbs__item">${arrowSvg}<span class="breadcrumbs__link breadcrumbs__link_current">${name}</span></li>`;
     } else {
-      return `<li class="breadcrumbs__item">${arrowSvg}<a class="breadcrumbs__link" href="${currentPath}">${name}</a></li>`;
+      return `<li class="breadcrumbs__item">${arrowSvg}<a class="breadcrumbs__link" href="${currentPath}" name="${name}">${name}</a></li>`;
     }
   };
 
   const html = `
         <ul class="breadcrumbs">
-          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/">Главная</a></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/" name="breadcrumb-link" >Главная</a></li>
           ${parts
             .map((part, index) =>
               createBreadcrumbItem(part, index === parts.length - 1)

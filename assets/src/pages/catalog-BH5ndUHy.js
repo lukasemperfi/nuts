@@ -2,9 +2,9 @@ import{i as j,N as h,s as _,b as l,a as m,r as f}from"../../product-list-DunCKKw
     <svg class="breadcrumbs__icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.00001 11L6.3 10.3L10.1 6.5H0V5.50002H10.1L6.3 1.7L7.00001 1.00002L12 6.00001L7.00001 11Z" fill="white" />
     </svg>
-    `,c=(d,n)=>{o+=d+"/";const t=B[d]||decodeURIComponent(d.replace(/-/g," "));return n?`<li class="breadcrumbs__item">${r}<span class="breadcrumbs__link breadcrumbs__link_current">${t}</span></li>`:`<li class="breadcrumbs__item">${r}<a class="breadcrumbs__link" href="${o}">${t}</a></li>`},u=`
+    `,c=(d,n)=>{o+=d+"/";const t=B[d]||decodeURIComponent(d.replace(/-/g," "));return n?`<li class="breadcrumbs__item">${r}<span class="breadcrumbs__link breadcrumbs__link_current">${t}</span></li>`:`<li class="breadcrumbs__item">${r}<a class="breadcrumbs__link" href="${o}" name="${t}">${t}</a></li>`},u=`
         <ul class="breadcrumbs">
-          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/">Главная</a></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/" name="breadcrumb-link" >Главная</a></li>
           ${s.map((d,n)=>c(d,n===s.length-1)).join("")}
         </ul>
       `;a.innerHTML=u},F=()=>{P(".hero__breadcrumbs .page-container")};document.addEventListener("DOMContentLoaded",()=>{m({selector:".top-header__lang"}),F(),y(),S()});

@@ -24,7 +24,8 @@
 {% macro productFiltersBar()%}
 <div class="product-filters-bar">
     <div class="product-filters-bar__top">
-        <button class="product-filters-bar__filter-btn filter-btn filter-btn_settings" name="filter-setting-button">
+        <button class="product-filters-bar__filter-btn filter-btn filter-btn_settings" name="filter-setting-button"
+            aria-label="Фильтр">
             <span class="filter-btn__label">Фильтр</span>
             <span class="filter-btn__icon_wrapper">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +55,7 @@
         {{priceButton("filter-btn_price-desktop", name="sort")}}
         <div class="product-filters-bar__actions filter-actions">
             {{button(text="Применить", class="button_primary button_size-sm filter-actions__apply-btn")}}
-            <button class="filter-actions__reset-btn" name="reset-button">
+            <button class="filter-actions__reset-btn" name="reset-button" aria-label="Сбросить фильтры">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_14178_2115)">
                         <path
@@ -77,7 +78,7 @@
 
 {% macro priceButton(class="", name="")%}
 <button class="product-filters-bar__filter-btn filter-btn filter-btn_price {{class}}" data-name="{{name}}"
-    name="sort-button">
+    aria-label="Сортировка по цене" name="sort-button">
     <span class="filter-btn__label">Стоимость</span>
     <span class="filter-btn__icon-wrapper">
         <svg class="filter-btn__icon filter-btn__icon_arrowDown" width="15" height="15" viewBox="0 0 15 15" fill="none"

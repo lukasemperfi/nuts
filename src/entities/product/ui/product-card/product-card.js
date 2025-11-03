@@ -91,7 +91,7 @@ export function createProductCard(product) {
             </div>
         </div>
         <div class="product-card__middle">
-            <a class="product-card__title" href="#" name="product-card-title">${title}</a>
+            <a class="product-card__title" href="#" name="product-card-title" aria-label="Перейти к товару">${title}</a>
             <div class="product-card__sku sku">
                 <span class="sku__label">Арт:</span>
                 <span class="sku__value">${sku}</span>
@@ -140,7 +140,7 @@ export function createProductCard(product) {
                     </span>
                 </span>
             </div>
-            <a class="bottom__button button button_primary button_size-sm" href="#" name="product-card-button">
+            <a class="bottom__button button button_primary button_size-sm" href="#" name="product-card-button" aria-label="Купить товар">
                 Купить
             </a>
         </div>

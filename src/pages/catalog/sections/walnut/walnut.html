@@ -1,11 +1,18 @@
 {%from "src/shared/ui/icons/icons.html" import rightArrow%}
 {%from "src/shared/ui/icons/icons.html" import leftArrow%}
+{%from "src/shared/ui/picture/picture.html" import picture%}
 
 {%set images = [
-{src: '/images/catalog-page/walnut-section/image-1.jpg', alt: 'walnut-1'},
-{src: '/images/catalog-page/walnut-section/image-1.jpg', alt: 'walnut-2'},
-{src: '/images/catalog-page/walnut-section/image-1.jpg', alt: 'walnut-3'},
-{src: '/images/catalog-page/walnut-section/image-1.jpg', alt: 'walnut-4'}
+{webp: '/images/catalog-page/walnut-section/image-1.webp', src: '/images/catalog-page/walnut-section/image-1.jpg', alt:
+'walnut-1'},
+{webp: '/images/catalog-page/walnut-section/image-1.webp', src: '/images/catalog-page/walnut-section/image-1.jpg', alt:
+'walnut-2'},
+{webp: '/images/catalog-page/walnut-section/image-1.webp', src: '/images/catalog-page/walnut-section/image-1.jpg', alt:
+'walnut-3'},
+{webp: '/images/catalog-page/walnut-section/image-1.webp', src: '/images/catalog-page/walnut-section/image-1.jpg', alt:
+'walnut-4'},
+{webp: '/images/catalog-page/walnut-section/image-1.webp', src: '/images/catalog-page/walnut-section/image-1.jpg', alt:
+'walnut-5'}
 ]%}
 
 {%macro walnutSection()%}
@@ -87,7 +94,7 @@
                     <div class="swiper-wrapper">
                         {% for image in images %}
                         <div class="swiper-slide">
-                            <img class="walnut__img" src="{{ image.src }}" alt="{{image.alt}}">
+                            {{picture(image.src, image.webp, image.alt, "walnut__img", loading="lazy" )}}
                         </div>
                         {% endfor %}
                     </div>

@@ -30,8 +30,8 @@
                     </p>
 
                 </div>
-                <a class="button button_secondary button_size-md manufacturer__button" href="#"
-                    name="manufacturer">Подробнее</a>
+                <a class="button button_secondary button_size-md manufacturer__button" href="#" name="manufacturer"
+                    aria-label="Подробнее о производителе">Подробнее</a>
             </div>
             <div class="manufacturer__col-2">
                 <div class="manufacturer__swiper swiper manufacturer-slider">
@@ -42,7 +42,7 @@
                                 {{picture(image.src, image.webpSrc, image.alt, "card__img")}}
                                 <video class="card__video" data-src="/nuts/videos/home-page/manufacturer.mp4"
                                     playsinline></video>
-                                <button class="card__button" name="play-button">
+                                <button class="card__button" name="play-button" aria-label="Кнопка проигрывания видео">
                                     {{ icons.play() }}
                                 </button>
                             </div>

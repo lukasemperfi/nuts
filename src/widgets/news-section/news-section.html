@@ -94,8 +94,8 @@ link: "#"
                                 <div class="news-section-card__date">{{news.date}}</div>
                                 <div class="news-section-card__title">{{news.title}}</div>
                                 <div class="news-section-card__description">{{news.description}}</div>
-                                <a class="news-section-card__link" href="{{news.link}}"
-                                    name="news-section-card-link">Читать
+                                <a class="news-section-card__link" href="{{news.link}}" name="news-section-card-link"
+                                    aria-label="Читать новость">Читать
                                     {{ icons.longRightArrow('news-section-card__link-icon') }}
                                 </a>
                             </div>
@@ -115,7 +115,7 @@ link: "#"
         </div>
         <div class="news-section__bottom">
             <a class="news-section__all-news-link button button_secondary button_size-md" href="#"
-                name="news-section-all-news-link">
+                name="news-section-all-news-link" aria-label="Смотреть все новости">
                 Смотреть все новости
             </a>
         </div>

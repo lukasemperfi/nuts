@@ -1,11 +1,15 @@
 {%import "src/shared/ui/icons/icons.html" as icons%}
-
+{%from "src/shared/ui/picture/picture.html" import picture%}
 
 {%set images = [
-{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'},
-{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'},
-{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'},
-{src: '/images/home-page/manufacturer/image-1.jpg', alt: 'manufacturer-1'}
+{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+'manufacturer-1'},
+{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+'manufacturer-1'},
+{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+'manufacturer-1'},
+{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+'manufacturer-1'}
 ]%}
 
 {%macro manufacturerSection()%}
@@ -35,7 +39,7 @@
                         {% for image in images %}
                         <div class="swiper-slide">
                             <div class="manufacturer__card card">
-                                <img class="card__img" src="{{ image.src }}" alt="{{image.alt}}">
+                                {{picture(image.src, image.webpSrc, image.alt, "card__img")}}
                                 <video class="card__video" data-src="/nuts/videos/home-page/manufacturer.mp4"
                                     playsinline></video>
                                 <button class="card__button">

@@ -1,11 +1,12 @@
 {%from "src/shared/ui/icons/icons.html" import play%}
+{%from "src/shared/ui/picture/picture.html" import picture%}
 
-{%macro eco()%}
+{%macro eco(loading="lazy", fetchpriority="auto")%}
 <section class="eco">
     <div class="banner banner_size_lg eco__banner ">
         <div class="banner__image-wrapper">
-            <img class="banner__image" src="/images/home-page/eco-banner.jpg" alt="banner" loading="eager"
-                fetchpriority="high">
+            {{picture("/images/home-page/eco-banner.jpg", "/images/home-page/eco-banner.webp", "banner",
+            "banner__image", loading, fetchpriority)}}
         </div>
         <div class="banner__content">
             <div class="banner__wrapper-top-icon">

@@ -1,0 +1,7 @@
+{% macro picture( jpgSrc, webpSrc, alt, class, loading="lazy", fetchpriority="auto")%}
+<picture>
+    <source type="image/webp" srcset="{{ webpSrc }}">
+    <img class="{{ class }}" src="{{ jpgSrc }}" loading="{{ loading }}" alt="{{ alt }}"
+        fetchpriority="{{ fetchpriority }}">
+</picture>
+{%endmacro%}

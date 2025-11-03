@@ -1,11 +1,12 @@
 {%import "src/shared/ui/icons/icons.html" as icons%}
+{%from "src/shared/ui/picture/picture.html" import picture%}
 
 
 
 {%set newsItems = [
 {
 id: 1,
-image: { src: "/images/news-section/image-1.jpg", alt: "News Image 1" },
+image: { src: "/images/news-section/image-1.jpg", webpSrc: "/images/news-section/image-1.webp", alt: "News Image 1" },
 date: "12.04.2019",
 title: "Центр поддержки экспорта, в студии Павел Тулба",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -14,7 +15,7 @@ link: "#"
 },
 {
 id: 2,
-image: { src: "/images/news-section/image-2.jpg", alt: "News Image 2" },
+image: { src: "/images/news-section/image-2.jpg", webpSrc: "/images/news-section/image-2.webp", alt: "News Image 2" },
 date: "12.04.2019",
 title: "В Одесской области состоялся масштабный торгово - экспортный форум",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -23,7 +24,7 @@ link: "#"
 },
 {
 id: 3,
-image: { src: "/images/news-section/image-3.jpg", alt: "News Image 3" },
+image: { src: "/images/news-section/image-3.jpg", webpSrc: "/images/news-section/image-3.webp", alt: "News Image 3" },
 date: "12.04.2019",
 title: "Сертификация органического производителя",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -32,7 +33,7 @@ link: "#"
 },
 {
 id: 4,
-image: { src: "/images/news-section/image-1.jpg", alt: "News Image 4" },
+image: { src: "/images/news-section/image-1.jpg", webpSrc: "/images/news-section/image-1.webp", alt: "News Image 4" },
 date: "12.04.2019",
 title: "Центр поддержки экспорта, в студии Павел Тулба",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -41,7 +42,7 @@ link: "#"
 },
 {
 id: 5,
-image: { src: "/images/news-section/image-2.jpg", alt: "News Image 5" },
+image: { src: "/images/news-section/image-2.jpg", webpSrc: "/images/news-section/image-2.webp", alt: "News Image 5" },
 date: "12.04.2019",
 title: "В Одесской области состоялся масштабный торгово - экспортный форум",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -50,7 +51,7 @@ link: "#"
 },
 {
 id: 6,
-image: { src: "/images/news-section/image-3.jpg", alt: "News Image 6" },
+image: { src: "/images/news-section/image-3.jpg", webpSrc: "/images/news-section/image-3.webp", alt: "News Image 6" },
 date: "12.04.2019",
 title: "Сертификация органического производителя",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -86,7 +87,8 @@ link: "#"
                     <div class="swiper-slide">
                         <div class="news-section-card">
                             <div class="news-section-card__image-wrapper">
-                                <img class="news-section-card__img" src="{{ news.image.src }}" alt="{{news.image.alt}}">
+                                {{picture(news.image.src, news.image.webpSrc, news.image.alt,
+                                "news-section-card__img")}}
                             </div>
                             <div class="news-section-card__content">
                                 <div class="news-section-card__date">{{news.date}}</div>

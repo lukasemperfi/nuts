@@ -1,6 +1,7 @@
 {%from "src/shared/ui/icons/icons.html" import walnut as walnutIcon%}
 {%from "src/shared/ui/icons/icons.html" import hazelnut as hazelnutIcon%}
 {%from "src/shared/ui/icons/icons.html" import rosehip as rosehipIcon%}
+{%from "src/shared/ui/picture/picture.html" import picture%}
 
 {% macro productsBenefits()%}
 <section class="products-benefits">
@@ -13,7 +14,8 @@
         <div class="products-benefits__grid grid">
             <div class="grid__item">
                 <div class="grid__image-wrapper">
-                    <img class="grid__image" src="/images/home-page/products-benefits/walnut.jpg" alt="">
+                    {{picture("/images/home-page/products-benefits/walnut.jpg",
+                    "/images/home-page/products-benefits/walnut.webp", "grid__image")}}
                 </div>
                 <div class="grid__icon-wrapper">
                     {{walnutIcon()}}
@@ -33,7 +35,8 @@
             </div>
             <div class="grid__item">
                 <div class="grid__image-wrapper">
-                    <img class="grid__image" src="/images/home-page/products-benefits/hazelnut.jpg" alt="">
+                    {{picture("/images/home-page/products-benefits/hazelnut.jpg",
+                    "/images/home-page/products-benefits/hazelnut.webp", "grid__image")}}
                 </div>
                 <div class="grid__icon-wrapper">
                     {{hazelnutIcon()}}
@@ -52,7 +55,8 @@
             </div>
             <div class="grid__item">
                 <div class="grid__image-wrapper">
-                    <img class="grid__image" src="/images/home-page/products-benefits/rose-hip.jpg" alt="">
+                    {{picture("/images/home-page/products-benefits/rose-hip.jpg",
+                    "/images/home-page/products-benefits/rose-hip.webp", "grid__image")}}
                 </div>
                 <div class="grid__icon-wrapper">
                     {{rosehipIcon()}}

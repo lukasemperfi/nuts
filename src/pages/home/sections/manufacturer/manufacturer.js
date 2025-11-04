@@ -3,8 +3,12 @@ import { Navigation } from "swiper/modules";
 import { initPlay } from "@/shared/ui/video-card/video-card.js";
 
 export const initManufacturerSection = () => {
-  initManufacturerSwiper();
-  initPlay(".manufacturer__card");
+  const manufacturerSwiper = initManufacturerSwiper();
+  const { stopAllVideos } = initPlay(".manufacturer__card");
+
+  manufacturerSwiper.on("slideChange", () => {
+    stopAllVideos();
+  });
 };
 
 function initManufacturerSwiper() {

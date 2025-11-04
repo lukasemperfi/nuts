@@ -3,8 +3,12 @@ import { Navigation } from "swiper/modules";
 import { initPlay } from "@/shared/ui/video-card/video-card.js";
 
 export const initNewsSection = () => {
-  initNewsSectionSwiper();
-  initPlay(".news-section-card__image-wrapper");
+  const newsSectionSwiper = initNewsSectionSwiper();
+  const { stopAllVideos } = initPlay(".news-section-card__image-wrapper");
+
+  newsSectionSwiper.on("slideChange", () => {
+    stopAllVideos();
+  });
 };
 
 function initNewsSectionSwiper() {

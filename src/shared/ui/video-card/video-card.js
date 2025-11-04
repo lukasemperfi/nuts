@@ -1,11 +1,39 @@
 export const initPlay = (cardSelector) => {
   const cards = document.querySelectorAll(cardSelector);
 
+  const stopVideo = (video, card) => {
+    video.pause();
+    video.currentTime = 0;
+    card.classList.remove("video-card_playing");
+  };
+
+  const stopAllVideos = () => {
+    cards.forEach((card) => {
+      const video = card.querySelector(".video-card__video");
+      if (video) {
+        stopVideo(video, card);
+      }
+    });
+  };
+
+  const stopOtherVideos = (currentCard) => {
+    cards.forEach((card) => {
+      if (card !== currentCard) {
+        const video = card.querySelector(".video-card__video");
+        if (video) {
+          stopVideo(video, card);
+        }
+      }
+    });
+  };
+
   cards.forEach((card) => {
     const playButton = card.querySelector(".video-card__button");
     const video = card.querySelector(".video-card__video");
 
-    if (!playButton || !video) return;
+    if (!playButton || !video) {
+      return;
+    }
 
     video.addEventListener("click", () => {
       if (video.paused) {
@@ -23,18 +51,50 @@ export const initPlay = (cardSelector) => {
       card.classList.add("video-card_playing");
       video.play();
 
-      stopOtherVideos(card, cardSelector);
+      stopOtherVideos(card);
     });
   });
+
+  return { stopAllVideos };
 };
 
-function stopOtherVideos(currentCard, cardSelector) {
-  document.querySelectorAll(cardSelector).forEach((card) => {
-    if (card !== currentCard) {
-      const video = card.querySelector(".video-card__video");
-      video.pause();
-      video.currentTime = 0;
-      card.classList.remove("video-card_playing");
-    }
-  });
-}
+// export const initPlay = (cardSelector) => {
+//   const cards = document.querySelectorAll(cardSelector);
+
+//   cards.forEach((card) => {
+//     const playButton = card.querySelector(".video-card__button");
+//     const video = card.querySelector(".video-card__video");
+
+//     if (!playButton || !video) return;
+
+//     video.addEventListener("click", () => {
+//       if (video.paused) {
+//         video.play();
+//       } else {
+//         video.pause();
+//       }
+//     });
+
+//     playButton.addEventListener("click", () => {
+//       if (!video.src) {
+//         video.src = video.dataset.src;
+//       }
+
+//       card.classList.add("video-card_playing");
+//       video.play();
+
+//       stopOtherVideos(card, cardSelector);
+//     });
+//   });
+// };
+
+// function stopOtherVideos(currentCard, cardSelector) {
+//   document.querySelectorAll(cardSelector).forEach((card) => {
+//     if (card !== currentCard) {
+//       const video = card.querySelector(".video-card__video");
+//       video.pause();
+//       video.currentTime = 0;
+//       card.classList.remove("video-card_playing");
+//     }
+//   });
+// }

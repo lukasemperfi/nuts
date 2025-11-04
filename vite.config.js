@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
   console.log("mode", mode);
 
   return {
-    base: baseUrl,
+    // base: baseUrl,
     resolve: {
       alias: {
         "@": resolve(__dirname, "src"),
@@ -44,6 +44,10 @@ export default defineConfig(({ mode }) => {
       },
       assetsDir: "assets",
     },
-    plugins: [nunjucks(), FullReload(["src/**/*"])],
+    plugins: [
+      nunjucks({ variables: { "*": { baseUrl } } }),
+
+      FullReload(["src/**/*"]),
+    ],
   };
 });

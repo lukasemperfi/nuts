@@ -1,18 +1,23 @@
 {%import "src/shared/ui/icons/icons.html" as icons%}
 {%from "src/shared/ui/picture/picture.html" import picture%}
 
+
+
+{%macro manufacturerSection(baseUrl)%}
 {%set images = [
-{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+{src: baseUrl + 'images/home-page/manufacturer/image-1.jpg', webpSrc: baseUrl +
+'images/home-page/manufacturer/image-1.webp', alt:
 'manufacturer-1'},
-{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+{src: baseUrl + 'images/home-page/manufacturer/image-1.jpg', webpSrc: baseUrl +
+'images/home-page/manufacturer/image-1.webp', alt:
 'manufacturer-1'},
-{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+{src: baseUrl + 'images/home-page/manufacturer/image-1.jpg', webpSrc: baseUrl +
+'images/home-page/manufacturer/image-1.webp', alt:
 'manufacturer-1'},
-{src: '/images/home-page/manufacturer/image-1.jpg', webpSrc: '/images/home-page/manufacturer/image-1.webp', alt:
+{src: baseUrl + 'images/home-page/manufacturer/image-1.jpg', webpSrc: baseUrl +
+'images/home-page/manufacturer/image-1.webp', alt:
 'manufacturer-1'}
 ]%}
-
-{%macro manufacturerSection()%}
 <section class="manufacturer">
     <div class="page-container">
         <div class="manufacturer__content">
@@ -40,7 +45,7 @@
                         <div class="swiper-slide">
                             <div class="manufacturer__card vide0-card">
                                 {{picture(image.src, image.webpSrc, image.alt, "video-card__img")}}
-                                <video class="video-card__video" data-src="/videos/home-page/manufacturer.mp4"
+                                <video class="video-card__video" data-src="{{baseUrl}}videos/home-page/manufacturer.mp4"
                                     playsinline></video>
                                 <button class="video-card__button" name="play-button"
                                     aria-label="Кнопка проигрывания видео">

@@ -23,21 +23,21 @@
 </head>
 
 <body>
-    {{header()}}
+    {{header(baseUrl)}}
     <main>
-        {{hero()}}
+        {{hero(baseUrl)}}
         {{products()}}
-        {{manufacturerSection()}}
+        {{manufacturerSection(baseUrl)}}
         {{statsSection()}}
-        {{goal()}}
+        {{goal(baseUrl)}}
         {{productsBenefits()}}
         {{eco()}}
-        {{newsSection()}}
+        {{newsSection(baseUrl)}}
         {{contactsSection()}}
-        {{footer()}}
+        {{footer(baseUrl)}}
     </main>
     <div class="portal-root">
-        {{mobileMenu()}}
+        {{mobileMenu(baseUrl)}}
     </div>
     <script type="module" src="./home/home-page.js"></script>
 </body>

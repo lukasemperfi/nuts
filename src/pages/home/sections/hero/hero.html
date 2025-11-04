@@ -1,10 +1,11 @@
 {%from "src/shared/ui/picture/picture.html" import picture%}
-{%macro hero()%}
+{%macro hero(baseUrl)%}
 <section class="hero">
     <div class="banner hero__banner">
         <div class="banner__poster">
             <div class="banner__image-wrapper">
-                {{picture("/images/home-page/hero-banner.jpg", "/images/home-page/hero-banner.webp", "banner",
+                {{picture(baseUrl + "images/home-page/hero-banner.jpg", baseUrl + "images/home-page/hero-banner.webp",
+                "banner",
                 "banner__image", "eager", "high")}}
             </div>
             <div class="banner__content">
@@ -24,7 +25,7 @@
 
             </div>
         </div>
-        <video class="banner__video" data-src="/nuts/videos/home-page/hero.mp4" controls playsinline></video>
+        <video class="banner__video" data-src="{{baseUrl}}videos/home-page/hero.mp4" controls playsinline></video>
     </div>
 </section>
 {%endmacro%}

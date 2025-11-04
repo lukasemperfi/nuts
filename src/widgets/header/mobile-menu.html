@@ -3,8 +3,11 @@
 {%from "src/shared/ui/socials/socials.html" import socials%}
 {%from "src/shared/ui/nav-menu/nav-menu.html" import navMenu%}
 
+
+
+{%macro mobileMenu(baseUrl)%}
 {%set navItems = [
-{href: "#", label: "Магазин"},
+{href: baseUrl + "catalog/", label: "Магазин"},
 {href: "#", label: "О производстве"},
 {href: "#", label: "Оплата и доставка"},
 {href: "#", label: "Оптовым и корпоративным клиентам"},
@@ -12,7 +15,6 @@
 {href: "#", label: "Контакты"}
 ]%}
 
-{%macro mobileMenu()%}
 <div class="mobile-menu">
     <div class="mobile-menu__row-1">
         {{logo("logo_size_sm")}}

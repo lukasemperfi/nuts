@@ -3,8 +3,11 @@
 {%from "src/shared/ui/socials/socials.html" import socials%}
 
 
+
+
+{%macro footer(baseUrl)%}
 {%set navItems = [
-{href: "/nuts/catalog/", label: "Магазин"},
+{href: baseUrl + "catalog/", label: "Магазин"},
 {href: "#", label: "Корпоративным клиентам"},
 {href: "#", label: "Оплата и доставка"},
 {href: "#", label: "О производстве"},
@@ -12,10 +15,7 @@
 {href: "#", label: "Галерея"}
 ]%}
 
-
-{%macro footer()%}
 <footer class="page-footer">
-
     <div class="page-footer__content">
         <div class="page-footer__main page-footer-main">
             <div class="page-container">
@@ -23,7 +23,6 @@
                     {{ logo("") }}
                     {{ navMenu(navItems, "nav-menu_horizontal") }}
                 </div>
-
             </div>
         </div>
         <div class="page-footer__bottom page-footer-bottom">
@@ -36,10 +35,8 @@
                     <div class="page-footer__copyright">Copyright © 2019. Все права защищены</div>
                     {{socials()}}
                 </div>
-
             </div>
         </div>
     </div>
-
 </footer>
 {%endmacro%}

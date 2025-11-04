@@ -1,12 +1,13 @@
 {%from "src/shared/ui/icons/icons.html" import play%}
 {%from "src/shared/ui/picture/picture.html" import picture%}
 
-{%macro goal()%}
+{%macro goal(baseUrl)%}
 <section class="goal">
     <div class="banner banner_size_lg goal__banner ">
         <div class="banner__poster">
             <div class="banner__image-wrapper">
-                {{picture("/images/home-page/goal-banner.jpg", "/images/home-page/goal-banner.webp", "banner",
+                {{picture(baseUrl + "images/home-page/goal-banner.jpg", baseUrl + "images/home-page/goal-banner.webp",
+                "banner",
                 "banner__image")}}
             </div>
             <div class="banner__content">
@@ -22,7 +23,7 @@
 
             </div>
         </div>
-        <video class="banner__video" data-src="/nuts/videos/home-page/goal.mp4" controls playsinline></video>
+        <video class="banner__video" data-src="{{baseUrl}}videos/home-page/goal.mp4" controls playsinline></video>
     </div>
 </section>
 {%endmacro%}

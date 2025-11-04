@@ -7,16 +7,17 @@
 {%from "src/shared/ui/nav-menu/nav-menu.html" import navMenu%}
 
 
+
+
+{%macro header(baseUrl)%}
 {%set navItems = [
-{href: "/catalog/", label: "Магазин"},
+{href: baseUrl + 'catalog/', label: "Магазин"},
 {href: "#", label: "О производстве"},
 {href: "#", label: "Оплата и доставка"},
 {href: "#", label: "Оптовым и корпоративным клиентам"},
 {href: "#", label: "Новости и статьи"},
 {href: "#", label: "Контакты"}
 ]%}
-
-{%macro header()%}
 <header class="header">
     <div class="header__top top-header">
         <div class="page-container">
@@ -71,7 +72,7 @@
                         </defs>
                     </svg>
                 </button>
-                {{logo()}}
+                {{logo(baseUrl)}}
                 {{contactsBlock(highlightCode=true, class="middle-header__contacts-block")}}
                 {{button(text="Заказать звонок", class="button_primary button_size-sm middle-header__button")}}
                 <div class="middle-header__text">Ждем Вашего звонка<br>ежедневно с 9 до 18</div>

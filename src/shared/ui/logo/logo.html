@@ -1,5 +1,5 @@
-{%macro logo(class="")%}
-<a href="/nuts/" class="logo {{class}}" name="logo"
+{%macro logo(class="", baseUrl)%}
+<a href="{{baseUrl}}" class="logo {{class}}" name="logo"
     aria-label="Логотип компании Орех Причерноморья. Перейти на главную страницу">
     <img class="logo__image" src="/images/logo.jpg" alt="logo" aria-label="Логотип компании Орех Причерноморья">
     <span class="logo__text">ОРЕХ<br>ПРИЧЕРНОМОРЬЯ</span>

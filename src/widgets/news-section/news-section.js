@@ -1,8 +1,10 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
+import { initPlay } from "@/shared/ui/video-card/video-card.js";
 
 export const initNewsSection = () => {
   initNewsSectionSwiper();
+  initPlay(".news-section-card__image-wrapper");
 };
 
 function initNewsSectionSwiper() {

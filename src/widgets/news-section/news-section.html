@@ -86,9 +86,15 @@ link: "#"
                     {% for news in newsItems %}
                     <div class="swiper-slide">
                         <div class="news-section-card">
-                            <div class="news-section-card__image-wrapper">
+                            <div class="news-section-card__image-wrapper video-card">
                                 {{picture(news.image.src, news.image.webpSrc, news.image.alt,
-                                "news-section-card__img")}}
+                                "news-section-card__img video-card__img")}}
+                                <video class="video-card__video" data-src="/videos/home-page/manufacturer.mp4"
+                                    playsinline></video>
+                                <button class="video-card__button" name="play-button"
+                                    aria-label="Кнопка проигрывания видео">
+                                    {{ icons.play() }}
+                                </button>
                             </div>
                             <div class="news-section-card__content">
                                 <div class="news-section-card__date">{{news.date}}</div>

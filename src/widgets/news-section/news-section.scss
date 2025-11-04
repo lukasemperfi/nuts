@@ -27,7 +27,7 @@
       width: 100%;
       aspect-ratio: 408/270;
       max-width: 408px;
-      background-color: #c4c4c4;
+      // background-color: #c4c4c4;
       margin-bottom: 23px;
 
       @include mixins.respond-to(lg-sm) {

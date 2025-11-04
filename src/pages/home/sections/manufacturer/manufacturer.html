@@ -38,11 +38,12 @@
                     <div class="swiper-wrapper">
                         {% for image in images %}
                         <div class="swiper-slide">
-                            <div class="manufacturer__card card">
-                                {{picture(image.src, image.webpSrc, image.alt, "card__img")}}
-                                <video class="card__video" data-src="/nuts/videos/home-page/manufacturer.mp4"
+                            <div class="manufacturer__card vide0-card">
+                                {{picture(image.src, image.webpSrc, image.alt, "video-card__img")}}
+                                <video class="video-card__video" data-src="/videos/home-page/manufacturer.mp4"
                                     playsinline></video>
-                                <button class="card__button" name="play-button" aria-label="Кнопка проигрывания видео">
+                                <button class="video-card__button" name="play-button"
+                                    aria-label="Кнопка проигрывания видео">
                                     {{ icons.play() }}
                                 </button>
                             </div>

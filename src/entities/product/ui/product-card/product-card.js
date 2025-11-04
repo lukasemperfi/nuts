@@ -52,7 +52,7 @@ export function createProductCard(product) {
                         <div class="swiper-slide">
                             <picture>
                                 <source type="image/webp" srcset="${image.image_path_webp}">
-                                <img class="product-card-swiper__image" src="${image.image_path_png}" loading="lazy" alt="image-${index}" >
+                                <img class="product-card-swiper__image" src="${image.image_path_png}" loading="eager" alt="image-${index}" fetchpriority="high">
                             </picture>           
                         </div>
                     `

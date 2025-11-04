@@ -16,8 +16,8 @@ function initNewsSectionSwiper() {
     slidesPerView: "1",
     spaceBetween: 12,
     navigation: {
-      nextEl: ".news-section-slider__next",
-      prevEl: ".news-section-slider__prev",
+      nextEl: ".news-section-slider__nav-outside .news-section-slider__next",
+      prevEl: ".news-section-slider__nav-outside .news-section-slider__prev",
     },
     modules: [Navigation],
     breakpoints: {

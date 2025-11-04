@@ -8,8 +8,13 @@ export const initBreadcrumbs = (containerSelector) => {
     return;
   }
 
+  const basePath = import.meta.env.BASE_URL.replace(/^\/|\/$/g, "");
   const path = window.location.pathname;
   const parts = path.split("/").filter(Boolean);
+
+  if (basePath && parts[0] === basePath) {
+    parts.shift();
+  }
 
   let currentPath = "/";
 

@@ -39,11 +39,7 @@
       cursor: default;
 
       @include mixins.respond-to(1103px) {
-        flex: 0 1 functions.fluidValue(336px, 410px, 708px, 1103px);
-      }
-
-      @include mixins.respond-to(707px) {
-        flex: 1;
+        flex: 0 1 functions.fluidValue(200px, 355px, 708px, 1103px);
       }
 
       &:after {
@@ -58,19 +54,25 @@
         opacity: 0;
         visibility: hidden;
         transition: all 0.5s ease;
+
+        @include mixins.respond-to(md) {
+          display: none;
+        }
       }
 
-      &:hover .grid__description {
-        max-height: 250px;
-        opacity: 1;
-        visibility: visible;
-        transition: all 0.6s ease;
-      }
+      @media (hover: hover) {
+        &:hover .grid__description {
+          max-height: 250px;
+          opacity: 1;
+          visibility: visible;
+          transition: all 0.6s ease;
+        }
 
-      &:hover:after {
-        opacity: 1;
-        visibility: visible;
-        transition: all 0.5s ease;
+        &:hover:after {
+          opacity: 1;
+          visibility: visible;
+          transition: all 0.5s ease;
+        }
       }
     }
 
@@ -93,14 +95,14 @@
       margin-bottom: 15px;
 
       svg {
-        width: 51px;
-        height: 51px;
+        width: functions.fluidValue(45px, 51px, 360px, 1920px);
+        height: functions.fluidValue(45px, 51px, 360px, 1920px);
       }
     }
 
     &__title {
       font-weight: 800;
-      font-size: clamp(30px, 9.77cqw, 40px);
+      font-size: functions.fluidValue(25px, 40px, 360px, 1920px);
       letter-spacing: 0.01em;
       color: var(--foreground-secondary);
       margin-bottom: 22px;
@@ -108,7 +110,8 @@
 
     &__description {
       font-weight: 600;
-      font-size: clamp(15px, 4.4cqw, 18px);
+      font-size: functions.fluidValue(14px, 18px, 360px, 1920px);
+
       line-height: 24px;
       letter-spacing: 0.01em;
       text-align: center;
@@ -124,6 +127,13 @@
       padding-inline: 5px;
 
       transition: all 0.6s ease;
+
+      @media (hover: none) {
+        max-height: 250px;
+        opacity: 1;
+        visibility: visible;
+        overflow: hidden;
+      }
     }
   }
 }

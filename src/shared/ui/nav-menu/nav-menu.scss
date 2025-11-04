@@ -21,13 +21,23 @@
       position: relative;
       white-space: nowrap;
 
-      &:hover {
+      @mixin link-active-style {
         text-shadow: 0.1px 0 0 currentColor;
         color: var(--background-tertiary);
       }
 
+      &.active {
+        @include link-active-style;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          @include link-active-style;
+        }
+      }
+
       &_hover_secondary {
-        &:hover::after {
+        @mixin link-active-style_secondary {
           content: "";
           display: block;
           width: calc(100% - (var(--link-padding-inline) * 2) + 14px);
@@ -37,6 +47,16 @@
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
+        }
+
+        &.active::after {
+          @include link-active-style_secondary;
+        }
+
+        @media (hover: hover) {
+          &:hover::after {
+            @include link-active-style_secondary;
+          }
         }
       }
     }

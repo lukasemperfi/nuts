@@ -1,6 +1,9 @@
+import { initActiveLink } from "@/shared/ui/nav-menu/nav-menu";
+
 export function initHeader() {
   initMenu();
   initResizeHandler();
+  initActiveLink(".nav-menu__link");
 }
 
 function initMenu() {

@@ -400,19 +400,6 @@
   }
 
   &__nav-menu {
-    .nav-menu__item {
-      padding-inline: 12px;
-
-      &:active {
-        background-color: var(--background-tertiary);
-
-        .nav-menu__link {
-          text-shadow: 0.2px 0 0 currentColor;
-          color: var(--background-secondary);
-        }
-      }
-    }
-
     .nav-menu__link {
       width: 100%;
       font-family: var(--font-family-primary);
@@ -422,6 +409,13 @@
       color: var(--foreground);
       border-bottom: 1px solid rgba(0, 0, 0, 0.04);
       padding-block: 14px;
+      padding-inline: 12px;
+
+      &.active {
+        background-color: var(--background-tertiary);
+        text-shadow: 0.2px 0 0 currentColor;
+        color: var(--background-secondary);
+      }
     }
   }
 

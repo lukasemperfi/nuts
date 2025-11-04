@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
   console.log("mode", mode);
 
   return {
-    // base: baseUrl,
+    base: baseUrl,
     resolve: {
       alias: {
         "@": resolve(__dirname, "src"),

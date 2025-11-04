@@ -5,10 +5,10 @@
 {%set newsItems = [
 {
 id: 1,
-image: { src: baseUrl + "images/news-section/image-1.jpg", webpSrc: baseUrl + "images/news-section/image-1.webp", alt:
+image: { src: "/images/news-section/image-1.jpg", webpSrc: "/images/news-section/image-1.webp", alt:
 "News
 Image 1" },
-video: { src: baseUrl + "videos/home-page/news-1.mp4", alt: "News Video 1" },
+video: { src: baseUrl + "/videos/home-page/news-1.mp4", alt: "News Video 1" },
 date: "12.04.2019",
 title: "Центр поддержки экспорта, в студии Павел Тулба",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -17,10 +17,10 @@ link: "#"
 },
 {
 id: 2,
-image: { src: baseUrl + "images/news-section/image-2.jpg", webpSrc: baseUrl + "images/news-section/image-2.webp", alt:
+image: { src: "/images/news-section/image-2.jpg", webpSrc: "/images/news-section/image-2.webp", alt:
 "News
 Image 2" },
-video: { src: baseUrl + "videos/home-page/news-2.mp4", alt: "News Video 2" },
+video: { src: baseUrl + "/videos/home-page/news-2.mp4", alt: "News Video 2" },
 date: "12.04.2019",
 title: "В Одесской области состоялся масштабный торгово - экспортный форум",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -29,10 +29,10 @@ link: "#"
 },
 {
 id: 3,
-image: { src: baseUrl + "images/news-section/image-3.jpg", webpSrc: baseUrl + "images/news-section/image-3.webp", alt:
+image: { src: "/images/news-section/image-3.jpg", webpSrc: "/images/news-section/image-3.webp", alt:
 "News
 Image 3" },
-video: { src: baseUrl + "videos/home-page/news-3.mp4", alt: "News Video 3" },
+video: { src: baseUrl + "/videos/home-page/news-3.mp4", alt: "News Video 3" },
 date: "12.04.2019",
 title: "Сертификация органического производителя",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -41,10 +41,10 @@ link: "#"
 },
 {
 id: 4,
-image: { src: baseUrl + "images/news-section/image-1.jpg", webpSrc: baseUrl + "images/news-section/image-1.webp", alt:
+image: { src: "/images/news-section/image-1.jpg", webpSrc: "/images/news-section/image-1.webp", alt:
 "News
 Image 4" },
-video: { src: baseUrl + "videos/home-page/news-1.mp4", alt: "News Video 4" },
+video: { src: baseUrl + "/videos/home-page/news-1.mp4", alt: "News Video 4" },
 date: "12.04.2019",
 title: "Центр поддержки экспорта, в студии Павел Тулба",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -53,10 +53,10 @@ link: "#"
 },
 {
 id: 5,
-image: { src: baseUrl + "images/news-section/image-2.jpg", webpSrc: baseUrl + "images/news-section/image-2.webp", alt:
+image: { src: "/images/news-section/image-2.jpg", webpSrc: "/images/news-section/image-2.webp", alt:
 "News
 Image 5" },
-video: { src: baseUrl + "videos/home-page/news-2.mp4", alt: "News Video 5" },
+video: { src: baseUrl + "/videos/home-page/news-2.mp4", alt: "News Video 5" },
 date: "12.04.2019",
 title: "В Одесской области состоялся масштабный торгово - экспортный форум",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -65,10 +65,10 @@ link: "#"
 },
 {
 id: 6,
-image: { src: baseUrl + "images/news-section/image-3.jpg", webpSrc: baseUrl + "images/news-section/image-3.webp", alt:
+image: { src: "/images/news-section/image-3.jpg", webpSrc: "/images/news-section/image-3.webp", alt:
 "News
 Image 6" },
-video: { src: baseUrl + "videos/home-page/news-3.mp4", alt: "News Video 6" },
+video: { src: baseUrl + "/videos/home-page/news-3.mp4", alt: "News Video 6" },
 date: "12.04.2019",
 title: "Сертификация органического производителя",
 description: "Как уже упоминал Павел Тулба, шиповник цветёт. Эта культура очень недооценена среди наших садоводов, не
@@ -124,7 +124,7 @@ link: "#"
                     {% endfor %}
                 </div>
                 <div class="news-section-slider__nav news-section-slider__nav-inside">
-                    <div class="news-section-slider__prev-">
+                    <div class="news-section-slider__prev">
                         {{ icons.leftArrow('news-section-slider__icon') }}
                     </div>
                     <div class="news-section-slider__next">

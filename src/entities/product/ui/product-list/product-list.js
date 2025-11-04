@@ -8,17 +8,6 @@ export const filteredProductList = async (containerSelector) => {
     if (newState.status === PRODUCTS_STATUS.SUCCEEDED) {
       renderProductList(newState.items, containerSelector);
     }
-
-    if (newState.status === PRODUCTS_STATUS.LOADING) {
-      const container = document.querySelector(containerSelector);
-      if (container) container.innerHTML = "<p>Loading products...</p>";
-    }
-
-    if (newState.status === PRODUCTS_STATUS.FAILED) {
-      const container = document.querySelector(containerSelector);
-      if (container)
-        container.innerHTML = `<p style="color:red;">Error: ${newState.error}</p>`;
-    }
   });
 
   store.subscribe("productFilters", async (newState) => {
@@ -41,17 +30,6 @@ export const productList = async (containerSelector) => {
     if (newState.status === PRODUCTS_STATUS.SUCCEEDED) {
       renderProductList(newState.items, containerSelector);
     }
-
-    // if (newState.status === PRODUCTS_STATUS.LOADING) {
-    //   const container = document.querySelector(containerSelector);
-    //   if (container) container.innerHTML = "<p>Loading products...</p>";
-    // }
-
-    // if (newState.status === PRODUCTS_STATUS.FAILED) {
-    //   const container = document.querySelector(containerSelector);
-    //   if (container)
-    //     container.innerHTML = `<p style="color:red;">Error: ${newState.error}</p>`;
-    // }
   });
 
   if (state.items.length === 0 && state.status === PRODUCTS_STATUS.IDLE) {

@@ -1,3 +1,6 @@
+{%from "src/entities/product/ui/product-list/product-list-skeleton.html" import productListSkeleton%}
+
+
 {%macro products()%}
 <section class="products">
     <div class="page-container">
@@ -10,7 +13,9 @@
                 разного объема</div>
         </div>
         <div class="products__list">
-            <div class="products__catalog"></div>
+            <div class="products__catalog">
+                {{ productListSkeleton() }}
+            </div>
             <a class="button button_secondary button_size-md products__button" href="#" name="products-button"
                 aria-label="Перейти в магазин">Перейти в
                 магазин</a>

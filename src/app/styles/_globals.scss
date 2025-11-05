@@ -57,3 +57,9 @@ body {
     color: var(--foreground-secondary);
   }
 }
+
+.lazy {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s ease-in-out !important;
+}

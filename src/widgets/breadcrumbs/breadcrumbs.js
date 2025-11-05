@@ -1,8 +1,9 @@
 const breadcrumbNames = {
   catalog: "Магазин",
+  product: "Карточка товара",
 };
 
-export const initBreadcrumbs = (containerSelector) => {
+export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
   const container = document.querySelector(containerSelector);
   if (!container) {
     return;
@@ -37,7 +38,7 @@ export const initBreadcrumbs = (containerSelector) => {
   };
 
   const html = `
-        <ul class="breadcrumbs">
+        <ul class="breadcrumbs ${breadcrumbClass}">
           <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/" name="breadcrumb-link" aria-label="Главная">Главная</a></li>
           ${parts
             .map((part, index) =>

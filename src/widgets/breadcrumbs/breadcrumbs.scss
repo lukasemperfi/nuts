@@ -28,4 +28,14 @@
     height: functions.fluidValue(9px, 12px, 360px, 1920px);
     margin-inline: functions.fluidValue(4px, 10px, 360px, 1920px);
   }
+
+  &_color_muted {
+    .breadcrumbs__link {
+      color: var(--muted-text);
+    }
+
+    .breadcrumbs__icon path {
+      fill: var(--muted-text);
+    }
+  }
 }

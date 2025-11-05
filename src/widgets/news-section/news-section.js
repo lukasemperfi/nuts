@@ -12,7 +12,7 @@ export const initNewsSection = () => {
 };
 
 function initNewsSectionSwiper() {
-  return initSwiper(".news-section-slider", {
+  const newsSectionSwiper = initSwiper(".news-section-slider", {
     slidesPerView: "1",
     spaceBetween: 12,
     navigation: {
@@ -27,4 +27,23 @@ function initNewsSectionSwiper() {
       1338: { slidesPerView: "3", spaceBetween: 33 },
     },
   });
+
+  const nextInsideButton = document.querySelector(
+    ".news-section-slider__nav-inside .news-section-slider__next"
+  );
+  const prevInsideButton = document.querySelector(
+    ".news-section-slider__nav-inside .news-section-slider__prev"
+  );
+
+  if (nextInsideButton && prevInsideButton) {
+    nextInsideButton.addEventListener("click", () => {
+      newsSectionSwiper.slideNext();
+    });
+
+    prevInsideButton.addEventListener("click", () => {
+      newsSectionSwiper.slidePrev();
+    });
+  }
+
+  return newsSectionSwiper;
 }

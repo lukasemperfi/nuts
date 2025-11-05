@@ -1,7 +1,14 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
 
-export function createProductCard(product) {
+export function renderProductDetailsCard(product, containerSelector) {
+  console.log("Rendering product details card:", product, containerSelector);
+  const container = document.querySelector(containerSelector);
+  const card = createProductDetailsCard(product);
+  container.appendChild(card);
+}
+
+export function createProductDetailsCard(product) {
   const {
     product_images,
     title,
@@ -16,7 +23,7 @@ export function createProductCard(product) {
     product_statuses,
   } = product;
 
-  const images = product_images.sort((a, b) => a.sort_order - b.sort_order);
+  const images = product_images?.sort((a, b) => a.sort_order - b.sort_order);
   const statuses = {
     regular: {
       name: "regular",
@@ -36,23 +43,16 @@ export function createProductCard(product) {
   card.className = "product-card";
 
   card.innerHTML = `
-        ${
-          product_statuses.name !== "regular"
-            ? `<div class="product-card__status ${
-                statuses[product_statuses.name].class
-              }">${statuses[product_statuses.name].name}</div>`
-            : ""
-        }
         <div class="product-card__image-wrapper">
             <div class="swiper product-card-swiper">
                 <div class="swiper-wrapper">
                     ${images
-                      .map(
+                      ?.map(
                         (image, index) => `
                         <div class="swiper-slide">
                             <picture>
-                                <source type="image/webp" srcset="${image.image_path_webp}">
-                                <img class="product-card-swiper__image" src="${image.image_path_png}" loading="eager" alt="image-${index}" fetchpriority="high">
+                                <source type="image/webp" srcset="${image?.image_path_webp}">
+                                <img class="product-card-swiper__image" src="${image?.image_path_png}" loading="eager" alt="image-${index}" fetchpriority="high">
                             </picture>           
                         </div>
                     `
@@ -161,7 +161,7 @@ export function createProductCard(product) {
                     <div class="packaging__value-wrapper">
                         <span class="packaging__label">Упаковка:</span>
                         <span class="packaging__value">${
-                          packaging_types.name
+                          packaging_types?.name
                         }</span>
                     </div>
                 </div>

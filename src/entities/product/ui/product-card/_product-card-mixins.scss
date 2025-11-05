@@ -1,0 +1,26 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+@mixin zoom() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  background-color: #93b474;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.1s ease-in, opacity 0.1s ease-in,
+    visibility 0.1s ease-in;
+  opacity: 0;
+  visibility: hidden;
+
+  &:hover {
+    box-shadow: 0 0 0px 5px rgba(255, 255, 255, 0.15);
+  }
+}

@@ -1,0 +1,123 @@
+@use "@/entities/product/ui/product-card/_product-card-mixins" as
+  product-card-mixins;
+@use "@/app/styles/functions" as functions;
+
+.product-details-card {
+  --border-color-muted: rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: 553px 1fr;
+
+  &__col-1 {
+  }
+
+  &__col-2 {
+  }
+
+  &__image-wrapper {
+    // background-color: red;
+    aspect-ratio: 553/571;
+    width: 100%;
+    background: #fcfcfc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: box-shadow 0.2s ease-in-out;
+    border: 1px solid var(--border-color-muted);
+
+    &:hover {
+      box-shadow: 0px 0px 0px 1.5px var(--border-color);
+
+      .product-details-card-swiper__next,
+      .product-details-card-swiper__prev {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &:hover .product-details-card__zoom {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__zoom {
+    @include product-card-mixins.zoom();
+    top: 3.5%;
+    right: 3%;
+    left: auto;
+    transform: none;
+  }
+
+  .product-details-card-swiper {
+    height: 100%;
+    .swiper-slide {
+    }
+
+    &__image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      padding-block: 40px;
+    }
+  }
+
+  .product-details-card-swiper__next,
+  .product-details-card-swiper__prev {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease-in, visibility 0.1s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    path {
+      fill: var(--foreground-tertiary);
+    }
+  }
+
+  .product-details-card-swiper__prev {
+    left: 14px;
+    top: 50%;
+  }
+
+  .product-details-card-swiper__next {
+    right: 14px;
+    top: 50%;
+  }
+
+  .swiper-button-disabled {
+    cursor: auto;
+    path {
+      fill: #c4c4c4;
+    }
+  }
+
+  .info {
+    &__top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__subtitle {
+    }
+
+    &__main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+    }
+
+    .storage-conditions {
+      display: flex;
+    }
+
+    &__bottom {
+      display: flex;
+    }
+  }
+}

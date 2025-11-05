@@ -17,7 +17,6 @@ export const initProductFilters = () => {
   function updateFilter(type, value) {
     if (type === "sort") {
       filters.sort = value;
-      updateURL();
       console.log(filters);
       return;
     }
@@ -29,8 +28,6 @@ export const initProductFilters = () => {
     } else {
       filters[type].push(value);
     }
-
-    updateURL();
 
     console.log(filters);
   }
@@ -106,6 +103,7 @@ export const initProductFilters = () => {
   initApplyButton({
     selector: ".filter-actions__apply-btn",
     onClick: () => {
+      updateURL();
       store.dispatch(productFiltersActions.setFilters(filters));
       console.log("Applied filters:", filters);
     },

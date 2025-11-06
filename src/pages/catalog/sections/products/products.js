@@ -4,8 +4,8 @@ import { renderProductList } from "../../../../entities/product/ui/product-list/
 
 export const initProductsSection = () => {
   initProductFilters();
-  // filteredProductList(".products__catalog");
-  renderProductList(productItems, ".products__catalog");
+  filteredProductList(".products__catalog");
+  // renderProductList(productItems, ".products__catalog");
 };
 
 const productItems = [

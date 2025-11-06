@@ -29,7 +29,7 @@ function initProductdetailsCardSwiper(cardElement) {
   }
 
   return initSwiper(swiperEl, {
-    slidesPerView: 1,
+    slidesPerView: "auto",
     navigation: {
       nextEl: cardElement.querySelector(".product-details-card-swiper__next"),
       prevEl: cardElement.querySelector(".product-details-card-swiper__prev"),

@@ -20,7 +20,7 @@
     {{header(baseUrl)}}
     <main class="product-page">
         {{ productPageBreadcrumbs()}}
-        <section class="product-page__content product-content">
+        <section class="product-page__content product-content" style="padding-top: 42px;">
             <div class="product-content__card">
                 <div class="page-container">
                     <div class="product-details-card">
@@ -64,7 +64,7 @@
                                             fill="none" />
                                     </svg>
                                 </div>
-                                <div class="product-details-card__zoom">
+                                <div class="product-details-card__zoom zoom">
                                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_241_161)">
@@ -88,22 +88,42 @@
                                     <div class="info__sku">Арт: 0091</div>
                                 </div>
                                 <div class="info__subtitle">Орех соленый кондитерский очищенный</div>
-                                <div class="info__main">
-                                    <div class="info__composition-title">Состав:</div>
-                                    <div class="info__composition-value">Ядро грецкого ореха, вымытого очищенного от
+                                <div class="info__properties properties">
+                                    <div class="properties__composition properties__title">Состав:</div>
+                                    <div class="properties__composition properties__value">Ядро грецкого ореха, вымытого
+                                        очищенного от
                                         кожуры,
                                         соль экстра (раствор 7%)</div>
-                                    <div class="info__weight-title">Масса нетто:</div>
-                                    <div class="info__weight-value">40г.</div>
-                                    <div class="info__energy-title">Энергетическая ценность</div>
-                                    <div class="info__energy-value">654 Ккал.</div>
-                                    <div class="info__shelf-life-title">Срок годности:</div>
-                                    <div class="info__shelf-life-value">12 месяцев, с даты расфасовки (указана на
-                                        упаковке)
+                                    <div class="properties__weight properties__title">Масса нетто:</div>
+                                    <div class="properties__weight properties__value">40г.</div>
+                                    <div class="properties__energy properties__title">Энергетическая ценность:</div>
+                                    <div class="properties__energy properties__value">654 Ккал.</div>
+                                    <div class="properties__shelf-life properties__title">Срок годности:</div>
+                                    <div class="properties__shelf-life properties__value">12 месяцев, с даты
+                                        расфасовки<br>(указана на упаковке)
                                     </div>
                                 </div>
                                 <div class="info__storage-conditions storage-conditions">
-                                    <div class="storage-conditions__icon">!</div>
+                                    <div class="storage-conditions__icon">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="14" cy="14" r="14" fill="#93B474" />
+                                            <g clip-path="url(#clip0_14178_2724)">
+                                                <path
+                                                    d="M14.1025 18.2978C13.1702 18.2978 12.4146 17.5424 12.4146 16.6099V7.68796C12.4146 6.7558 13.1703 6 14.1025 6C15.0345 6 15.7905 6.7558 15.7905 7.68796V16.6099C15.7906 17.5424 15.0348 18.2978 14.1025 18.2978Z"
+                                                    fill="white" />
+                                                <path
+                                                    d="M13.9942 23.0001C14.7932 23.0001 15.441 22.3523 15.441 21.5533C15.441 20.7542 14.7932 20.1064 13.9942 20.1064C13.1951 20.1064 12.5474 20.7542 12.5474 21.5533C12.5474 22.3523 13.1951 23.0001 13.9942 23.0001Z"
+                                                    fill="white" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_14178_2724">
+                                                    <rect width="21" height="21" fill="white"
+                                                        transform="translate(4 2)" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
                                     <div class="storage-conditions__text">Хранить в помещениях, защищенных от попадания
                                         прямых, солнечных лучей, при температуре от +3 °C до +20 °C, и относительной
                                         влажности воздуха не более 75 %</div>
@@ -120,7 +140,7 @@
                                             </span>
                                         </span>
                                     </div>
-                                    <a class="bottom__button button button_primary button_size-sm" href="#"
+                                    <a class="info__button button button_primary button_size-lg" href="#"
                                         name="product-card-button" aria-label="Купить товар">
                                         Заказать
                                     </a>

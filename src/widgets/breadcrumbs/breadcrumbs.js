@@ -9,7 +9,14 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
     return;
   }
 
-  const basePath = import.meta.env.BASE_URL.replace(/^\/|\/$/g, "");
+  const mode = import.meta.env.MODE;
+
+  console.log("mode", mode);
+
+  const basePath =
+    mode === "production"
+      ? "/nuts/"
+      : import.meta.env.BASE_URL.replace(/^\/|\/$/g, "");
   const path = window.location.pathname;
   const parts = path.split("/").filter(Boolean);
 
@@ -17,7 +24,7 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
     parts.shift();
   }
 
-  let currentPath = "/";
+  let currentPath = basePath;
 
   const arrowSvg = `
     <svg class="breadcrumbs__icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">

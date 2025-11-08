@@ -149,6 +149,7 @@
         font-size: functions.fluidValue(18px, 30px, 360px, 1920px);
         line-height: functions.fluidValue(20px, 32px, 360px, 1920px);
         margin-bottom: functions.fluidValue(20px, 41px, 360px, 1920px);
+        max-width: 100%;
       }
     }
 
@@ -156,12 +157,16 @@
       display: grid;
       grid-template-columns: max-content 1fr;
       grid-template-rows: repeat(4, max-content);
-      column-gap: 54px;
+      column-gap: functions.fluidValue(20px, 54px, 360px, 1920px);
       margin-bottom: 36px;
 
       @include mixins.respond-to($bp-mobile) {
-        column-gap: functions.fluidValue(20px, 54px, 360px, 1920px);
         margin-bottom: functions.fluidValue(20px, 36px, 360px, 1920px);
+      }
+
+      @include mixins.respond-to(550px) {
+        grid-template-columns: 1fr;
+        row-gap: 5px;
       }
 
       &__title {
@@ -194,6 +199,7 @@
 
         @include mixins.respond-to($bp-mobile) {
           margin-bottom: functions.fluidValue(20px, 27px, 360px, 1920px);
+          max-width: 100%;
         }
       }
 
@@ -216,13 +222,13 @@
 
     .storage-conditions {
       display: flex;
-      gap: 28px;
+      gap: functions.fluidValue(10px, 28px, 360px, 1920px);
       align-items: center;
       border: 1px solid rgba(0, 0, 0, 0.08);
       background-color: var(--background-secondary);
-      padding-block: 20px;
-      padding-inline: 16px;
-      margin-bottom: 36px;
+      padding-block: functions.fluidValue(5px, 20px, 360px, 1920px);
+      padding-inline: functions.fluidValue(5px, 16px, 360px, 1920px);
+      margin-bottom: functions.fluidValue(16px, 36px, 360px, 1920px);
 
       @include mixins.respond-to($bp-mobile) {
         margin-bottom: functions.fluidValue(20px, 36px, 360px, 1920px);

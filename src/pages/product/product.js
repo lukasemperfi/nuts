@@ -6,6 +6,7 @@ import { initProductPageBreadcrumbs } from "@/pages/product/ui/breadcrumbs/bread
 import { renderProductDetailsCard } from "@/entities/product/ui/product-card/product-details-card.js";
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
+import { initTabs } from "@/shared/ui/tabs/tabs.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
@@ -17,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const productCardElements = document.querySelector(".product-details-card");
   initProductdetailsCardSwiper(productCardElements);
+
+  initTabs(document.querySelector('[data-tabs-id="user-tabs"]'));
 });
 
 function initProductdetailsCardSwiper(cardElement) {

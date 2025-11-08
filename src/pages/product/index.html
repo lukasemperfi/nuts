@@ -3,6 +3,8 @@
 {%from "src/widgets/contacts-section/contacts-section.html" import contactsSection%}
 {%from "src/widgets/footer/footer.html" import footer%}
 {%from "src/pages/product/ui/breadcrumbs/breadcrumbs.html" import productPageBreadcrumbs%}
+{%from "src/shared/ui/tabs/tabs.html" import tabs%}
+{%from "src/shared/ui/icons/icons.html" import delivery%}
 
 
 <!DOCTYPE html>
@@ -150,7 +152,29 @@
                     </div>
                 </div>
             </div>
-            <div class="product-content__tabs">tabs </div>
+            <div class="product-content__tabs">
+                <div class="page-container">
+                    {{ tabs('user-tabs', [
+                    {
+                    label: 'Описание',
+                    content: '<p>Это Описание пользователя</p>'
+                    },
+                    {
+                    label: 'Упаковка',
+                    content: '<p>Это Упаковка пользователя</p>'
+                    },
+                    {
+                    label: 'Оплата',
+                    content: '<strong>Оплата</strong>'
+                    },
+                    {
+                    label: 'Доставка',
+                    content: '<strong>Доставка</strong>'
+                    }
+                    ], 0) }}
+                </div>
+
+            </div>
         </section>
         {{contactsSection()}}
         {{footer(baseUrl)}}

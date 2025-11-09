@@ -1,19 +1,19 @@
 {% macro tabs(id, items, activeIndex=0) %}
 <div class="tabs" data-tabs-id="{{ id }}" data-active-index="{{ activeIndex }}">
-    <!-- Навигация -->
     <div class="tabs__nav" role="tablist">
-        {% for item in items %}
-        <button class="tabs__nav-btn" role="tab" aria-controls="{{ id }}-tab-{{ loop.index }}"
-            aria-selected="{{ 'true' if loop.index0 == activeIndex else 'false' }}" data-tab-index="{{ loop.index0 }}">
-            {% if item.icon %}
-            <span class="tabs__nav-icon">{{ item.icon | safe }}</span>
-            {% endif %}
-            <span class="tabs__nav-label">{{ item.label }}</span>
-        </button>
-        {% endfor %}
+        <div class="tabs__nav-wrapper">
+            {% for item in items %}
+            <button class="tabs__nav-btn" role="tab" aria-controls="{{ id }}-tab-{{ loop.index }}"
+                aria-selected="{{ 'true' if loop.index0 == activeIndex else 'false' }}"
+                data-tab-index="{{ loop.index0 }}">
+                {% if item.icon %}
+                <span class="tabs__nav-icon">{{ item.icon | safe }}</span>
+                {% endif %}
+                <span class="tabs__nav-label">{{ item.label }}</span>
+            </button>
+            {% endfor %}
+        </div>
     </div>
-
-    <!-- Контент -->
     <div class="tabs__content">
         {% for item in items %}
         <div class="tabs__panel" id="{{ id }}-tab-{{ loop.index }}" role="tabpanel"

@@ -2,6 +2,7 @@
 @use "sass:math";
 @use "sass:meta";
 @use "variables" as variables;
+@use "@/app/styles/functions" as functions;
 
 $breakpoints: (
   sm: variables.$breakpoint-sm,
@@ -122,4 +123,15 @@ $breakpoints-down: (
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+////////////////////////////
+@mixin pageContainer() {
+  max-width: variables.$container-width;
+  padding-inline: 24px;
+  margin: 0 auto;
+
+  @include respond-to(sm) {
+    padding-inline: 12px;
+  }
 }

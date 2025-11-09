@@ -6,20 +6,18 @@ import { initProductPageBreadcrumbs } from "@/pages/product/ui/breadcrumbs/bread
 import { renderProductDetailsCard } from "@/entities/product/ui/product-card/product-details-card.js";
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
-import { initTabs } from "@/shared/ui/tabs/tabs.js";
+import { initProductTabs } from "./product-tabs/product-tabs";
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initDropdown({ selector: ".top-header__lang" });
   initProductPageBreadcrumbs();
-
+  initProductTabs();
   initPageFooter();
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 
   const productCardElements = document.querySelector(".product-details-card");
   initProductdetailsCardSwiper(productCardElements);
-
-  initTabs(document.querySelector('[data-tabs-id="user-tabs"]'));
 });
 
 function initProductdetailsCardSwiper(cardElement) {

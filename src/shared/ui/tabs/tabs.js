@@ -1,13 +1,18 @@
-export function initTabs(container) {
+export function initTabs(container, updateURL = false) {
   const navButtons = container.querySelectorAll(".tabs__nav-btn");
   const panels = container.querySelectorAll(".tabs__panel");
   let activeIndex = parseInt(container.dataset.activeIndex) || 0;
-
+  console.log(
+    "initTabs called with container:",
+    container,
+    "updateURL:",
+    updateURL
+  );
   navButtons.forEach((btn, index) => {
-    btn.addEventListener("click", () => switchTab(index));
+    btn.addEventListener("click", () => switchTab(index, updateURL));
   });
 
-  function switchTab(index, updateURL = false) {
+  function switchTab(index, updateURL) {
     if (index === activeIndex) return;
 
     navButtons.forEach((btn, i) => {
@@ -42,7 +47,7 @@ export function initTabs(container) {
     }
   }
 
-  switchTab(activeIndex, false);
+  switchTab(activeIndex, updateURL);
   handleHash();
 
   window.addEventListener("hashchange", handleHash);

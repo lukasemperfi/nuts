@@ -1,0 +1,104 @@
+{%from "src/shared/ui/tabs/tabs.html" import tabs%}
+{%from "src/shared/ui/picture/picture.html" import picture%}
+
+
+{%macro productDescription()%}
+<div class="product-description">
+    <div class="product-description__col-1">
+        <div class="product-description__image-wrapper">
+            {{picture('/images/product-details/description.jpg', '/images/product-details/description.webp', 'Product
+            Description Image', 'product-description__image')}}
+        </div>
+    </div>
+    <div class="product-description__col-2">
+        <div class="product-description__text">
+            <p class="product-description__paragraph-1">Уже 4000 лет люди питаются ценными <strong
+                    class="product-description__accent">грецкими орехами</strong>. Они
+                особенно полезны послеоперационным больным,
+                детям, кормящим, беременным женщинам. Чтобы вернуть силы, укрепить иммунитет, одолеть туберкулез,
+                кашель;
+                грецкий орех очищенный, отборный нужно истолочь, смешать с медом (2:1) и чайную ложку целебной смеси
+                употреблять перед едой.
+            </p>
+            <p class="product-description__paragraph-2">В белке грецких орехов много (15 %) аргинина. Он особенно нужен
+                детям, больным, пожилым людям,
+                в организме
+                которых аминокислота плохо синтезируется. Аргинин помогает сосудам регенерировать,
+                а всему организму –
+                победить воспаления.
+            </p>
+            <p class="product-description__paragraph-3">
+            <div class="product-description__title">Другие полезные вещества грецких орехов:</div>
+            <ul class="product-description__list">
+                <li>Антиоксиданты защищают печень от повреждений</li>
+                <li>Полифенолы не дают образоваться сосудистым тромбам</li>
+                <li>Нейропротекторы улучшают работу мозга, отодвигают старость</li>
+            </ul>
+            <div class="product-description__title">Нужно систематически есть грецкие орехи, чтобы:</div>
+            <ul class="product-description__list">
+                <li>На 30–40 % снизить риск заболевания раком простаты</li>
+                <li>На 50 % – раком молочной железы</li>
+                <li>Предотвратить дегенерацию глазной макулы, а значит, улучшить зрение</li>
+                <li>Отрегулировать обмен веществ, выработку инсулина; понизить количество сахара в крови</li>
+            </ul>
+            </p>
+        </div>
+
+    </div>
+</div>
+{%endmacro%}
+
+{%macro productPacking()%}
+<div class="product-packing">
+    <div class="product-packing__wrapper">
+        <p>Высушенные плоды ореха грецкого обрабатывают и упаковывают в вакуумные полиетиленовые пакеты, а так же,
+            дополнительно, в брендированые картонные коробочки массой 40, 80 и 500 грамм.
+        </p>
+        <p>
+            <strong>
+                При необходимости готовы рассмотреть изготовление партии по индивидуальным параметрам для наших
+                клиентов.
+            </strong>
+        </p>
+        <p>
+            Тара должна быть крепкой, целой, сухой, не поврежденной вредителями, чистой, без посторонних запахов.
+            <br>
+            Грецкий орех весьма удобен для транспортировки.
+            <br>
+            Хранить орехи лучше всего в сухих, чистых помещениях при температуре от —3 до +5°С (без резких колебаний)
+            <br>
+            и относительной влажности 60%.
+            <br>
+            Орехи неплохо хранятся в течение 2-5 лет при температуре — 1-3°С, без заметного ухудшения качества.
+        </p>
+    </div>
+
+</div>
+{%endmacro%}
+
+{% set items = [
+{
+label: 'Описание',
+content: productDescription()
+},
+{
+label: 'Упаковка',
+content: productPacking()
+},
+{
+label: 'Оплата',
+content: '<strong>Оплата</strong>'
+},
+{
+label: 'Доставка',
+content: '<strong>Доставка</strong>'
+}
+]
+
+%}
+
+{%macro productTabs()%}
+<div class="product-content__tabs">
+    {{ tabs('product-tabs', items, 0) }}
+</div>
+{%endmacro%}

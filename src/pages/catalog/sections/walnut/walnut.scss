@@ -21,10 +21,7 @@
   }
 
   &__col-1 {
-    // padding-top: 27px;
-
     @include mixins.respond-to(lg-sm) {
-      // padding-top: 0;
       display: flex;
       flex-direction: column;
       align-items: center;

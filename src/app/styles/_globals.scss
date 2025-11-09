@@ -11,14 +11,23 @@ body {
   scroll-behavior: smooth;
 }
 
-.page-container {
-  max-width: variables.$container-width;
-  padding-inline: 24px;
-  margin: 0 auto;
+// * {
+//   &::-webkit-scrollbar {
+//     width: 6px;
+//     background: rgba(0, 0, 0, 0.1);
+//     border-radius: 50px;
+//     box-shadow: inset 0 0 0 2px var(--background-secondary);
+//   }
 
-  @include mixins.respond-to(sm) {
-    padding-inline: 12px;
-  }
+//   &::-webkit-scrollbar-thumb {
+//     background-color: var(--accent);
+//     border-radius: 50px;
+//     position: relative;
+//   }
+// }
+
+.page-container {
+  @include mixins.pageContainer();
 }
 
 .title {

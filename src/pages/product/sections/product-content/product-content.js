@@ -11,14 +11,16 @@ export const initProductContent = () => {
 const product = {
   id: 3,
   title: "Грецкий Орех Аляска",
-  sku: "0003",
-  subtitle: "Крупный грецкий орех в скорлупе, новый урожай.",
-  composition: "Грецкий орех 100%",
+  sku: "0091",
+  subtitle: "Орех соленый кондитерский очищенный",
+  composition:
+    "Ядро грецкого ореха, вымытого очищенного от кожуры, соль экстра (раствор 7%)",
   energy_value: 654,
   energy_unit: "ккал",
-  shelf_life_days: 450,
-  storage_conditions: "Хранить в скорлупе при t от 0 до 25°C",
-  weight: 1000,
+  shelf_life_days: 12,
+  storage_conditions:
+    "Хранить в помещениях, защищенных от попадания прямых, солнечных лучей, при температуре от +3 °C до +20 °C, и относительной влажности воздуха не более 75 %",
+  weight: 40,
   weight_unit: "г",
   price: 21,
   discount_price: 19,

@@ -28,6 +28,11 @@ export function createProductDetailsCard(product) {
     title,
     sku,
     subtitle,
+    composition,
+    energy_value,
+    energy_unit,
+    shelf_life_days,
+    storage_conditions,
     weight,
     weight_unit,
     packaging_types,
@@ -117,13 +122,14 @@ export function createProductDetailsCard(product) {
           <div class="info__subtitle">${subtitle}</div>
           <div class="info__properties properties">
               <div class="properties__composition properties__title">Состав:</div>
-              <div class="properties__composition properties__value">${undefined}</div>
+              <div class="properties__composition properties__value">${composition}</div>
               <div class="properties__weight properties__title">Масса нетто:</div>
               <div class="properties__weight properties__value">${weight}${weight_unit}.</div>
               <div class="properties__energy properties__title">Энергетическая ценность:</div>
-              <div class="properties__energy properties__value">${undefined}</div>
+              <div class="properties__energy properties__value">${energy_value} ${energy_unit}.</div>
               <div class="properties__shelf-life properties__title">Срок годности:</div>
-              <div class="properties__shelf-life properties__value">${undefined}</div>
+              <div class="properties__shelf-life properties__value">${shelf_life_days} месяцев, с даты расфасовки
+              (указана на упаковке)</div>
           </div>
           <div class="info__storage-conditions storage-conditions">
               <div class="storage-conditions__icon">
@@ -145,7 +151,7 @@ export function createProductDetailsCard(product) {
                       </defs>
                   </svg>
               </div>
-              <div class="storage-conditions__text">${undefined}</div>
+              <div class="storage-conditions__text">${storage_conditions}</div>
           </div>
           <div class="info__bottom">
               <div class="info__price price">

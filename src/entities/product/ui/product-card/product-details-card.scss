@@ -30,19 +30,21 @@
     transition: box-shadow 0.2s ease-in-out;
     border: 1px solid var(--border-color-muted);
 
-    &:hover {
-      box-shadow: 0px 0px 0px 1.5px var(--border-color);
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0px 0px 0px 1.5px var(--border-color);
 
-      .product-details-card-swiper__next,
-      .product-details-card-swiper__prev {
+        .product-details-card-swiper__next,
+        .product-details-card-swiper__prev {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      &:hover .product-details-card__zoom {
         opacity: 1;
         visibility: visible;
       }
-    }
-
-    &:hover .product-details-card__zoom {
-      opacity: 1;
-      visibility: visible;
     }
   }
 
@@ -78,6 +80,11 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
+
+      @media (hover: none) {
+        opacity: 1;
+        visibility: visible;
+      }
 
       path {
         fill: var(--foreground-tertiary);

@@ -16,8 +16,9 @@
     </div>
     <div class="tabs__content">
         {% for item in items %}
-        <div class="tabs__panel" id="{{ id }}-tab-{{ loop.index }}" role="tabpanel"
-            aria-labelledby="{{ id }}-tab-{{ loop.index }}-btn" {% if loop.index0 !=activeIndex %}hidden{% endif %}>
+        <div class="tabs__panel tabs__panel-{{ id }}-{{ loop.index }}" id="{{ id }}-tab-{{ loop.index }}"
+            role="tabpanel" aria-labelledby="{{ id }}-tab-{{ loop.index }}-btn" {% if loop.index0 !=activeIndex
+            %}hidden{% endif %}>
             {{ item.content | safe }}
         </div>
         {% endfor %}

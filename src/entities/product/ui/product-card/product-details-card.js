@@ -19,6 +19,8 @@ export function renderProductDetailsCard(product, containerSelector) {
   console.log("Rendering product details card:", product, containerSelector);
   const container = document.querySelector(containerSelector);
   const card = createProductDetailsCard(product);
+
+  container.innerHTML = "";
   container.appendChild(card);
 }
 

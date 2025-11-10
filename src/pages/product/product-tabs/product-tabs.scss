@@ -29,7 +29,7 @@ $bp-mobile: 999px;
 
 .product-description {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: 409px 1fr;
   gap: functions.fluidValue(20px, 60px, 360px, 1920px);
 
   @include mixins.respond-to($bp-mobile) {

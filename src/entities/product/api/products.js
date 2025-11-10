@@ -42,6 +42,53 @@ class Products {
 
     return products;
   };
+
+  getProductById = async (id) => {
+    if (!id || isNaN(id)) {
+      return null;
+    }
+
+    const { data, error } = await supabase
+      .from("products")
+      .select(
+        `
+        *,
+        product_images (
+          id,
+          image_path_png,
+          image_path_webp,
+          is_main,
+          sort_order
+        ),
+        product_flavors (
+          flavor_id,
+          flavors (
+            id,
+            name,
+            value
+          )
+        ),
+        packaging_types (
+          id,
+          name
+        ),
+        product_statuses (
+          id,
+          name
+        )
+      `
+      )
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") return null;
+      console.error("Ошибка при получении продукта:", error);
+      return null;
+    }
+
+    return data;
+  };
 }
 
 export const productsApi = new Products();

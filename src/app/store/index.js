@@ -1,5 +1,6 @@
 import { productsSlice } from "@/entities/product/model/products-slice";
 import { productFiltersSlice } from "@/features/product-filters/model/product-filters-slice.js";
+import { productSlice } from "@/entities/product/model/product-slice.js";
 
 class Store {
   constructor() {
@@ -86,3 +87,4 @@ export const store = new Store();
 
 store.registerSlice(productsSlice);
 store.registerSlice(productFiltersSlice);
+store.registerSlice(productSlice);

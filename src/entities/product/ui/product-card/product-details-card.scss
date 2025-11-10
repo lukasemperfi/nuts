@@ -20,7 +20,6 @@
   }
 
   &__image-wrapper {
-    // background-color: red;
     aspect-ratio: 553/571;
     width: 100%;
     background: #fcfcfc;
@@ -234,7 +233,9 @@
         margin-bottom: functions.fluidValue(20px, 36px, 360px, 1920px);
       }
 
-      &__icon {
+      &__icon svg {
+        width: functions.fluidValue(20px, 28px, 360px, 1920px);
+        height: functions.fluidValue(20px, 28px, 360px, 1920px);
       }
 
       &__text {
@@ -246,7 +247,7 @@
         max-width: 570px;
 
         @include mixins.respond-to($bp-mobile) {
-          font-size: functions.fluidValue(12px, 15px, 360px, 1920px);
+          font-size: functions.fluidValue(11px, 15px, 360px, 1920px);
         }
       }
     }

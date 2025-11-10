@@ -6,7 +6,7 @@ export function createProductCard(product) {
     product_images,
     title,
     sku,
-    description,
+    subtitle,
     weight,
     weight_unit,
     packaging_types,
@@ -96,7 +96,7 @@ export function createProductCard(product) {
                 <span class="sku__label">Арт:</span>
                 <span class="sku__value">${sku}</span>
             </div>
-            <div class="product-card__description">${description}</div>
+            <div class="product-card__subtitle">${subtitle}</div>
             <div class="product-card__attributes">
                 <div class="attributes__weight weight">
                     <div class="weight__icon-wrapper">

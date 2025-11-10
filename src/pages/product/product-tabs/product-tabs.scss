@@ -139,7 +139,7 @@ $bp-mobile: 999px;
   }
 }
 
-.product-payment {
+.product-info-card {
   $bp-mobile-md: 1239px;
   display: grid;
   grid-template-columns: 1fr 59.69%;
@@ -169,7 +169,7 @@ $bp-mobile: 999px;
     object-fit: cover;
   }
 
-  .payment-methods {
+  .info-methods {
     overflow-y: auto;
     max-height: 460px;
 

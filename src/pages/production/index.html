@@ -5,6 +5,7 @@
 {%from "src/widgets/news-section/news-section.html" import newsSection%}
 {%from "src/pages/production/sections/hero/hero.html" import hero%}
 {%from "src/pages/production/sections/producer-section/producer-section.html" import producerSection%}
+{%from "src/pages/production/sections/owner-section/owner-section.html" import ownerSection%}
 
 
 <!DOCTYPE html>
@@ -23,6 +24,7 @@
     <main>
         {{hero(baseUrl)}}
         {{producerSection(baseUrl)}}
+        {{ownerSection()}}
         {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}

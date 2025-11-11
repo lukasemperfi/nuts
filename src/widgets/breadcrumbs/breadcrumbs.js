@@ -1,6 +1,7 @@
 const breadcrumbNames = {
   catalog: "Магазин",
   product: "Карточка товара",
+  production: "О производстве",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
@@ -23,6 +24,8 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
   if (basePath && parts[0] === basePath) {
     parts.shift();
   }
+
+  // console.log("basePath", basePath);
 
   let currentPath = basePath;
 

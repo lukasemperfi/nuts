@@ -3,6 +3,7 @@
 {%from "src/widgets/contacts-section/contacts-section.html" import contactsSection%}
 {%from "src/widgets/footer/footer.html" import footer%}
 {%from "src/widgets/news-section/news-section.html" import newsSection%}
+{%from "src/pages/production/sections/hero/hero.html" import hero%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +19,7 @@
 <body>
     {{header(baseUrl)}}
     <main>
+        {{hero(baseUrl)}}
         {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}

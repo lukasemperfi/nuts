@@ -4,6 +4,8 @@
 {%from "src/widgets/footer/footer.html" import footer%}
 {%from "src/widgets/news-section/news-section.html" import newsSection%}
 {%from "src/pages/production/sections/hero/hero.html" import hero%}
+{%from "src/pages/production/sections/producer-section/producer-section.html" import producerSection%}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +22,7 @@
     {{header(baseUrl)}}
     <main>
         {{hero(baseUrl)}}
+        {{producerSection(baseUrl)}}
         {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}

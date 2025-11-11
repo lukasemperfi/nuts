@@ -1,8 +1,14 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
 
+const baseUrl =
+  import.meta.env.MODE === "development"
+    ? "/"
+    : import.meta.env.VITE_PROD_URL || "";
+
 export function createProductCard(product) {
   const {
+    id,
     product_images,
     title,
     sku,
@@ -15,7 +21,6 @@ export function createProductCard(product) {
     price_unit,
     product_statuses,
   } = product;
-
   const images = product_images.sort((a, b) => a.sort_order - b.sort_order);
   const statuses = {
     regular: {
@@ -91,7 +96,7 @@ export function createProductCard(product) {
             </div>
         </div>
         <div class="product-card__middle">
-            <a class="product-card__title" href="#" name="product-card-title" aria-label="Перейти к товару">${title}</a>
+            <a class="product-card__title" href="${baseUrl}product/?id=${id}" name="product-card-title" aria-label="Перейти к товару">${title}</a>
             <div class="product-card__sku sku">
                 <span class="sku__label">Арт:</span>
                 <span class="sku__value">${sku}</span>

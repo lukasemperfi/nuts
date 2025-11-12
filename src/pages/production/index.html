@@ -6,6 +6,7 @@
 {%from "src/pages/production/sections/hero/hero.html" import hero%}
 {%from "src/pages/production/sections/producer-section/producer-section.html" import producerSection%}
 {%from "src/pages/production/sections/owner-section/owner-section.html" import ownerSection%}
+{%from "src/widgets/stats/stats.html" import statsSection%}
 
 
 <!DOCTYPE html>
@@ -25,6 +26,7 @@
         {{hero(baseUrl)}}
         {{producerSection(baseUrl)}}
         {{ownerSection()}}
+        {{statsSection()}}
         {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}

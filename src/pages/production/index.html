@@ -7,7 +7,7 @@
 {%from "src/pages/production/sections/producer-section/producer-section.html" import producerSection%}
 {%from "src/pages/production/sections/owner-section/owner-section.html" import ownerSection%}
 {%from "src/widgets/stats/stats.html" import statsSection%}
-
+{%from "src/pages/production/sections/gallery-section/gallery-section.html" import gallerySection%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +27,7 @@
         {{producerSection(baseUrl)}}
         {{ownerSection()}}
         {{statsSection()}}
+        {{gallerySection()}}
         {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}

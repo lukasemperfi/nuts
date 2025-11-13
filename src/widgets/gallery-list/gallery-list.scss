@@ -1,0 +1,57 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.gallery-list {
+  --gap: clamp(12px, 2vw, 30px);
+  --max-width: 1290;
+  --half-gap: calc(var(--gap) / 2);
+  $bp-mobile: 490px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+
+  &__item {
+    background-color: var(--skeleton-background);
+
+    &-1 {
+      aspect-ratio: 740/556;
+      flex: 1 1 calc((740 / var(--max-width)) * 100% - var(--half-gap));
+    }
+
+    &-2 {
+      aspect-ratio: 520 / 556;
+      flex: 1 1 calc((520 / var(--max-width)) * 100% - var(--half-gap));
+    }
+
+    &-3 {
+      aspect-ratio: 1290 / 556;
+      flex: 1 1 100%;
+    }
+
+    &-4,
+    &-5,
+    &-6 {
+      $columns: 3;
+      aspect-ratio: 410 / 405;
+      flex: 1 1 calc((100% - (var(--gap) * ($columns - 1))) / $columns);
+    }
+
+    @include mixins.respond-to($bp-mobile) {
+      &-1,
+      &-2,
+      &-3,
+      &-4,
+      &-5,
+      &-6 {
+        flex: 1 1 100%;
+        aspect-ratio: 1.5;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

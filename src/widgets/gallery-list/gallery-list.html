@@ -1,0 +1,13 @@
+{%from "src/shared/ui/picture/picture.html" import picture%}
+
+{%macro galleryList(items)%}
+
+<div class="gallery-list">
+    {%for item in items%}
+    <div class="gallery-list__item {{item.className}}">
+        {{picture(jpgSrc=item.image.src, webpSrc=item.image.webpSrc, loading=item.image.loading,
+        class="gallery-list__image", alt=item.image.alt)}}
+    </div>
+    {%endfor%}
+</div>
+{%endmacro%}

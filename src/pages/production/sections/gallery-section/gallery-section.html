@@ -1,0 +1,55 @@
+{%from "src/widgets/gallery-list/gallery-list.html" import galleryList%}
+
+{%set items = [
+{
+id:1, title:"Sunset Over Mountains", description:"A beautiful sunset casting warm colors over the mountain range.",
+image: {src: "/images/gallery/image-1.jpg", webpSrc: "/images/gallery/image-1.webp", alt: "Conference",
+lazyLoading: "lazy"},
+video: "/videos/gallery/video-1.mp4",
+className: "gallery-list__item-1"
+},
+{
+id:2, title:"City Skyline at Night", description:"The city lights illuminate the skyline against the night sky.",
+image: {src: "/images/gallery/image-2.jpg", webpSrc: "/images/gallery/image-2.webp", alt: "Conference",
+lazyLoading: "lazy"},
+video: "/videos/gallery/video-2.mp4",
+className: "gallery-list__item-2"
+},
+{
+id:3, title:"Sunset Over Mountains", description:"A beautiful sunset casting warm colors over the mountain range.",
+image: {src: "/images/gallery/image-3.jpg", webpSrc: "/images/gallery/image-3.webp", alt: "Conference",
+lazyLoading: "lazy"},
+video: "/videos/gallery/video-3.mp4",
+className: "gallery-list__item-3"
+},
+{
+id:4, title:"City Skyline at Night", description:"The city lights illuminate the skyline against the night sky.",
+image: {src: "/images/gallery/image-4.jpg", webpSrc: "/images/gallery/image-4.webp", alt: "Conference",
+lazyLoading: "lazy"},
+video: "/videos/gallery/video-4.mp4",
+className: "gallery-list__item-4"
+},
+{
+id:5, title:"Sunset Over Mountains", description:"A beautiful sunset casting warm colors over the mountain range.",
+image: {src: "/images/gallery/image-5.jpg", webpSrc: "/images/gallery/image-5.webp", alt: "Conference",
+lazyLoading: "lazy"},
+video: "/videos/gallery/video-5.mp4",
+className: "gallery-list__item-5"
+},
+{
+id:6, title:"City Skyline at Night", description:"The city lights illuminate the skyline against the night sky.",
+image: {src: "/images/gallery/image-6.jpg", webpSrc: "/images/gallery/image-6.webp", alt: "Conference",
+lazyLoading: "lazy"},
+video: "/videos/gallery/video-6.mp4",
+className: "gallery-list__item-6"
+}
+]%}
+
+{%macro gallerySection()%}
+<section class="gallery-section">
+    <div class="page-container">
+        {{galleryList(items)}}
+    </div>
+
+</section>
+{%endmacro%}

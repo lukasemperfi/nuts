@@ -5,13 +5,46 @@
   --gap: clamp(12px, 2vw, 30px);
   --max-width: 1290;
   --half-gap: calc(var(--gap) / 2);
-  $bp-mobile: 490px;
+  $bp-mobile: 768px;
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
 
   &__item {
     background-color: var(--skeleton-background);
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(51, 125, 90, 0.95);
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+
+      @include mixins.respond-to(md) {
+        display: none;
+      }
+    }
+
+    @media (hover: hover) {
+      &_picture:hover .gallery-picture-card__content {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease;
+      }
+
+      &_picture:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease;
+      }
+    }
 
     &-1 {
       aspect-ratio: 740/556;
@@ -49,9 +82,153 @@
     }
   }
 
-  &__image {
+  .gallery-picture-card {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+
+    &__content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-inline: functions.fluidValue(20px, 40px, 360px, 1920px);
+      padding-block: functions.fluidValue(20px, 75px, 360px, 1920px);
+      overflow: hidden;
+
+      @media (hover: hover) {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      @media (hover: none) {
+        &:hover {
+          opacity: 1;
+          visibility: visible;
+          transition: none;
+        }
+      }
+    }
+
+    &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__title {
+      font-family: var(--font-family-secondary);
+      font-weight: 800;
+      font-size: functions.fluidValue(14px, 22px, 360px, 1920px);
+      letter-spacing: 0.01em;
+      color: var(--foreground-secondary);
+      max-width: 489px;
+      margin-bottom: functions.fluidValue(12px, 24px, 360px, 1920px);
+    }
+
+    &__description {
+      font-family: var(--font-family-secondary);
+      font-weight: 500;
+      font-size: functions.fluidValue(12px, 15px, 360px, 1920px);
+      line-height: functions.fluidValue(18px, 22px, 360px, 1920px);
+      color: var(--foreground-secondary);
+      max-width: 489px;
+    }
+  }
+
+  .gallery-video-card {
+    width: 100%;
+    height: 100%;
+    &__content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-inline: functions.fluidValue(20px, 40px, 360px, 1920px);
+      padding-block: functions.fluidValue(20px, 126px, 360px, 1920px);
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s ease;
+
+      @include mixins.respond-to(lg-sm) {
+        justify-content: center;
+      }
+    }
+
+    &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__title {
+      font-family: var(--font-family-secondary);
+      font-weight: 800;
+      font-size: functions.fluidValue(14px, 22px, 360px, 1920px);
+      letter-spacing: 0.01em;
+      color: var(--foreground-secondary);
+      max-width: 489px;
+      margin-bottom: 12px;
+    }
+
+    &__description {
+      font-family: var(--font-family-secondary);
+      font-weight: 500;
+      font-size: functions.fluidValue(12px, 14px, 360px, 1920px);
+      line-height: functions.fluidValue(18px, 22px, 360px, 1920px);
+      color: var(--foreground-secondary);
+      max-width: 563px;
+      text-align: center;
+    }
+
+    &__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      // transition: all 0.6s ease;
+    }
+
+    &__play-button {
+      margin-bottom: 27px;
+    }
+
+    &__play-icon {
+      width: functions.fluidValue(45px, 61px, 360px, 1920px);
+      height: functions.fluidValue(45px, 61px, 360px, 1920px);
+    }
+
+    &_playing {
+      .gallery-video-card__video {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        // transition: all 0.6s ease;
+      }
+
+      .gallery-video-card__content {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+    }
   }
 }

@@ -2,42 +2,56 @@
 
 {%set items = [
 {
-id:1, title:"Sunset Over Mountains", description:"A beautiful sunset casting warm colors over the mountain range.",
+id:1,
+title:"SIAL Paris 2018",
+description:"В этом Году при поддержке проекта International Trade Centre Ukraine, и финансировании правительства
+Швеции, мы побывали на крупнейшей продовольственной выставке Европы <strong>SIAL Paris 2018</strong>",
 image: {src: "/images/gallery/image-1.jpg", webpSrc: "/images/gallery/image-1.webp", alt: "Conference",
 lazyLoading: "lazy"},
-video: "/videos/gallery/video-1.mp4",
+video: null,
 className: "gallery-list__item-1"
 },
 {
-id:2, title:"City Skyline at Night", description:"The city lights illuminate the skyline against the night sky.",
+id:2,
+title:"Фермеры Украины",
+description:"Как бывший экспедитор выращивает грецкий орех, фундук и трюфель в одном саду",
 image: {src: "/images/gallery/image-2.jpg", webpSrc: "/images/gallery/image-2.webp", alt: "Conference",
 lazyLoading: "lazy"},
-video: "/videos/gallery/video-2.mp4",
+video: null,
 className: "gallery-list__item-2"
 },
 {
-id:3, title:"Sunset Over Mountains", description:"A beautiful sunset casting warm colors over the mountain range.",
+id:3,
+title: "Проект UBHDP",
+description: "Вчера к нам приезжал американский агроном Рон , спасибо Мельнику Евгению и проекту UBHDP за возможность
+получить консультацию от мировых специалистов!",
 image: {src: "/images/gallery/image-3.jpg", webpSrc: "/images/gallery/image-3.webp", alt: "Conference",
 lazyLoading: "lazy"},
 video: "/videos/gallery/video-3.mp4",
 className: "gallery-list__item-3"
 },
 {
-id:4, title:"City Skyline at Night", description:"The city lights illuminate the skyline against the night sky.",
+id:4,
+title:"Обработка горчицы",
+description:"Последняя обработка горчицы , дальше пчелы будут делать свою работу !",
 image: {src: "/images/gallery/image-4.jpg", webpSrc: "/images/gallery/image-4.webp", alt: "Conference",
 lazyLoading: "lazy"},
-video: "/videos/gallery/video-4.mp4",
+video: null,
 className: "gallery-list__item-4"
 },
 {
-id:5, title:"Sunset Over Mountains", description:"A beautiful sunset casting warm colors over the mountain range.",
+id:5,
+title:"Берлин",
+description:"Посещение Берлинского оптового рынка, совместно сспециалистами ITC",
 image: {src: "/images/gallery/image-5.jpg", webpSrc: "/images/gallery/image-5.webp", alt: "Conference",
 lazyLoading: "lazy"},
-video: "/videos/gallery/video-5.mp4",
+video: null,
 className: "gallery-list__item-5"
 },
 {
-id:6, title:"City Skyline at Night", description:"The city lights illuminate the skyline against the night sky.",
+id:6,
+title: null,
+description: null,
 image: {src: "/images/gallery/image-6.jpg", webpSrc: "/images/gallery/image-6.webp", alt: "Conference",
 lazyLoading: "lazy"},
 video: "/videos/gallery/video-6.mp4",
@@ -48,7 +62,14 @@ className: "gallery-list__item-6"
 {%macro gallerySection()%}
 <section class="gallery-section">
     <div class="page-container">
+        <div class="gallery-section__top">
+            <h2 class="gallery-section__title ">Галерея</h2>
+            <div class="gallery-section__description">Кадры социальной активности компании</div>
+        </div>
         {{galleryList(items)}}
+        <div class="gallery-section__bottom">
+            <a href="#" class="gallery-section__see-more button_secondary button_size-sm">Смотреть всю галерею</a>
+        </div>
     </div>
 
 </section>

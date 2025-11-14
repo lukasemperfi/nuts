@@ -1,11 +1,11 @@
 {%from "src/shared/ui/icons/icons.html" import play%}
 {%from "src/shared/ui/picture/picture.html" import picture%}
 
-{%macro eco(loading="lazy", fetchpriority="auto")%}
+{%macro eco(image, loading="lazy", fetchpriority="auto")%}
 <section class="eco">
     <div class="banner banner_size_lg eco__banner ">
         <div class="banner__image-wrapper">
-            {{picture("/images/home-page/eco-banner.jpg", "/images/home-page/eco-banner.webp", "banner",
+            {{picture(image.jpg, image.webp, "banner",
             "banner__image", loading, fetchpriority)}}
         </div>
         <div class="banner__content">

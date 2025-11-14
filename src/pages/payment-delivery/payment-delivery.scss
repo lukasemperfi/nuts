@@ -13,3 +13,7 @@
 @use "@/widgets/footer/footer.scss" as *;
 @use "@/shared/ui/video-card/video-card.scss" as *;
 @use "@/widgets/breadcrumbs/breadcrumbs.scss" as *;
+@use "@/shared/ui/tabs/tabs.scss" as *;
+@use "@/widgets/product-info-tabs/product-payment.scss" as *;
+@use "@/pages/payment-delivery/sections/payment-delivery-tabs/payment-delivery-tabs.scss"
+  as *;

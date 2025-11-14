@@ -1,0 +1,28 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+$bp-mobile: 999px;
+
+.payment-delivery-tabs-section {
+  .tabs__nav-wrapper {
+    justify-content: center;
+    gap: functions.fluidValue(20px, 79px, 360px, 1920px);
+
+    @include mixins.pageContainer();
+
+    @include mixins.respond-to(lg-sm) {
+      gap: 0;
+      justify-content: space-evenly;
+    }
+
+    @include mixins.respond-to($bp-mobile) {
+      justify-content: space-between;
+    }
+  }
+
+  .tabs__content {
+    padding-block: functions.fluidValue(20px, 55px, 360px, 1920px);
+
+    @include mixins.pageContainer();
+  }
+}

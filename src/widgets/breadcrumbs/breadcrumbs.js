@@ -2,6 +2,7 @@ const breadcrumbNames = {
   catalog: "Магазин",
   product: "Карточка товара",
   production: "О производстве",
+  "payment-delivery": "Оплата и доставка",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {

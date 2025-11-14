@@ -1,9 +1,9 @@
-import{i as f,N as b,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";function D(a){const{product_images:s,title:i,sku:t,subtitle:p,weight:d,weight_unit:C,packaging_types:w,discount_price:n,price:L,price_unit:g,product_statuses:o}=a,m=s.sort((r,u)=>r.sort_order-u.sort_order),v={regular:{name:"regular",class:""},sale:{name:"Акция",class:"product-card__status_sale"},new:{name:"Новинка",class:"product-card__status_new"}},e=document.createElement("div");return e.className="product-card",e.innerHTML=`
+import{i as b,N as D,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";const M="/nuts/";function Z(a){const{id:s,product_images:i,title:t,sku:p,subtitle:d,weight:C,weight_unit:w,packaging_types:L,discount_price:n,price:m,price_unit:g,product_statuses:o}=a,f=i.sort((r,u)=>r.sort_order-u.sort_order),v={regular:{name:"regular",class:""},sale:{name:"Акция",class:"product-card__status_sale"},new:{name:"Новинка",class:"product-card__status_new"}},e=document.createElement("div");return e.className="product-card",e.innerHTML=`
         ${o.name!=="regular"?`<div class="product-card__status ${v[o.name].class}">${v[o.name].name}</div>`:""}
         <div class="product-card__image-wrapper">
             <div class="swiper product-card-swiper">
                 <div class="swiper-wrapper">
-                    ${m.map((r,u)=>`
+                    ${f.map((r,u)=>`
                         <div class="swiper-slide">
                             <picture>
                                 <source type="image/webp" srcset="${r.image_path_webp}">
@@ -44,12 +44,12 @@ import{i as f,N as b,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";function D(
             </div>
         </div>
         <div class="product-card__middle">
-            <a class="product-card__title" href="#" name="product-card-title" aria-label="Перейти к товару">${i}</a>
+            <a class="product-card__title" href="${M}product/?id=${s}" name="product-card-title" aria-label="Перейти к товару">${t}</a>
             <div class="product-card__sku sku">
                 <span class="sku__label">Арт:</span>
-                <span class="sku__value">${t}</span>
+                <span class="sku__value">${p}</span>
             </div>
-            <div class="product-card__subtitle">${p}</div>
+            <div class="product-card__subtitle">${d}</div>
             <div class="product-card__attributes">
                 <div class="attributes__weight weight">
                     <div class="weight__icon-wrapper">
@@ -100,7 +100,7 @@ import{i as f,N as b,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";function D(
                     </div>
                     <div class="weight__value-wrapper">
                         <span class="weight__label">Масса:</span>
-                        <span class="weight__value">${d}${C}.</span>
+                        <span class="weight__value">${C}${w}.</span>
                     </div>
                 </div>
                 <div class="attributes__packaging packaging">
@@ -113,7 +113,7 @@ import{i as f,N as b,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";function D(
                     </div>
                     <div class="packaging__value-wrapper">
                         <span class="packaging__label">Упаковка:</span>
-                        <span class="packaging__value">${w.name}</span>
+                        <span class="packaging__value">${L.name}</span>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@ import{i as f,N as b,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";function D(
                       <span class="price-number">${n}</span>&nbsp;${g}.
                   </span>`:""}
                     <span class="${n!==null?"price__old-price":"price__current-price"}">
-                        <span class="price-number">${L}</span>&nbsp;${g}.
+                        <span class="price-number">${m}</span>&nbsp;${g}.
                     </span>
                 </span>
             </div>
@@ -134,4 +134,4 @@ import{i as f,N as b,s as l,P as c,d as h}from"./footer-Dmi4Y21F.js";function D(
                 Купить
             </a>
         </div>
-    `,M(e),e}function M(a){const s=a.querySelector(".product-card-swiper");return s?f(s,{slidesPerView:1,navigation:{nextEl:a.querySelector(".product-card-swiper__next"),prevEl:a.querySelector(".product-card-swiper__prev")},modules:[b]}):null}const $=async a=>{l.subscribe("products",s=>{s.status===c.SUCCEEDED&&_(s.items,a)}),l.subscribe("productFilters",async s=>{const i=s.filters,t=s.isInitialized;console.log("Filters changed, fetching products:",s),t&&await h(i)})},H=async a=>{const s=l.getState().products;l.subscribe("products",i=>{i.status===c.SUCCEEDED&&_(i.items,a)}),s.items.length===0&&s.status===c.IDLE?await h():s.status===c.SUCCEEDED&&_(s.items,a)};function _(a,s){const i=document.querySelector(s);if(!i){console.error(`Ошибка: Основной контейнер с селектором "${s}" не найден.`);return}i.innerHTML="";const t=document.createElement("div");t.className="catalog",a.forEach(p=>{const d=D(p);t.appendChild(d)}),i.appendChild(t)}export{$ as f,H as p};
+    `,$(e),e}function $(a){const s=a.querySelector(".product-card-swiper");return s?b(s,{slidesPerView:1,navigation:{nextEl:a.querySelector(".product-card-swiper__next"),prevEl:a.querySelector(".product-card-swiper__prev")},modules:[D]}):null}const V=async a=>{l.subscribe("products",s=>{s.status===c.SUCCEEDED&&_(s.items,a)}),l.subscribe("productFilters",async s=>{const i=s.filters,t=s.isInitialized;console.log("Filters changed, fetching products:",s),t&&await h(i)})},A=async a=>{const s=l.getState().products;l.subscribe("products",i=>{i.status===c.SUCCEEDED&&_(i.items,a)}),s.items.length===0&&s.status===c.IDLE?await h():s.status===c.SUCCEEDED&&_(s.items,a)};function _(a,s){const i=document.querySelector(s);if(!i){console.error(`Ошибка: Основной контейнер с селектором "${s}" не найден.`);return}i.innerHTML="";const t=document.createElement("div");t.className="catalog",a.forEach(p=>{const d=Z(p);t.appendChild(d)}),i.appendChild(t)}export{V as f,A as p};

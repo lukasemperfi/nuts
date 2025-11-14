@@ -1,4 +1,4 @@
-import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y21F.js";import{i as x}from"../../breadcrumbs-D_seXOGi.js";const M=()=>{x(".product-page-breadcrumbs__container","breadcrumbs_color_muted")};function S(i,e){if(!i||Object.keys(i).length===0){console.warn("⚠️ renderProductDetailsCard: пустой или неверный объект product");return}console.log("Rendering product details card:",i,e);const s=document.querySelector(e),a=E(i);s.innerHTML="",s.appendChild(a)}function E(i){const{product_images:e,title:s,sku:a,subtitle:o,composition:d,energy_value:l,energy_unit:r,shelf_life_days:c,storage_conditions:t,weight:n,weight_unit:g,packaging_types:T,discount_price:u,price:w,price_unit:h,product_statuses:Z}=i,f=e?.sort((_,v)=>_.sort_order-v.sort_order),p=document.createElement("div");return p.className="product-details-card",p.innerHTML=`
+import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y21F.js";import"../../main-e9Wrtxuw.js";import{i as x}from"../../breadcrumbs-RzmQp5xk.js";const S=()=>{x(".product-page-breadcrumbs__container","breadcrumbs_color_muted")};function M(i,e){if(!i||Object.keys(i).length===0){console.warn("⚠️ renderProductDetailsCard: пустой или неверный объект product");return}console.log("Rendering product details card:",i,e);const t=document.querySelector(e),a=E(i);t.innerHTML="",t.appendChild(a)}function E(i){const{product_images:e,title:t,sku:a,subtitle:o,composition:d,energy_value:l,energy_unit:r,shelf_life_days:c,storage_conditions:s,weight:n,weight_unit:g,packaging_types:T,discount_price:u,price:w,price_unit:h,product_statuses:Z}=i,f=e?.sort((_,v)=>_.sort_order-v.sort_order),p=document.createElement("div");return p.className="product-details-card",p.innerHTML=`
   <div class="product-details-card__col-1">
       <div class="product-details-card__image-wrapper">
           <div class="swiper product-details-card-swiper">
@@ -49,7 +49,7 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
   <div class="product-details-card__col-2">
       <div class="product-details-card__info info">
           <div class="info__top">
-              <div class="info__title">${s}</div>
+              <div class="info__title">${t}</div>
               <div class="info__sku">Арт: ${a}</div>
           </div>
           <div class="info__subtitle">${o}</div>
@@ -84,7 +84,7 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
                       </defs>
                   </svg>
               </div>
-              <div class="storage-conditions__text">${t}</div>
+              <div class="storage-conditions__text">${s}</div>
           </div>
           <div class="info__bottom">
               <div class="info__price price">
@@ -105,7 +105,7 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
           </div>
       </div>
   </div>
-    `,I(p),p}function I(i){const e=i.querySelector(".product-details-card-swiper");return e?m(e,{slidesPerView:"auto",navigation:{nextEl:i.querySelector(".product-details-card-swiper__next"),prevEl:i.querySelector(".product-details-card-swiper__prev")},modules:[b]}):null}function B(i,e=!1){const s=i.querySelectorAll(".tabs__nav-btn"),a=i.querySelectorAll(".tabs__panel");let o=parseInt(i.dataset.activeIndex)||0;console.log("initTabs called with container:",i,"updateURL:",e),s.forEach((r,c)=>{r.addEventListener("click",()=>d(c,e))});function d(r,c){if(r!==o&&(s.forEach((t,n)=>{t.setAttribute("aria-selected",n===r)}),a.forEach((t,n)=>{t.hidden=n!==r}),o=r,i.dataset.activeIndex=r,c&&window.history.pushState)){const t=new URL(window.location);t.hash=`#tab-${i.dataset.tabsId}-${r}`,window.history.pushState({},"",t)}}function l(){const c=window.location.hash.match(new RegExp(`#tab-${i.dataset.tabsId}-(\\d+)`));if(c){const t=parseInt(c[1]);t>=0&&t<s.length&&d(t,!1)}}return d(o,e),l(),window.addEventListener("hashchange",l),{switchTab:d,getActiveIndex:()=>o}}function H(){B(document.querySelector('[data-tabs-id="product-tabs"]'),!0)}const q=(i,e)=>{const s=document.querySelector(i);if(!s)return;const a="/nuts/";s.innerHTML=`
+    `,I(p),p}function I(i){const e=i.querySelector(".product-details-card-swiper");return e?m(e,{slidesPerView:"auto",navigation:{nextEl:i.querySelector(".product-details-card-swiper__next"),prevEl:i.querySelector(".product-details-card-swiper__prev")},modules:[b]}):null}function B(i,e=!1){const t=i.querySelectorAll(".tabs__nav-btn"),a=i.querySelectorAll(".tabs__panel");let o=parseInt(i.dataset.activeIndex)||0;console.log("initTabs called with container:",i,"updateURL:",e),t.forEach((r,c)=>{r.addEventListener("click",()=>d(c,e))});function d(r,c){if(r!==o&&(t.forEach((s,n)=>{s.setAttribute("aria-selected",n===r)}),a.forEach((s,n)=>{s.hidden=n!==r}),o=r,i.dataset.activeIndex=r,c&&window.history.pushState)){const s=new URL(window.location);s.hash=`#tab-${i.dataset.tabsId}-${r}`,window.history.pushState({},"",s)}}function l(){const c=window.location.hash.match(new RegExp(`#tab-${i.dataset.tabsId}-(\\d+)`));if(c){const s=parseInt(c[1]);s>=0&&s<t.length&&d(s,!1)}}return d(o,e),l(),window.addEventListener("hashchange",l),{switchTab:d,getActiveIndex:()=>o}}function H(){B(document.querySelector('[data-tabs-id="product-tabs"]'),!0)}const q=(i,e)=>{const t=document.querySelector(i);if(!t)return;const a="/nuts/";t.innerHTML=`
     <div class="product-description">
     <div class="product-description__col-1">
         <div class="product-description__image-wrapper">
@@ -119,4 +119,4 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
        ${e}
     </div>
 </div>
-    `},D=async()=>{const i=await y(1);S(i,".product-content__card .page-container"),q(".tabs__panel-product-tabs-1",i.description),H()};document.addEventListener("DOMContentLoaded",()=>{C(),$({selector:".top-header__lang"}),M(),D(),L(),P(".lazy",{rootMargin:"200px 0px"})});
+    `},D=i=>{M(i,".product-content__card .page-container"),q(".tabs__panel-product-tabs-1",i.description),H()};document.addEventListener("DOMContentLoaded",async()=>{const e=new URLSearchParams(window.location.search).get("id"),t=await y(e);C(),$({selector:".top-header__lang"}),S(),D(t),L(),P(".lazy",{rootMargin:"200px 0px"})});

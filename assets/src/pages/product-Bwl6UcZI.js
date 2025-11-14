@@ -1,13 +1,13 @@
-import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y21F.js";import"../../main-e9Wrtxuw.js";import{i as x}from"../../breadcrumbs-RzmQp5xk.js";const S=()=>{x(".product-page-breadcrumbs__container","breadcrumbs_color_muted")};function M(i,e){if(!i||Object.keys(i).length===0){console.warn("⚠️ renderProductDetailsCard: пустой или неверный объект product");return}console.log("Rendering product details card:",i,e);const t=document.querySelector(e),a=E(i);t.innerHTML="",t.appendChild(a)}function E(i){const{product_images:e,title:t,sku:a,subtitle:o,composition:d,energy_value:l,energy_unit:r,shelf_life_days:c,storage_conditions:s,weight:n,weight_unit:g,packaging_types:T,discount_price:u,price:w,price_unit:h,product_statuses:Z}=i,f=e?.sort((_,v)=>_.sort_order-v.sort_order),p=document.createElement("div");return p.className="product-details-card",p.innerHTML=`
+import{a as f,i as b,b as C,l as y}from"../../footer-D1zYZNPL.js";import"../../main-C-BHD-zq.js";import{i as $}from"../../breadcrumbs-PefJ2uUV.js";import{i as L,N as P,f as x}from"../../navigation-AN1fBL4T.js";import{i as M}from"../../tabs-D16X6BcN.js";const B=()=>{$(".product-page-breadcrumbs__container","breadcrumbs_color_muted")};function D(i,e){if(!i||Object.keys(i).length===0){console.warn("⚠️ renderProductDetailsCard: пустой или неверный объект product");return}console.log("Rendering product details card:",i,e);const t=document.querySelector(e),s=H(i);t.innerHTML="",t.appendChild(s)}function H(i){const{product_images:e,title:t,sku:s,subtitle:p,composition:n,energy_value:l,energy_unit:_,shelf_life_days:u,storage_conditions:v,weight:g,weight_unit:w,packaging_types:T,discount_price:o,price:h,price_unit:d,product_statuses:V}=i,m=e?.sort((a,c)=>a.sort_order-c.sort_order),r=document.createElement("div");return r.className="product-details-card",r.innerHTML=`
   <div class="product-details-card__col-1">
       <div class="product-details-card__image-wrapper">
           <div class="swiper product-details-card-swiper">
               <div class="swiper-wrapper">
-                    ${f.map((_,v)=>`
+                    ${m.map((a,c)=>`
                         <div class="swiper-slide">
                             <picture>
-                                <source type="image/webp" srcset="${_.image_path_webp}">
-                                <img class="product-details-card-swiper__image" src="${_.image_path_png}" loading="eager" alt="image-${v}" fetchpriority="high">
+                                <source type="image/webp" srcset="${a.image_path_webp}">
+                                <img class="product-details-card-swiper__image" src="${a.image_path_png}" loading="eager" alt="image-${c}" fetchpriority="high">
                             </picture>           
                         </div>
                     `).join("")}
@@ -50,18 +50,18 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
       <div class="product-details-card__info info">
           <div class="info__top">
               <div class="info__title">${t}</div>
-              <div class="info__sku">Арт: ${a}</div>
+              <div class="info__sku">Арт: ${s}</div>
           </div>
-          <div class="info__subtitle">${o}</div>
+          <div class="info__subtitle">${p}</div>
           <div class="info__properties properties">
               <div class="properties__composition properties__title">Состав:</div>
-              <div class="properties__composition properties__value">${d}</div>
+              <div class="properties__composition properties__value">${n}</div>
               <div class="properties__weight properties__title">Масса нетто:</div>
-              <div class="properties__weight properties__value">${n}${g}.</div>
+              <div class="properties__weight properties__value">${g}${w}.</div>
               <div class="properties__energy properties__title">Энергетическая ценность:</div>
-              <div class="properties__energy properties__value">${l} ${r}.</div>
+              <div class="properties__energy properties__value">${l} ${_}.</div>
               <div class="properties__shelf-life properties__title">Срок годности:</div>
-              <div class="properties__shelf-life properties__value">${c} месяцев, с даты расфасовки
+              <div class="properties__shelf-life properties__value">${u} месяцев, с даты расфасовки
               (указана на упаковке)</div>
           </div>
           <div class="info__storage-conditions storage-conditions">
@@ -84,17 +84,17 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
                       </defs>
                   </svg>
               </div>
-              <div class="storage-conditions__text">${s}</div>
+              <div class="storage-conditions__text">${v}</div>
           </div>
           <div class="info__bottom">
               <div class="info__price price">
                 <span class="price__label">Ваша цена:</span>
                     <span class="price__value">
-                        ${u!==null?`<span class="price__current-price">
-                                <span class="price-number">${u}</span>&nbsp;${h}.
+                        ${o!==null?`<span class="price__current-price">
+                                <span class="price-number">${o}</span>&nbsp;${d}.
                             </span>`:""}
-                            <span class="${u!==null?"price__old-price":"price__current-price"}">
-                                <span class="price-number">${w}</span>&nbsp;${h}.
+                            <span class="${o!==null?"price__old-price":"price__current-price"}">
+                                <span class="price-number">${h}</span>&nbsp;${d}.
                     </span>
                 </span>
               </div>
@@ -105,13 +105,13 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
           </div>
       </div>
   </div>
-    `,I(p),p}function I(i){const e=i.querySelector(".product-details-card-swiper");return e?m(e,{slidesPerView:"auto",navigation:{nextEl:i.querySelector(".product-details-card-swiper__next"),prevEl:i.querySelector(".product-details-card-swiper__prev")},modules:[b]}):null}function B(i,e=!1){const t=i.querySelectorAll(".tabs__nav-btn"),a=i.querySelectorAll(".tabs__panel");let o=parseInt(i.dataset.activeIndex)||0;console.log("initTabs called with container:",i,"updateURL:",e),t.forEach((r,c)=>{r.addEventListener("click",()=>d(c,e))});function d(r,c){if(r!==o&&(t.forEach((s,n)=>{s.setAttribute("aria-selected",n===r)}),a.forEach((s,n)=>{s.hidden=n!==r}),o=r,i.dataset.activeIndex=r,c&&window.history.pushState)){const s=new URL(window.location);s.hash=`#tab-${i.dataset.tabsId}-${r}`,window.history.pushState({},"",s)}}function l(){const c=window.location.hash.match(new RegExp(`#tab-${i.dataset.tabsId}-(\\d+)`));if(c){const s=parseInt(c[1]);s>=0&&s<t.length&&d(s,!1)}}return d(o,e),l(),window.addEventListener("hashchange",l),{switchTab:d,getActiveIndex:()=>o}}function H(){B(document.querySelector('[data-tabs-id="product-tabs"]'),!0)}const q=(i,e)=>{const t=document.querySelector(i);if(!t)return;const a="/nuts/";t.innerHTML=`
+    `,S(r),r}function S(i){const e=i.querySelector(".product-details-card-swiper");return e?L(e,{slidesPerView:"auto",navigation:{nextEl:i.querySelector(".product-details-card-swiper__next"),prevEl:i.querySelector(".product-details-card-swiper__prev")},modules:[P]}):null}function q(){M(document.querySelector('[data-tabs-id="product-tabs"]'),!0)}const Z=(i,e)=>{const t=document.querySelector(i);if(!t)return;const s="/nuts/";t.innerHTML=`
     <div class="product-description">
     <div class="product-description__col-1">
         <div class="product-description__image-wrapper">
             <picture>
-                <source type="image/webp" srcset="${a}images/product-details/description.webp">
-                <img class="product-description__image" src="${a}images/product-details/description.jpg" loading="eager" alt="Product Description Image" fetchpriority="high">
+                <source type="image/webp" srcset="${s}images/product-details/description.webp">
+                <img class="product-description__image" src="${s}images/product-details/description.jpg" loading="eager" alt="Product Description Image" fetchpriority="high">
             </picture>
         </div>
     </div>
@@ -119,4 +119,4 @@ import{i as m,N as b,f as y,b as C,a as $,c as L,l as P}from"../../footer-Dmi4Y2
        ${e}
     </div>
 </div>
-    `},D=i=>{M(i,".product-content__card .page-container"),q(".tabs__panel-product-tabs-1",i.description),H()};document.addEventListener("DOMContentLoaded",async()=>{const e=new URLSearchParams(window.location.search).get("id"),t=await y(e);C(),$({selector:".top-header__lang"}),S(),D(t),L(),P(".lazy",{rootMargin:"200px 0px"})});
+    `},z=i=>{D(i,".product-content__card .page-container"),Z(".tabs__panel-product-tabs-1",i.description),q()};document.addEventListener("DOMContentLoaded",async()=>{const e=new URLSearchParams(window.location.search).get("id"),t=await x(e);f(),b({selector:".top-header__lang"}),B(),z(t),C(),y(".lazy",{rootMargin:"200px 0px"})});

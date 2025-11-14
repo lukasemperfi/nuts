@@ -1,0 +1,1 @@
+const a=t=>{const n=document.querySelector(t),r=n.querySelector(".banner__button"),e=n.querySelector(".banner__video");r.addEventListener("click",()=>{e.src||(e.src=e.dataset.src),n.classList.add("banner_playing"),e.play()})};export{a as i};

@@ -3,62 +3,63 @@ export const initGalleryVideo = (containerSelector) => {
   if (!container) {
     return;
   }
+  const buttons = container.querySelectorAll(
+    ".gallery-video-card__play-button"
+  );
 
-  const cards = document.querySelectorAll(".gallery-video-card");
+  const loadAndPlay = (video, card) => {
+    if (!video.src) {
+      const src = video.dataset.src;
+      if (src) {
+        video.src = src;
+      }
+    }
+    card.classList.add("gallery-video-card_playing");
+    video.play();
+  };
+  // const loadAndPlay = (video, card) => {
+  //   const showVideo = () => {
+  //     card.classList.add("gallery-video-card_playing");
+  //     video.play();
+  //   };
+
+  //   if (!video.src) {
+  //     const src = video.dataset.src;
+  //     if (src) {video.src = src};
+
+  //     video.addEventListener("loadeddata", showVideo, { once: true });
+  //   } else {
+  //     showVideo();
+  //   }
+  // };
 
   const stopVideo = (video, card) => {
+    card.classList.remove("gallery-video-card_playing");
     video.pause();
     video.currentTime = 0;
-    card.classList.remove("gallery-video-card_playing");
   };
 
-  const stopAllVideos = () => {
-    cards.forEach((card) => {
-      const video = card.querySelector(".gallery-video-card__video");
-      if (video) {
-        stopVideo(video, card);
-      }
-    });
-  };
-
-  const stopOtherVideos = (currentCard) => {
-    cards.forEach((card) => {
-      if (card !== currentCard) {
-        const video = card.querySelector(".gallery-video-card__video");
-        if (video) {
-          stopVideo(video, card);
-        }
-      }
-    });
-  };
-
-  cards.forEach((card) => {
-    const playButton = card.querySelector(".gallery-video-card__play-button");
+  const handleClick = (button, e) => {
+    const card = button.closest(".gallery-video-card");
     const video = card.querySelector(".gallery-video-card__video");
 
-    if (!playButton || !video) {
-      return;
-    }
+    const allCards = container.querySelectorAll(".gallery-video-card");
 
-    video.addEventListener("click", () => {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
+    allCards.forEach((c) => {
+      const v = c.querySelector(".gallery-video-card__video");
+
+      if (c !== card) {
+        stopVideo(v, c);
       }
     });
 
-    playButton.addEventListener("click", () => {
-      if (!video.src) {
-        video.src = video.dataset.src;
-      }
+    loadAndPlay(video, card);
+  };
 
-      card.classList.add("gallery-video-card_playing");
-      video.play();
+  const init = () =>
+    buttons.forEach((btn) =>
+      btn.addEventListener("click", (e) => handleClick(btn, e))
+    );
 
-      stopOtherVideos(card);
-    });
-  });
-
-  return { stopAllVideos };
+  init();
 };

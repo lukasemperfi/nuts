@@ -1,5 +1,6 @@
 {%from "src/widgets/gallery-list/gallery-list.html" import galleryList%}
 
+{%macro gallerySection(baseUrl)%}
 {%set items = [
 {
 id:1,
@@ -9,7 +10,8 @@ description:"В этом Году при поддержке проекта Inter
 image: {src: "/images/gallery/image-1.jpg", webpSrc: "/images/gallery/image-1.webp", alt: "Conference",
 lazyLoading: "lazy"},
 video: null,
-className: "gallery-list__item-1"
+className: "gallery-list__item-1",
+decor: false
 },
 {
 id:2,
@@ -18,7 +20,8 @@ description:"Как бывший экспедитор выращивает гр�
 image: {src: "/images/gallery/image-2.jpg", webpSrc: "/images/gallery/image-2.webp", alt: "Conference",
 lazyLoading: "lazy"},
 video: null,
-className: "gallery-list__item-2"
+className: "gallery-list__item-2",
+decor: true
 },
 {
 id:3,
@@ -27,8 +30,9 @@ description: "Вчера к нам приезжал американский а�
 получить консультацию от мировых специалистов!",
 image: {src: "/images/gallery/image-3.jpg", webpSrc: "/images/gallery/image-3.webp", alt: "Conference",
 lazyLoading: "lazy"},
-video: "/videos/gallery/video-3.mp4",
-className: "gallery-list__item-3"
+video: baseUrl + "videos/home-page/hero.mp4",
+className: "gallery-list__item-3",
+decor: false
 },
 {
 id:4,
@@ -37,7 +41,8 @@ description:"Последняя обработка горчицы , дальше
 image: {src: "/images/gallery/image-4.jpg", webpSrc: "/images/gallery/image-4.webp", alt: "Conference",
 lazyLoading: "lazy"},
 video: null,
-className: "gallery-list__item-4"
+className: "gallery-list__item-4",
+decor: false
 },
 {
 id:5,
@@ -46,7 +51,8 @@ description:"Посещение Берлинского оптового рынк
 image: {src: "/images/gallery/image-5.jpg", webpSrc: "/images/gallery/image-5.webp", alt: "Conference",
 lazyLoading: "lazy"},
 video: null,
-className: "gallery-list__item-5"
+className: "gallery-list__item-5",
+decor: false
 },
 {
 id:6,
@@ -54,12 +60,11 @@ title: null,
 description: null,
 image: {src: "/images/gallery/image-6.jpg", webpSrc: "/images/gallery/image-6.webp", alt: "Conference",
 lazyLoading: "lazy"},
-video: "/videos/gallery/video-6.mp4",
-className: "gallery-list__item-6"
+video: baseUrl + "videos/home-page/hero.mp4",
+className: "gallery-list__item-6",
+decor: false
 }
 ]%}
-
-{%macro gallerySection()%}
 <section class="gallery-section">
     <div class="page-container">
         <div class="gallery-section__top">

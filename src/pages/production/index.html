@@ -8,6 +8,7 @@
 {%from "src/pages/production/sections/owner-section/owner-section.html" import ownerSection%}
 {%from "src/widgets/stats/stats.html" import statsSection%}
 {%from "src/pages/production/sections/gallery-section/gallery-section.html" import gallerySection%}
+{%from "src/widgets/eco/eco.html" import eco%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +29,7 @@
         {{ownerSection()}}
         {{statsSection()}}
         {{gallerySection(baseUrl)}}
+        {{eco()}}
         {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}

@@ -4,7 +4,7 @@
 .gallery-section {
   background-color: var(--background-secondary);
   padding-top: functions.fluidValue(20px, 91px, 360px, 1920px);
-  padding-bottom: functions.fluidValue(20px, 91px, 360px, 1920px);
+  padding-bottom: functions.fluidValue(20px, 100px, 360px, 1920px);
 
   &__top {
     display: flex;

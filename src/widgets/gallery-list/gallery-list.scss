@@ -3,7 +3,7 @@
 
 .gallery-list {
   --gap: clamp(12px, 2vw, 30px);
-  --max-width: 1290;
+  --max-width: 1290px;
   --half-gap: calc(var(--gap) / 2);
   $bp-mobile: 768px;
   display: flex;
@@ -53,12 +53,12 @@
 
     &-1 {
       aspect-ratio: 740/556;
-      flex: 1 1 calc((740 / var(--max-width)) * 100% - var(--half-gap));
+      flex: 1 1 calc((740px / var(--max-width)) * 100% - var(--half-gap));
     }
 
     &-2 {
       aspect-ratio: 520 / 556;
-      flex: 1 1 calc((520 / var(--max-width)) * 100% - var(--half-gap));
+      flex: 1 1 calc((520px / var(--max-width)) * 100% - var(--half-gap));
     }
 
     &-3 {
@@ -91,6 +91,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
 
     &__content {
       position: relative;

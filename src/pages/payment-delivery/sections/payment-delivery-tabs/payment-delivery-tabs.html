@@ -4,6 +4,8 @@
 productPayment%}
 {%from "src/widgets/product-info-tabs/product-delivery.html" import
 productDelivery%}
+{%from "src/widgets/product-info-tabs/product-return.html" import
+productReturn%}
 
 
 {% set items = [
@@ -20,7 +22,7 @@ content: productDelivery()
 {
 label: 'Возврат товара',
 icon: icons.package(),
-content: "productPayment()"
+content: productReturn()
 }
 ]
 

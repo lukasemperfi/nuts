@@ -1,4 +1,4 @@
-import{a as f,i as b,b as C,l as y}from"../../footer-D1zYZNPL.js";import"../../main-C-BHD-zq.js";import{i as $}from"../../breadcrumbs-PefJ2uUV.js";import{i as L,N as P,f as x}from"../../navigation-AN1fBL4T.js";import{i as M}from"../../tabs-D16X6BcN.js";const B=()=>{$(".product-page-breadcrumbs__container","breadcrumbs_color_muted")};function D(i,e){if(!i||Object.keys(i).length===0){console.warn("⚠️ renderProductDetailsCard: пустой или неверный объект product");return}console.log("Rendering product details card:",i,e);const t=document.querySelector(e),s=H(i);t.innerHTML="",t.appendChild(s)}function H(i){const{product_images:e,title:t,sku:s,subtitle:p,composition:n,energy_value:l,energy_unit:_,shelf_life_days:u,storage_conditions:v,weight:g,weight_unit:w,packaging_types:T,discount_price:o,price:h,price_unit:d,product_statuses:V}=i,m=e?.sort((a,c)=>a.sort_order-c.sort_order),r=document.createElement("div");return r.className="product-details-card",r.innerHTML=`
+import{a as f,i as b,b as C,l as y}from"../../footer-D1zYZNPL.js";import"../../main-bd3KtlwD.js";import{i as $}from"../../breadcrumbs-DsceW8qT.js";import{i as L,N as P}from"../../navigation-DOgKByzg.js";import{i as x}from"../../tabs-D16X6BcN.js";import{f as M}from"../../index-65y5pHuM.js";const B=()=>{$(".product-page-breadcrumbs__container","breadcrumbs_color_muted")};function D(i,e){if(!i||Object.keys(i).length===0){console.warn("⚠️ renderProductDetailsCard: пустой или неверный объект product");return}console.log("Rendering product details card:",i,e);const t=document.querySelector(e),s=H(i);t.innerHTML="",t.appendChild(s)}function H(i){const{product_images:e,title:t,sku:s,subtitle:p,composition:n,energy_value:l,energy_unit:_,shelf_life_days:u,storage_conditions:v,weight:g,weight_unit:w,packaging_types:T,discount_price:o,price:h,price_unit:d,product_statuses:V}=i,m=e?.sort((a,c)=>a.sort_order-c.sort_order),r=document.createElement("div");return r.className="product-details-card",r.innerHTML=`
   <div class="product-details-card__col-1">
       <div class="product-details-card__image-wrapper">
           <div class="swiper product-details-card-swiper">
@@ -105,7 +105,7 @@ import{a as f,i as b,b as C,l as y}from"../../footer-D1zYZNPL.js";import"../../m
           </div>
       </div>
   </div>
-    `,S(r),r}function S(i){const e=i.querySelector(".product-details-card-swiper");return e?L(e,{slidesPerView:"auto",navigation:{nextEl:i.querySelector(".product-details-card-swiper__next"),prevEl:i.querySelector(".product-details-card-swiper__prev")},modules:[P]}):null}function q(){M(document.querySelector('[data-tabs-id="product-tabs"]'),!0)}const Z=(i,e)=>{const t=document.querySelector(i);if(!t)return;const s="/nuts/";t.innerHTML=`
+    `,S(r),r}function S(i){const e=i.querySelector(".product-details-card-swiper");return e?L(e,{slidesPerView:"auto",navigation:{nextEl:i.querySelector(".product-details-card-swiper__next"),prevEl:i.querySelector(".product-details-card-swiper__prev")},modules:[P]}):null}function q(){x(document.querySelector('[data-tabs-id="product-tabs"]'),!0)}const Z=(i,e)=>{const t=document.querySelector(i);if(!t)return;const s="/nuts/";t.innerHTML=`
     <div class="product-description">
     <div class="product-description__col-1">
         <div class="product-description__image-wrapper">
@@ -119,4 +119,4 @@ import{a as f,i as b,b as C,l as y}from"../../footer-D1zYZNPL.js";import"../../m
        ${e}
     </div>
 </div>
-    `},z=i=>{D(i,".product-content__card .page-container"),Z(".tabs__panel-product-tabs-1",i.description),q()};document.addEventListener("DOMContentLoaded",async()=>{const e=new URLSearchParams(window.location.search).get("id"),t=await x(e);f(),b({selector:".top-header__lang"}),B(),z(t),C(),y(".lazy",{rootMargin:"200px 0px"})});
+    `},z=i=>{D(i,".product-content__card .page-container"),Z(".tabs__panel-product-tabs-1",i.description),q()};document.addEventListener("DOMContentLoaded",async()=>{const e=new URLSearchParams(window.location.search).get("id"),t=await M(e);f(),b({selector:".top-header__lang"}),B(),z(t),C(),y(".lazy",{rootMargin:"200px 0px"})});

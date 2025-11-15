@@ -35,14 +35,14 @@ $bp-mobile: 999px;
 
   .info-methods {
     overflow-y: auto;
-    max-height: 460px;
+    max-height: 475px;
 
     &__title {
       font-weight: 800;
       font-size: functions.fluidValue(14px, 18px, 360px, 1920px);
       line-height: 24px;
       color: var(--foreground);
-      margin-bottom: functions.fluidValue(12px, 30px, 360px, 1920px);
+      margin-bottom: functions.fluidValue(12px, 20px, 360px, 1920px);
     }
 
     &__list {
@@ -57,7 +57,7 @@ $bp-mobile: 999px;
       display: grid;
       grid-template-rows: 1fr 1fr;
       row-gap: 8px;
-      margin-bottom: functions.fluidValue(14px, 37px, 360px, 1920px);
+      margin-bottom: functions.fluidValue(14px, 32px, 360px, 1920px);
 
       &:last-child {
         margin-bottom: 0;

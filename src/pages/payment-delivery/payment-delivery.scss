@@ -17,3 +17,7 @@
 @use "@/widgets/product-info-tabs/product-payment.scss" as *;
 @use "@/pages/payment-delivery/sections/payment-delivery-tabs/payment-delivery-tabs.scss"
   as *;
+
+.stats {
+  background-color: var(--background-secondary);
+}

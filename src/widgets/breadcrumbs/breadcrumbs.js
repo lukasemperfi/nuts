@@ -12,24 +12,22 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
     return;
   }
 
-  const mode = import.meta.env.MODE;
-
-  console.log("mode", mode);
-
-  const basePath =
-    mode === "production"
-      ? "/nuts/"
-      : import.meta.env.BASE_URL.replace(/^\/|\/$/g, "");
   const path = window.location.pathname;
   const parts = path.split("/").filter(Boolean);
 
-  if (basePath && parts[0] === basePath) {
+  const mode = import.meta.env.MODE;
+  let basePath = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
+  const normalizedBasePath = basePath.replace(/^\/|\/$/g, "");
+
+  if (parts[0] === normalizedBasePath) {
     parts.shift();
   }
 
   // console.log("basePath", basePath);
 
-  let currentPath = basePath;
+  let currentPath = normalizedBasePath;
+
+  console.log(currentPath);
 
   const arrowSvg = `
     <svg class="breadcrumbs__icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +49,7 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
 
   const html = `
         <ul class="breadcrumbs ${breadcrumbClass}">
-          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/" name="breadcrumb-link" aria-label="Главная">Главная</a></li>
+          <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="${basePath}" name="breadcrumb-link" aria-label="Главная">Главная</a></li>
           ${parts
             .map((part, index) =>
               createBreadcrumbItem(part, index === parts.length - 1)

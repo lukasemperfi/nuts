@@ -18,9 +18,13 @@
 
   .banner__description {
     font-weight: 500;
-    font-size: 25px;
+    font-size: functions.fluidValue(17px, 25px, 360px, 1920px);
     letter-spacing: 0.01em;
     text-align: center;
     color: var(--foreground-secondary);
+
+    @include mixins.respond-to(lg-sm) {
+      max-width: 80%;
+    }
   }
 }

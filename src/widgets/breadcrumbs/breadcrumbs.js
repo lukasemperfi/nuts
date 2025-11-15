@@ -3,6 +3,7 @@ const breadcrumbNames = {
   product: "Карточка товара",
   production: "О производстве",
   "payment-delivery": "Оплата и доставка",
+  gallery: "Галерея",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {

@@ -15,8 +15,8 @@
 @use "@/shared/ui/tabs/tabs.scss" as *;
 @use "@/widgets/product-info-tabs/product-payment.scss" as *;
 @use "@/pages/corporate-customers/sections/hero/hero.scss" as *;
-// @use "@/pages/corporate-customers/sections/corporate-customers-tabs/corporate-customers-tabs.scss"
-//   as *;
+@use "@/pages/corporate-customers/sections/corporate-section/corporate-section.scss"
+  as *;
 
 .stats {
   background-color: var(--background-secondary);

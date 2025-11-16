@@ -1,0 +1,68 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.corporate-section {
+  $bp-tablet: 1063px;
+
+  padding-top: functions.fluidValue(20px, 80px, 360px, 1920px);
+  .corporate-description {
+    display: flex;
+
+    @include mixins.respond-to($bp-tablet) {
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    &__title {
+      font-weight: 800;
+      font-size: 45px;
+      letter-spacing: 0.01em;
+      color: var(--foregroud);
+      flex: 1 1 410px;
+      margin-right: 111px;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(20px, 45px, 360px, 1920px);
+        margin-right: functions.fluidValue(20px, 111px, 360px, 1920px);
+      }
+
+      @include mixins.respond-to($bp-tablet) {
+        margin-right: 0;
+
+        br {
+          display: none;
+        }
+      }
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
+      line-height: 24px;
+      color: var(--foregroud);
+      flex: 1 1 770px;
+      padding-top: 13px;
+      display: flex;
+      gap: 61px;
+
+      @include mixins.respond-to(lg-sm) {
+        gap: functions.fluidValue(20px, 61px, 360px, 1920px);
+      }
+
+      @include mixins.respond-to($bp-tablet) {
+        padding-top: 0;
+      }
+
+      @include mixins.respond-to(560px) {
+        flex-direction: column;
+      }
+    }
+
+    &__text-col-1,
+    &__text-col-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+}

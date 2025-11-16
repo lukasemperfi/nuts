@@ -4,6 +4,7 @@
 {%from "src/widgets/contacts-section/contacts-section.html" import contactsSection%}
 {%from "src/widgets/footer/footer.html" import footer%}
 {%from "src/pages/corporate-customers/sections/hero/hero.html" import hero%}
+{%from "src/pages/corporate-customers/sections/corporate-section/corporate-section.html" import corporateSection%}
 {%from "src/widgets/eco/eco.html" import eco%}
 
 <!DOCTYPE html>
@@ -21,6 +22,7 @@
     {{header(baseUrl)}}
     <main>
         {{hero()}}
+        {{corporateSection()}}
         {{statsSection()}}
         {{eco(image={jpg: "/images/corporate-customers-page/eco.jpg", webp:
         "/images/corporate-customers-page/eco.webp"})}}

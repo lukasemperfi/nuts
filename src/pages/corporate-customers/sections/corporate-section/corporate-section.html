@@ -1,0 +1,52 @@
+{%from "src/shared/ui/tabs/tabs.html" import tabs%}
+{%import "src/shared/ui/icons/icons.html" as icons%}
+
+{% set items = [
+{
+label: 'Оплата заказа',
+icon: "icons.wallet()",
+content:" productPayment()"
+},
+{
+label: 'Доставка партии',
+icon: "icons.deliveryCar()",
+content: "productDelivery()"
+},
+{
+label: 'Возврат товара',
+icon: "icons.package()",
+content: "productReturn()"
+}
+]
+
+%}
+
+{%macro corporateSection()%}
+<section class="corporate-section">
+    <div class="page-container">
+        <div class="corporate-section__description corporate-description">
+            <div class="corporate-description__title">Оптовым<br>и корпоративным клиентам</div>
+            <div class="corporate-description__text">
+                <div class="corporate-description__text-col-1">
+                    <p>Сельскохозяйственный обслуживающий кооператив “Орех Причерноморья” предлагает своим клиентам
+                        выгодные
+                        условия сотрудничества.</p>
+                    <p>Особые условия подготовлены для <strong>розничных магазинов, компаний HoReCa, спорт -
+                            клубов.</strong></p>
+                </div>
+                <div class="corporate-description__text-col-2">
+                    <p>Мы готовы рассмотреть особые условия для оптовых покупателей, с готовностью идем на встречу
+                        любому
+                        предложению.</p>
+                    <p>Если вы заинтересованы в нашей продукции, пишите, или звоните в наш главный офис - мы всегда
+                        пойдем
+                        вам
+                        на встречу!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{tabs('corporate-section__tabs', items, 0)}}
+</section>
+{%endmacro%}

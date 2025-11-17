@@ -1,21 +1,64 @@
 {%from "src/shared/ui/tabs/tabs.html" import tabs%}
 {%import "src/shared/ui/icons/icons.html" as icons%}
+{%from "src/shared/ui/picture/picture.html" import picture%}
+{%from "src/shared/ui/button/button.html" import button%}
+
+{%macro tabsContent(image)%}
+<div class="product-info-card">
+    <div class="product-info-card__col-1">
+        <div class="product-info-card__text">
+            <p>СОК "Орех Причерноморья" предлагает своим клиентам выгодные условия сорудничества.</p>
+            <p>Мы готовы рассмотреть особые условия для оптовых покупателей, с готовностью идем на встречу к любому
+                предложению.
+            </p>
+            <p>
+                Особые условия подготовленны для розничных магазинов. компаний HoReCa, спорт-клубов.
+            </p>
+            <p>Если вы заинтересованы в нашей продукции, пишите или звоните в наш главный офис, мы всегда пойдем вам на
+                встречу.
+            </p>
+        </div>
+        {{button(text="Написать нам", class="button_primary button_size-lg product-info-card__btn")}}
+    </div>
+    <div class="product-info-card__col-2">
+        <div class="product-info-card__image-wrapper">
+            {{picture(image.jpg, image.webp, 'Corporate info
+            Image', 'product-info-card__image', loading="eager")}}
+        </div>
+    </div>
+</div>
+{%endmacro%}
 
 {% set items = [
 {
-label: 'Оплата заказа',
-icon: "icons.wallet()",
-content:" productPayment()"
+label: 'Крупные<br>супермаркеты',
+icon: icons.supermarket(),
+content: tabsContent({jpg:'/images/corporate-customers-page/tabs/supermarket.jpg',
+webp:'/images/corporate-customers-page/tabs/supermarket.webp'})
 },
 {
-label: 'Доставка партии',
-icon: "icons.deliveryCar()",
-content: "productDelivery()"
+label: 'Розничные<br>магазины',
+icon: icons.shop(),
+content: tabsContent({jpg:'/images/corporate-customers-page/tabs/retail.jpg',
+webp:'/images/corporate-customers-page/tabs/retail.webp'})
 },
 {
-label: 'Возврат товара',
-icon: "icons.package()",
-content: "productReturn()"
+label: 'Компании<br>HoReCa',
+icon: icons.dinnerTable(),
+content: tabsContent({jpg:'/images/corporate-customers-page/tabs/horeca.jpg',
+webp:'/images/corporate-customers-page/tabs/horeca.webp'})
+},
+{
+label: 'Фитнес<br>и спорт клубы',
+icon: icons.dumbbell(),
+content: tabsContent({jpg:'/images/corporate-customers-page/tabs/sport.jpg',
+webp:'/images/corporate-customers-page/tabs/sport.webp'})
+},
+{
+label: 'Кондитерские<br>и пекарни',
+icon: icons.cake(),
+content: tabsContent({jpg:'/images/corporate-customers-page/tabs/sweet.jpg',
+webp:'/images/corporate-customers-page/tabs/sweet.webp'})
 }
 ]
 
@@ -47,6 +90,8 @@ content: "productReturn()"
             </div>
         </div>
     </div>
-    {{tabs('corporate-section__tabs', items, 0)}}
+    <div class="corporate-section__tabs">
+        {{tabs('corporate-section-tabs', items, 0)}}
+    </div>
 </section>
 {%endmacro%}

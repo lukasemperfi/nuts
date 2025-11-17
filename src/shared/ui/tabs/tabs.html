@@ -9,7 +9,7 @@
                 {% if item.icon %}
                 <span class="tabs__nav-icon">{{ item.icon | safe }}</span>
                 {% endif %}
-                <span class="tabs__nav-label">{{ item.label }}</span>
+                <span class="tabs__nav-label">{{ item.label | safe}}</span>
             </button>
             {% endfor %}
         </div>

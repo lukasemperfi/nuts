@@ -130,11 +130,13 @@ link: "#"
     <div class="news-section-card__image-wrapper video-card">
         {{picture(news.image.src, news.image.webpSrc, news.image.alt,
         "news-section-card__img video-card__img")}}
+        {% if news.video %}
         <video class="video-card__video" data-src="{{news.video.src}}" playsinline
             aria-label="{{news.video.alt}}"></video>
         <button class="video-card__button" name="play-button" aria-label="Кнопка проигрывания видео">
             {{ icons.play() }}
         </button>
+        {% endif %}
     </div>
     <div class="news-section-card__content">
         <div class="news-section-card__date">{{news.date}}</div>

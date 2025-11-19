@@ -2,7 +2,7 @@
 {%from "src/widgets/header/mobile-menu.html" import mobileMenu%}
 {%from "src/widgets/contacts-section/contacts-section.html" import contactsSection%}
 {%from "src/widgets/footer/footer.html" import footer%}
-{%from "src/widgets/news-section/news-section.html" import newsSection%}
+
 {%from "src/pages/news/sections/news-gallery/news-gallery.html" import newsGallerySection%}
 {%from "src/pages/news/sections/breadcrumbs/breadcrumbs.html" import newsPageBreadcrumbs%}
 {%from "src/widgets/eco/eco.html" import eco%}
@@ -23,8 +23,6 @@
     <main>
         {{newsPageBreadcrumbs()}}
         {{newsGallerySection(baseUrl)}}
-
-        {{newsSection(baseUrl)}}
         {{contactsSection()}}
         {{footer(baseUrl)}}
     </main>

@@ -99,27 +99,7 @@ link: "#"
                 <div class="swiper-wrapper">
                     {% for news in newsItems %}
                     <div class="swiper-slide">
-                        <div class="news-section-card">
-                            <div class="news-section-card__image-wrapper video-card">
-                                {{picture(news.image.src, news.image.webpSrc, news.image.alt,
-                                "news-section-card__img video-card__img")}}
-                                <video class="video-card__video" data-src="{{news.video.src}}" playsinline
-                                    aria-label="{{news.video.alt}}"></video>
-                                <button class="video-card__button" name="play-button"
-                                    aria-label="Кнопка проигрывания видео">
-                                    {{ icons.play() }}
-                                </button>
-                            </div>
-                            <div class="news-section-card__content">
-                                <div class="news-section-card__date">{{news.date}}</div>
-                                <div class="news-section-card__title">{{news.title}}</div>
-                                <div class="news-section-card__description">{{news.description}}</div>
-                                <a class="news-section-card__link" href="{{news.link}}" name="news-section-card-link"
-                                    aria-label="Читать новость">Читать
-                                    {{ icons.longRightArrow('news-section-card__link-icon') }}
-                                </a>
-                            </div>
-                        </div>
+                        {{newsSectionCard(news)}}
                     </div>
                     {% endfor %}
                 </div>
@@ -142,4 +122,28 @@ link: "#"
     </div>
 </section>
 
+{%endmacro%}
+
+
+{%macro newsSectionCard(news)%}
+<div class="news-section-card {{news.class}}">
+    <div class="news-section-card__image-wrapper video-card">
+        {{picture(news.image.src, news.image.webpSrc, news.image.alt,
+        "news-section-card__img video-card__img")}}
+        <video class="video-card__video" data-src="{{news.video.src}}" playsinline
+            aria-label="{{news.video.alt}}"></video>
+        <button class="video-card__button" name="play-button" aria-label="Кнопка проигрывания видео">
+            {{ icons.play() }}
+        </button>
+    </div>
+    <div class="news-section-card__content">
+        <div class="news-section-card__date">{{news.date}}</div>
+        <div class="news-section-card__title">{{news.title | safe}}</div>
+        <div class="news-section-card__description">{{news.description | safe}}</div>
+        <a class="news-section-card__link" href="{{news.link}}" name="news-section-card-link"
+            aria-label="Читать новость">Читать
+            {{ icons.longRightArrow('news-section-card__link-icon') }}
+        </a>
+    </div>
+</div>
 {%endmacro%}

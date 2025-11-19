@@ -17,21 +17,6 @@ export const initGalleryVideo = (containerSelector) => {
     card.classList.add("gallery-video-card_playing");
     video.play();
   };
-  // const loadAndPlay = (video, card) => {
-  //   const showVideo = () => {
-  //     card.classList.add("gallery-video-card_playing");
-  //     video.play();
-  //   };
-
-  //   if (!video.src) {
-  //     const src = video.dataset.src;
-  //     if (src) {video.src = src};
-
-  //     video.addEventListener("loadeddata", showVideo, { once: true });
-  //   } else {
-  //     showVideo();
-  //   }
-  // };
 
   const stopVideo = (video, card) => {
     card.classList.remove("gallery-video-card_playing");

@@ -1,0 +1,124 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
+.one-news-content {
+  padding-top: 44px;
+
+  @include mixins.respond-to(lg-sm) {
+    padding-top: functions.fluidValue(20px, 44px, 360px, 1920px);
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 990fr 260fr;
+    gap: 40px;
+
+    @include mixins.respond-to(lg-sm) {
+      gap: functions.fluidValue(20px, 40px, 360px, 1920px);
+    }
+  }
+
+  .news-article {
+    &__header {
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 35px;
+      letter-spacing: 0.01em;
+      color: var(--foreground);
+      margin-bottom: 12px;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(18px, 32px, 360px, 1920px);
+      }
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      letter-spacing: 0.01em;
+      color: var(--foreground);
+      margin-top: 38px;
+      margin-bottom: 22px;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(15px, 28px, 360px, 1920px);
+        margin-top: functions.fluidValue(15px, 38px, 360px, 1920px);
+        margin-bottom: functions.fluidValue(15px, 22px, 360px, 1920px);
+      }
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 28px;
+      letter-spacing: 0.01em;
+      color: var(--foreground);
+      margin-top: 20px;
+      margin-bottom: 10px;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(13px, 16px, 360px, 1920px);
+        margin-top: functions.fluidValue(10px, 20px, 360px, 1920px);
+      }
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 25px;
+      color: var(--foreground);
+      margin-bottom: 13px;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-left: 17px;
+    }
+    ul li {
+      list-style: disc;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 25px;
+      color: var(--foreground);
+      padding-left: 12px;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
+      }
+
+      &::marker {
+        color: var(--border-color);
+      }
+    }
+
+    &__date {
+      font-family: var(--font-family-secondary);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 22px;
+      letter-spacing: 0.01em;
+      color: #8a8a8a;
+
+      @include mixins.respond-to(lg-sm) {
+        font-size: functions.fluidValue(11px, 15px, 360px, 1920px);
+      }
+    }
+
+    &__image {
+      margin-block: 29px;
+
+      @include mixins.respond-to(lg-sm) {
+        margin-block: functions.fluidValue(15px, 29px, 360px, 1920px);
+      }
+    }
+  }
+}

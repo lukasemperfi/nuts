@@ -149,6 +149,7 @@
       margin-block: 29px;
       aspect-ratio: 990/595;
       background-color: var(--skeleton-background);
+      position: relative;
 
       @include mixins.respond-to(lg-sm) {
         margin-block: functions.fluidValue(15px, 29px, 360px, 1920px);

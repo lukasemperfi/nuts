@@ -171,13 +171,15 @@
       align-items: center;
       gap: 8px;
 
-      &:hover {
-        color: var(--accent);
-        transition: all 0.3s ease;
-      }
-      &:hover path {
-        fill: var(--accent);
-        transition: all 0.3s ease;
+      @media (hover: hover) {
+        &:hover {
+          color: var(--accent);
+          transition: all 0.3s ease;
+        }
+        &:hover path {
+          fill: var(--accent);
+          transition: all 0.3s ease;
+        }
       }
 
       svg path {

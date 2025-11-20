@@ -13,8 +13,10 @@
     letter-spacing: 0.02em;
     padding-block: 5px;
 
-    &:not(.breadcrumbs__link_current):hover {
-      text-decoration: underline;
+    @media (hover: hover) {
+      &:not(.breadcrumbs__link_current):hover {
+        text-decoration: underline;
+      }
     }
   }
 

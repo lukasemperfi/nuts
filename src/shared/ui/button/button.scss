@@ -16,10 +16,12 @@
     border: 1.5px solid var(--background-tertiary);
     transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 
-    &:hover {
-      background-color: transparent;
-      color: var(--foreground-tertiary);
-      border: 1.5px solid var(--border-color-secondary);
+    @media (hover: hover) {
+      &:hover {
+        background-color: transparent;
+        color: var(--foreground-tertiary);
+        border: 1.5px solid var(--border-color-secondary);
+      }
     }
   }
 
@@ -29,9 +31,11 @@
     border: 1.5px solid var(--border-color-secondary);
     transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 
-    &:hover {
-      background-color: var(--background-tertiary);
-      color: var(--foreground-secondary);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--background-tertiary);
+        color: var(--foreground-secondary);
+      }
     }
   }
 

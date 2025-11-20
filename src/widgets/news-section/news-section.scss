@@ -181,12 +181,14 @@
     align-items: flex-end;
     padding-block: 5px;
 
-    &:hover {
-      color: var(--background-tertiary);
-    }
+    @media (hover: hover) {
+      &:hover {
+        color: var(--background-tertiary);
+      }
 
-    &:hover svg path {
-      fill: var(--background-tertiary);
+      &:hover svg path {
+        fill: var(--background-tertiary);
+      }
     }
   }
 }

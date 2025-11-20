@@ -336,13 +336,17 @@
       transition: transform 0.3s ease;
     }
 
-    &:hover:after {
-      transform: scaleX(1);
+    @media (hover: hover) {
+      &:hover:after {
+        transform: scaleX(1);
+      }
     }
   }
 
-  &__login:hover .auth__link:after {
-    transform: scaleX(1);
+  @media (hover: hover) {
+    &__login:hover .auth__link:after {
+      transform: scaleX(1);
+    }
   }
 
   &__login {

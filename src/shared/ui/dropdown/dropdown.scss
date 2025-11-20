@@ -105,11 +105,12 @@
       background-color: rgba(0, 0, 0, 0.08);
     }
 
-    &:hover {
-      background-color: var(--select-bg-hover);
-      color: var(--foreground-secondary);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--select-bg-hover);
+        color: var(--foreground-secondary);
+      }
     }
-
     &[aria-selected="true"] {
       background-color: var(--select-bg-hover);
     }

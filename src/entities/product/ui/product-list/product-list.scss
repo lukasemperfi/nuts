@@ -8,7 +8,7 @@
   row-gap: functions.fluidValue(12px, 49px, 360px, 1920px);
 
   @include mixins.respond-to(md) {
-    grid-template-columns: repeat(auto-fit, minmax(min(336px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(336px, 100%), 1fr));
   }
 
   @include mixins.respond-to(713px) {

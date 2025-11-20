@@ -3,7 +3,7 @@
 {%from "src/widgets/news-section/news-section.html"import newsSectionCard%}
 
 
-{%macro oneNewsContentSection()%}
+{%macro oneNewsContentSection(baseUrl)%}
 {%set newsItems = [
 {
 id: 5,
@@ -123,7 +123,7 @@ link: "#"
                     <h2>Последние публикации</h2>
                     <div class="recent-news__list">
                         {% for news in newsItems %}
-                        {{ newsSectionCard(news) }}
+                        {{ newsSectionCard(news,baseUrl) }}
                         {% endfor %}
                     </div>
 

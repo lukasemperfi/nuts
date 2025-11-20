@@ -99,7 +99,7 @@ link: "#"
                 <div class="swiper-wrapper">
                     {% for news in newsItems %}
                     <div class="swiper-slide">
-                        {{newsSectionCard(news)}}
+                        {{newsSectionCard(news, baseUrl)}}
                     </div>
                     {% endfor %}
                 </div>
@@ -125,7 +125,7 @@ link: "#"
 {%endmacro%}
 
 
-{%macro newsSectionCard(news)%}
+{%macro newsSectionCard(news, baseUrl)%}
 <div class="news-section-card {{news.class}}">
     <div class="news-section-card__image-wrapper video-card">
         {{picture(news.image.src, news.image.webpSrc, news.image.alt,
@@ -140,9 +140,9 @@ link: "#"
     </div>
     <div class="news-section-card__content">
         <div class="news-section-card__date">{{news.date}}</div>
-        <div class="news-section-card__title">{{news.title | safe}}</div>
+        <a class="news-section-card__title" href="{{baseUrl}}one-news/">{{news.title | safe}}</a>
         <div class="news-section-card__description">{{news.description | safe}}</div>
-        <a class="news-section-card__link" href="{{news.link}}" name="news-section-card-link"
+        <a class="news-section-card__link" href="{{baseUrl}}one-news/" name="news-section-card-link"
             aria-label="Читать новость">Читать
             {{ icons.longRightArrow('news-section-card__link-icon') }}
         </a>

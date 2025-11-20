@@ -89,9 +89,9 @@ link: "#"
         <div class="news-gallery__news-list">
             {% for news in newsItems %}
             {% if news.type == "secondary" %}
-            {{ newsGalleryCard(news) }}
+            {{ newsGalleryCard(news, baseUrl) }}
             {% else %}
-            {{ newsSectionCard(news) }}
+            {{ newsSectionCard(news, baseUrl) }}
             {% endif %}
             {% endfor %}
         </div>
@@ -105,7 +105,7 @@ link: "#"
 {%endmacro%}
 
 
-{%macro newsGalleryCard(news)%}
+{%macro newsGalleryCard(news, baseUrl)%}
 <div class="news-gallery-card {{news.class}}">
     {{picture(jpgSrc=news.image.src, webpSrc=news.image.webpSrc, loading=news.image.loading,
     class="news-gallery-card__image", alt=news.image.alt)}}
@@ -120,7 +120,7 @@ link: "#"
                 <path d="M38.2744 30.4999L27.5097 38.2686V22.7311L38.2744 30.4999Z" fill="white"></path>
             </svg>
         </button>
-        <div class="news-gallery-card__title">{{news.title}}</div>
+        <a class="news-gallery-card__title" href="{{ baseUrl}}one-news/">{{news.title}}</a>
         <p class="news-gallery-card__description">{{news.description | safe}}</p>
     </div>
 </div>

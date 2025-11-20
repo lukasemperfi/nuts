@@ -39,7 +39,7 @@ export const initProductFilters = () => {
 
     resetURL();
 
-    store.dispatch(productFiltersActions.resetFilters());
+    // store.dispatch(productFiltersActions.resetFilters());
     console.log("Фильтры сброшены:", filters);
   }
 
@@ -104,8 +104,9 @@ export const initProductFilters = () => {
     selector: ".filter-actions__apply-btn",
     onClick: () => {
       updateURL();
-      store.dispatch(productFiltersActions.setFilters(filters));
+      // store.dispatch(productFiltersActions.setFilters(filters));
       console.log("Applied filters:", filters);
+      location.reload();
     },
   });
 
@@ -117,6 +118,7 @@ export const initProductFilters = () => {
       desktopPriceButton.reset();
       mobilePriceButton.reset();
       resetFilters();
+      location.reload();
     },
   });
 };

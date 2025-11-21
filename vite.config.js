@@ -11,12 +11,25 @@ const outDir = "../../dist";
 function getHtmlEntries() {
   const entries = {};
   const files = glob.sync(`${pagesDir}/**/index.html`);
+
   for (const file of files) {
     const relative = file.replace(pagesDir, "").replace(/\\/g, "/");
     let name = relative.replace("/index.html", "");
-    if (name === "") name = "home";
+
+    if (name === "") {
+      name = "home";
+    }
     entries[name] = file;
   }
+
+  const file404 = glob.sync(`${pagesDir}/404.html`)[0];
+  const relative404 = file404.replace(pagesDir, "").replace(/\\/g, "/");
+  let name404 = relative404.replace(".html", "");
+
+  if (file404) {
+    entries[name404] = file404;
+  }
+
   return entries;
 }
 

@@ -121,11 +121,15 @@
 
   &_select {
     --select-border-color: rgba(0, 0, 0, 0.1);
-    $font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
+    $dropdown-border: 1px solid var(--select-border-color);
+    // $font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
+    $font-size: 14px;
+    $font-weight: 500;
+    $font-family: var(--font-family-secondary);
     display: block;
 
     .dropdown__button {
-      border: 1px solid var(--select-border-color);
+      border: $dropdown-border;
       gap: 13px;
     }
 
@@ -134,9 +138,9 @@
       top: calc(100%);
       padding: 0;
       transform: none;
-      border-left: 1px solid var(--select-border-color);
-      border-right: 1px solid var(--select-border-color);
-      border-bottom: 1px solid var(--select-border-color);
+      border-left: $dropdown-border;
+      border-right: $dropdown-border;
+      border-bottom: $dropdown-border;
 
       .dropdown__button[aria-expanded="true"] + & {
         transform: none;
@@ -147,7 +151,8 @@
       justify-content: space-between;
       padding-block: 13px;
       padding-inline: 16px;
-      font-weight: 600;
+      font-family: $font-family;
+      font-weight: $font-weight;
       font-size: $font-size;
       letter-spacing: 0.01em;
       color: var(--foreground);
@@ -163,7 +168,8 @@
     }
 
     .dropdown__option {
-      font-weight: 600;
+      font-family: $font-family;
+      font-weight: $font-weight;
       font-size: $font-size;
       letter-spacing: 0.01em;
       color: var(--foreground);

@@ -42,7 +42,7 @@
                     звонок</button>
                 {{socials()}}
                 {{promo("top-header__promo")}}
-                {{auth("top-header__auth")}}
+                {{auth("top-header__auth", baseUrl=baseUrl)}}
                 {{dropdown(name="lang", options=[{"value": "ru", "label": "Ru"}, {"value": "ua", "label": "Ua"}],
                 class="top-header__lang")}}
 
@@ -102,9 +102,9 @@
 <div class="promo {{class}}">Ваша персональная скидка - 5%</div>
 {%endmacro%}
 
-{%macro auth(class="")%}
+{%macro auth(class="", baseUrl="/")%}
 <div class="auth {{class}}">
-    <a href="#" class="auth__login" name="login" aria-label="Вход">
+    <a href="{{baseUrl}}login/" class="auth__login" name="login" aria-label="Вход">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M5.49977 5.37972C6.72278 5.37972 7.71432 4.17544 7.71432 2.68988C7.71432 1.20428 7.38879 0 5.49977 0C3.61076 0 3.28516 1.20428 3.28516 2.68988C3.28516 4.17544 4.2767 5.37972 5.49977 5.37972Z"

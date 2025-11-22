@@ -9,6 +9,7 @@ const breadcrumbNames = {
   contacts: "Контакты",
   "one-news": "Новости и статьи",
   login: "Вход",
+  "forgot-password": "Восстановление пароля",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
@@ -27,8 +28,6 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
   if (parts[0] === normalizedBasePath) {
     parts.shift();
   }
-
-  // console.log("basePath", basePath);
 
   let currentPath = normalizedBasePath;
 

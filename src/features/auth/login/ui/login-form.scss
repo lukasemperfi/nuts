@@ -1,8 +1,6 @@
 @use "@/app/styles/functions" as functions;
 @use "@/app/styles/mixins" as mixins;
 
-// functions.fluidValue(20px, 91px, 360px, 1920px)
-
 .login-form {
   display: flex;
   flex-direction: column;

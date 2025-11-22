@@ -122,7 +122,6 @@
   &_select {
     --select-border-color: rgba(0, 0, 0, 0.1);
     $dropdown-border: 1px solid var(--select-border-color);
-    // $font-size: functions.fluidValue(14px, 16px, 360px, 1920px);
     $font-size: 14px;
     $font-weight: 500;
     $font-family: var(--font-family-secondary);

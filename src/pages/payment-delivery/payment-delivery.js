@@ -5,6 +5,7 @@ import { lazyLoadElements } from "@/shared/helpers/lazy-loading/lazy-loading.js"
 import { initPageFooter } from "@/widgets/footer/footer.js";
 import { initHeroSection } from "@/pages/payment-delivery/sections/hero/hero.js";
 import { initPaymentDeliveryTabs } from "@/pages/payment-delivery/sections/payment-delivery-tabs/payment-delivery-tabs";
+import { initFormField } from "@/shared/ui/form-field/form-field";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initDropdown({ selector: ".top-header__lang" });
@@ -13,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initPaymentDeliveryTabs();
   initGoal();
   initPageFooter();
+
+  initFormField();
 
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 });

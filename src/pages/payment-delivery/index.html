@@ -4,6 +4,7 @@
 {%from "src/widgets/goal/goal.html" import goal%}
 {%from "src/widgets/contacts-section/contacts-section.html" import contactsSection%}
 {%from "src/widgets/footer/footer.html" import footer%}
+{%from "src/shared/ui/form-field/form-field.html" import formField%}
 {%from "src/pages/payment-delivery/sections/hero/hero.html" import hero%}
 {%from "src/pages/payment-delivery/sections/payment-delivery-tabs/payment-delivery-tabs.html" import
 paymentDeliveryTabs%}
@@ -23,6 +24,18 @@ paymentDeliveryTabs%}
     {{header(baseUrl)}}
     <main>
         {{hero()}}
+        <div style="padding: 100px;">
+            {{ formField("email", "Email", "", "email", "Неверный email", placeholder="Email") }}
+            {{ formField("Email", placeholder="Email", required=true) }}
+            {{ formField(
+            name='city',
+            label='Город',
+            type='text',
+            placeholder='Начните вводить название города',
+            required=true
+            ) }}
+
+        </div>
         {{paymentDeliveryTabs()}}
         {{statsSection()}}
         {{goal(baseUrl)}}

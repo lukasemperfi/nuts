@@ -2,8 +2,7 @@
 @use "@/app/styles/mixins" as mixins;
 
 .registration-form {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 
   &__title {
     font-weight: 800;
@@ -11,49 +10,50 @@
     line-height: 32px;
     letter-spacing: 0.01em;
     color: var(--foreground);
-    text-align: center;
-    margin-bottom: functions.fluidValue(20px, 44px, 360px, 1920px);
+    text-align: left;
+    margin-bottom: 20px;
   }
 
-  &__fields {
+  &__body {
+    display: grid;
+    grid-template-columns: 474px 474px;
+    justify-content: space-between;
+  }
+
+  &__col-left {
+  }
+
+  &__col-right {
+  }
+
+  &__footer {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 8px;
+    gap: 20px;
+    padding-top: 11px;
   }
 
-  &__forgot-password-link,
-  &__register-link {
-    font-family: var(--font-family-secondary);
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 32px;
-    letter-spacing: 0.01em;
-    color: var(--accent);
-    align-self: center;
+  &__group {
+    display: grid;
+    row-gap: 43px;
+  }
 
-    @include mixins.respond-to(sm) {
-      font-size: 12px;
+  .registration-form-item {
+    &__title {
+      font-family: var(--font-family-secondary);
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 32px;
+      letter-spacing: 0.01em;
+      color: var(--foreground);
+      margin-bottom: 21px;
     }
-  }
 
-  &__forgot-password-link {
-    margin-bottom: 7px;
-  }
-
-  &__register-link {
-    position: relative;
-    display: inline-flex;
-    width: fit-content;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 4px;
-      left: 0;
-      height: 1px;
-      width: 100%;
-      background-color: var(--accent);
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
+      margin-bottom: 8px;
     }
   }
 
@@ -63,6 +63,62 @@
 
     @include mixins.respond-to(sm) {
       font-size: 14px;
+    }
+  }
+
+  .registration-form-checkbox {
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+
+    &__input {
+      display: none;
+
+      &:checked + .registration-form-checkbox__label::before {
+        background-color: var(--accent);
+        border-color: var(--accent);
+        content: "✔";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--foreground-secondary);
+        font-size: 12px;
+      }
+    }
+
+    &__label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        border: 1.5px solid var(--accent);
+        display: inline-block;
+        margin-right: 8px;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 14px;
+        font-size: 12px;
+      }
+    }
+
+    &__text {
+      font-family: var(--font-family-secondary);
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 32px;
+      letter-spacing: 0.01em;
+      color: var(--muted-text);
+    }
+
+    &__link {
+      color: var(--accent);
+      font-weight: 600;
+      margin-left: 4px;
     }
   }
 }

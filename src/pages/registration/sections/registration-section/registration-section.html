@@ -1,0 +1,11 @@
+{%from "src/features/auth/registration/ui/registration-form.html" import registrationForm%}
+
+{%macro registrationSection()%}
+<section class="registration-section">
+    <div class="page-container">
+        <div class="registration-section__wrapper">
+            {{registrationForm()}}
+        </div>
+    </div>
+</section>
+{%endmacro%}

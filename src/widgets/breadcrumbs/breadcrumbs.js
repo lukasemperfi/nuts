@@ -10,6 +10,7 @@ const breadcrumbNames = {
   "one-news": "Новости и статьи",
   login: "Вход",
   "forgot-password": "Восстановление пароля",
+  registration: "Регистрация",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {

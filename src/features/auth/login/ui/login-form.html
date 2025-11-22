@@ -1,0 +1,16 @@
+{%from "src/shared/ui/form-field/form-field.html" import formField%}
+{%from "src/shared/ui/button/button.html" import button%}
+
+{%macro loginForm()%}
+<form action="" class="login-form">
+    <div class="login-form__title">Войти в личный кабинет</div>
+    <div class="login-form__fields">
+        {{ formField(name="Email", placeholder="Email", error="some error") }}
+        {{ formField(name="Password", placeholder="Пароль", error="another error message") }}
+    </div>
+    <a class="login-form__forgot-password-link" href="#" name="forgot-password" aria-label="Forgot password link">Забыли
+        пароль?</a>
+    {{button(text="Войти", class="button_primary button_size-lg login-form__submit-btn")}}
+    <a class="login-form__register-link" href="#" name="register" aria-label="Register link">Регистрация</a>
+</form>
+{%endmacro%}

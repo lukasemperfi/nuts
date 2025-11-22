@@ -10,11 +10,11 @@
     {% set finalPlaceholder = placeholder %}
     {% endif %}
 
-    <input class="form-field__input{% if error %} form-field__input--error{% endif %}" type="{{ type }}" id="{{ name }}"
+    <input class="form-field__input{% if error %} form-field__input_error{% endif %}" type="{{ type }}" id="{{ name }}"
         name="{{ name }}" value="{{ value }}" placeholder="{{ finalPlaceholder }}" autocomplete="off" data-input>
 
     {% if error %}
-    <p class="form-field__error">{{ error }}</p>
+    <span class="form-field__error">{{ error }}</span>
     {% endif %}
 </div>
 {% endmacro %}

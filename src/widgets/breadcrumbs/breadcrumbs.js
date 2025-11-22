@@ -8,6 +8,7 @@ const breadcrumbNames = {
   news: "Новости и статьи",
   contacts: "Контакты",
   "one-news": "Новости и статьи",
+  login: "Вход",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {

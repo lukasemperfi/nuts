@@ -1,8 +1,8 @@
 {%import "src/shared/ui/icons/icons.html" as icons%}
 {%from "src/shared/ui/contacts-block/contacts-block.html" import contactsBlock%}
 
-{% macro contactsSection()%}
-<section class="contacts-section">
+{% macro contactsSection(class="")%}
+<section class="contacts-section {{class}}">
     <div class="page-container">
         <div class="contacts-section__content">
             <div class="contacts-section__col-1">

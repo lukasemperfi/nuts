@@ -4,6 +4,20 @@ export function initHeader() {
   initMenu();
   initResizeHandler();
   initActiveLink(".nav-menu__link");
+
+  const authLinks = document.querySelectorAll(".auth a");
+
+  authLinks.forEach((link) => {
+    const linkPath = link.getAttribute("href").replace(/\/+$/, "");
+    const currentPath = window.location.pathname.replace(/\/+$/, "");
+
+    console.log(linkPath, currentPath);
+
+    if (linkPath === currentPath) {
+      link.classList.add("active");
+      link.addEventListener("click", (e) => e.preventDefault());
+    }
+  });
 }
 
 function initMenu() {

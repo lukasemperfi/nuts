@@ -343,6 +343,14 @@
     }
   }
 
+  a.active::after {
+    transform: scaleX(1);
+  }
+
+  .auth__login.active .auth__link:after {
+    transform: scaleX(1);
+  }
+
   &__login {
     display: flex;
     align-items: center;

@@ -1,5 +1,6 @@
 {%from "src/shared/ui/form-field/form-field.html" import formField%}
 {%from "src/shared/ui/button/button.html" import button%}
+{%from "src/shared/ui/radio/radio.html" import radio%}
 {%from "src/shared/ui/upload-photo/upload-photo.html" import uploadPhoto%}
 
 {%macro registrationForm()%}
@@ -33,6 +34,9 @@
 
         <div class="registration-form__item registration-form-item registration-form-item__avatar">
             {{uploadPhoto()}}
+            {{ radio("person-type-group", "fop-value", "ФОП", "id-fop-main", true) }}
+            {{ radio("person-type-group", "fop-1-value", "ФОП 1", "id-fop-another" ) }}
+
         </div>
 
         <div class="registration-form__group registration-form-item_legal-entity-group">

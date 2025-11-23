@@ -1,14 +1,15 @@
 export function initUploadPhoto() {
   const block = document.querySelector("[data-upload-photo]");
-  if (!block) return;
+  if (!block) {
+    return;
+  }
 
   const input = block.querySelector("[data-upload-input]");
   const preview = block.querySelector("[data-upload-preview]");
-  const label = block.querySelector("[data-upload-label]");
   const text = block.querySelector("[data-upload-text]");
   const removeBtn = block.querySelector("[data-upload-remove]");
 
-  const placeholder = "/images/auth/avatar.png";
+  const placeholder = block.dataset.placeholder;
 
   input.addEventListener("change", (e) => {
     const file = e.target.files[0];

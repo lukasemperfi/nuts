@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: subgrid;
     grid-template-areas:
-      "contacts avatar"
+      "contacts person-type"
       "address  legal-entity-group"
       "password legal-entity-group";
     grid-column: 1/3;
@@ -52,8 +52,8 @@
       grid-area: password;
       margin-bottom: 0;
     }
-    &_avatar {
-      grid-area: avatar;
+    &_person-type {
+      grid-area: person-type;
     }
     &_legal-entity-group {
       grid-area: legal-entity-group;
@@ -75,6 +75,16 @@
       flex-direction: column;
       gap: 17px;
     }
+  }
+
+  &__avatar {
+    margin-bottom: 21px;
+  }
+
+  &__person-type-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   &__submit-btn {

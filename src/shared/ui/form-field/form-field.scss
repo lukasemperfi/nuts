@@ -31,7 +31,7 @@
     box-shadow: $dropdown-border;
     font-size: 16px;
     transition: box-shadow 0.15s ease;
-    z-index: 21;
+    // z-index: 21;
 
     @include mixins.respond-to(sm) {
       font-size: 12px;

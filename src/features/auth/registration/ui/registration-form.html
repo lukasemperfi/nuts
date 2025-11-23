@@ -2,8 +2,29 @@
 {%from "src/shared/ui/button/button.html" import button%}
 {%from "src/shared/ui/radio/radio.html" import radio%}
 {%from "src/shared/ui/upload-photo/upload-photo.html" import uploadPhoto%}
+{%from "src/shared/ui/dropdown/dropdown.html" import dropdown%}
 
 {%macro registrationForm()%}
+{%set countries = [
+{"id":1,"value": "raw","label":"Сырой"},
+{"id":2,"value": "fried","label":"Жареный"},
+{"id":3,"value": "salted","label":"Соленый"},
+{"id":4,"value": "honey","label":"В меду"},
+{"id":5,"value": "shell","label":"В скорлупе"},
+{"id":6,"value": "without-additives","label":"Без добавок"}
+]
+%}
+
+{%set regions = [
+{"id":1,"value": "raw","label":"Сырой"},
+{"id":2,"value": "fried","label":"Жареный"},
+{"id":3,"value": "salted","label":"Соленый"},
+{"id":4,"value": "honey","label":"В меду"},
+{"id":5,"value": "shell","label":"В скорлупе"},
+{"id":6,"value": "without-additives","label":"Без добавок"}
+]
+%}
+
 <form action="" class="registration-form">
     <div class="registration-form__title">Регистрация</div>
     <div class="registration-form__body">
@@ -18,8 +39,13 @@
         <div class="registration-form__item registration-form-item registration-form-item_address">
             <div class="registration-form-item__title">2. Адрес</div>
             <div class="registration-form-item__fields">
-                {{ formField(name="country", placeholder="Страна") }}
-                {{ formField(name="region", placeholder="Область") }}
+                {{dropdown(name="country", options=countries,
+                class="registration-form__country-dropdown
+                dropdown_select",
+                placeholder="Страна")}}
+                {{dropdown(name="region", options=regions, class="registration-form__region-dropdown
+                dropdown_select",
+                placeholder="Область")}}
                 {{ formField(name="city", placeholder="Город", requierd=true) }}
                 {{ formField(name="address", placeholder="Адрес") }}
             </div>
@@ -32,27 +58,34 @@
             </div>
         </div>
 
-        <div class="registration-form__item registration-form-item registration-form-item__avatar">
-            {{uploadPhoto()}}
-            {{ radio("person-type-group", "fop-value", "ФОП", "id-fop-main", true) }}
-            {{ radio("person-type-group", "fop-1-value", "ФОП 1", "id-fop-another" ) }}
-
+        <div class="registration-form__item registration-form-item registration-form-item_person-type">
+            {{uploadPhoto(class="registration-form__avatar")}}
+            <div class="registration-form__person-type-group">
+                {{ radio("person-type-group", "physical", "Физ. лицо", "id-physical", true) }}
+                {{ radio("person-type-group", "fop", "ФОП", "id-fop") }}
+                {{ radio("person-type-group", "legal", "Юр. лицо", "id-legal" ) }}
+            </div>
         </div>
 
         <div class="registration-form__group registration-form-item_legal-entity-group">
             <div class="registration-form__item registration-form-item">
                 <div class="registration-form-item__title">1. Реквизиты</div>
                 <div class="registration-form-item__fields">
-                    {{ formField(name="full-name-1", placeholder="ФИО", requierd=true) }}
+                    {{ formField(name="edrpou", placeholder="ЕДРПО") }}
                 </div>
             </div>
             <div class="registration-form__item registration-form-item">
-                <div class="registration-form-item__title">2. ЕЕКК</div>
+                <div class="registration-form-item__title">2. Адрес ФОП</div>
                 <div class="registration-form-item__fields">
-                    {{ formField(name="country-1", placeholder="Страна") }}
-                    {{ formField(name="region-1", placeholder="Область") }}
-                    {{ formField(name="city-1", placeholder="Город", requierd=true) }}
-                    {{ formField(name="address-1", placeholder="Адрес") }}
+                    {{dropdown(name="fop-country", options=countries,
+                    class="registration-form__fop-country-dropdown
+                    dropdown_select",
+                    placeholder="Страна")}}
+                    {{dropdown(name="fop-region", options=regions, class="registration-form__fop-region-dropdown
+                    dropdown_select",
+                    placeholder="Область")}}
+                    {{ formField(name="fop-city", placeholder="Город", requierd=true) }}
+                    {{ formField(name="fop-address", placeholder="Адрес") }}
                 </div>
             </div>
         </div>

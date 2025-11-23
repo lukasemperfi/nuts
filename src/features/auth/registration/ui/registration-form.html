@@ -1,63 +1,67 @@
 {%from "src/shared/ui/form-field/form-field.html" import formField%}
 {%from "src/shared/ui/button/button.html" import button%}
+{%from "src/shared/ui/upload-photo/upload-photo.html" import uploadPhoto%}
 
 {%macro registrationForm()%}
 <form action="" class="registration-form">
     <div class="registration-form__title">Регистрация</div>
     <div class="registration-form__body">
-        <div class="registration-form__col-left">
-            <div class="registration-form__group">
-                <div class="registration-form__item registration-form-item">
-                    <div class="registration-form-item__title">1. Контактные данные</div>
-                    <div class="registration-form-item__fields">
-                        {{ formField(name="full-name", placeholder="ФИО", requierd=true) }}
-                        {{ formField(name="email", placeholder="Email", requierd=true) }}
-                        {{ formField(name="phone", placeholder="Телефон", requierd=true) }}
-                    </div>
-                </div>
-                <div class="registration-form__item registration-form-item">
-                    <div class="registration-form-item__title">2. Адрес</div>
-                    <div class="registration-form-item__fields">
-                        {{ formField(name="country", placeholder="Страна") }}
-                        {{ formField(name="region", placeholder="Область") }}
-                        {{ formField(name="city", placeholder="Город", requierd=true) }}
-                        {{ formField(name="address", placeholder="Адрес") }}
-                    </div>
-                </div>
-                <div class="registration-form__item registration-form-item">
-                    <div class="registration-form-item__title">3. Пароль</div>
-                    <div class="registration-form-item__fields">
-                        {{ formField(name="password", placeholder="Пароль", requierd=true) }}
-                        {{ formField(name="confirm-password", placeholder="Подтвердите пароль", requierd=true) }}
-                    </div>
-                </div>
+        <div class="registration-form__item registration-form-item registration-form-item_contacts">
+            <div class="registration-form-item__title">1. Контактные данные</div>
+            <div class="registration-form-item__fields">
+                {{ formField(name="full-name", placeholder="ФИО", requierd=true) }}
+                {{ formField(name="email", placeholder="Email", requierd=true) }}
+                {{ formField(name="phone", placeholder="Телефон", requierd=true) }}
             </div>
+        </div>
+        <div class="registration-form__item registration-form-item registration-form-item_address">
+            <div class="registration-form-item__title">2. Адрес</div>
+            <div class="registration-form-item__fields">
+                {{ formField(name="country", placeholder="Страна") }}
+                {{ formField(name="region", placeholder="Область") }}
+                {{ formField(name="city", placeholder="Город", requierd=true) }}
+                {{ formField(name="address", placeholder="Адрес") }}
+            </div>
+        </div>
+        <div class="registration-form__item registration-form-item registration-form-item_password">
+            <div class="registration-form-item__title">3. Пароль</div>
+            <div class="registration-form-item__fields">
+                {{ formField(name="password", placeholder="Пароль", requierd=true) }}
+                {{ formField(name="confirm-password", placeholder="Подтвердите пароль", requierd=true) }}
+            </div>
+        </div>
 
+        <div class="registration-form__item registration-form-item registration-form-item__avatar">
+            {{uploadPhoto()}}
         </div>
-        <div class="registration-form__col-right"></div>
-        <div class="registration-form__footer">
-            <div class="registration-form-checkbox">
-                <input type="checkbox" id="agree" class="registration-form-checkbox__input">
-                <label for="agree" class="registration-form-checkbox__label">
-                    <span class="registration-form-checkbox__text">Я согласен с <span
-                            class="registration-form-checkbox__link">Условиями регистрации</span></span>
-                </label>
+
+        <div class="registration-form__group registration-form-item_legal-entity-group">
+            <div class="registration-form__item registration-form-item">
+                <div class="registration-form-item__title">1. Реквизиты</div>
+                <div class="registration-form-item__fields">
+                    {{ formField(name="full-name-1", placeholder="ФИО", requierd=true) }}
+                </div>
             </div>
-            {{button(text="Продолжить", class="button_primary button_size-lg registration-form__submit-btn")}}
+            <div class="registration-form__item registration-form-item">
+                <div class="registration-form-item__title">2. ЕЕКК</div>
+                <div class="registration-form-item__fields">
+                    {{ formField(name="country-1", placeholder="Страна") }}
+                    {{ formField(name="region-1", placeholder="Область") }}
+                    {{ formField(name="city-1", placeholder="Город", requierd=true) }}
+                    {{ formField(name="address-1", placeholder="Адрес") }}
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="registration-form__footer">
+        <div class="registration-form-checkbox">
+            <input type="checkbox" id="agree" class="registration-form-checkbox__input">
+            <label for="agree" class="registration-form-checkbox__label">
+                <span class="registration-form-checkbox__text">Я согласен с <span
+                        class="registration-form-checkbox__link">Условиями регистрации</span></span>
+            </label>
+        </div>
+        {{button(text="Продолжить", class="button_primary button_size-lg registration-form__submit-btn")}}
     </div>
 </form>
 {%endmacro%}
-
-
-
-
-<!-- <div class="registration-form__fields">
-    {{ formField(name="Email", placeholder="Email") }}
-    {{ formField(name="Password", placeholder="Пароль") }}
-</div>
-<a class="registration-form__forgot-password-link" href="#" name="forgot-password"
-    aria-label="Forgot password link">Забыли
-    пароль?</a>
-{{button(text="Войти", class="button_primary button_size-lg registration-form__submit-btn")}}
-<a class="registration-form__register-link" href="#" name="register" aria-label="Register link">Регистрация</a> -->

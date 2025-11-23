@@ -140,6 +140,7 @@
     .dropdown__button {
       border: $dropdown-border;
       gap: 13px;
+      background-color: var(--background);
     }
 
     .dropdown__dropdown {

@@ -7,11 +7,19 @@ class Store {
     this.state = {};
     this.reducers = {};
     this.listeners = new Map();
+    this.persistConfig = {};
+
+    this.storageKey = "app_store";
   }
 
-  registerSlice(slice) {
-    this.state[slice.name] = slice.initialState;
+  registerSlice(slice, config = { persist: false, fields: null }) {
+    const persistedStore = this.loadFullStoreFromStorage();
+
+    const savedSliceState = persistedStore[slice.name];
+
+    this.state[slice.name] = savedSliceState || slice.initialState;
     this.reducers[slice.name] = slice.reducers;
+    this.persistConfig[slice.name] = config;
   }
 
   getState() {
@@ -39,7 +47,7 @@ class Store {
 
     this.state[sliceName] = newState;
 
-    console.log("From Dispatch. New State:", newState);
+    this.saveSliceToFullStorage(sliceName, newState);
 
     this.notify(sliceName, newState);
   }
@@ -50,7 +58,6 @@ class Store {
     }
 
     this.listeners.get(sliceName).add(listener);
-    console.log(`Подписана функция на событие: ${sliceName}`);
 
     const currentState = this.state[sliceName];
     if (currentState !== undefined) {
@@ -81,10 +88,43 @@ class Store {
       listener(data);
     });
   }
+
+  loadFullStoreFromStorage() {
+    const raw = localStorage.getItem(this.storageKey);
+    if (!raw) return {};
+
+    try {
+      return JSON.parse(raw);
+    } catch {
+      return {};
+    }
+  }
+
+  saveSliceToFullStorage(sliceName, sliceState) {
+    const config = this.persistConfig[sliceName];
+    if (!config?.persist) return;
+
+    const fullStore = this.loadFullStoreFromStorage();
+
+    let dataToSave = sliceState;
+
+    if (Array.isArray(config.fields)) {
+      dataToSave = {};
+      config.fields.forEach((key) => {
+        if (sliceState.hasOwnProperty(key)) {
+          dataToSave[key] = sliceState[key];
+        }
+      });
+    }
+
+    fullStore[sliceName] = dataToSave;
+
+    localStorage.setItem(this.storageKey, JSON.stringify(fullStore));
+  }
 }
 
 export const store = new Store();
 
-store.registerSlice(productsSlice);
-store.registerSlice(productFiltersSlice);
+store.registerSlice(productsSlice, { persist: true });
+store.registerSlice(productFiltersSlice, { persist: true });
 store.registerSlice(productSlice);

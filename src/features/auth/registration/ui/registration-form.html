@@ -26,16 +26,16 @@
 
 {%macro registrationForm()%}
 
-<form action="" class="registration-form">
+<form action="#" class="registration-form" id="registration-form">
     <div class="registration-form__title">Регистрация</div>
     <div class="registration-form__body">
         <div class="registration-form__item registration-form-item registration-form-item_contacts">
             <div class="registration-form-item__title">1. Контактные данные</div>
             <div class="registration-form-item__fields">
-                {{ formField(name="full-name", placeholder="ФИО", required=true)
+                {{ formField(name="full-name", placeholder="ФИО", required=true, id="registration-full-name")
                 }}
-                {{ formField(name="email", placeholder="Email", required=true) }}
-                {{ formField(name="phone", placeholder="Телефон", required=true) }}
+                {{ formField(name="email", placeholder="Email", required=true, id="registration-email") }}
+                {{ formField(name="phone", placeholder="Телефон", required=true, id="registration-phone") }}
             </div>
         </div>
         <div class="registration-form__item registration-form-item registration-form-item_address">
@@ -44,27 +44,28 @@
                 {{dropdown(name="country", options=countries,
                 class="registration-form__country-dropdown
                 dropdown_select",
-                placeholder="Страна")}}
+                placeholder="Страна", id="registration-country")}}
                 {{dropdown(name="region", options=regions, class="registration-form__region-dropdown
                 dropdown_select",
-                placeholder="Область")}}
-                {{ formField(name="city", placeholder="Город", required=true) }}
-                {{ formField(name="address", placeholder="Адрес") }}
+                placeholder="Область", id="registration-region")}}
+                {{ formField(name="city", placeholder="Город", required=true, id="registration-city") }}
+                {{ formField(name="address", placeholder="Адрес", id="registration-address") }}
             </div>
         </div>
         <div class="registration-form__item registration-form-item registration-form-item_password">
             <div class="registration-form-item__title">3. Пароль</div>
             <div class="registration-form-item__fields">
-                {{ formField(name="password", placeholder="Пароль", required=true) }}
-                {{ formField(name="confirm-password", placeholder="Подтвердите пароль", required=true) }}
+                {{ formField(name="password", placeholder="Пароль", required=true, id="registration-password") }}
+                {{ formField(name="confirm-password", placeholder="Подтвердите пароль", required=true,
+                id="registration-confirm-password") }}
             </div>
         </div>
 
         <div class="registration-form__item registration-form-item registration-form-item_person-type">
             {{uploadPhoto(class="registration-form__avatar")}}
             <div class="registration-form__person-type-group">
-                {{ radio("person-type-group", "physical", "Физ. лицо", "id-physical") }}
-                {{ radio("person-type-group", "fop", "ФОП", "id-fop", true) }}
+                {{ radio("person-type-group", "physical", "Физ. лицо", "id-physical", true) }}
+                {{ radio("person-type-group", "fop", "ФОП", "id-fop") }}
                 {{ radio("person-type-group", "legal", "Юр. лицо", "id-legal" ) }}
             </div>
         </div>
@@ -76,11 +77,12 @@
     </div>
     <div class="registration-form__footer">
         <div class="registration-form-checkbox">
-            <input type="checkbox" id="agree" class="registration-form-checkbox__input">
-            <label for="agree" class="registration-form-checkbox__label">
+            <input type="checkbox" id="registration-agree" class="registration-form-checkbox__input">
+            <label for="registration-agree" class="registration-form-checkbox__label">
                 <span class="registration-form-checkbox__text">Я согласен с <span
                         class="registration-form-checkbox__link">Условиями регистрации</span></span>
             </label>
+            <span class="registration-form-checkbox__error form-field__error"></span>
         </div>
         {{button(text="Продолжить", class="button_primary button_size-lg registration-form__submit-btn")}}
     </div>
@@ -93,7 +95,7 @@
     <div class="registration-form__item registration-form-item">
         <div class="registration-form-item__title">1. Реквизиты</div>
         <div class="registration-form-item__fields">
-            {{ formField(name="legal-entity-okpo", placeholder="ОКПО") }}
+            {{ formField(name="legal-entity-okpo", placeholder="ОКПО", id="registration-legal-entity-okpo") }}
         </div>
     </div>
     <div class="registration-form__item registration-form-item">
@@ -102,14 +104,16 @@
             {{dropdown(name="legal-entity-country", options=countries,
             class="registration-form__legal-entity-country-dropdown
             dropdown_select",
-            placeholder="Страна")}}
+            placeholder="Страна", id="registration-legal-entity-country")}}
             {{dropdown(name="legal-entity-region", options=regions,
             class="registration-form__legal-entity-region-dropdown
             dropdown_select",
-            placeholder="Область")}}
-            {{ formField(name="legal-entity-city", placeholder="Город", required=true) }}
-            {{ formField(name="legal-entity-address", placeholder="Адрес") }}
-            {{ formField(name="legal-entity-postal-code", placeholder="Индекс") }}
+            placeholder="Область", id="registration-legal-entity-region")}}
+            {{ formField(name="legal-entity-city", placeholder="Город", required=true,
+            id="registration-legal-entity-city") }}
+            {{ formField(name="legal-entity-address", placeholder="Адрес", id="registration-legal-entity-address") }}
+            {{ formField(name="legal-entity-postal-code", placeholder="Индекс",
+            id="registration-legal-entity-postal-code") }}
         </div>
     </div>
 </div>
@@ -120,7 +124,7 @@
     <div class="registration-form__item registration-form-item">
         <div class="registration-form-item__title">1. Реквизиты</div>
         <div class="registration-form-item__fields">
-            {{ formField(name="fop-edrpou", placeholder="ЕДРПО") }}
+            {{ formField(name="fop-edrpou", placeholder="ЕДРПО", id="registration-fop-edrpou") }}
         </div>
     </div>
     <div class="registration-form__item registration-form-item">
@@ -129,12 +133,12 @@
             {{dropdown(name="fop-country", options=countries,
             class="registration-form__fop-country-dropdown
             dropdown_select",
-            placeholder="Страна")}}
+            placeholder="Страна", id="registration-fop-country")}}
             {{dropdown(name="fop-region", options=regions, class="registration-form__fop-region-dropdown
             dropdown_select",
-            placeholder="Область")}}
-            {{ formField(name="fop-city", placeholder="Город", required=true) }}
-            {{ formField(name="fop-address", placeholder="Адрес") }}
+            placeholder="Область", id="registration-fop-region")}}
+            {{ formField(name="fop-city", placeholder="Город", required=true, id="registration-fop-city") }}
+            {{ formField(name="fop-address", placeholder="Адрес",id="registration-fop-address") }}
         </div>
     </div>
 </div>

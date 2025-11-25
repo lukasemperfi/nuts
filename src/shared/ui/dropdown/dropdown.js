@@ -5,6 +5,7 @@ export const initDropdown = ({ selector, onChange, defaultValues = [] }) => {
   const selectedText = select.querySelector(".dropdown__selected");
   const options = select.querySelectorAll(".dropdown__option");
   const optionsContainer = select.querySelector(".dropdown__dropdown");
+  const hiddenSelect = select.querySelector("select");
 
   let selected = [];
 
@@ -26,6 +27,16 @@ export const initDropdown = ({ selector, onChange, defaultValues = [] }) => {
       labels.length > 0
         ? labels.join(", ")
         : selectedText.dataset.placeholder || "Select...";
+
+    if (hiddenSelect) {
+      if (isMultiple) {
+        hiddenSelect.value = selected.map((opt) => opt.dataset.value);
+      } else {
+        hiddenSelect.value = selected[0]?.dataset.value || "";
+      }
+
+      hiddenSelect.dispatchEvent(new Event("change"));
+    }
   };
 
   const handleOptionClick = (option) => {

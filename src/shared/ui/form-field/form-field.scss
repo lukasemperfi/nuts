@@ -1,8 +1,6 @@
 @use "@/app/styles/functions" as functions;
 @use "@/app/styles/mixins" as mixins;
 
-// functions.fluidValue(14px, 16px, 360px, 1920px);
-
 .form-field {
   $dropdown-border-size: 0.5px;
   $dropdown-active-border-size: 1px;
@@ -29,8 +27,12 @@
     padding-block: $padding-block;
     padding-inline: $padding-inline;
     box-shadow: $dropdown-border;
-    font-size: 16px;
     transition: box-shadow 0.15s ease;
+    font-family: var(--font-family-secondary);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--foreground);
 
     @include mixins.respond-to(sm) {
       font-size: 12px;
@@ -60,14 +62,19 @@
 
     &_error {
       box-shadow: $dropdown-error-border;
+
+      &[type="checkbox"] + label::before {
+        border-color: var(--error);
+      }
     }
   }
 
   &__error {
     position: absolute;
-    bottom: -16px;
+    top: 100%;
     left: 0;
     font-size: 12px;
+    font-family: var(--font-family-secondary);
     color: var(--error);
     line-height: 1.2;
 
@@ -75,76 +82,6 @@
       font-size: 10px;
     }
   }
-
-  // &__dropdown {
-  //   box-shadow: 0 0 0 0.5px $dropdown-border-color;
-  //   position: absolute;
-  //   left: 0;
-  //   top: calc(100% + $dropdown-border-size);
-  //   padding: 0;
-  //   transform: none;
-  //   width: 100%;
-  //   display: none;
-  //   max-height: 180px;
-  //   overflow-y: auto;
-  //   z-index: 20;
-  //   background: #fff;
-
-  //   &::-webkit-scrollbar {
-  //     width: 6px;
-  //     background: rgba(0, 0, 0, 0.1);
-  //     border-radius: 50px;
-  //     box-shadow: inset 0 0 0 6px var(--background-secondary);
-  //   }
-
-  //   &::-webkit-scrollbar-thumb {
-  //     background-color: rgba(51, 125, 90, 0.1);
-  //     border-radius: 50px;
-  //     position: relative;
-  //   }
-
-  //   &-item {
-  //     font-family: var(--font-family-secondary);
-  //     font-weight: 500;
-  //     font-size: 14px;
-  //     letter-spacing: 0.01em;
-  //     color: var(--foreground);
-  //     display: flex;
-  //     justify-content: space-between;
-  //     align-items: baseline;
-  //     padding-block: $padding-block;
-  //     padding-inline: $padding-inline;
-  //     cursor: pointer;
-  //     position: relative;
-
-  //     @media (hover: hover) {
-  //       &:hover {
-  //         background-color: var(--accent);
-  //         color: var(--foreground-secondary);
-  //       }
-  //     }
-
-  //     &.active {
-  //       background-color: var(--accent);
-  //       color: var(--foreground-secondary);
-  //     }
-
-  //     &[aria-selected="true"] {
-  //       background-color: transparent;
-  //     }
-
-  //     &::after {
-  //       content: "";
-  //       position: absolute;
-  //       bottom: 0;
-  //       left: 50%;
-  //       transform: translateX(-50%);
-  //       width: calc(100% - 17px);
-  //       height: 1px;
-  //       background-color: rgba(0, 0, 0, 0.08);
-  //     }
-  //   }
-  // }
 
   &__icon-wrapper {
     position: absolute;

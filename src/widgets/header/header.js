@@ -11,8 +11,6 @@ export function initHeader() {
     const linkPath = link.getAttribute("href").replace(/\/+$/, "");
     const currentPath = window.location.pathname.replace(/\/+$/, "");
 
-    console.log(linkPath, currentPath);
-
     if (linkPath === currentPath) {
       link.classList.add("active");
       link.addEventListener("click", (e) => e.preventDefault());

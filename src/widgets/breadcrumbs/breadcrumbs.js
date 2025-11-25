@@ -32,8 +32,6 @@ export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
 
   let currentPath = normalizedBasePath;
 
-  console.log(currentPath);
-
   const arrowSvg = `
     <svg class="breadcrumbs__icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.00001 11L6.3 10.3L10.1 6.5H0V5.50002H10.1L6.3 1.7L7.00001 1.00002L12 6.00001L7.00001 11Z" fill="white" />

@@ -1,6 +1,8 @@
 {%from "src/shared/ui/icons/icons.html" import arrowDown%}
 
-{% macro dropdown(name, options, class="", placeholder="", multiple=false) %}
+{% macro dropdown(name, options, class="", placeholder="", multiple=false, id="") %}
+{% set finalId = id if id else name + "-native-select" %}
+
 <div class="dropdown {{ class }}" data-name="{{ name }}" {% if multiple %}data-multiple="true" {% endif %}>
     <button type="button" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false" name="dropdown-button">
         <span class="dropdown__selected">
@@ -22,6 +24,14 @@
         {% endfor %}
     </ul>
 
-    <input type="hidden" name="{{ name }}" value="">
+    <select name="{{ name }}" id="{{ finalId }}" {% if multiple %}multiple{% endif %} style="display:none">
+        <option value="">Please select an option</option>
+        {% for option in options %}
+        <option value="{{ option.value }}">{{ option.label }}</option>
+        {% endfor %}
+    </select>
+
+    <span class="dropdown__error">{{ error }}</span>
+
 </div>
 {% endmacro %}

@@ -1,10 +1,10 @@
 {%from "src/features/auth/login/ui/login-form.html" import loginForm%}
 
-{%macro loginSection()%}
+{%macro loginSection(baseUrl)%}
 <section class="login-section">
     <div class="page-container">
         <div class="login-section__wrapper">
-            {{loginForm()}}
+            {{loginForm(baseUrl)}}
         </div>
     </div>
 </section>

@@ -3,11 +3,13 @@ import { initHeader } from "@/widgets/header/header.js";
 import { lazyLoadElements } from "@/shared/helpers/lazy-loading/lazy-loading.js";
 import { initPageFooter } from "@/widgets/footer/footer.js";
 import { initLoginPageBreadcrumbs } from "./sections/breadcrumbs/breadcrumbs";
+import { initLoginForm } from "@/features/auth/login/ui/login-form";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initDropdown({ selector: ".top-header__lang" });
   initHeader();
   initLoginPageBreadcrumbs();
+  initLoginForm();
   initPageFooter();
 
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });

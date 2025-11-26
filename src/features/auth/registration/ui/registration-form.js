@@ -1,6 +1,11 @@
 import { initUploadPhoto } from "@/shared/ui/upload-photo/upload-photo.js";
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
-import { initRegistrationFormValidation } from "../model/validation/registration";
+import {
+  REG_FORM_SELECTORS,
+  initRegistrationFormValidation,
+} from "@/features/auth/registration/model/validation/registration";
+import { groupRegistrationData } from "@/features/auth/registration/lib/registration-data-mapper";
+import { registerUser } from "../../../../entities/auth/model/auth-slice";
 
 export const initRegistrationForm = () => {
   initUploadPhoto();
@@ -28,7 +33,18 @@ export const initRegistrationForm = () => {
   });
 
   initPersonTypeSwitcher();
-  initRegistrationFormValidation();
+
+  initRegistrationFormValidation().onSuccess(async (event) => {
+    event.preventDefault();
+
+    const form = document.querySelector(REG_FORM_SELECTORS.FORM);
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+    const finalPayload = groupRegistrationData(payload);
+
+    console.log("registration validated finalpayload:", finalPayload);
+    const signUpData = await registerUser(finalPayload);
+  });
 };
 
 function initPersonTypeSwitcher() {

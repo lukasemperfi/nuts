@@ -1,6 +1,7 @@
 import { productsSlice } from "@/entities/product/model/products-slice";
 import { productFiltersSlice } from "@/features/product-filters/model/product-filters-slice.js";
 import { productSlice } from "@/entities/product/model/product-slice.js";
+import { authSlice } from "@/entities/auth/model/auth-slice";
 
 class Store {
   constructor() {
@@ -125,6 +126,10 @@ class Store {
 
 export const store = new Store();
 
+store.registerSlice(authSlice, {
+  persist: true,
+  fields: ["session", "isAuthenticated"],
+});
 store.registerSlice(productsSlice, { persist: true });
 store.registerSlice(productFiltersSlice, { persist: true });
 store.registerSlice(productSlice);

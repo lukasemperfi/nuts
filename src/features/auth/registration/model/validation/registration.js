@@ -1,6 +1,6 @@
 import JustValidate from "just-validate";
 
-const FORM_SELECTORS = {
+export const REG_FORM_SELECTORS = {
   FORM: "#registration-form",
 
   // Common Fields
@@ -53,10 +53,11 @@ const PASSWORD_RULE = {
 const CONFIRM_PASSWORD_RULE = {
   validator: (value, fields) => {
     if (
-      fields[FORM_SELECTORS.PASSWORD] &&
-      fields[FORM_SELECTORS.PASSWORD].elem
+      fields[REG_FORM_SELECTORS.PASSWORD] &&
+      fields[REG_FORM_SELECTORS.PASSWORD].elem
     ) {
-      const repeatPasswordValue = fields[FORM_SELECTORS.PASSWORD].elem.value;
+      const repeatPasswordValue =
+        fields[REG_FORM_SELECTORS.PASSWORD].elem.value;
 
       return value === repeatPasswordValue;
     }
@@ -77,7 +78,6 @@ const FILE_RULE = [
     value: {
       files: {
         extensions: ["jpeg", "jpg", "png"],
-        // maxSize: 2000000,
         types: ["image/jpeg", "image/jpg", "image/png"],
       },
     },
@@ -105,20 +105,19 @@ const OKPO_CODE_RULE = [
   },
 ];
 
-/////////////
+///////////////////////////////////////////////////
 
 const COMMON_RULES = {
-  [FORM_SELECTORS.FULL_NAME]: [REQUIRED_RULE, FULL_NAME_RULE],
-  [FORM_SELECTORS.EMAIL]: [REQUIRED_RULE, EMAIL_RULE],
-  [FORM_SELECTORS.PHONE]: [REQUIRED_RULE, PHONE_RULE],
-  [FORM_SELECTORS.PASSWORD]: [REQUIRED_RULE, PASSWORD_RULE],
-  [FORM_SELECTORS.CONFIRM_PASSWORD]: [REQUIRED_RULE, CONFIRM_PASSWORD_RULE],
-  [FORM_SELECTORS.AGREE]: [AGREE_RULE],
-  [FORM_SELECTORS.FILE]: [...FILE_RULE],
+  [REG_FORM_SELECTORS.FULL_NAME]: [REQUIRED_RULE, FULL_NAME_RULE],
+  [REG_FORM_SELECTORS.EMAIL]: [REQUIRED_RULE, EMAIL_RULE],
+  [REG_FORM_SELECTORS.PHONE]: [REQUIRED_RULE, PHONE_RULE],
+  [REG_FORM_SELECTORS.PASSWORD]: [REQUIRED_RULE, PASSWORD_RULE],
+  [REG_FORM_SELECTORS.CONFIRM_PASSWORD]: [REQUIRED_RULE, CONFIRM_PASSWORD_RULE],
+  [REG_FORM_SELECTORS.AGREE]: [AGREE_RULE],
+  [REG_FORM_SELECTORS.FILE]: [...FILE_RULE],
 };
 
 export function initRegistrationFormValidation() {
-  const formSelector = "#registration-form";
   const validatorConfig = {
     errorFieldCssClass: "form-field__input_error",
     errorLabelCssClass: "form-field__error",
@@ -129,107 +128,11 @@ export function initRegistrationFormValidation() {
     errorLabelStyle: {},
   };
 
-  const validator = new JustValidate(formSelector, validatorConfig);
+  const validator = new JustValidate(REG_FORM_SELECTORS.FORM, validatorConfig);
 
   for (const selector in COMMON_RULES) {
     validator.addField(selector, COMMON_RULES[selector]);
   }
 
-  validator.onSuccess((event) => {
-    event.preventDefault();
-
-    const form = document.querySelector(formSelector);
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
-    const finalPayload = groupRegistrationData(payload);
-
-    // console.log(" payload:", payload);
-    console.log("registration validated finalpayload:", finalPayload);
-  });
+  return validator;
 }
-
-///Form Payload Conversion////
-const groupFieldsByPrefix = (payload, prefix, groupKey) => {
-  const groupData = {};
-  const keysToDelete = [];
-
-  for (const key in payload) {
-    if (key.startsWith(prefix)) {
-      const newKey = key.replace(prefix, "");
-
-      // *** Изменение: Пустые поля теперь сохраняются (нет проверки на payload[key] !== "") ***
-      groupData[newKey] = payload[key];
-
-      keysToDelete.push(key);
-    }
-  }
-
-  // Удаляем исходные поля с префиксом
-  keysToDelete.forEach((key) => delete payload[key]);
-
-  // *** Изменение: Вложенный объект groupKey добавляется всегда, даже если он пустой (чтобы сохранить структуру) ***
-  payload[groupKey] = groupData;
-
-  return groupData;
-};
-
-const groupRegistrationData = (payload) => {
-  const type = payload["person_type"];
-
-  // Выполняем группировку для "fop"
-  if (type === "fop") {
-    groupFieldsByPrefix(payload, "fop_", "fop");
-  }
-
-  // Выполняем группировку для "legal"
-  if (type === "legal") {
-    groupFieldsByPrefix(payload, "legal_entity_", "legal_entity");
-  }
-
-  // *** Изменение: Удален цикл, который удалял пустые поля из payload. ***
-  /* for (const key in payload) {
-    if (payload[key] === "") {
-      delete payload[key];
-    }
-  }
-  */
-
-  return payload;
-};
-
-// const DROPDOWN_CONFIGS = [
-//   {
-//     id: "#registration-country",
-//     wrapperSelector: ".registration-form__country-dropdown",
-//   },
-//   {
-//     id: "#registration-fop-country",
-//     wrapperSelector: ".registration-form__fop-country-dropdown",
-//   },
-//   {
-//     id: "#registration-legal-entity-country",
-//     wrapperSelector: ".registration-form__legal-entity-country-dropdown",
-//   },
-//   {
-//     id: "#registration-region",
-//     wrapperSelector: ".registration-form__region-dropdown",
-//   },
-// ];
-
-//     .onFail((fields) => {
-//       DROPDOWN_CONFIGS.forEach((config) => {
-//         const wrapper = document.querySelector(config.wrapperSelector);
-//         if (wrapper) {
-//           wrapper.classList.remove("dropdown_error");
-//         }
-//       });
-
-//       DROPDOWN_CONFIGS.forEach((config) => {
-//         if (fields[config.id]) {
-//           const wrapper = document.querySelector(config.wrapperSelector);
-//           if (wrapper) {
-//             wrapper.classList.add("dropdown_error");
-//           }
-//         }
-//       });
-//     })

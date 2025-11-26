@@ -5,7 +5,7 @@ import {
   initRegistrationFormValidation,
 } from "@/features/auth/registration/model/validation/registration";
 import { groupRegistrationData } from "@/features/auth/registration/lib/registration-data-mapper";
-import { registerUser } from "../../../../entities/auth/model/auth-slice";
+import { registerUser, logoutUser } from "@/entities/auth/model/auth-slice";
 
 export const initRegistrationForm = () => {
   initUploadPhoto();
@@ -44,6 +44,13 @@ export const initRegistrationForm = () => {
 
     console.log("registration validated finalpayload:", finalPayload);
     const signUpData = await registerUser(finalPayload);
+  });
+
+  const logOutButton = document.querySelector("#log-out-button");
+
+  logOutButton.addEventListener("click", async () => {
+    console.log("work");
+    await logoutUser();
   });
 };
 

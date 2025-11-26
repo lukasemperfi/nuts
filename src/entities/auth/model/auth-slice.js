@@ -1,4 +1,6 @@
+// authSlice.js
 import { store } from "@/app/store/index.js";
+import { supabase } from "@/shared/api/supabase/client.js";
 import { authApi } from "../api/auth";
 
 export const AUTH_STATUS = {
@@ -9,8 +11,9 @@ export const AUTH_STATUS = {
 };
 
 const initialState = {
+  user: null,
   session: null,
-  isAuthenticated: false,
+  isAuth: false,
   status: AUTH_STATUS.IDLE,
   error: null,
 };
@@ -25,20 +28,22 @@ export const authSlice = {
       error: null,
     }),
 
-    setRegistrationSuccess: (state, action) => ({
+    setAuth: (state, action) => ({
       ...state,
       status: AUTH_STATUS.SUCCEEDED,
       error: null,
+      user: action.payload.user,
       session: action.payload.session,
-      isAuthenticated: !!action.payload.session,
+      isAuth: !!action.payload.session,
     }),
 
     setError: (state, action) => ({
       ...state,
       status: AUTH_STATUS.FAILED,
       error: action.payload,
+      user: null,
       session: null,
-      isAuthenticated: false,
+      isAuth: false,
     }),
 
     clearError: (state) => ({
@@ -52,21 +57,17 @@ export const authSlice = {
 
 export async function registerUser(formData) {
   const currentState = store.getState().auth;
-
-  if (currentState.status === AUTH_STATUS.LOADING) {
-    return;
-  }
+  if (currentState.status === AUTH_STATUS.LOADING) return;
 
   store.dispatch({ type: "auth/setLoading" });
 
   try {
     const signUpData = await authApi.registerUser(formData);
 
-    console.log("signUpData: ", signUpData);
-
     store.dispatch({
-      type: "auth/setSession",
+      type: "auth/setAuth",
       payload: {
+        user: signUpData.user,
         session: signUpData.session,
       },
     });
@@ -80,4 +81,75 @@ export async function registerUser(formData) {
     });
     throw err;
   }
+}
+
+export async function loginUser(email, password) {
+  store.dispatch({ type: "auth/setLoading" });
+
+  try {
+    const data = await authApi.login({ email, password });
+
+    return data;
+  } catch (err) {
+    store.dispatch({
+      type: "auth/setError",
+      payload: err.message,
+    });
+    throw err;
+  }
+}
+
+export async function logoutUser() {
+  try {
+    await authApi.logout();
+  } catch (err) {
+    console.error("Logout error:", err);
+  }
+}
+
+export function initAuthListener() {
+  authApi.onAuthChange((event, session) => {
+    const current = store.getState().auth;
+
+    const isAuthEvent =
+      event === "INITIAL_SESSION" ||
+      event === "SIGNED_IN" ||
+      event === "TOKEN_REFRESHED" ||
+      event === "USER_UPDATED";
+
+    if (isAuthEvent) {
+      const user = session?.user || null;
+      console.log("event", event, "current", current);
+      const sessionChanged =
+        current.session?.access_token !== session?.access_token;
+
+      const userChanged =
+        current.user?.id !== user?.id ||
+        JSON.stringify(current.user) !== JSON.stringify(user);
+
+      if (sessionChanged || userChanged) {
+        console.log("if something changed");
+        store.dispatch({
+          type: "auth/setAuth",
+          payload: { user, session },
+        });
+      }
+
+      return;
+    }
+
+    if (event === "SIGNED_OUT") {
+      console.log("signed out event");
+      if (current.isAuthenticated) {
+        store.dispatch({ type: "auth/resetAuth" });
+        console.log("log out");
+      }
+      return;
+    }
+
+    if (event === "PASSWORD_RECOVERY") {
+      store.dispatch({ type: "auth/setPasswordRecovery" });
+      return;
+    }
+  });
 }

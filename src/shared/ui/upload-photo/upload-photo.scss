@@ -64,4 +64,18 @@
       display: flex;
     }
   }
+
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 12px;
+    font-family: var(--font-family-secondary);
+    color: var(--error);
+    line-height: 1.2;
+
+    @media (max-width: 767px) {
+      font-size: 10px;
+    }
+  }
 }

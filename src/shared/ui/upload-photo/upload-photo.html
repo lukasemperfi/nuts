@@ -1,8 +1,8 @@
 {%import "src/shared/ui/icons/icons.html" as icons%}
 
-{%macro uploadPhoto(class="",text="Загрузить фото", id="avatar-upload")%}
+{%macro uploadPhoto(class="",text="Загрузить фото", id="avatar-upload", name="upload_file")%}
 <div class="upload-photo {{class}}" data-upload-photo data-placeholder="/images/auth/avatar.png">
-    <input type="file" id="{{id}}" accept="image/*" class="upload-photo__input" data-upload-input>
+    <input type="file" id="{{id}}" accept="image/*" name="{{name}}" class="upload-photo__input" data-upload-input>
 
     <label for="{{id}}" class="upload-photo__label" data-upload-label>
         <img src="/images/auth/avatar.png" alt="" class="upload-photo__avatar" data-upload-preview>

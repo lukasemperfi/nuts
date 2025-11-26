@@ -167,6 +167,8 @@
       border-left: $dropdown-border;
       border-right: $dropdown-border;
       border-bottom: $dropdown-border;
+      max-height: 308px;
+      overflow-y: auto;
 
       .dropdown__button[aria-expanded="true"] + & {
         transform: none;
@@ -203,6 +205,10 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+
+      &:last-child::after {
+        display: none;
+      }
 
       &[aria-selected="true"] {
         background-color: transparent;

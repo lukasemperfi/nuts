@@ -32,7 +32,7 @@ export const initRegistrationForm = () => {
 };
 
 function initPersonTypeSwitcher() {
-  const radios = document.querySelectorAll('input[name="person-type-group"]');
+  const radios = document.querySelectorAll('input[name="person_type"]');
   const fop = document.querySelector(".fop-entity");
   const legal = document.querySelector(".legal-entity");
 
@@ -86,9 +86,7 @@ function initPersonTypeSwitcher() {
     radio.addEventListener("change", () => updateVisibility(radio.value));
   });
 
-  const checked = document.querySelector(
-    'input[name="person-type-group"]:checked'
-  );
+  const checked = document.querySelector('input[name="person_type"]:checked');
   if (checked) {
     updateVisibility(checked.value);
   }

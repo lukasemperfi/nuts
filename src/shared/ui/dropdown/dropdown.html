@@ -24,7 +24,8 @@
         {% endfor %}
     </ul>
 
-    <select name="{{ name }}" id="{{ finalId }}" {% if multiple %}multiple{% endif %} style="display:none">
+    <select name="{{ name }}" id="{{ finalId }}" {% if multiple %}multiple{% endif %} style="display:none"
+        autocomplete="off">
         <option value="">Please select an option</option>
         {% for option in options %}
         <option value="{{ option.value }}">{{ option.label }}</option>

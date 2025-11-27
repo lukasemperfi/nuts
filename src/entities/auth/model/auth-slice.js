@@ -1,6 +1,4 @@
-// authSlice.js
 import { store } from "@/app/store/index.js";
-import { supabase } from "@/shared/api/supabase/client.js";
 import { authApi } from "../api/auth";
 
 export const AUTH_STATUS = {
@@ -109,41 +107,27 @@ export async function logoutUser() {
 
 export function initAuthListener() {
   authApi.onAuthChange((event, session) => {
-    const current = store.getState().auth;
+    const authStore = store.getState().auth;
 
     const isAuthEvent =
       event === "INITIAL_SESSION" ||
       event === "SIGNED_IN" ||
-      event === "TOKEN_REFRESHED" ||
-      event === "USER_UPDATED";
+      event === "TOKEN_REFRESHED";
 
     if (isAuthEvent) {
-      const user = session?.user || null;
-      console.log("event", event, "current", current);
-      const sessionChanged =
-        current.session?.access_token !== session?.access_token;
-
-      const userChanged =
-        current.user?.id !== user?.id ||
-        JSON.stringify(current.user) !== JSON.stringify(user);
-
-      if (sessionChanged || userChanged) {
-        console.log("if something changed");
+      if (session && !authStore.session) {
         store.dispatch({
           type: "auth/setAuth",
-          payload: { user, session },
+          payload: { user: session.user, session },
         });
       }
-
       return;
     }
 
     if (event === "SIGNED_OUT") {
-      console.log("signed out event");
-      if (current.isAuthenticated) {
-        store.dispatch({ type: "auth/resetAuth" });
-        console.log("log out");
-      }
+      console.log("log out");
+      store.dispatch({ type: "auth/resetAuth" });
+
       return;
     }
 
@@ -153,3 +137,50 @@ export function initAuthListener() {
     }
   });
 }
+
+// export function initAuthListener() {
+//   authApi.onAuthChange((event, session) => {
+//     const current = store.getState().auth;
+
+//     const isAuthEvent =
+//       event === "INITIAL_SESSION" ||
+//       event === "SIGNED_IN" ||
+//       event === "TOKEN_REFRESHED" ||
+//       event === "USER_UPDATED";
+
+//     if (isAuthEvent) {
+//       const user = session?.user || null;
+//       console.log("event", event, "current", current);
+//       const sessionChanged =
+//         current.session?.access_token !== session?.access_token;
+
+//       const userChanged =
+//         current.user?.id !== user?.id ||
+//         JSON.stringify(current.user) !== JSON.stringify(user);
+
+//       if (sessionChanged || userChanged) {
+//         console.log("if something changed");
+//         store.dispatch({
+//           type: "auth/setAuth",
+//           payload: { user, session },
+//         });
+//       }
+
+//       return;
+//     }
+
+//     if (event === "SIGNED_OUT") {
+//       console.log("signed out event");
+//       if (current.isAuthenticated) {
+//         store.dispatch({ type: "auth/resetAuth" });
+//         console.log("log out");
+//       }
+//       return;
+//     }
+
+//     if (event === "PASSWORD_RECOVERY") {
+//       store.dispatch({ type: "auth/setPasswordRecovery" });
+//       return;
+//     }
+//   });
+// }

@@ -73,6 +73,7 @@ class Auth {
       const fileExt = upload_file.name.split(".").pop();
       const filePath = `${userId}.${fileExt}`;
 
+      //TODO: add polici into database
       const { error: uploadErr } = await supabase.storage
         .from("avatars")
         .upload(filePath, upload_file, { upsert: true });

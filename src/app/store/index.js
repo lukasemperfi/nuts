@@ -126,10 +126,7 @@ class Store {
 
 export const store = new Store();
 
-store.registerSlice(authSlice, {
-  persist: true,
-  fields: ["session", "isAuthenticated"],
-});
-store.registerSlice(productsSlice, { persist: true });
-store.registerSlice(productFiltersSlice, { persist: true });
+store.registerSlice(authSlice);
+store.registerSlice(productsSlice);
+store.registerSlice(productFiltersSlice);
 store.registerSlice(productSlice);

@@ -1,1 +1,0 @@
-import{i as a,a as e,b as o,l as r}from"../../footer-BB2FFRQs.js";import{i as n}from"../../breadcrumbs-BufmldSL.js";const t=()=>{n(".login-page-breadcrumbs__container","breadcrumbs_color_muted")};document.addEventListener("DOMContentLoaded",async()=>{a({selector:".top-header__lang"}),e(),t(),o(),r(".lazy",{rootMargin:"200px 0px"})});

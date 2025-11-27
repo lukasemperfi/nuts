@@ -1,1 +1,0 @@
-import{i as a,a as e,b as o,l as t}from"../../footer-BB2FFRQs.js";document.addEventListener("DOMContentLoaded",async()=>{a({selector:".top-header__lang"}),e(),o(),t(".lazy",{rootMargin:"200px 0px"})});

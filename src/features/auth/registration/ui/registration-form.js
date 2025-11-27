@@ -6,6 +6,13 @@ import {
 } from "@/features/auth/registration/model/validation/registration";
 import { groupRegistrationData } from "@/features/auth/registration/lib/registration-data-mapper";
 import { registerUser, logoutUser } from "@/entities/auth/model/auth-slice";
+import { createOverlaySpinner } from "@/shared/ui/overlay-spinner/overlay-spinner";
+import { store } from "@/app/store";
+import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
+import { redirect } from "@/shared/helpers/redirect";
+
+const mode = import.meta.env.MODE;
+let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
 
 export const initRegistrationForm = () => {
   initUploadPhoto();
@@ -42,7 +49,19 @@ export const initRegistrationForm = () => {
     const payload = Object.fromEntries(formData.entries());
     const finalPayload = groupRegistrationData(payload);
 
-    console.log("registration validated finalpayload:", finalPayload);
+    const overlay = createOverlaySpinner("Регистрация прошла успешно!");
+
+    store.subscribe("auth", async (newState) => {
+      if (newState.status === AUTH_STATUS.LOADING) {
+        overlay.show();
+      }
+      if (newState.status === AUTH_STATUS.SUCCEEDED) {
+        overlay.success();
+        redirect(baseUrl, 2000);
+        //TODO: clearForm
+      }
+    });
+
     const signUpData = await registerUser(finalPayload);
   });
 

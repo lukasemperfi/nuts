@@ -97,10 +97,10 @@
             <div class="registration-form-item__fields">
                 {{dropdown(name="country", options=countries,
                 class="registration-form__country-dropdown
-                dropdown_select",
+                dropdown_select dropdown_highlight-selected",
                 placeholder="Страна", id="registration-country")}}
                 {{dropdown(name="region", options=regions, class="registration-form__region-dropdown
-                dropdown_select",
+                dropdown_select dropdown_highlight-selected",
                 placeholder="Область", id="registration-region")}}
                 {{ formField(name="city", placeholder="Город", required=true, id="registration-city") }}
                 {{ formField(name="address", placeholder="Адрес", id="registration-address") }}
@@ -160,11 +160,11 @@
         <div class="registration-form-item__fields">
             {{dropdown(name="legal_entity_country", options=countries,
             class="registration-form__legal-entity-country-dropdown
-            dropdown_select",
+            dropdown_select dropdown_highlight-selected",
             placeholder="Страна", id="registration-legal-entity-country")}}
             {{dropdown(name="legal_entity_region", options=regions,
             class="registration-form__legal-entity-region-dropdown
-            dropdown_select",
+            dropdown_select dropdown_highlight-selected",
             placeholder="Область", id="registration-legal-entity-region")}}
             {{ formField(name="legal_entity_city", placeholder="Город", required=true,
             id="registration-legal-entity-city") }}
@@ -189,10 +189,10 @@
         <div class="registration-form-item__fields">
             {{dropdown(name="fop_country", options=countries,
             class="registration-form__fop-country-dropdown
-            dropdown_select",
+            dropdown_select dropdown_highlight-selected",
             placeholder="Страна", id="registration-fop-country")}}
             {{dropdown(name="fop_region", options=regions, class="registration-form__fop-region-dropdown
-            dropdown_select",
+            dropdown_select dropdown_highlight-selected",
             placeholder="Область", id="registration-fop-region")}}
             {{ formField(name="fop_city", placeholder="Город", required=true, id="registration-fop-city") }}
             {{ formField(name="fop_address", placeholder="Адрес",id="registration-fop-address") }}

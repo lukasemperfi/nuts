@@ -43,14 +43,3 @@ export function initLoginFormValidation() {
 
   return validator;
 }
-
-// .onSuccess((event) => {
-//   event.preventDefault();
-
-//   const form = document.querySelector(formSelector);
-//   const formData = new FormData(form);
-//   const payload = Object.fromEntries(formData.entries());
-
-//   // TODO: replace with an actual submit logic
-//   console.log("Login validated payload:", payload);
-// });

@@ -71,8 +71,29 @@ function initPersonTypeSwitcher() {
     });
   };
 
+  const clearCustomDropdownFormFields = (container) => {
+    if (!container) {
+      return;
+    }
+    const dropdownFields = container.querySelectorAll(".dropdown_select");
+
+    dropdownFields.forEach((dropdown) => {
+      const selected = dropdown.querySelector(".dropdown__selected");
+      const selectedOption = dropdown.querySelector(
+        '.dropdown__option[aria-selected="true"]'
+      );
+
+      selected.innerHTML = selected.dataset.placeholder;
+
+      if (selectedOption) {
+        selectedOption.removeAttribute("aria-selected");
+      }
+    });
+  };
   const clearFormFields = (container) => {
-    if (!container) return;
+    if (!container) {
+      return;
+    }
 
     const fields = container.querySelectorAll("input, select, textarea");
 
@@ -83,6 +104,8 @@ function initPersonTypeSwitcher() {
         field.value = "";
       }
     });
+
+    clearCustomDropdownFormFields(container);
   };
 
   const updateVisibility = (value) => {

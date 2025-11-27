@@ -64,13 +64,6 @@ export const initRegistrationForm = () => {
 
     const signUpData = await registerUser(finalPayload);
   });
-
-  const logOutButton = document.querySelector("#log-out-button");
-
-  logOutButton.addEventListener("click", async () => {
-    console.log("work");
-    await logoutUser();
-  });
 };
 
 function initPersonTypeSwitcher() {

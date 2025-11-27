@@ -1,4 +1,10 @@
 import { initActiveLink } from "@/shared/ui/nav-menu/nav-menu";
+import { store } from "@/app/store";
+import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
+import { logoutUser } from "@/entities/auth/model/auth-slice";
+
+const mode = import.meta.env.MODE;
+let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
 
 export function initHeader() {
   initMenu();
@@ -14,6 +20,31 @@ export function initHeader() {
     if (linkPath === currentPath) {
       link.classList.add("active");
       link.addEventListener("click", (e) => e.preventDefault());
+    }
+  });
+
+  const authBlock = document.querySelector(".top-header__auth");
+  const logOutButton = document.createElement("button");
+
+  logOutButton.textContent = "Выйти X";
+  logOutButton.style.color = "red";
+
+  logOutButton.addEventListener("click", async () => {
+    await logoutUser();
+  });
+
+  store.subscribe("auth", (newState) => {
+    if (newState.status === AUTH_STATUS.IDLE) {
+      if (authBlock.contains(logOutButton)) {
+        authBlock.removeChild(logOutButton);
+      }
+    }
+    if (newState.status === AUTH_STATUS.LOADING) {
+    }
+    if (newState.status === AUTH_STATUS.SUCCEEDED) {
+      if (!authBlock.contains(logOutButton)) {
+        authBlock.appendChild(logOutButton);
+      }
     }
   });
 }

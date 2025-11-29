@@ -78,7 +78,7 @@
 ]
 %}
 
-{%macro registrationForm()%}
+{%macro registrationForm(baseUrl)%}
 
 <form action="#" class="registration-form" id="registration-form">
     <div class="registration-form__title">Регистрация</div>
@@ -116,7 +116,7 @@
         </div>
 
         <div class="registration-form__item registration-form-item registration-form-item_person-type">
-            {{uploadPhoto(class="registration-form__avatar", id="registration__avatar-file")}}
+            {{uploadPhoto(class="registration-form__avatar", id="registration__avatar-file", baseUrl=baseUrl)}}
             <div class="registration-form__person-type-group">
                 {{ radio("person_type", "physical", "Физ. лицо", "id-physical", true) }}
                 {{ radio("person_type", "fop", "ФОП", "id-fop") }}

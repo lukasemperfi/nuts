@@ -5,13 +5,12 @@ import {
   PASSWORD_RULE,
 } from "@/shared/lib/just-validate/rules";
 
-export const LOGIN_FORM_SELECTORS = {
-  FORM: "#login-form",
-  EMAIL: "#login-email",
-  PASSWORD: "#login-password",
+export const SEND_PASSWORD_TO_EMAIL_FORM_SELECTORS = {
+  FORM: "#send-password-to-email-form",
+  EMAIL: "#send-password-to-email-form__email",
 };
 
-export function initLoginFormValidation() {
+export function initSendPasswordToEmailFormValidation() {
   const validatorConfig = {
     errorFieldCssClass: "form-field__input_error",
     errorLabelCssClass: "form-field__error",
@@ -23,13 +22,14 @@ export function initLoginFormValidation() {
   };
 
   const validator = new JustValidate(
-    LOGIN_FORM_SELECTORS.FORM,
+    SEND_PASSWORD_TO_EMAIL_FORM_SELECTORS.FORM,
     validatorConfig
   );
 
-  validator
-    .addField(LOGIN_FORM_SELECTORS.EMAIL, [REQUIRED_RULE, EMAIL_RULE])
-    .addField(LOGIN_FORM_SELECTORS.PASSWORD, [REQUIRED_RULE, PASSWORD_RULE]);
+  validator.addField(SEND_PASSWORD_TO_EMAIL_FORM_SELECTORS.EMAIL, [
+    REQUIRED_RULE,
+    EMAIL_RULE,
+  ]);
 
   return validator;
 }

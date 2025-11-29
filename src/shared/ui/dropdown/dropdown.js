@@ -1,11 +1,45 @@
-export const initDropdown = ({ selector, onChange, defaultValues = [] }) => {
+export const initDropdown = ({
+  items = null,
+  selector,
+  onChange,
+  defaultValues = [],
+  disabled = false,
+  multiple = false,
+}) => {
   const select = document.querySelector(selector);
   const isMultiple = select.dataset.multiple === "true";
   const button = select.querySelector(".dropdown__button");
   const selectedText = select.querySelector(".dropdown__selected");
-  const options = select.querySelectorAll(".dropdown__option");
-  const optionsContainer = select.querySelector(".dropdown__dropdown");
   const hiddenSelect = select.querySelector("select");
+  const optionsContainer = select.querySelector(".dropdown__dropdown");
+
+  const generateOptions = (items) => {
+    return items
+      .map(
+        (option) => `
+        <li class="dropdown__option" role="option" data-value="${option.value}">
+          <div class="dropdown__label">${option.label}</div>
+          ${multiple ? '<span class="dropdown__checkbox"></span>' : ""}
+        </li>`
+      )
+      .join("");
+  };
+
+  if (items !== null) {
+    optionsContainer.innerHTML = generateOptions(items);
+  }
+
+  let options = select.querySelectorAll(".dropdown__option");
+
+  button.disabled = disabled;
+
+  const setDisabled = (state) => {
+    if (state) {
+      button.disabled = true;
+    } else {
+      button.disabled = false;
+    }
+  };
 
   let selected = [];
 
@@ -104,7 +138,24 @@ export const initDropdown = ({ selector, onChange, defaultValues = [] }) => {
     updateSelected();
   };
 
+  const updateOptions = (newItems) => {
+    optionsContainer.innerHTML = generateOptions(newItems);
+
+    options = select.querySelectorAll(".dropdown__option");
+
+    selected = [];
+    updateSelected();
+
+    options.forEach((opt) => {
+      opt.addEventListener("click", () => {
+        handleOptionClick(opt);
+      });
+    });
+  };
+
   return {
     reset,
+    updateOptions,
+    setDisabled,
   };
 };

@@ -13,7 +13,7 @@
 
   &__button {
     appearance: none;
-    background: transparent;
+    background-color: var(--background);
     color: var(--select-text-color);
 
     font-weight: 600;
@@ -32,9 +32,15 @@
     align-items: center;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-    &:disabled {
-      opacity: 0.6;
+    &:disabled,
+    &:disabled + .dropdown__icon-wrapper .dropdown__icon {
+      opacity: 0.7;
       cursor: not-allowed;
+    }
+
+    &:disabled {
+      // background-color: var(--muted-text);
+      background-color: rgba(51, 125, 90, 0.1);
     }
 
     &[aria-expanded="true"] + .dropdown__icon-wrapper .dropdown__icon {
@@ -143,20 +149,24 @@
 
     @media (hover: hover) {
       &:hover {
-        background-color: rgba(51, 125, 90, 0.1);
-
-        .dropdown__button {
+        .dropdown__button:not(:disabled) {
           // border: 1px solid rgba(51, 125, 90, 0.1);
           // box-shadow: 0 0 0 1px rgba(51, 125, 90, 0.1);
+          background-color: rgba(51, 125, 90, 0.1);
         }
       }
+    }
+
+    &[data-multiple="true"]
+      .dropdown__option[aria-selected="true"]:not(:hover) {
+      background-color: transparent;
+      color: var(--foreground);
     }
 
     .dropdown__button {
       // border: $dropdown-border;
       box-shadow: 0 0 0 1px var(--select-border-color);
       gap: 13px;
-      background-color: var(--background);
     }
 
     .dropdown__dropdown {
@@ -201,17 +211,12 @@
       font-weight: $font-weight;
       font-size: $font-size;
       letter-spacing: 0.01em;
-      color: var(--foreground);
       display: flex;
       justify-content: space-between;
       align-items: baseline;
 
       &:last-child::after {
         display: none;
-      }
-
-      &[aria-selected="true"] {
-        background-color: transparent;
       }
     }
 
@@ -248,7 +253,7 @@
       position: relative;
 
       &::after {
-        content: "";
+        content: "✔";
         position: absolute;
         inset: 0;
         background-color: var(--accent);
@@ -256,6 +261,11 @@
         opacity: 0;
         transform: scale(0.8);
         transition: opacity 0.2s ease, transform 0.2s ease;
+        color: var(--foreground-secondary);
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
 

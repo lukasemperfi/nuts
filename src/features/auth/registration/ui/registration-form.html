@@ -4,79 +4,6 @@
 {%from "src/shared/ui/upload-photo/upload-photo.html" import uploadPhoto%}
 {%from "src/shared/ui/dropdown/dropdown.html" import dropdown%}
 
-{%set countries =[
-{ id: 1, value: "UA", label: "Украина" },
-{ id: 2, value: "AL", label: "Албания" },
-{ id: 3, value: "AD", label: "Андорра" },
-{ id: 4, value: "AT", label: "Австрия" },
-{ id: 5, value: "BE", label: "Бельгия" },
-{ id: 6, value: "BG", label: "Болгария" },
-{ id: 7, value: "HR", label: "Хорватия" },
-{ id: 8, value: "CY", label: "Кипр" },
-{ id: 9, value: "CZ", label: "Чехия" },
-{ id: 10, value: "DK", label: "Дания" },
-{ id: 11, value: "EE", label: "Эстония" },
-{ id: 12, value: "FI", label: "Финляндия" },
-{ id: 13, value: "FR", label: "Франция" },
-{ id: 14, value: "DE", label: "Германия" },
-{ id: 15, value: "GR", label: "Греция" },
-{ id: 16, value: "HU", label: "Венгрия" },
-{ id: 17, value: "IS", label: "Исландия" },
-{ id: 18, value: "IE", label: "Ирландия" },
-{ id: 19, value: "IT", label: "Италия" },
-{ id: 20, value: "LV", label: "Латвия" },
-{ id: 21, value: "LI", label: "Лихтенштейн" },
-{ id: 22, value: "LT", label: "Литва" },
-{ id: 23, value: "LU", label: "Люксембург" },
-{ id: 24, value: "MT", label: "Мальта" },
-{ id: 25, value: "MD", label: "Молдова" },
-{ id: 26, value: "MC", label: "Монако" },
-{ id: 27, value: "ME", label: "Черногория" },
-{ id: 28, value: "NL", label: "Нидерланды" },
-{ id: 29, value: "MK", label: "Северная Македония" },
-{ id: 30, value: "NO", label: "Норвегия" },
-{ id: 31, value: "PL", label: "Польша" },
-{ id: 32, value: "PT", label: "Португалия" },
-{ id: 33, value: "RO", label: "Румыния" },
-{ id: 34, value: "SM", label: "Сан-Марино" },
-{ id: 35, value: "RS", label: "Сербия" },
-{ id: 36, value: "SK", label: "Словакия" },
-{ id: 37, value: "SI", label: "Словения" },
-{ id: 38, value: "ES", label: "Испания" },
-{ id: 39, value: "SE", label: "Швеция" },
-{ id: 40, value: "CH", label: "Швейцария" },
-{ id: 41, value: "TR", label: "Турция" },
-{ id: 42, value: "VA", label: "Ватикан" }
-]
-%}
-
-{%set regions = [
-{ id: 1, value: "vinnytsia", label: "Винницкая область" },
-{ id: 2, value: "volyn", label: "Волынская область" },
-{ id: 3, value: "dnipropetrovsk", label: "Днепропетровская область" },
-{ id: 4, value: "donetsk", label: "Донецкая область" },
-{ id: 5, value: "zhytomyr", label: "Житомирская область" },
-{ id: 6, value: "zakarpattia", label: "Закарпатская область" },
-{ id: 7, value: "zaporizhzhia", label: "Запорожская область" },
-{ id: 8, value: "ivano-frankivsk", label: "Ивано-Франковская область" },
-{ id: 9, value: "kyiv-oblast", label: "Киевская область" },
-{ id: 10, value: "kirovohrad", label: "Кировоградская область" },
-{ id: 11, value: "luhansk", label: "Луганская область" },
-{ id: 12, value: "lviv", label: "Львовская область" },
-{ id: 13, value: "mykolaiv", label: "Николаевская область" },
-{ id: 14, value: "odesa", label: "Одесская область" },
-{ id: 15, value: "poltava", label: "Полтавская область" },
-{ id: 16, value: "rivne", label: "Ровненская область" },
-{ id: 17, value: "sumy", label: "Сумская область" },
-{ id: 18, value: "ternopil", label: "Тернопольская область" },
-{ id: 19, value: "kharkiv", label: "Харьковская область" },
-{ id: 20, value: "kherson", label: "Херсонская область" },
-{ id: 21, value: "khmelnytskyi", label: "Хмельницкая область" },
-{ id: 22, value: "cherkasy", label: "Черкасская область" },
-{ id: 23, value: "chernivtsi", label: "Черновицкая область" },
-{ id: 24, value: "chernihiv", label: "Черниговская область" }
-]
-%}
 
 {%macro registrationForm(baseUrl)%}
 
@@ -95,11 +22,11 @@
         <div class="registration-form__item registration-form-item registration-form-item_address">
             <div class="registration-form-item__title">2. Адрес</div>
             <div class="registration-form-item__fields">
-                {{dropdown(name="country", options=countries,
+                {{dropdown(name="country",
                 class="registration-form__country-dropdown
                 dropdown_select dropdown_highlight-selected",
                 placeholder="Страна", id="registration-country")}}
-                {{dropdown(name="region", options=regions, class="registration-form__region-dropdown
+                {{dropdown(name="region", class="registration-form__region-dropdown
                 dropdown_select dropdown_highlight-selected",
                 placeholder="Область", id="registration-region")}}
                 {{ formField(name="city", placeholder="Город", required=true, id="registration-city") }}
@@ -155,11 +82,11 @@
     <div class="registration-form__item registration-form-item">
         <div class="registration-form-item__title">2. Юридический адрес</div>
         <div class="registration-form-item__fields">
-            {{dropdown(name="legal_entity_country", options=countries,
+            {{dropdown(name="legal_entity_country",
             class="registration-form__legal-entity-country-dropdown
             dropdown_select dropdown_highlight-selected",
             placeholder="Страна", id="registration-legal-entity-country")}}
-            {{dropdown(name="legal_entity_region", options=regions,
+            {{dropdown(name="legal_entity_region",
             class="registration-form__legal-entity-region-dropdown
             dropdown_select dropdown_highlight-selected",
             placeholder="Область", id="registration-legal-entity-region")}}
@@ -184,11 +111,11 @@
     <div class="registration-form__item registration-form-item">
         <div class="registration-form-item__title">2. Адрес ФОП</div>
         <div class="registration-form-item__fields">
-            {{dropdown(name="fop_country", options=countries,
+            {{dropdown(name="fop_country",
             class="registration-form__fop-country-dropdown
             dropdown_select dropdown_highlight-selected",
             placeholder="Страна", id="registration-fop-country")}}
-            {{dropdown(name="fop_region", options=regions, class="registration-form__fop-region-dropdown
+            {{dropdown(name="fop_region", class="registration-form__fop-region-dropdown
             dropdown_select dropdown_highlight-selected",
             placeholder="Область", id="registration-fop-region")}}
             {{ formField(name="fop_city", placeholder="Город", required=true, id="registration-fop-city") }}

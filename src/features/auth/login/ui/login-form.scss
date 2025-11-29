@@ -20,6 +20,7 @@
     flex-direction: column;
     gap: 16px;
     margin-bottom: 8px;
+    position: relative;
   }
 
   &__forgot-password-link,
@@ -64,5 +65,9 @@
     @include mixins.respond-to(sm) {
       font-size: 14px;
     }
+  }
+
+  &__server-error.form-field__error {
+    background-color: blue;
   }
 }

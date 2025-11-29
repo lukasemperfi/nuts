@@ -73,6 +73,7 @@ export async function registerUser(formData) {
     return signUpData;
   } catch (err) {
     const errorMessage = err.message || "Не удалось завершить регистрацию";
+
     store.dispatch({
       type: "auth/setError",
       payload: errorMessage,

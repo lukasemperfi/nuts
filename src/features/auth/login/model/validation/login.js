@@ -1,22 +1,14 @@
 import JustValidate from "just-validate";
+import {
+  EMAIL_RULE,
+  REQUIRED_RULE,
+  PASSWORD_RULE,
+} from "@/shared/lib/just-validate/rules";
 
 export const LOGIN_FORM_SELECTORS = {
   FORM: "#login-form",
   EMAIL: "#login-email",
   PASSWORD: "#login-password",
-};
-
-////RULES/////
-const REQUIRED_RULE = {
-  rule: "required",
-  errorMessage: "Поле обязательно для заполнения",
-};
-
-const EMAIL_RULE = { rule: "email", errorMessage: "Введите корректный email" };
-
-const PASSWORD_RULE = {
-  rule: "password",
-  errorMessage: "Минимум восемь символов, одна буква и одна цифра",
 };
 
 ///////////////////////////////////////////////////
@@ -39,7 +31,7 @@ export function initLoginFormValidation() {
 
   validator
     .addField(LOGIN_FORM_SELECTORS.EMAIL, [REQUIRED_RULE, EMAIL_RULE])
-    .addField(LOGIN_FORM_SELECTORS.PASSWORD, [REQUIRED_RULE]);
+    .addField(LOGIN_FORM_SELECTORS.PASSWORD, [REQUIRED_RULE, PASSWORD_RULE]);
 
   return validator;
 }

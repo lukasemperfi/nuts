@@ -1,4 +1,3 @@
+const mode = import.meta.env.MODE;
 export const baseUrl =
-  import.meta.env.MODE === "development"
-    ? "/"
-    : import.meta.env.VITE_PROD_URL || "";
+  mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;

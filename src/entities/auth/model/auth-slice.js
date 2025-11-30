@@ -20,7 +20,7 @@ export const authSlice = {
   name: "auth",
   initialState,
   reducers: {
-    setLoading: (state) => ({
+    setLoading: (state, action) => ({
       ...state,
       status: AUTH_STATUS.LOADING,
       error: null,
@@ -122,6 +122,7 @@ export function initAuthListener() {
           payload: { user: session.user, session },
         });
       }
+
       return;
     }
 

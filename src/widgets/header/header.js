@@ -2,7 +2,6 @@ import { initActiveLink } from "@/shared/ui/nav-menu/nav-menu";
 import { store } from "@/app/store";
 import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
 import { logoutUser } from "@/entities/auth/model/auth-slice";
-import { createSpinner } from "../../shared/ui/spinner/spinner";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
@@ -13,14 +12,15 @@ export function initHeader() {
   initActiveLink(".nav-menu__link");
 
   const auth = createAuthComponent({ baseUrl });
-  const spinner = createSpinner({ size: 20 });
   const profile = createProfile({
     name: "Анатолий Лукьяненко",
     items: [
       { label: "Профиль", href: "/profile/" },
       {
         label: "Выйти",
-        onClick: () => console.log("Logout clicked"),
+        onClick: async () => {
+          await logoutUser();
+        },
         className: "logout",
       },
     ],
@@ -31,16 +31,17 @@ export function initHeader() {
   const renderHeaderUI = (state) => {
     authContainer.innerHTML = "";
 
-    profile.mount(authContainer);
     if (state.status === AUTH_STATUS.LOADING) {
-    } else if (!state.isAuth && state.status === AUTH_STATUS.IDLE) {
-      // auth.mount(authContainer);
-    } else if (state.isAuth && state.status === AUTH_STATUS.SUCCEEDED) {
-      // profile.mount(authContainer);
+      // authContainer.innerHTML = "Loading...";
+    }
+
+    if (!state.isAuth && state.status === AUTH_STATUS.IDLE) {
+      auth.mount(authContainer);
+    }
+    if (state.isAuth && state.status === AUTH_STATUS.SUCCEEDED) {
+      profile.mount(authContainer);
     }
   };
-
-  renderHeaderUI(store.getState().auth);
 
   store.subscribe("auth", (newState) => {
     renderHeaderUI(newState);

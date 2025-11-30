@@ -63,11 +63,18 @@ export const initDropdown = ({
         : selectedText.dataset.placeholder || "Select...";
 
     if (hiddenSelect) {
-      if (isMultiple) {
-        hiddenSelect.value = selected.map((opt) => opt.dataset.value);
-      } else {
-        hiddenSelect.value = selected[0]?.dataset.value || "";
-      }
+      // hiddenSelect.innerHTML = "";
+      options.forEach((opt) => {
+        const value = opt.dataset.value;
+        const label = opt.querySelector(".dropdown__label").textContent.trim();
+        const optionEl = document.createElement("option");
+        optionEl.value = value;
+        optionEl.textContent = label;
+        if (opt.getAttribute("aria-selected") === "true") {
+          optionEl.selected = true;
+        }
+        hiddenSelect.appendChild(optionEl);
+      });
 
       hiddenSelect.dispatchEvent(new Event("change"));
     }

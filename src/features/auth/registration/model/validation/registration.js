@@ -7,9 +7,9 @@ export const REG_FORM_SELECTORS = {
   FULL_NAME: "#registration-full-name",
   EMAIL: "#registration-email",
   PHONE: "#registration-phone",
-  // COUNTRY: "#registration-country",
-  // REGION_NAME: "#registration-region",
-  // CITY_NAME: "#registration-city",
+  COUNTRY: "#registration-country",
+  REGION: "#registration-region",
+  CITY: "#registration-city",
   PASSWORD: "#registration-password",
   CONFIRM_PASSWORD: "#registration-confirm-password",
   AGREE: "#registration-agree",
@@ -18,11 +18,13 @@ export const REG_FORM_SELECTORS = {
   //  FOP Fields
   FOP_EDRPOU: "#registration-fop-edrpou",
   FOP_COUNTRY: "#registration-fop-country",
+  FOP_REGION: "#registration-fop-region",
   FOP_CITY: "#registration-fop-city",
 
   // Legal Entity Field
   LEGAL_OKPO: "#registration-legal-entity-okpo",
   LEGAL_COUNTRY: "#registration-legal-entity-country",
+  LEGAL_REGION: "#registration-legal-entity-region",
   LEGAL_CITY: "#registration-legal-entity-city",
 };
 
@@ -111,6 +113,9 @@ const COMMON_RULES = {
   [REG_FORM_SELECTORS.FULL_NAME]: [REQUIRED_RULE, FULL_NAME_RULE],
   [REG_FORM_SELECTORS.EMAIL]: [REQUIRED_RULE, EMAIL_RULE],
   [REG_FORM_SELECTORS.PHONE]: [REQUIRED_RULE, PHONE_RULE],
+  [REG_FORM_SELECTORS.COUNTRY]: [REQUIRED_RULE],
+  [REG_FORM_SELECTORS.REGION]: [REQUIRED_RULE],
+  [REG_FORM_SELECTORS.CITY]: [REQUIRED_RULE],
   [REG_FORM_SELECTORS.PASSWORD]: [REQUIRED_RULE, PASSWORD_RULE],
   [REG_FORM_SELECTORS.CONFIRM_PASSWORD]: [REQUIRED_RULE, CONFIRM_PASSWORD_RULE],
   [REG_FORM_SELECTORS.AGREE]: [AGREE_RULE],

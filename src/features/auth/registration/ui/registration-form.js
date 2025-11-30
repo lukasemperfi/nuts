@@ -10,6 +10,7 @@ import { createOverlaySpinner } from "@/shared/ui/overlay-spinner/overlay-spinne
 import { store } from "@/app/store";
 import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
 import { redirect } from "@/shared/helpers/redirect";
+import { REQUIRED_RULE } from "../../../../shared/lib/just-validate/rules";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
@@ -224,6 +225,32 @@ const regionsByCountry = {
 };
 
 export const initRegistrationForm = () => {
+  const registrationValidator = initRegistrationFormValidation().onSuccess(
+    async (event) => {
+      event.preventDefault();
+
+      const form = document.querySelector(REG_FORM_SELECTORS.FORM);
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      const finalPayload = groupRegistrationData(payload);
+
+      const overlay = createOverlaySpinner("Регистрация прошла успешно!");
+
+      store.subscribe("auth", async (newState) => {
+        if (newState.status === AUTH_STATUS.LOADING) {
+          overlay.show();
+        }
+        if (newState.status === AUTH_STATUS.SUCCEEDED) {
+          overlay.success();
+          redirect(baseUrl, 2000);
+          //TODO: clearForm
+        }
+      });
+
+      const signUpData = await registerUser(finalPayload);
+    }
+  );
+
   initUploadPhoto();
 
   const regionDropdown = initDropdown({
@@ -235,7 +262,13 @@ export const initRegistrationForm = () => {
     selector: ".registration-form__country-dropdown",
     items: countries,
     onChange: (type, value) => {
-      updateDependentDropdown(value, regionDropdown, regionsByCountry);
+      updateDependentDropdown(
+        value,
+        regionDropdown,
+        regionsByCountry,
+        registrationValidator,
+        REG_FORM_SELECTORS.REGION
+      );
     },
   });
 
@@ -248,7 +281,13 @@ export const initRegistrationForm = () => {
     selector: ".registration-form__fop-country-dropdown",
     items: countries,
     onChange: (type, value) => {
-      updateDependentDropdown(value, fopRegionDropdown, regionsByCountry);
+      updateDependentDropdown(
+        value,
+        fopRegionDropdown,
+        regionsByCountry,
+        registrationValidator,
+        REG_FORM_SELECTORS.FOP_REGION
+      );
     },
   });
 
@@ -264,39 +303,16 @@ export const initRegistrationForm = () => {
       updateDependentDropdown(
         value,
         legalEntityRegionDropdown,
-        regionsByCountry
+        regionsByCountry,
+        REG_FORM_SELECTORS.LEGAL_REGION
       );
     },
   });
 
-  initPersonTypeSwitcher();
-
-  initRegistrationFormValidation().onSuccess(async (event) => {
-    event.preventDefault();
-
-    const form = document.querySelector(REG_FORM_SELECTORS.FORM);
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
-    const finalPayload = groupRegistrationData(payload);
-
-    const overlay = createOverlaySpinner("Регистрация прошла успешно!");
-
-    store.subscribe("auth", async (newState) => {
-      if (newState.status === AUTH_STATUS.LOADING) {
-        overlay.show();
-      }
-      if (newState.status === AUTH_STATUS.SUCCEEDED) {
-        overlay.success();
-        redirect(baseUrl, 2000);
-        //TODO: clearForm
-      }
-    });
-
-    const signUpData = await registerUser(finalPayload);
-  });
+  initPersonTypeSwitcher(registrationValidator);
 };
 
-function initPersonTypeSwitcher() {
+function initPersonTypeSwitcher(validator) {
   const radios = document.querySelectorAll('input[name="person_type"]');
   const fop = document.querySelector(".fop-entity");
   const legal = document.querySelector(".legal-entity");
@@ -350,9 +366,20 @@ function initPersonTypeSwitcher() {
     clearCustomDropdownFormFields(container);
   };
 
+  let prevValue = "";
+
   const updateVisibility = (value) => {
     clearFormFields(fop);
     clearFormFields(legal);
+    console.log("current", prevValue);
+
+    if (prevValue === "fop") {
+      removeFopValidationFields(validator);
+    }
+
+    if (prevValue === "legal") {
+      removeLegalValidationFields(validator);
+    }
 
     toggleFieldsDisabled(fop, true);
     toggleFieldsDisabled(legal, true);
@@ -360,14 +387,20 @@ function initPersonTypeSwitcher() {
     fop.classList.add("hidden");
     legal.classList.add("hidden");
 
+    console.log("value", value);
+
     if (value === "fop") {
       fop.classList.remove("hidden");
       toggleFieldsDisabled(fop, false);
+      addFopValidationFields(validator);
     }
     if (value === "legal") {
       legal.classList.remove("hidden");
       toggleFieldsDisabled(legal, false);
+      addLegalValidationFields(validator);
     }
+
+    prevValue = value;
   };
 
   radios.forEach((radio) => {
@@ -380,7 +413,13 @@ function initPersonTypeSwitcher() {
   }
 }
 
-function updateDependentDropdown(value, targetDropdown, dataMap) {
+function updateDependentDropdown(
+  value,
+  targetDropdown,
+  dataMap,
+  validator,
+  validateField
+) {
   const options = dataMap[value] || [];
 
   targetDropdown.updateOptions(options);
@@ -390,4 +429,52 @@ function updateDependentDropdown(value, targetDropdown, dataMap) {
   } else {
     targetDropdown.setDisabled(true);
   }
+}
+
+function addFopValidationFields(validator) {
+  const fields = [
+    [REG_FORM_SELECTORS.FOP_COUNTRY, [REQUIRED_RULE]],
+    [REG_FORM_SELECTORS.FOP_REGION, [REQUIRED_RULE]],
+    [REG_FORM_SELECTORS.FOP_CITY, [REQUIRED_RULE]],
+  ];
+
+  fields.forEach((field) => {
+    validator.addField(field[0], field[1]);
+  });
+}
+
+function removeFopValidationFields(validator) {
+  const fields = [
+    REG_FORM_SELECTORS.FOP_COUNTRY,
+    REG_FORM_SELECTORS.FOP_REGION,
+    REG_FORM_SELECTORS.FOP_CITY,
+  ];
+
+  fields.forEach((field) => {
+    validator.removeField(field);
+  });
+}
+
+function addLegalValidationFields(validator) {
+  const fields = [
+    [REG_FORM_SELECTORS.LEGAL_COUNTRY, [REQUIRED_RULE]],
+    [REG_FORM_SELECTORS.LEGAL_REGION, [REQUIRED_RULE]],
+    [REG_FORM_SELECTORS.LEGAL_CITY, [REQUIRED_RULE]],
+  ];
+
+  fields.forEach((field) => {
+    validator.addField(field[0], field[1]);
+  });
+}
+
+function removeLegalValidationFields(validator) {
+  const fields = [
+    REG_FORM_SELECTORS.LEGAL_COUNTRY,
+    REG_FORM_SELECTORS.LEGAL_REGION,
+    REG_FORM_SELECTORS.LEGAL_CITY,
+  ];
+
+  fields.forEach((field) => {
+    validator.removeField(field);
+  });
 }

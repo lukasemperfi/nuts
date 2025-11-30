@@ -163,12 +163,6 @@
       color: var(--foreground);
     }
 
-    .dropdown__button {
-      // border: $dropdown-border;
-      box-shadow: 0 0 0 1px var(--select-border-color);
-      gap: 13px;
-    }
-
     .dropdown__dropdown {
       width: 100%;
       top: calc(100%);
@@ -194,6 +188,8 @@
       font-size: $font-size;
       letter-spacing: 0.01em;
       color: var(--foreground);
+      box-shadow: 0 0 0 1px var(--select-border-color);
+      gap: 13px;
 
       &[aria-expanded="true"] {
         // border: 1.5px solid var(--accent);
@@ -204,6 +200,10 @@
         transform: translate(0) rotateX(180deg);
         transition: all 0.3s ease;
       }
+    }
+
+    &:has(select.form-field__input_error) .dropdown__button {
+      box-shadow: 0 0 0 1px var(--error);
     }
 
     .dropdown__option {
@@ -253,7 +253,7 @@
       position: relative;
 
       &::after {
-        content: "✔";
+        content: "";
         position: absolute;
         inset: 0;
         background-color: var(--accent);

@@ -476,3 +476,74 @@
     }
   }
 }
+
+.profile-button {
+  anchor-name: --profile-button;
+}
+
+.profile-menu {
+  position-anchor: --profile-button;
+
+  position: absolute;
+  inset: auto;
+  top: anchor(bottom);
+  right: anchor(right);
+  margin-block-start: 6px;
+
+  padding: 8px 0;
+  background: var(--background);
+  border: 1px solid var(--skeleton-background);
+  border-radius: 10px;
+  font-family: var(--font-family-primary);
+
+  opacity: 0;
+  transition: display 0.3s, opacity 0.3s;
+  transition-behavior: allow-discrete;
+
+  &:popover-open {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--foreground);
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--skeleton-background);
+    }
+
+    &:hover {
+      background: var(--light-green);
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--foreground);
+    width: 100%;
+    display: block;
+    font-weight: 600;
+  }
+
+  .logout {
+    color: #ef3d3d;
+    font-weight: 600;
+  }
+}

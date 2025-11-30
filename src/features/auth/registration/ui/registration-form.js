@@ -371,7 +371,6 @@ function initPersonTypeSwitcher(validator) {
   const updateVisibility = (value) => {
     clearFormFields(fop);
     clearFormFields(legal);
-    console.log("current", prevValue);
 
     if (prevValue === "fop") {
       removeFopValidationFields(validator);
@@ -386,8 +385,6 @@ function initPersonTypeSwitcher(validator) {
 
     fop.classList.add("hidden");
     legal.classList.add("hidden");
-
-    console.log("value", value);
 
     if (value === "fop") {
       fop.classList.remove("hidden");

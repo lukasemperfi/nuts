@@ -89,6 +89,35 @@ class Products {
 
     return data;
   };
+
+  getProductsByIds = async (ids = []) => {
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return [];
+    }
+
+    const { data: products, error } = await supabase
+      .from("products")
+      .select(
+        `
+        *,
+        product_images (*),
+        product_flavors!inner (
+          flavor_id,
+          flavors!inner (*)
+        ),
+        packaging_types (*),
+        product_statuses (*)
+      `
+      )
+      .in("id", ids);
+
+    if (error) {
+      console.error("Ошибка при получении продуктов по ID:", error.message);
+      return [];
+    }
+
+    return products;
+  };
 }
 
 export const productsApi = new Products();

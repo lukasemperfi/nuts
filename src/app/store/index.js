@@ -2,6 +2,7 @@ import { productsSlice } from "@/entities/product/model/products-slice";
 import { productFiltersSlice } from "@/features/product-filters/model/product-filters-slice.js";
 import { productSlice } from "@/entities/product/model/product-slice.js";
 import { authSlice } from "@/entities/auth/model/auth-slice";
+import { cartSlice } from "@/features/cart/model/cart-slice";
 
 class Store {
   constructor() {
@@ -15,10 +16,16 @@ class Store {
 
   registerSlice(slice, config = { persist: false, fields: null }) {
     const persistedStore = this.loadFullStoreFromStorage();
-
     const savedSliceState = persistedStore[slice.name];
 
-    this.state[slice.name] = savedSliceState || slice.initialState;
+    const mergedState = savedSliceState
+      ? {
+          ...slice.initialState,
+          ...savedSliceState,
+        }
+      : slice.initialState;
+
+    this.state[slice.name] = mergedState;
     this.reducers[slice.name] = slice.reducers;
     this.persistConfig[slice.name] = config;
   }
@@ -127,6 +134,7 @@ class Store {
 export const store = new Store();
 
 store.registerSlice(authSlice);
+store.registerSlice(cartSlice, { persist: true, fields: ["items"] });
 store.registerSlice(productsSlice);
 store.registerSlice(productFiltersSlice);
 store.registerSlice(productSlice);

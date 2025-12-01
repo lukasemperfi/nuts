@@ -13,6 +13,10 @@ const initialState = {
   status: PRODUCTS_STATUS.IDLE,
   error: null,
   lastFetched: null,
+
+  cachedProducts: [],
+  cachedStatus: "idle",
+  cachedError: null,
 };
 
 export const productsSlice = {
@@ -41,6 +45,23 @@ export const productsSlice = {
       error: null,
     }),
     reset: () => initialState,
+
+    setCachedLoading: (state) => ({
+      ...state,
+      cachedStatus: PRODUCTS_STATUS.LOADING,
+      cachedError: null,
+    }),
+    setCachedProducts: (state, action) => ({
+      ...state,
+      cachedProducts: action.payload,
+      cachedStatus: PRODUCTS_STATUS.SUCCEEDED,
+      cachedError: null,
+    }),
+    setCachedError: (state, action) => ({
+      ...state,
+      cachedStatus: PRODUCTS_STATUS.FAILED,
+      cachedError: action.payload,
+    }),
   },
 };
 
@@ -73,6 +94,36 @@ export async function fetchProducts(filters) {
       type: "products/setError",
       payload: errorMessage,
     });
+    throw err;
+  }
+}
+
+export async function fetchProductsWithCache(ids = []) {
+  const state = store.getState().products;
+
+  const cachedIds = state.cachedProducts.map((p) => p.id);
+  const idsToFetch = ids.filter((id) => !cachedIds.includes(id));
+  const alreadyCached = state.cachedProducts.filter((p) => ids.includes(p.id));
+
+  if (idsToFetch.length === 0) {
+    return alreadyCached;
+  }
+
+  store.dispatch({ type: "products/setCachedLoading" });
+
+  try {
+    const products = await productsApi.getProductsByIds(idsToFetch);
+    const updatedCache = [...alreadyCached, ...products];
+
+    store.dispatch({
+      type: "products/setCachedProducts",
+      payload: updatedCache,
+    });
+
+    return updatedCache;
+  } catch (err) {
+    const errorMessage = err.message || "Unknown error";
+    store.dispatch({ type: "products/setCachedError", payload: errorMessage });
     throw err;
   }
 }

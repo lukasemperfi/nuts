@@ -1,0 +1,125 @@
+import { store } from "@/app/store/index.js";
+
+export const CART_STATUS = {
+  IDLE: "idle",
+  LOADING: "loading",
+  SUCCEEDED: "succeeded",
+  FAILED: "failed",
+};
+
+const initialState = {
+  items: [],
+  status: CART_STATUS.IDLE,
+  error: null,
+  lastFetched: null,
+};
+
+export const cartSlice = {
+  name: "cart",
+  initialState,
+  reducers: {
+    addItem: (state, action) => {
+      const productId = action.payload.productId;
+      const existing = state.items.find((item) => item.productId === productId);
+
+      if (existing) {
+        return {
+          ...state,
+          items: state.items.map((item) =>
+            item.productId === productId
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        };
+      }
+
+      return {
+        ...state,
+        items: [...state.items, { productId, quantity: 1 }],
+      };
+    },
+
+    removeItem: (state, action) => {
+      const productId = action.payload.productId;
+
+      return {
+        ...state,
+        items: state.items.filter((i) => i.productId !== productId),
+      };
+    },
+
+    incrementQuantity: (state, action) => {
+      const productId = action.payload.productId;
+      const existing = state.items.find((i) => i.productId === productId);
+
+      if (existing) {
+        return {
+          ...state,
+          items: state.items.map((i) =>
+            i.productId === productId ? { ...i, quantity: i.quantity + 1 } : i
+          ),
+        };
+      }
+
+      return {
+        ...state,
+        items: [...state.items, { productId, quantity: 1 }],
+      };
+    },
+
+    decrementQuantity: (state, action) => {
+      const productId = action.payload.productId;
+      const existing = state.items.find((i) => i.productId === productId);
+
+      if (!existing) {
+        return state;
+      }
+
+      if (existing.quantity <= 1) {
+        return {
+          ...state,
+          items: state.items.filter((i) => i.productId !== productId),
+        };
+      }
+
+      return {
+        ...state,
+        items: state.items.map((i) =>
+          i.productId === productId ? { ...i, quantity: i.quantity - 1 } : i
+        ),
+      };
+    },
+
+    setQuantity: (state, action) => {
+      const { productId, quantity } = action.payload;
+
+      if (quantity <= 0) {
+        return {
+          ...state,
+          items: state.items.filter((item) => item.productId !== productId),
+        };
+      }
+
+      const existing = state.items.find((i) => i.productId === productId);
+
+      if (existing) {
+        return {
+          ...state,
+          items: state.items.map((item) =>
+            item.productId === productId ? { ...item, quantity } : item
+          ),
+        };
+      }
+
+      return {
+        ...state,
+        items: [...state.items, { productId, quantity }],
+      };
+    },
+
+    resetCart: () => initialState,
+  },
+};
+
+export const selectCartProductIds = (state) =>
+  state.items.map((i) => i.productId);

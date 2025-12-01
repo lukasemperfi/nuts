@@ -29,7 +29,6 @@ export async function initHeader() {
 
   const authContainer = document.querySelector(".top-header__auth");
   const isAuth = await getSession();
-  // let firstCallSkipped = false;
 
   if (isAuth) {
     auth.mount(authContainer);
@@ -39,10 +38,6 @@ export async function initHeader() {
 
   const renderHeaderUI = (state) => {
     authContainer.innerHTML = "";
-
-    if (state.status === AUTH_STATUS.LOADING) {
-      // authContainer.innerHTML = "Loading...";
-    }
 
     if (!state.isAuth && state.status === AUTH_STATUS.IDLE) {
       auth.mount(authContainer);

@@ -1,10 +1,46 @@
 {%macro cartSection()%}
-<section class="cart-section" style="display: flex; gap: 20px;">
-    <button style="background-color: antiquewhite;" id="get-cart-items">get cart items</button>
-    <button style="background-color: antiquewhite;" id="add-to-cart">add to cart</button>
-    <button style="background-color: antiquewhite;" id="delete-from-cart">delete from cart</button>
-
-    <button style="background-color: rgb(182, 228, 75);" id="increment">increment</button>
-    <button style="background-color: rgb(238, 151, 140);" id="decrement">decrement</button>
+<section class="cart-section" style="margin-block: 50px;">
+    <div class="cart-section__page-container page-container">
+        {{table()}}
+    </div>
 </section>
+{%endmacro%}
+
+
+{%macro table()%}
+
+<div class="grid-table" role="table" aria-label="Products">
+    <div class="grid-table__head" role="rowgroup">
+        <div class="grid-table__row grid-table__row_head" role="row">
+            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Product</div>
+            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Category</div>
+            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Price
+            </div>
+            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Stock</div>
+        </div>
+    </div>
+    <div class="grid-table__body" role="rowgroup">
+        <div class="grid-table__row" role="row" tabindex="0">
+            <div class="grid-table__cell" role="cell">Wireless mouse</div>
+            <div class="grid-table__cell" role="cell">Accessories</div>
+            <div class="grid-table__cell" role="cell">$29.99</div>
+            <div class="grid-table__cell" role="cell">In stock</div>
+        </div>
+
+        <div class="grid-table__row" role="row" tabindex="0">
+            <div class="grid-table__cell" role="cell">Mechanical keyboard</div>
+            <div class="grid-table__cell" role="cell">Accessories</div>
+            <div class="grid-table__cell" role="cell">$89.00</div>
+            <div class="grid-table__cell" role="cell">Low stock</div>
+        </div>
+
+        <div class="grid-table__row" role="row" tabindex="0">
+            <div class="grid-table__cell" role="cell">USB-C hub</div>
+            <div class="grid-table__cell" role="cell">Peripherals</div>
+            <div class="grid-table__cell" role="cell">$49.50</div>
+            <div class="grid-table__cell" role="cell">Out of stock</div>
+        </div>
+    </div>
+</div>
+
 {%endmacro%}

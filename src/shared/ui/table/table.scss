@@ -1,0 +1,50 @@
+.grid-table {
+  display: block;
+  width: 100%;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background 0.15s ease;
+
+    &_head {
+      //   position: sticky;
+      //   top: 0;
+      //   z-index: 2;
+
+      background-color: var(--background-secondary);
+    }
+
+    &:focus {
+      outline: 3px solid #96c8ff;
+      outline-offset: 2px;
+    }
+
+    &:hover:not(.grid-table__row_head) {
+      background-color: var(--light-green);
+    }
+  }
+
+  &__cell {
+    font-family: var(--font-family-secondary);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    color: var(--foreground);
+    padding: 0.25rem 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &_head {
+      font-family: var(--font-family-primary);
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+}

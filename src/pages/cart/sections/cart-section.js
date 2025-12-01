@@ -1,57 +1,61 @@
-import { store } from "@/app/store";
-import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
-import { selectCartProductIds } from "../../../features/cart/model/cart-slice";
+import { GridTable } from "@/shared/ui/table/table";
 
-export const initCartSection = () => {
-  const add = document.querySelector("#add-to-cart");
-  const get = document.querySelector("#get-cart-items");
-  const deleteItem = document.querySelector("#delete-from-cart");
+export const initCartSection = () => {};
 
-  const increment = document.querySelector("#increment");
-  const decrement = document.querySelector("#decrement");
+// import { store } from "@/app/store";
+// import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
+// import { selectCartProductIds } from "../../../features/cart/model/cart-slice";
 
-  store.subscribe("cart", async (newState) => {
-    const ids = selectCartProductIds(newState);
-    const cartProducts = await fetchProductsWithCache(ids);
-    console.log("cartProducts", cartProducts);
-  });
+// export const initCartSection = () => {
+//   const add = document.querySelector("#add-to-cart");
+//   const get = document.querySelector("#get-cart-items");
+//   const deleteItem = document.querySelector("#delete-from-cart");
 
-  add.addEventListener("click", () => {
-    console.log("add");
-    store.dispatch({
-      type: "cart/addItem",
-      payload: { productId: 2 },
-    });
-  });
+//   const increment = document.querySelector("#increment");
+//   const decrement = document.querySelector("#decrement");
 
-  get.addEventListener("click", () => {
-    console.log("get");
-  });
+//   store.subscribe("cart", async (newState) => {
+//     const ids = selectCartProductIds(newState);
+//     const cartProducts = await fetchProductsWithCache(ids);
+//     console.log("cartProducts", cartProducts);
+//   });
 
-  deleteItem.addEventListener("click", () => {
-    console.log("delete");
+//   add.addEventListener("click", () => {
+//     console.log("add");
+//     store.dispatch({
+//       type: "cart/addItem",
+//       payload: { productId: 2 },
+//     });
+//   });
 
-    store.dispatch({
-      type: "cart/removeItem",
-      payload: { productId: "555" },
-    });
-  });
+//   get.addEventListener("click", () => {
+//     console.log("get");
+//   });
 
-  increment.addEventListener("click", () => {
-    console.log("increment");
+//   deleteItem.addEventListener("click", () => {
+//     console.log("delete");
 
-    store.dispatch({
-      type: "cart/incrementQuantity",
-      payload: { productId: "555" },
-    });
-  });
+//     store.dispatch({
+//       type: "cart/removeItem",
+//       payload: { productId: "555" },
+//     });
+//   });
 
-  decrement.addEventListener("click", () => {
-    console.log("decrement");
+//   increment.addEventListener("click", () => {
+//     console.log("increment");
 
-    store.dispatch({
-      type: "cart/decrementQuantity",
-      payload: { productId: "555" },
-    });
-  });
-};
+//     store.dispatch({
+//       type: "cart/incrementQuantity",
+//       payload: { productId: "555" },
+//     });
+//   });
+
+//   decrement.addEventListener("click", () => {
+//     console.log("decrement");
+
+//     store.dispatch({
+//       type: "cart/decrementQuantity",
+//       payload: { productId: "555" },
+//     });
+//   });
+// };

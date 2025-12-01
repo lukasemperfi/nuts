@@ -2,11 +2,12 @@ import { initActiveLink } from "@/shared/ui/nav-menu/nav-menu";
 import { store } from "@/app/store";
 import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
 import { logoutUser } from "@/entities/auth/model/auth-slice";
+import { getSession } from "@/app/providers/auth-guard";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
 
-export function initHeader() {
+export async function initHeader() {
   initMenu();
   initResizeHandler();
   initActiveLink(".nav-menu__link");
@@ -27,6 +28,14 @@ export function initHeader() {
   });
 
   const authContainer = document.querySelector(".top-header__auth");
+  const isAuth = await getSession();
+  // let firstCallSkipped = false;
+
+  if (isAuth) {
+    auth.mount(authContainer);
+  } else {
+    profile.mount(authContainer);
+  }
 
   const renderHeaderUI = (state) => {
     authContainer.innerHTML = "";
@@ -44,6 +53,7 @@ export function initHeader() {
   };
 
   store.subscribe("auth", (newState) => {
+    console.log("dfg");
     renderHeaderUI(newState);
   });
 }

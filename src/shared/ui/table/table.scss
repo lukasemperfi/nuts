@@ -1,31 +1,45 @@
-.grid-table {
-  display: block;
+.table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
   width: 100%;
 
+  &__head,
+  &__body {
+    display: contents;
+  }
+
   &__row {
-    display: grid;
-    grid-template-columns: 2fr 1.5fr 1fr 1fr;
-    gap: 1rem;
     align-items: center;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-block: 14px;
+    padding-inline: 16px;
+    border-bottom: 1px solid var(--light-gray);
     transition: background 0.15s ease;
 
-    &_head {
-      //   position: sticky;
-      //   top: 0;
-      //   z-index: 2;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 /5;
 
+    &_head {
+      padding-block: 17px;
       background-color: var(--background-secondary);
+      border-bottom: none;
     }
 
     &:focus {
-      outline: 3px solid #96c8ff;
-      outline-offset: 2px;
+      outline: 1px solid var(--border-color);
+      outline-offset: 0px;
+      background-color: var(--light-green);
+
+      .quantity__input {
+        border: 1px solid var(--border-color);
+      }
     }
 
-    &:hover:not(.grid-table__row_head) {
-      background-color: var(--light-green);
+    @media (hover: hover) {
+      &:hover:not(.table__row_head) {
+        background-color: var(--light-green);
+      }
     }
   }
 
@@ -35,16 +49,52 @@
     font-size: 14px;
     line-height: 32px;
     color: var(--foreground);
-    padding: 0.25rem 0;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    justify-self: center;
 
     &_head {
       font-family: var(--font-family-primary);
       font-weight: 700;
       font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__input {
+    border: 1px solid var(--light-gray);
+    width: 44px;
+    height: 28px;
+    font-family: var(--font-family-secondary);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    color: var(--foreground);
+    transition: border 0.15s ease;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__decrease:hover,
+  &__increase:hover {
+    path {
+      fill: var(--border-color);
     }
   }
 }

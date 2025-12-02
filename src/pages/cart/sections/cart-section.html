@@ -1,46 +1,105 @@
 {%macro cartSection()%}
 <section class="cart-section" style="margin-block: 50px;">
-    <div class="cart-section__page-container page-container">
-        {{table()}}
-    </div>
+    <div class="cart-section__page-container page-container"></div>
 </section>
 {%endmacro%}
 
 
 {%macro table()%}
 
-<div class="grid-table" role="table" aria-label="Products">
-    <div class="grid-table__head" role="rowgroup">
-        <div class="grid-table__row grid-table__row_head" role="row">
-            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Product</div>
-            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Category</div>
-            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Price
+<div class="table" role="table" aria-label="Products">
+    <div class="table__head" role="rowgroup">
+        <div class="table__row table__row_head" role="row">
+            <div class="table__cell table__cell_head" role="columnheader" scope="col" tabindex="0" aria-sort="none">
+                Товар
+                {{arrowDownIcon()}}
             </div>
-            <div class="grid-table__cell grid-table__cell_head" role="columnheader" scope="col">Stock</div>
+
+            <div class="table__cell table__cell_head" role="columnheader" scope="col" tabindex="0" aria-sort="none">
+                Кол-во
+                {{arrowDownIcon()}}
+            </div>
+
+            <div class="table__cell table__cell_head" role="columnheader" scope="col" tabindex="0" aria-sort="none">
+                Цена за товар
+                {{arrowDownIcon()}}
+            </div>
+
+            <div class="table__cell table__cell_head" role="columnheader" scope="col" tabindex="0" aria-sort="none">
+                Итоговая стоимость
+                {{arrowDownIcon()}}
+            </div>
         </div>
+
     </div>
-    <div class="grid-table__body" role="rowgroup">
-        <div class="grid-table__row" role="row" tabindex="0">
-            <div class="grid-table__cell" role="cell">Wireless mouse</div>
-            <div class="grid-table__cell" role="cell">Accessories</div>
-            <div class="grid-table__cell" role="cell">$29.99</div>
-            <div class="grid-table__cell" role="cell">In stock</div>
+    <div class="table__body" role="rowgroup">
+        <div class="table__row" role="row" tabindex="0">
+            <div class="table__cell" role="cell">Орех соленый 80г.</div>
+            <div class="table__cell" role="cell">{{quantity()}}</div>
+            <div class="table__cell" role="cell">$29.99</div>
+            <div class="table__cell" role="cell">In stock</div>
         </div>
 
-        <div class="grid-table__row" role="row" tabindex="0">
-            <div class="grid-table__cell" role="cell">Mechanical keyboard</div>
-            <div class="grid-table__cell" role="cell">Accessories</div>
-            <div class="grid-table__cell" role="cell">$89.00</div>
-            <div class="grid-table__cell" role="cell">Low stock</div>
+        <div class="table__row" role="row" tabindex="0">
+            <div class="table__cell" role="cell">Орех соленый 80г.</div>
+            <div class="table__cell" role="cell">{{quantity()}}</div>
+            <div class="table__cell" role="cell">$89.00</div>
+            <div class="table__cell" role="cell">Low stock</div>
         </div>
 
-        <div class="grid-table__row" role="row" tabindex="0">
-            <div class="grid-table__cell" role="cell">USB-C hub</div>
-            <div class="grid-table__cell" role="cell">Peripherals</div>
-            <div class="grid-table__cell" role="cell">$49.50</div>
-            <div class="grid-table__cell" role="cell">Out of stock</div>
+        <div class="table__row" role="row" tabindex="0">
+            <div class="table__cell" role="cell">Орех соленый 80г.</div>
+            <div class="table__cell" role="cell">{{quantity()}}</div>
+            <div class="table__cell" role="cell">$49.50</div>
+            <div class="table__cell" role="cell">Out of stock</div>
         </div>
     </div>
 </div>
 
+
+{%endmacro%}
+
+
+{%macro quantity()%}
+<div class="quantity">
+    <button class="quantity__decrease" type="button">
+        <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_15004_11)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M2.56815 4.99357L6.4 1.22265L5.05478 0L0 4.99357L5.05478 10L6.4 8.77735L2.56815 4.99357Z"
+                    fill="#8A8A8A" />
+            </g>
+            <defs>
+                <clipPath id="clip0_15004_11">
+                    <rect width="10" height="8" fill="white" transform="matrix(0 1 1 0 0 0)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    </button>
+    <input type="number" class="quantity__input" value="1" min="1" aria-label="Количество" name="quantity-input">
+    <button class="quantity__increase" type="button">
+        <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_15004_7)">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M5.43185 4.99357L1.6 1.22265L2.94522 0L8 4.99357L2.94522 10L1.6 8.77735L5.43185 4.99357Z"
+                    fill="#8A8A8A" />
+            </g>
+            <defs>
+                <clipPath id="clip0_15004_7">
+                    <rect width="10" height="8" fill="white" transform="matrix(0 1 -1 0 8 0)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    </button>
+</div>
+{%endmacro%}
+
+
+{% macro arrowDownIcon()%}
+<svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M4.99357 5.43185L1.22265 1.6L0 2.94522L4.99357 8L10 2.94522L8.77735 1.6L4.99357 5.43185Z" fill="#8A8A8A" />
+</svg>
 {%endmacro%}

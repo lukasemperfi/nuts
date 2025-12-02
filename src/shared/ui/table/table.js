@@ -1,47 +1,168 @@
-export class GridTable {
-  constructor({ columns = [], data = [] } = {}) {
-    this.columns = columns;
-    this.data = data;
+export class Table {
+  #container;
+  #props;
+  #element;
 
-    this.root = null;
-    this._mounted = false;
-  }
-
-  mount(container) {
-    if (this._mounted) {
+  constructor(containerElement, initialProps = {}) {
+    if (!containerElement) {
+      console.warn("TableComponent requires a container element.");
       return;
     }
-    this._mounted = true;
 
-    this.root = document.createElement("div");
-    this.root.className = "grid-table";
+    this.#container = containerElement;
+    this.#props = initialProps;
+    this.#element = this.#createBaseElement();
+    this.#container.appendChild(this.#element);
 
-    container.appendChild(this.root);
+    this.#setupEventListeners();
+
     this.render();
   }
 
-  update({ columns, data } = {}) {
-    if (columns) this.columns = columns;
-    if (data) this.data = data;
+  #createBaseElement() {
+    return createTableElement(["table"]);
+  }
+
+  #createTableHeader(columns) {
+    return createTableHeader(columns);
+  }
+
+  #createTableBody(rows, columns) {
+    return createTableBody(rows, columns, this);
+  }
+
+  #setupEventListeners() {
+    this.#element.addEventListener(
+      "quantityChange",
+      this.#handleQuantityChange
+    );
+  }
+
+  #handleQuantityChange = (event) => {
+    const { itemId, newQuantity } = event.detail;
+
+    console.log(
+      `[Table Component]: Получено изменение. ID: ${itemId}, Новое кол-во: ${newQuantity}`
+    );
+
+    // 💡 Здесь Table Component должен оповестить внешний Контроллер/Менеджер
+    // о необходимости обновить данные.
+
+    // (Этот метод будет реализован позже. Обычно это CustomEvent,
+    // который всплывает к контейнеру, где сидит внешний контроллер.)
+  };
+
+  update(newProps) {
+    this.#props = { ...this.#props, ...newProps };
     this.render();
   }
 
   render() {
-    if (!this.root) {
+    const { columns = [], rows = [] } = this.#props;
+
+    this.#element.innerHTML = "";
+
+    if (columns.length > 0) {
+      const headerElement = this.#createTableHeader(columns);
+      this.#element.appendChild(headerElement);
+    } else {
+      console.warn("Table requires columns");
       return;
     }
 
-    this.root.innerHTML = `
-        <div class="grid-table__header"></div>
-        <div class="grid-table__body"></div>
-      `;
+    const bodyElement = this.#createTableBody(rows, columns);
+    this.#element.appendChild(bodyElement);
+  }
+}
+
+//////////////Fabrics/////////////////////////////
+
+export function createTableElement(classNames = ["table"]) {
+  const table = document.createElement("div");
+
+  table.classList.add(...classNames);
+  table.setAttribute("role", "table");
+  table.setAttribute("aria-label", "Dynamic Table");
+
+  return table;
+}
+
+export function createTableHeader(columns) {
+  const headGroup = document.createElement("div");
+  headGroup.classList.add("table__head");
+  headGroup.setAttribute("role", "rowgroup");
+
+  const headerRow = document.createElement("div");
+  headerRow.classList.add("table__row", "table__row_head");
+  headerRow.setAttribute("role", "row");
+
+  columns.forEach((column) => {
+    const cell = document.createElement("div");
+    cell.classList.add("table__cell", "table__cell_head");
+    cell.setAttribute("role", "columnheader");
+    cell.setAttribute("scope", "col");
+    cell.setAttribute("tabindex", "0");
+    cell.setAttribute("aria-sort", "none");
+
+    cell.textContent = column.label;
+    cell.setAttribute("data-key", column.key);
+
+    headerRow.appendChild(cell);
+  });
+
+  headGroup.appendChild(headerRow);
+  return headGroup;
+}
+
+export function createTableBody(rows, columns, tableInstance) {
+  const body = document.createElement("div");
+  body.classList.add("table__body");
+  body.setAttribute("role", "rowgroup");
+
+  if (rows && rows.length > 0) {
+    rows.forEach((rowData) => {
+      const rowElement = createTableRow(rowData, columns, tableInstance);
+      body.appendChild(rowElement);
+    });
+  } else {
+    body.innerHTML =
+      '<div class="table__row table__empty-message">Нет данных для отображения.</div>';
   }
 
-  destroy() {
-    if (!this._mounted) return;
+  return body;
+}
 
-    this.root.remove();
-    this.root = null;
-    this._mounted = false;
-  }
+export function createTableCell(content) {
+  const cell = document.createElement("div");
+  cell.classList.add("table__cell");
+  cell.setAttribute("role", "cell");
+  cell.textContent = content;
+  return cell;
+}
+
+export function createTableRow(rowData, columns, tableInstance) {
+  const row = document.createElement("div");
+  row.classList.add("table__row");
+  row.setAttribute("role", "row");
+  row.setAttribute("tabindex", "0");
+
+  columns.forEach((column) => {
+    const cell = document.createElement("div");
+    cell.classList.add("table__cell");
+    cell.setAttribute("role", "cell");
+
+    if (column.render) {
+      const customContent = column.render(rowData, tableInstance);
+
+      cell.appendChild(customContent);
+    } else {
+      const value =
+        rowData[column.key] !== undefined ? String(rowData[column.key]) : "";
+      cell.textContent = value;
+    }
+
+    row.appendChild(cell);
+  });
+
+  return row;
 }

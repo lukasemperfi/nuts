@@ -1,6 +1,7 @@
 import { Table } from "@/shared/ui/table/table";
 import { QuantityComponent } from "../../../shared/ui/table/quantity";
 import { createLinkIcon } from "../../../shared/ui/table/table";
+import { CopyButton } from "../../../shared/ui/table/copy-button";
 
 const initialData = {
   columns: [
@@ -33,6 +34,16 @@ const initialData = {
       type: "component",
       render: renderDetailsLink,
       width: "1fr",
+    },
+    {
+      key: "copyAction",
+      label: "",
+      type: "action",
+      width: "50px",
+      render: (rowData) => {
+        const copyButton = new CopyButton(rowData);
+        return copyButton.element;
+      },
     },
   ],
   rows: [

@@ -63,6 +63,10 @@
       gap: 7px;
     }
   }
+
+  svg:hover path {
+    fill: var(--border-color);
+  }
 }
 
 .quantity {
@@ -95,5 +99,15 @@
     path {
       fill: var(--border-color);
     }
+  }
+}
+
+.copy-button {
+  &.copy-success {
+    color: var(--border-color-secondary);
+  }
+
+  &.copy-fail {
+    color: var(--error);
   }
 }

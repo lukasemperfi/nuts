@@ -5,6 +5,7 @@ import {
   createLinkIcon,
 } from "../../../shared/ui/table/table";
 import { CopyButton } from "../../../shared/ui/table/copy-button";
+import { TableModel } from "../../../shared/ui/table/model/table-model";
 
 const columns = [
   { key: "productName", label: "Товар", type: "text", width: "2fr" },
@@ -115,25 +116,31 @@ export const initCartSection = () => {
   const tableContainer = document.querySelector(
     ".cart-section__page-container"
   );
-  const table = new Table(tableContainer, initialData);
+
+  const tableModel = new TableModel(initialData.rows);
+
+  const currentInitialData = {
+    ...initialData,
+    rows: tableModel.getRows(),
+    totalAmount: tableModel.calculateTotalAmount(),
+  };
+
+  const table = new Table(tableContainer, currentInitialData);
 
   tableContainer.addEventListener("dataUpdateRequest", (event) => {
     const { action, itemId, newQuantity } = event.detail;
 
     console.log("--- ВНЕШНИЙ КОНТРОЛЛЕР ПОЛУЧИЛ ЗАПРОС ---");
-    console.log(
-      `Действие: ${action} для Item ID: ${itemId}. Новое значение: ${newQuantity}`
-    );
 
-    const newTotal =
-      newQuantity * initialData.rows.find((r) => r.id === itemId).price;
-    const newRows = initialData.rows.map((row) =>
-      row.id === itemId
-        ? { ...row, quantity: newQuantity, total: newTotal }
-        : row
-    );
+    if (action === "updateQuantity") {
+      const newRows = tableModel.updateQuantity(itemId, newQuantity);
+      const newTotalAmount = tableModel.calculateTotalAmount();
 
-    table.update({ rows: newRows });
+      table.update({
+        rows: newRows,
+        totalAmount: newTotalAmount,
+      });
+    }
   });
 };
 

@@ -123,6 +123,12 @@
       }
     }
   }
+
+  @media (hover: hover) {
+    svg:hover path {
+      fill: var(--border-color);
+    }
+  }
 }
 
 .quantity {

@@ -294,7 +294,7 @@ export function createTableRow(rowData, columns, tableInstance) {
 export function createLinkIcon(href, iconSvg) {
   const link = document.createElement("a");
   link.href = href;
-  link.classList.add("table__action-link"); // Ваш CSS класс для стилей
+  link.classList.add("table__order-link");
   link.setAttribute(
     "aria-label",
     `Перейти к детали заказа №${href.split("/").pop()}`

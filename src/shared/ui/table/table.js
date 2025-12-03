@@ -74,17 +74,19 @@ export class Table {
       rows = [],
       totalAmount = 175,
       footer = {},
+      showHeader = true,
     } = this.#props;
 
     this.#element.innerHTML = "";
 
     if (columns.length > 0) {
       const templateString = columns.map((col) => col.width).join(" ");
-
       this.#element.style.gridTemplateColumns = templateString;
 
-      const headerElement = this.#createTableHeader(columns);
-      this.#element.appendChild(headerElement);
+      if (showHeader) {
+        const headerElement = this.#createTableHeader(columns);
+        this.#element.appendChild(headerElement);
+      }
     } else {
       console.warn("Table requires columns");
       return;
@@ -168,12 +170,12 @@ export function createTableFooter(footerProps) {
   let contentAdded = false;
 
   if (leftAction) {
-    const continueButton = createFooterElement(leftAction, totalAmount);
+    const leftActionButton = createFooterElement(leftAction, totalAmount);
 
-    if (continueButton) {
-      continueButton.classList.add("table-footer__left-action");
+    if (leftActionButton) {
+      leftActionButton.classList.add("table-footer__left-action");
 
-      footer.appendChild(continueButton);
+      footer.appendChild(leftActionButton);
       contentAdded = true;
     }
   }
@@ -219,25 +221,12 @@ function createFooterElement(config, totalAmount) {
 
   switch (config.type) {
     case "button":
-      element = document.createElement("button");
+      element = document.createElement("a");
+      element.href = config.href || "#";
 
       const classNames = (config.className || "button__primary").split(" ");
 
       element.classList.add("button", ...classNames);
-
-      if (config.text === "Продолжить покупки") {
-        element.classList.add(
-          "button_secondary",
-          "button_size-sm",
-          "table-footer__left-action"
-        );
-      } else if (config.text === "Оформить заказ") {
-        element.classList.add(
-          "button_primary",
-          "button_size-lg",
-          "table-footer__right-action"
-        );
-      }
 
       if (config.icon) {
         element.innerHTML = `${getContinueShoppingIconSvg()} ${config.text}`;
@@ -245,9 +234,9 @@ function createFooterElement(config, totalAmount) {
         element.textContent = config.text;
       }
 
-      if (config.onClick && typeof config.onClick === "function") {
-        element.addEventListener("click", config.onClick);
-      }
+      // if (config.onClick && typeof config.onClick === "function") {
+      //   element.addEventListener("click", config.onClick);
+      // }
       break;
 
     case "total":
@@ -314,4 +303,31 @@ export function createLinkIcon(href, iconSvg) {
   link.innerHTML = iconSvg;
 
   return link;
+}
+
+export function createDeleteButton(itemId, onClickHandler) {
+  const button = document.createElement("button");
+  button.classList.add("button", "button_icon", "button_delete-action");
+  button.setAttribute("type", "button");
+  button.setAttribute("aria-label", `Удалить товар с ID ${itemId} из корзины`);
+
+  // 💡 Ваш крестик SVG-иконка
+  button.innerHTML = `
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_14180_1749)">
+        <path d="M12 1.2L10.8 0L6 4.8L1.2 0L0 1.2L4.8 6L0 10.8L1.2 12L6 7.2L10.8 12L12 10.8L7.2 6L12 1.2Z" fill="#C4C4C4" />
+      </g>
+      <defs>
+        <clipPath id="clip0_14180_1749">
+          <rect width="12" height="12" fill="white" />
+        </clipPath>
+      </defs>
+  </svg>
+  `;
+
+  button.addEventListener("click", () => {
+    onClickHandler(itemId);
+  });
+
+  return button;
 }

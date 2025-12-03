@@ -1,7 +1,60 @@
 import { Table } from "@/shared/ui/table/table";
 import { QuantityComponent } from "../../../shared/ui/table/quantity";
-import { createLinkIcon } from "../../../shared/ui/table/table";
+import {
+  createDeleteButton,
+  createLinkIcon,
+} from "../../../shared/ui/table/table";
 import { CopyButton } from "../../../shared/ui/table/copy-button";
+
+const columns = [
+  { key: "productName", label: "Товар", type: "text", width: "2fr" },
+
+  {
+    key: "quantity",
+    label: "Кол-во",
+    type: "component",
+    render: (rowData, tableInstance) => {
+      const quantityComp = new QuantityComponent(rowData.quantity, rowData.id);
+
+      return quantityComp.element;
+    },
+    width: "1fr",
+  },
+  { key: "price", label: "Цена", type: "currency", width: "1fr" },
+  {
+    key: "total",
+    label: "Итоговая стоимость",
+    type: "currency",
+    width: "1fr",
+  },
+  {
+    key: "viewDetails",
+    label: "Детали",
+    type: "component",
+    render: renderDetailsLink,
+    width: "1fr",
+  },
+  {
+    key: "copyAction",
+    label: "",
+    type: "action",
+    width: "50px",
+    render: (rowData) => {
+      const copyButton = new CopyButton(rowData);
+      return copyButton.element;
+    },
+  },
+
+  {
+    key: "deleteAction",
+    label: "",
+    type: "action",
+    width: "50px",
+    render: (rowData) => {
+      return createDeleteButton(rowData.id, handleItemDelete);
+    },
+  },
+];
 
 const footer = {
   leftAction: {
@@ -9,6 +62,7 @@ const footer = {
     text: "Продолжить покупки",
     icon: "back",
     className: "button_secondary button_size-sm",
+    href: "/catalog/",
   },
 
   rightGroup: [
@@ -22,53 +76,13 @@ const footer = {
       type: "button",
       text: "Оформить заказ",
       className: "button_primary button_size-lg",
+      href: "/checkout/",
     },
   ],
 };
 
 const initialData = {
-  columns: [
-    { key: "productName", label: "Товар", type: "text", width: "2fr" },
-
-    {
-      key: "quantity",
-      label: "Кол-во",
-      type: "component",
-      render: (rowData, tableInstance) => {
-        const quantityComp = new QuantityComponent(
-          rowData.quantity,
-          rowData.id
-        );
-
-        return quantityComp.element;
-      },
-      width: "1fr",
-    },
-    { key: "price", label: "Цена", type: "currency", width: "1fr" },
-    {
-      key: "total",
-      label: "Итоговая стоимость",
-      type: "currency",
-      width: "1fr",
-    },
-    {
-      key: "viewDetails",
-      label: "Детали",
-      type: "component",
-      render: renderDetailsLink,
-      width: "1fr",
-    },
-    {
-      key: "copyAction",
-      label: "",
-      type: "action",
-      width: "50px",
-      render: (rowData) => {
-        const copyButton = new CopyButton(rowData);
-        return copyButton.element;
-      },
-    },
-  ],
+  columns: columns,
   rows: [
     {
       id: 1,
@@ -94,6 +108,7 @@ const initialData = {
   ],
   totalAmount: 175,
   footer: footer,
+  showHeader: false,
 };
 
 export const initCartSection = () => {
@@ -147,6 +162,15 @@ export function renderDetailsLink(rowData) {
   `;
 
   return createLinkIcon(url, iconHtml);
+}
+
+function handleItemDelete(itemId) {
+  console.log(`[Корзина]: Запрос на удаление товара с ID: ${itemId}`);
+
+  // 💡 Здесь будет код, который:
+  // 1. Отправляет запрос на сервер (API)
+  // 2. Обновляет данные в локальном состоянии (удаляет строку)
+  // 3. Вызывает tableInstance.update({ rows: newRows, totalAmount: newTotal })
 }
 
 // import { store } from "@/app/store";

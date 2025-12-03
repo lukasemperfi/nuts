@@ -70,6 +70,12 @@ export class Table {
     this.#element.innerHTML = "";
 
     if (columns.length > 0) {
+      // 🚀 1. Сбор динамического шаблона Grid (Например, "2fr 80px 1fr 1fr 50px")
+      const templateString = columns.map((col) => col.width).join(" ");
+
+      // 🚀 2. Установка шаблона для корневого элемента таблицы (.table)
+      this.#element.style.gridTemplateColumns = templateString;
+
       const headerElement = this.#createTableHeader(columns);
       this.#element.appendChild(headerElement);
     } else {
@@ -172,4 +178,18 @@ export function createTableRow(rowData, columns, tableInstance) {
   });
 
   return row;
+}
+
+export function createLinkIcon(href, iconSvg) {
+  const link = document.createElement("a");
+  link.href = href;
+  link.classList.add("table__action-link"); // Ваш CSS класс для стилей
+  link.setAttribute(
+    "aria-label",
+    `Перейти к детали заказа №${href.split("/").pop()}`
+  );
+
+  link.innerHTML = iconSvg;
+
+  return link;
 }

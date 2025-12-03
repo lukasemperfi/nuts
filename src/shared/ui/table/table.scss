@@ -1,6 +1,5 @@
 .table {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   width: 100%;
 
@@ -18,7 +17,7 @@
 
     display: grid;
     grid-template-columns: subgrid;
-    grid-column: 1 /5;
+    grid-column: 1 /-1;
 
     &_head {
       padding-block: 17px;

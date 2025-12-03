@@ -173,11 +173,6 @@ export function renderDetailsLink(rowData) {
 
 function handleItemDelete(itemId) {
   console.log(`[Корзина]: Запрос на удаление товара с ID: ${itemId}`);
-
-  // 💡 Здесь будет код, который:
-  // 1. Отправляет запрос на сервер (API)
-  // 2. Обновляет данные в локальном состоянии (удаляет строку)
-  // 3. Вызывает tableInstance.update({ rows: newRows, totalAmount: newTotal })
 }
 
 // import { store } from "@/app/store";

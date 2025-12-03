@@ -10,7 +10,7 @@
 
   &__row {
     align-items: center;
-    padding-block: 14px;
+    padding-block: 13px;
     padding-inline: 16px;
     border-bottom: 1px solid var(--light-gray);
     transition: background 0.15s ease;
@@ -64,8 +64,63 @@
     }
   }
 
-  svg:hover path {
-    fill: var(--border-color);
+  .table-footer {
+    display: flex;
+    grid-column: 1/-1;
+    padding-block: 29px;
+
+    &__right-group {
+      display: flex;
+      margin-left: auto;
+      align-items: center;
+      gap: 30px;
+    }
+
+    &__left-action,
+    &__right-action {
+      font-family: var(--font-family-primary);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 17px;
+      letter-spacing: 0;
+    }
+
+    &__left-action {
+      padding-inline: 26px;
+      border-width: 2px;
+      gap: 12px;
+    }
+
+    &__right-action {
+      padding-inline: 60px;
+    }
+
+    .total-group {
+      &__text {
+        font-family: var(--font-family-primary);
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 32px;
+        color: var(--foreground);
+      }
+
+      &__price {
+        font-family: var(--font-family-secondary);
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 32px;
+        color: var(--background-tertiary);
+        margin-left: 5px;
+      }
+
+      &__unit {
+        font-family: var(--font-family-secondary);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 32px;
+        color: var(--background-tertiary);
+      }
+    }
   }
 }
 
@@ -85,6 +140,7 @@
     text-align: center;
     color: var(--foreground);
     transition: border 0.15s ease;
+    appearance: textfield;
     -moz-appearance: textfield;
 
     &::-webkit-outer-spin-button,
@@ -103,6 +159,14 @@
 }
 
 .copy-button {
+  @media (hover: hover) {
+    &:hover {
+      path {
+        fill: var(--border-color);
+      }
+    }
+  }
+
   &.copy-success {
     color: var(--border-color-secondary);
   }

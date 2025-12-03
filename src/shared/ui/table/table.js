@@ -31,6 +31,10 @@ export class Table {
     return createTableBody(rows, columns, this);
   }
 
+  #createTableFooter(totalAmount) {
+    return createTableFooter(totalAmount);
+  }
+
   #setupEventListeners() {
     this.#element.addEventListener(
       "quantityChange",
@@ -65,15 +69,18 @@ export class Table {
   }
 
   render() {
-    const { columns = [], rows = [] } = this.#props;
+    const {
+      columns = [],
+      rows = [],
+      totalAmount = 175,
+      footer = {},
+    } = this.#props;
 
     this.#element.innerHTML = "";
 
     if (columns.length > 0) {
-      // 🚀 1. Сбор динамического шаблона Grid (Например, "2fr 80px 1fr 1fr 50px")
       const templateString = columns.map((col) => col.width).join(" ");
 
-      // 🚀 2. Установка шаблона для корневого элемента таблицы (.table)
       this.#element.style.gridTemplateColumns = templateString;
 
       const headerElement = this.#createTableHeader(columns);
@@ -85,6 +92,12 @@ export class Table {
 
     const bodyElement = this.#createTableBody(rows, columns);
     this.#element.appendChild(bodyElement);
+
+    const footerElement = this.#createTableFooter({
+      ...footer,
+      totalAmount,
+    });
+    this.#element.appendChild(footerElement);
   }
 }
 
@@ -143,6 +156,115 @@ export function createTableBody(rows, columns, tableInstance) {
   }
 
   return body;
+}
+
+export function createTableFooter(footerProps) {
+  const { leftAction, rightGroup, totalAmount } = footerProps;
+
+  const footer = document.createElement("div");
+  footer.classList.add("table__footer", "table-footer");
+  footer.setAttribute("role", "contentinfo");
+
+  let contentAdded = false;
+
+  if (leftAction) {
+    const continueButton = createFooterElement(leftAction, totalAmount);
+
+    if (continueButton) {
+      continueButton.classList.add("table-footer__left-action");
+
+      footer.appendChild(continueButton);
+      contentAdded = true;
+    }
+  }
+
+  if (rightGroup && rightGroup.length > 0) {
+    const checkoutGroup = document.createElement("div");
+    checkoutGroup.classList.add("table-footer__right-group");
+
+    let rightContentAdded = false;
+
+    rightGroup.forEach((config) => {
+      const element = createFooterElement(config, totalAmount);
+
+      if (element) {
+        checkoutGroup.appendChild(element);
+        rightContentAdded = true;
+      }
+    });
+
+    if (rightContentAdded) {
+      footer.appendChild(checkoutGroup);
+      contentAdded = true;
+    }
+  }
+
+  if (!contentAdded) {
+    return document.createElement("div");
+  }
+
+  return footer;
+}
+
+function getContinueShoppingIconSvg() {
+  return `
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.83332 12.832L6.65 12.0154L2.21665 7.58203H14V6.41538H2.21665L6.65 1.98203L5.83332 1.16538L0 6.99871L5.83332 12.832Z" fill="#337D5A"/>
+      </svg> 
+  `;
+}
+
+function createFooterElement(config, totalAmount) {
+  let element;
+
+  switch (config.type) {
+    case "button":
+      element = document.createElement("button");
+
+      const classNames = (config.className || "button__primary").split(" ");
+
+      element.classList.add("button", ...classNames);
+
+      if (config.text === "Продолжить покупки") {
+        element.classList.add(
+          "button_secondary",
+          "button_size-sm",
+          "table-footer__left-action"
+        );
+      } else if (config.text === "Оформить заказ") {
+        element.classList.add(
+          "button_primary",
+          "button_size-lg",
+          "table-footer__right-action"
+        );
+      }
+
+      if (config.icon) {
+        element.innerHTML = `${getContinueShoppingIconSvg()} ${config.text}`;
+      } else {
+        element.textContent = config.text;
+      }
+
+      if (config.onClick && typeof config.onClick === "function") {
+        element.addEventListener("click", config.onClick);
+      }
+      break;
+
+    case "total":
+      element = document.createElement("div");
+      element.classList.add("table-footer__total-group", "total-group");
+
+      element.innerHTML = `
+              <span class="total-group__text">${config.text}</span>
+              <span class="total-group__price">${totalAmount}</span>
+              <span class="total-group__unit">${config.unit}</span>
+          `;
+      break;
+
+    default:
+      return null;
+  }
+  return element;
 }
 
 export function createTableCell(content) {

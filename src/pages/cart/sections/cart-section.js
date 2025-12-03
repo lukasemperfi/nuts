@@ -3,6 +3,29 @@ import { QuantityComponent } from "../../../shared/ui/table/quantity";
 import { createLinkIcon } from "../../../shared/ui/table/table";
 import { CopyButton } from "../../../shared/ui/table/copy-button";
 
+const footer = {
+  leftAction: {
+    type: "button",
+    text: "Продолжить покупки",
+    icon: "back",
+    className: "button_secondary button_size-sm",
+  },
+
+  rightGroup: [
+    {
+      type: "total",
+      text: "Всего",
+      amountKey: "totalAmount",
+      unit: "грн.",
+    },
+    {
+      type: "button",
+      text: "Оформить заказ",
+      className: "button_primary button_size-lg",
+    },
+  ],
+};
+
 const initialData = {
   columns: [
     { key: "productName", label: "Товар", type: "text", width: "2fr" },
@@ -69,6 +92,8 @@ const initialData = {
       total: 49.5,
     },
   ],
+  totalAmount: 175,
+  footer: footer,
 };
 
 export const initCartSection = () => {

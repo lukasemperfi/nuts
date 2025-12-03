@@ -45,11 +45,18 @@ export class Table {
       `[Table Component]: Получено изменение. ID: ${itemId}, Новое кол-во: ${newQuantity}`
     );
 
-    // 💡 Здесь Table Component должен оповестить внешний Контроллер/Менеджер
-    // о необходимости обновить данные.
+    this.#element.dispatchEvent(
+      new CustomEvent("dataUpdateRequest", {
+        bubbles: true,
+        detail: {
+          action: "updateQuantity",
+          itemId: itemId,
+          newQuantity: newQuantity,
+        },
+      })
+    );
 
-    // (Этот метод будет реализован позже. Обычно это CustomEvent,
-    // который всплывает к контейнеру, где сидит внешний контроллер.)
+    event.stopPropagation();
   };
 
   update(newProps) {

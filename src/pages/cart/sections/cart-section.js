@@ -51,6 +51,25 @@ export const initCartSection = () => {
     ".cart-section__page-container"
   );
   const table = new Table(tableContainer, initialData);
+
+  tableContainer.addEventListener("dataUpdateRequest", (event) => {
+    const { action, itemId, newQuantity } = event.detail;
+
+    console.log("--- ВНЕШНИЙ КОНТРОЛЛЕР ПОЛУЧИЛ ЗАПРОС ---");
+    console.log(
+      `Действие: ${action} для Item ID: ${itemId}. Новое значение: ${newQuantity}`
+    );
+
+    const newTotal =
+      newQuantity * initialData.rows.find((r) => r.id === itemId).price;
+    const newRows = initialData.rows.map((row) =>
+      row.id === itemId
+        ? { ...row, quantity: newQuantity, total: newTotal }
+        : row
+    );
+
+    table.update({ rows: newRows });
+  });
 };
 
 // import { store } from "@/app/store";

@@ -157,8 +157,7 @@ export function createTableBody(rows, columns, tableInstance) {
       body.appendChild(rowElement);
     });
   } else {
-    body.innerHTML =
-      '<div class="table__row table__empty-message">Нет данных для отображения.</div>';
+    body.innerHTML = '<div class="table__empty-message">Корзина пуста!</div>';
   }
 
   return body;
@@ -332,7 +331,7 @@ export function createDeleteButton(itemId, onClickHandler) {
   `;
 
   button.addEventListener("click", () => {
-    onClickHandler(itemId);
+    onClickHandler(String(itemId));
   });
 
   return button;

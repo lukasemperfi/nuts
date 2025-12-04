@@ -19,7 +19,7 @@ export const cartSlice = {
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const productId = action.payload.productId;
+      const productId = String(action.payload.productId);
       const existing = state.items.find((item) => item.productId === productId);
 
       if (existing) {
@@ -40,7 +40,7 @@ export const cartSlice = {
     },
 
     removeItem: (state, action) => {
-      const productId = action.payload.productId;
+      const productId = String(action.payload.productId);
 
       return {
         ...state,

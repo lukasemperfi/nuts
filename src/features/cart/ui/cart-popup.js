@@ -141,7 +141,11 @@ function setCartPopupTarget(cartPopup, cartPopupId) {
 }
 
 function handleItemDelete(itemId) {
-  console.log(`[Корзина]: Запрос на удаление товара с ID: ${itemId}`);
+  console.log("delete", itemId);
+  store.dispatch({
+    type: "cart/removeItem",
+    payload: { productId: itemId },
+  });
 }
 
 export function renderDetailsLink(rowData) {

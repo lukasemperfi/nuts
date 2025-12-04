@@ -1,5 +1,6 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
+import { store } from "@/app/store";
 
 const baseUrl =
   import.meta.env.MODE === "development"
@@ -192,13 +193,30 @@ export function createProductCard(product) {
                     </span>
                 </span>
             </div>
-            <a class="bottom__button button button_primary button_size-sm" href="#" name="product-card-button" aria-label="Купить товар">
+            <button class="bottom__button button button_primary button_size-sm product-card__buy-button"  name="product-card-button" aria-label="Купить товар">
                 Купить
-            </a>
+            </button>
         </div>
     `;
 
   initProductCardSwiper(card);
+
+  const addButton = card.querySelector(".product-card__buy-button");
+
+  if (addButton && store) {
+    addButton.addEventListener("click", () => {
+      store.dispatch({
+        type: "cart/addItem",
+        payload: {
+          productId: String(id),
+        },
+      });
+    });
+  } else if (!store) {
+    console.error(
+      "Не удалось привязать обработчик: Объект 'store' не передан в createProductCard."
+    );
+  }
 
   return card;
 }

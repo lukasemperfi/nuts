@@ -4,6 +4,7 @@ import { createDeleteButton, createLinkIcon } from "@/shared/ui/table/table";
 import { TableModel } from "@/shared/ui/table/model/table-model";
 import { store } from "@/app/store";
 import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
+import { mapProductsToTableRows } from "./map-products-to-table-rows";
 
 export function CartPopup({ trigger, cartPopupContainer }) {
   const columns = [
@@ -114,12 +115,7 @@ export function CartPopup({ trigger, cartPopupContainer }) {
     const ids = cartItems.map((item) => String(item.productId));
     const cartProducts = await fetchProductsWithCache(ids);
 
-    const quantityMap = new Map();
-    cartItems.forEach((item) => {
-      quantityMap.set(Number(item.productId), item.quantity);
-    });
-
-    const newRows = mapProductsToTableRows(cartProducts, quantityMap);
+    const newRows = mapProductsToTableRows(cartProducts, cartItems);
 
     tableModel.setRows(newRows);
     const newTotalAmount = tableModel.calculateTotalAmount();
@@ -185,37 +181,4 @@ export function createFormattedCurrencyElement(amount, unit) {
       <span class="currency-cell__unit">${unit}</span>
   `;
   return wrapper;
-}
-
-export function mapProductsToTableRows(rawProducts, quantityMap) {
-  if (!Array.isArray(rawProducts)) {
-    console.error("mapProductsToTableRows ожидает массив продуктов.");
-    return [];
-  }
-
-  const map = quantityMap || new Map();
-  const DEFAULT_QUANTITY = 1;
-
-  return rawProducts.map((product) => {
-    const id = product.id;
-    const quantity = map.get(id) || DEFAULT_QUANTITY;
-    const productName = product.title;
-    const price = product.discount_price || product.price;
-    const total = quantity * price;
-    const priceUnit = product.price_unit || "грн";
-    const mainImage = product.product_images.find((img) => img.is_main);
-    const imageUrl = mainImage ? mainImage.image_path_png : null;
-    const sku = product.sku;
-
-    return {
-      id,
-      productName,
-      quantity,
-      price,
-      total,
-      priceUnit,
-      imageUrl,
-      sku,
-    };
-  });
 }

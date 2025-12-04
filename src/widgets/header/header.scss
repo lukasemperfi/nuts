@@ -1,5 +1,9 @@
 @use "@/app/styles/mixins" as mixins;
 @use "@/app/styles/variables" as variables;
+
+@use "@/features/cart/ui/cart-popup.scss" as *;
+@use "@/shared/ui/table/table.scss" as *;
+
 .header {
   $bp-lg: variables.$container-width - 1;
   $bp-md: 599px;
@@ -231,7 +235,7 @@
 
     &__cart-btn {
       margin-left: auto;
-      margin-right: 5px;
+      // margin-right: 5px;
 
       @include mixins.respond-to($bp-lg) {
         margin-left: $cart-btn-margin-left;
@@ -546,4 +550,17 @@
     color: #ef3d3d;
     font-weight: 600;
   }
+}
+
+.cart-btn {
+  anchor-name: --cart-btn;
+}
+.cart-popup {
+  position-anchor: --cart-btn;
+
+  position: absolute;
+  inset: auto;
+  top: anchor(bottom);
+  right: anchor(right);
+  margin-block-start: 30px;
 }

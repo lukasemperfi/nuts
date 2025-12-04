@@ -3,6 +3,7 @@ import { store } from "@/app/store";
 import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
 import { logoutUser } from "@/entities/auth/model/auth-slice";
 import { getSession } from "@/app/providers/auth-guard";
+import { CartPopup } from "../../features/cart/ui/cart-popup";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
@@ -11,6 +12,13 @@ export async function initHeader() {
   initMenu();
   initResizeHandler();
   initActiveLink(".nav-menu__link");
+
+  const cartPopupBtn = document.querySelector(".cart-btn");
+  const cartPopupContainer = document.querySelector(
+    ".middle-header__cart-popup"
+  );
+
+  CartPopup({ trigger: cartPopupBtn, cartPopupContainer });
 
   const auth = createAuthComponent({ baseUrl });
   const profile = createProfile({

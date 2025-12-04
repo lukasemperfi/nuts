@@ -76,7 +76,7 @@ export function Cart({ container }) {
     rows: tableModel.getRows(),
     totalAmount: tableModel.calculateTotalAmount(),
     footer: footer,
-    showHeader: false,
+    showHeader: true,
   };
 
   const table = new Table(container, initialData);

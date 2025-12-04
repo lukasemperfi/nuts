@@ -1,8 +1,9 @@
 import { Table } from "@/shared/ui/table/table";
 import { QuantityComponent } from "@/shared/ui/table/quantity";
 import { createDeleteButton, createLinkIcon } from "@/shared/ui/table/table";
-import { CopyButton } from "@/shared/ui/table/copy-button";
 import { TableModel } from "@/shared/ui/table/model/table-model";
+import { store } from "@/app/store";
+import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
 
 export function CartPopup({ trigger, cartPopupContainer }) {
   const columns = [
@@ -32,7 +33,7 @@ export function CartPopup({ trigger, cartPopupContainer }) {
       key: "total",
       label: "Итоговая стоимость",
       type: "currency",
-      width: "max-content",
+      width: "0.5fr",
       align: "left",
       render: (rowData) => {
         return createFormattedCurrencyElement(rowData.total, "грн.");
@@ -67,73 +68,66 @@ export function CartPopup({ trigger, cartPopupContainer }) {
     ],
   };
 
+  const cartPopup = document.createElement("div");
+  cartPopup.classList.add("cart-popup");
+
+  if (!cartPopupContainer) {
+    console.error("Контейнер .middle-header__cart-popup не найден.");
+    return;
+  }
+
+  const cartPopupId = "cart-popup-" + Math.random().toString(36).slice(2);
+  setTrigger(trigger, cartPopupId);
+  setCartPopupTarget(cartPopup, cartPopupId);
+
+  cartPopupContainer.appendChild(cartPopup);
+
+  const initialEmptyRows = [];
+  const tableModel = new TableModel(initialEmptyRows);
+
   const initialData = {
     columns: columns,
-    rows: [
-      {
-        id: 1,
-        productName: "Орех соленый 80г.",
-        quantity: 1,
-        price: 29.99,
-        total: 29.99,
-      },
-      {
-        id: 2,
-        productName: "Клавиатура X1",
-        quantity: 2,
-        price: 89.0,
-        total: 178.0,
-      },
-      {
-        id: 3,
-        productName: "Мышь Logitech",
-        quantity: 1,
-        price: 49.5,
-        total: 49.5,
-      },
-    ],
-    totalAmount: 175,
+    rows: tableModel.getRows(),
+    totalAmount: tableModel.calculateTotalAmount(),
     footer: footer,
     showHeader: false,
   };
 
-  const cartPopup = document.createElement("div");
-  cartPopup.classList.add(["cart-popup"]);
-  const tableModel = new TableModel(initialData.rows);
-
-  const currentInitialData = {
-    ...initialData,
-    rows: tableModel.getRows(),
-    totalAmount: tableModel.calculateTotalAmount(),
-  };
-
-  const table = new Table(cartPopup, currentInitialData);
-
-  if (cartPopupContainer) {
-    cartPopupContainer.appendChild(cartPopup);
-  } else {
-    console.error("Контейнер для cartPopup не найден.");
-  }
-
-  cartPopupContainer.appendChild(cartPopup);
-
-  let cartPopupId = "cart-popup-" + Math.random().toString(36).slice(2);
-
-  setTrigger(trigger, cartPopupId);
-  setCartPopupTarget(cartPopup, cartPopupId);
+  const table = new Table(cartPopup, initialData);
 
   cartPopup.addEventListener("dataUpdateRequest", (event) => {
     const { action, itemId, newQuantity } = event.detail;
 
     if (action === "updateQuantity") {
-      const newRows = tableModel.updateQuantity(itemId, newQuantity);
-      const newTotalAmount = tableModel.calculateTotalAmount();
-
-      table.update({
-        rows: newRows,
-        totalAmount: newTotalAmount,
+      store.dispatch({
+        type: "cart/setQuantity",
+        payload: {
+          productId: String(itemId),
+          quantity: newQuantity,
+        },
       });
     }
+  });
+
+  store.subscribe("cart", async (newState) => {
+    const cartItems = newState.items;
+    const ids = cartItems.map((item) => String(item.productId));
+    const cartProducts = await fetchProductsWithCache(ids);
+
+    const quantityMap = new Map();
+    cartItems.forEach((item) => {
+      quantityMap.set(Number(item.productId), item.quantity);
+    });
+
+    const newRows = mapProductsToTableRows(cartProducts, quantityMap);
+
+    tableModel.setRows(newRows);
+    const newTotalAmount = tableModel.calculateTotalAmount();
+
+    table.update({
+      rows: newRows,
+      totalAmount: newTotalAmount,
+    });
   });
 }
 
@@ -187,4 +181,37 @@ export function createFormattedCurrencyElement(amount, unit) {
       <span class="currency-cell__unit">${unit}</span>
   `;
   return wrapper;
+}
+
+export function mapProductsToTableRows(rawProducts, quantityMap) {
+  if (!Array.isArray(rawProducts)) {
+    console.error("mapProductsToTableRows ожидает массив продуктов.");
+    return [];
+  }
+
+  const map = quantityMap || new Map();
+  const DEFAULT_QUANTITY = 1;
+
+  return rawProducts.map((product) => {
+    const id = product.id;
+    const quantity = map.get(id) || DEFAULT_QUANTITY;
+    const productName = product.title;
+    const price = product.discount_price || product.price;
+    const total = quantity * price;
+    const priceUnit = product.price_unit || "грн";
+    const mainImage = product.product_images.find((img) => img.is_main);
+    const imageUrl = mainImage ? mainImage.image_path_png : null;
+    const sku = product.sku;
+
+    return {
+      id,
+      productName,
+      quantity,
+      price,
+      total,
+      priceUnit,
+      imageUrl,
+      sku,
+    };
+  });
 }

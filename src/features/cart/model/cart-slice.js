@@ -123,3 +123,5 @@ export const cartSlice = {
 
 export const selectCartProductIds = (state) =>
   state.items.map((i) => i.productId);
+
+export const selectCartCount = (state) => state.items.length;

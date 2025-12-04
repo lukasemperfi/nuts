@@ -3,7 +3,10 @@ import { store } from "@/app/store";
 import { AUTH_STATUS } from "@/entities/auth/model/auth-slice";
 import { logoutUser } from "@/entities/auth/model/auth-slice";
 import { getSession } from "@/app/providers/auth-guard";
-import { CartPopup } from "../../features/cart/ui/cart-popup";
+import { CartPopup } from "@/features/cart/ui/cart-popup";
+import { selectCartCount } from "@/features/cart/model/cart-slice";
+import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
+import { selectCartProductIds } from "@/features/cart/model/cart-slice";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
@@ -12,52 +15,17 @@ export async function initHeader() {
   initMenu();
   initResizeHandler();
   initActiveLink(".nav-menu__link");
+  initHeaderAuth();
+  initCartPopup();
 
-  const cartPopupBtn = document.querySelector(".cart-btn");
-  const cartPopupContainer = document.querySelector(
-    ".middle-header__cart-popup"
-  );
+  store.subscribe("cart", async (newState) => {
+    const cartCount = selectCartCount(newState);
+    updateCartCounter(cartCount);
 
-  CartPopup({ trigger: cartPopupBtn, cartPopupContainer });
+    const ids = selectCartProductIds(newState);
+    const cartProducts = await fetchProductsWithCache(ids);
 
-  const auth = createAuthComponent({ baseUrl });
-  const profile = createProfile({
-    name: "Анатолий Лукьяненко",
-    items: [
-      { label: "Профиль", href: "/profile/" },
-      {
-        label: "Выйти",
-        onClick: async () => {
-          await logoutUser();
-        },
-        className: "logout",
-      },
-    ],
-  });
-
-  const authContainer = document.querySelector(".top-header__auth");
-  const isAuth = await getSession();
-
-  if (isAuth) {
-    auth.mount(authContainer);
-  } else {
-    profile.mount(authContainer);
-  }
-
-  const renderHeaderUI = (state) => {
-    authContainer.innerHTML = "";
-
-    if (!state.isAuth && state.status === AUTH_STATUS.IDLE) {
-      auth.mount(authContainer);
-    }
-    if (state.isAuth && state.status === AUTH_STATUS.SUCCEEDED) {
-      profile.mount(authContainer);
-    }
-  };
-
-  store.subscribe("auth", (newState) => {
-    console.log("dfg");
-    renderHeaderUI(newState);
+    console.log("from header cartProducts", cartProducts);
   });
 }
 
@@ -100,6 +68,56 @@ function initResizeHandler() {
       document.body.style.overflow = "auto";
     }
   });
+}
+
+async function initHeaderAuth() {
+  const auth = createAuthComponent({ baseUrl });
+  const profile = createProfile({
+    name: "Анатолий Лукьяненко",
+    items: [
+      { label: "Профиль", href: `${baseUrl}profile/` },
+      {
+        label: "Выйти",
+        onClick: async () => {
+          await logoutUser();
+        },
+        className: "logout",
+      },
+    ],
+  });
+
+  const authContainer = document.querySelector(".top-header__auth");
+  const isAuth = await getSession();
+
+  if (isAuth) {
+    auth.mount(authContainer);
+  } else {
+    profile.mount(authContainer);
+  }
+
+  const renderHeaderUI = (state) => {
+    authContainer.innerHTML = "";
+
+    if (!state.isAuth && state.status === AUTH_STATUS.IDLE) {
+      auth.mount(authContainer);
+    }
+    if (state.isAuth && state.status === AUTH_STATUS.SUCCEEDED) {
+      profile.mount(authContainer);
+    }
+  };
+
+  store.subscribe("auth", (newState) => {
+    renderHeaderUI(newState);
+  });
+}
+
+function initCartPopup() {
+  const cartPopupBtn = document.querySelector(".cart-btn");
+  const cartPopupContainer = document.querySelector(
+    ".middle-header__cart-popup"
+  );
+
+  CartPopup({ trigger: cartPopupBtn, cartPopupContainer });
 }
 
 function createAuthComponent(initialProps = {}) {
@@ -269,4 +287,12 @@ function createProfile(initialProps = {}) {
   render();
 
   return { el: wrapper, mount, update, destroy };
+}
+
+function updateCartCounter(count) {
+  const counterEl = document.querySelector(".cart-btn_counter");
+
+  counterEl.innerHTML = count;
+
+  return counterEl;
 }

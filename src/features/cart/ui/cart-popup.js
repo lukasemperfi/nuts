@@ -6,7 +6,13 @@ import { TableModel } from "@/shared/ui/table/model/table-model";
 
 export function CartPopup({ trigger, cartPopupContainer }) {
   const columns = [
-    { key: "productName", label: "Товар", type: "text", width: "1fr" },
+    {
+      key: "productName",
+      label: "Товар",
+      type: "text",
+      width: "1fr",
+      align: "left",
+    },
 
     {
       key: "quantity",
@@ -26,13 +32,18 @@ export function CartPopup({ trigger, cartPopupContainer }) {
       key: "total",
       label: "Итоговая стоимость",
       type: "currency",
-      width: "1fr",
+      width: "max-content",
+      align: "left",
+      render: (rowData) => {
+        return createFormattedCurrencyElement(rowData.total, "грн.");
+      },
     },
     {
       key: "deleteAction",
       label: "",
       type: "action",
       width: "50px",
+      align: "right",
       render: (rowData) => {
         return createDeleteButton(rowData.id, handleItemDelete);
       },
@@ -114,8 +125,6 @@ export function CartPopup({ trigger, cartPopupContainer }) {
   cartPopup.addEventListener("dataUpdateRequest", (event) => {
     const { action, itemId, newQuantity } = event.detail;
 
-    console.log("--- ВНЕШНИЙ КОНТРОЛЛЕР ПОЛУЧИЛ ЗАПРОС ---");
-
     if (action === "updateQuantity") {
       const newRows = tableModel.updateQuantity(itemId, newQuantity);
       const newTotalAmount = tableModel.calculateTotalAmount();
@@ -165,4 +174,17 @@ export function renderDetailsLink(rowData) {
     `;
 
   return createLinkIcon(url, iconHtml);
+}
+
+export function createFormattedCurrencyElement(amount, unit) {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("currency-cell");
+
+  const formattedAmount = Number(amount).toFixed(2);
+
+  wrapper.innerHTML = `
+      <span class="currency-cell__amount">${formattedAmount}</span>
+      <span class="currency-cell__unit">${unit}</span>
+  `;
+  return wrapper;
 }

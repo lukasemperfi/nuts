@@ -127,6 +127,10 @@ export function createTableHeader(columns) {
   columns.forEach((column) => {
     const cell = document.createElement("div");
     cell.classList.add("table__cell", "table__cell_head");
+
+    const alignment = column.align || "center";
+    cell.style.justifySelf = `${alignment}`;
+
     cell.setAttribute("role", "columnheader");
     cell.setAttribute("scope", "col");
     cell.setAttribute("tabindex", "0");
@@ -275,6 +279,9 @@ export function createTableRow(rowData, columns, tableInstance) {
     cell.classList.add("table__cell");
     cell.setAttribute("role", "cell");
 
+    const alignment = column.align || "center";
+    cell.style.justifySelf = `${alignment}`;
+
     if (column.render) {
       const customContent = column.render(rowData, tableInstance);
 
@@ -311,7 +318,6 @@ export function createDeleteButton(itemId, onClickHandler) {
   button.setAttribute("type", "button");
   button.setAttribute("aria-label", `Удалить товар с ID ${itemId} из корзины`);
 
-  // 💡 Ваш крестик SVG-иконка
   button.innerHTML = `
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_14180_1749)">

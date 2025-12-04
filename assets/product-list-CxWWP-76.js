@@ -1,13 +1,13 @@
-import{s as l,P as c,d as h}from"./footer-Dto_QxNq.js";import{i as b,N as D}from"./navigation-DOgKByzg.js";const M="/nuts/";function Z(a){const{id:s,product_images:i,title:t,sku:p,subtitle:d,weight:C,weight_unit:w,packaging_types:m,discount_price:n,price:L,price_unit:g,product_statuses:o}=a,f=i.sort((r,u)=>r.sort_order-u.sort_order),v={regular:{name:"regular",class:""},sale:{name:"Акция",class:"product-card__status_sale"},new:{name:"Новинка",class:"product-card__status_new"}},e=document.createElement("div");return e.className="product-card",e.innerHTML=`
+import{s as e,P as l,e as h}from"./footer-CND1tpeV.js";import{i as D,N as M}from"./navigation-DOgKByzg.js";const Z="/nuts/";function $(t){const{id:s,product_images:a,title:i,sku:d,subtitle:p,weight:w,weight_unit:m,packaging_types:L,discount_price:n,price:f,price_unit:g,product_statuses:o}=t,b=a.sort((c,u)=>c.sort_order-u.sort_order),v={regular:{name:"regular",class:""},sale:{name:"Акция",class:"product-card__status_sale"},new:{name:"Новинка",class:"product-card__status_new"}},r=document.createElement("div");r.className="product-card",r.innerHTML=`
         ${o.name!=="regular"?`<div class="product-card__status ${v[o.name].class}">${v[o.name].name}</div>`:""}
         <div class="product-card__image-wrapper">
             <div class="swiper product-card-swiper">
                 <div class="swiper-wrapper">
-                    ${f.map((r,u)=>`
+                    ${b.map((c,u)=>`
                         <div class="swiper-slide">
                             <picture>
-                                <source type="image/webp" srcset="${r.image_path_webp}">
-                                <img class="product-card-swiper__image" src="${r.image_path_png}" loading="eager" alt="image-${u}" fetchpriority="high">
+                                <source type="image/webp" srcset="${c.image_path_webp}">
+                                <img class="product-card-swiper__image" src="${c.image_path_png}" loading="eager" alt="image-${u}" fetchpriority="high">
                             </picture>           
                         </div>
                     `).join("")}
@@ -44,12 +44,12 @@ import{s as l,P as c,d as h}from"./footer-Dto_QxNq.js";import{i as b,N as D}from
             </div>
         </div>
         <div class="product-card__middle">
-            <a class="product-card__title" href="${M}product/?id=${s}" name="product-card-title" aria-label="Перейти к товару">${t}</a>
+            <a class="product-card__title" href="${Z}product/?id=${s}" name="product-card-title" aria-label="Перейти к товару">${i}</a>
             <div class="product-card__sku sku">
                 <span class="sku__label">Арт:</span>
-                <span class="sku__value">${p}</span>
+                <span class="sku__value">${d}</span>
             </div>
-            <div class="product-card__subtitle">${d}</div>
+            <div class="product-card__subtitle">${p}</div>
             <div class="product-card__attributes">
                 <div class="attributes__weight weight">
                     <div class="weight__icon-wrapper">
@@ -100,7 +100,7 @@ import{s as l,P as c,d as h}from"./footer-Dto_QxNq.js";import{i as b,N as D}from
                     </div>
                     <div class="weight__value-wrapper">
                         <span class="weight__label">Масса:</span>
-                        <span class="weight__value">${C}${w}.</span>
+                        <span class="weight__value">${w}${m}.</span>
                     </div>
                 </div>
                 <div class="attributes__packaging packaging">
@@ -113,7 +113,7 @@ import{s as l,P as c,d as h}from"./footer-Dto_QxNq.js";import{i as b,N as D}from
                     </div>
                     <div class="packaging__value-wrapper">
                         <span class="packaging__label">Упаковка:</span>
-                        <span class="packaging__value">${m.name}</span>
+                        <span class="packaging__value">${L.name}</span>
                     </div>
                 </div>
             </div>
@@ -126,12 +126,12 @@ import{s as l,P as c,d as h}from"./footer-Dto_QxNq.js";import{i as b,N as D}from
                       <span class="price-number">${n}</span>&nbsp;${g}.
                   </span>`:""}
                     <span class="${n!==null?"price__old-price":"price__current-price"}">
-                        <span class="price-number">${L}</span>&nbsp;${g}.
+                        <span class="price-number">${f}</span>&nbsp;${g}.
                     </span>
                 </span>
             </div>
-            <a class="bottom__button button button_primary button_size-sm" href="#" name="product-card-button" aria-label="Купить товар">
+            <button class="bottom__button button button_primary button_size-sm product-card__buy-button"  name="product-card-button" aria-label="Купить товар">
                 Купить
-            </a>
+            </button>
         </div>
-    `,$(e),e}function $(a){const s=a.querySelector(".product-card-swiper");return s?b(s,{slidesPerView:1,navigation:{nextEl:a.querySelector(".product-card-swiper__next"),prevEl:a.querySelector(".product-card-swiper__prev")},modules:[D]}):null}const A=async a=>{l.subscribe("products",s=>{s.status===c.SUCCEEDED&&_(s.items,a)}),l.subscribe("productFilters",async s=>{const i=s.filters,t=s.isInitialized;console.log("Filters changed, fetching products:",s),t&&await h(i)})},x=async a=>{const s=l.getState().products;l.subscribe("products",i=>{i.status===c.SUCCEEDED&&_(i.items,a)}),s.items.length===0&&s.status===c.IDLE?await h():s.status===c.SUCCEEDED&&_(s.items,a)};function _(a,s){const i=document.querySelector(s);if(!i){console.error(`Ошибка: Основной контейнер с селектором "${s}" не найден.`);return}i.innerHTML="";const t=document.createElement("div");t.className="catalog",a.forEach(p=>{const d=Z(p);t.appendChild(d)}),i.appendChild(t)}export{A as f,x as p};
+    `,H(r);const C=r.querySelector(".product-card__buy-button");return C&&e?C.addEventListener("click",()=>{e.dispatch({type:"cart/addItem",payload:{productId:String(s)}})}):e||console.error("Не удалось привязать обработчик: Объект 'store' не передан в createProductCard."),r}function H(t){const s=t.querySelector(".product-card-swiper");return s?D(s,{slidesPerView:1,navigation:{nextEl:t.querySelector(".product-card-swiper__next"),prevEl:t.querySelector(".product-card-swiper__prev")},modules:[M]}):null}const A=async t=>{e.subscribe("products",s=>{s.status===l.SUCCEEDED&&_(s.items,t)}),e.subscribe("productFilters",async s=>{const a=s.filters,i=s.isInitialized;console.log("Filters changed, fetching products:",s),i&&await h(a)})},E=async t=>{const s=e.getState().products;e.subscribe("products",a=>{a.status===l.SUCCEEDED&&_(a.items,t)}),s.items.length===0&&s.status===l.IDLE?await h():s.status===l.SUCCEEDED&&_(s.items,t)};function _(t,s){const a=document.querySelector(s);if(!a){console.error(`Ошибка: Основной контейнер с селектором "${s}" не найден.`);return}a.innerHTML="";const i=document.createElement("div");i.className="catalog",t.forEach(d=>{const p=$(d);i.appendChild(p)}),a.appendChild(i)}export{A as f,E as p};

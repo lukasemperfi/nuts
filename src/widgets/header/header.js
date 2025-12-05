@@ -21,11 +21,6 @@ export async function initHeader() {
   store.subscribe("cart", async (newState) => {
     const cartCount = selectCartCount(newState);
     updateCartCounter(cartCount);
-
-    const ids = selectCartProductIds(newState);
-    const cartProducts = await fetchProductsWithCache(ids);
-
-    console.log("from header cartProducts", cartProducts);
   });
 }
 

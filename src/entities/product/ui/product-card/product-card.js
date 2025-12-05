@@ -203,20 +203,14 @@ export function createProductCard(product) {
 
   const addButton = card.querySelector(".product-card__buy-button");
 
-  if (addButton && store) {
-    addButton.addEventListener("click", () => {
-      store.dispatch({
-        type: "cart/addItem",
-        payload: {
-          productId: String(id),
-        },
-      });
+  addButton.addEventListener("click", () => {
+    store.dispatch({
+      type: "cart/addItem",
+      payload: {
+        productId: String(id),
+      },
     });
-  } else if (!store) {
-    console.error(
-      "Не удалось привязать обработчик: Объект 'store' не передан в createProductCard."
-    );
-  }
+  });
 
   return card;
 }

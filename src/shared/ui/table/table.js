@@ -45,10 +45,6 @@ export class Table {
   #handleQuantityChange = (event) => {
     const { itemId, newQuantity } = event.detail;
 
-    console.log(
-      `[Table Component]: Получено изменение. ID: ${itemId}, Новое кол-во: ${newQuantity}`
-    );
-
     this.#element.dispatchEvent(
       new CustomEvent("dataUpdateRequest", {
         bubbles: true,

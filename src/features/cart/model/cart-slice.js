@@ -124,4 +124,5 @@ export const cartSlice = {
 export const selectCartProductIds = (state) =>
   state.items.map((i) => i.productId);
 
-export const selectCartCount = (state) => state.items.length;
+export const selectCartCount = (state) =>
+  state.items.reduce((totalCount, item) => totalCount + item.quantity, 0);

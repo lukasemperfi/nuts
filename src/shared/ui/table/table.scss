@@ -129,6 +129,17 @@
       fill: var(--border-color);
     }
   }
+
+  &__empty-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 3rem;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 }
 
 .quantity {

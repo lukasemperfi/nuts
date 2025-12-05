@@ -31,8 +31,8 @@ export class Table {
     return createTableBody(rows, columns, this);
   }
 
-  #createTableFooter(totalAmount) {
-    return createTableFooter(totalAmount);
+  #createTableFooter(footerProps) {
+    return createTableFooter(footerProps);
   }
 
   #setupEventListeners() {
@@ -78,6 +78,12 @@ export class Table {
     } = this.#props;
 
     this.#element.innerHTML = "";
+
+    if (rows.length === 0) {
+      this.#element.innerHTML =
+        '<div class="table__empty-message">Корзина пуста!</div>';
+      return;
+    }
 
     if (columns.length > 0) {
       const templateString = columns.map((col) => col.width).join(" ");
@@ -156,8 +162,6 @@ export function createTableBody(rows, columns, tableInstance) {
       const rowElement = createTableRow(rowData, columns, tableInstance);
       body.appendChild(rowElement);
     });
-  } else {
-    body.innerHTML = '<div class="table__empty-message">Корзина пуста!</div>';
   }
 
   return body;

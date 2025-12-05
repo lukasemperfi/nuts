@@ -68,7 +68,7 @@ export class Table {
     const {
       columns = [],
       rows = [],
-      totalAmount = 175,
+      totalAmount = 0,
       footer = {},
       showHeader = true,
     } = this.#props;
@@ -97,9 +97,11 @@ export class Table {
     const bodyElement = this.#createTableBody(rows, columns);
     this.#element.appendChild(bodyElement);
 
+    const formattedTotal = Number(totalAmount).toFixed(2);
+
     const footerElement = this.#createTableFooter({
       ...footer,
-      totalAmount,
+      totalAmount: formattedTotal,
     });
     this.#element.appendChild(footerElement);
   }

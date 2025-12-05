@@ -4,14 +4,14 @@ export class QuantityComponent {
   #increaseButton;
   #decreaseButton;
   #itemId;
-  #min; // <<< added
-  #max; // <<< added
+  #min;
+  #max;
 
   constructor(initialValue, itemId, min = 1, max = 99) {
     this.#itemId = itemId;
 
-    this.#min = min; // <<< added
-    this.#max = max; // <<< added
+    this.#min = min;
+    this.#max = max;
 
     this.#element = createQuantityDomStructure(initialValue);
 
@@ -102,7 +102,7 @@ export class QuantityComponent {
 
     let newValue = Math.floor(Number(cleanValue));
 
-    newValue = Math.max(this.#min, newValue); // <<< changed
+    newValue = Math.max(this.#min, newValue);
     newValue = Math.min(this.#max, newValue);
 
     this.#input.value = newValue;

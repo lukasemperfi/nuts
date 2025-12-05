@@ -4,9 +4,14 @@ export class QuantityComponent {
   #increaseButton;
   #decreaseButton;
   #itemId;
+  #min; // <<< added
+  #max; // <<< added
 
-  constructor(initialValue, itemId) {
+  constructor(initialValue, itemId, min = 1, max = 99) {
     this.#itemId = itemId;
+
+    this.#min = min; // <<< added
+    this.#max = max; // <<< added
 
     this.#element = createQuantityDomStructure(initialValue);
 
@@ -25,14 +30,66 @@ export class QuantityComponent {
       this.#updateQuantity(1)
     );
 
+    this.#input.addEventListener("keydown", this.#handleKeyDown.bind(this));
+    this.#input.addEventListener("paste", this.#handlePaste.bind(this));
+
     this.#input.addEventListener("change", (e) =>
       this.#handleInputChange(e.target.value)
     );
   }
 
+  #handlePaste(e) {
+    e.preventDefault();
+    const previousValue = this.#input.value;
+
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const pastedText = clipboardData.getData("Text");
+
+    const isOnlyDigits = /^[0-9]+$/.test(pastedText);
+
+    if (!isOnlyDigits) {
+      this.#input.value = previousValue;
+      return;
+    }
+
+    const pastedNumber = Number(pastedText);
+
+    if (pastedNumber < this.#min || pastedNumber > this.#max) {
+      this.#input.value = previousValue;
+      return;
+    }
+
+    document.execCommand("insertText", false, pastedText);
+
+    this.#handleInputChange(this.#input.value);
+  }
+
+  #handleKeyDown(e) {
+    if (
+      [8, 9, 27, 13, 46].includes(e.keyCode) ||
+      (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || // A
+      (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) || // C
+      (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) || // V
+      (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) || // X
+      (e.keyCode >= 37 && e.keyCode <= 40)
+    ) {
+      return;
+    }
+
+    if (
+      (e.keyCode < 48 || e.keyCode > 57) &&
+      (e.keyCode < 96 || e.keyCode > 105)
+    ) {
+      e.preventDefault();
+    }
+  }
+
   #updateQuantity(delta) {
     let currentValue = Number(this.#input.value);
-    let newValue = Math.max(1, currentValue + delta);
+    let newValue = currentValue + delta;
+
+    newValue = Math.max(this.#min, newValue);
+    newValue = Math.min(this.#max, newValue);
 
     if (newValue !== currentValue) {
       this.#input.value = newValue;
@@ -41,7 +98,12 @@ export class QuantityComponent {
   }
 
   #handleInputChange(inputValue) {
-    let newValue = Math.max(1, Math.floor(Number(inputValue)));
+    let cleanValue = String(inputValue).replace(/[^0-9]/g, "");
+
+    let newValue = Math.floor(Number(cleanValue));
+
+    newValue = Math.max(this.#min, newValue); // <<< changed
+    newValue = Math.min(this.#max, newValue);
 
     this.#input.value = newValue;
 
@@ -102,7 +164,7 @@ function createIncreaseIcon() {
 function createQuantityDomStructure(initialValue) {
   const template = `
         <button class="quantity__decrease" type="button">${createDecreaseIcon()}</button>
-        <input type="number" class="quantity__input" value="${initialValue}" min="1" aria-label="Количество" name="quantity-input">
+        <input type="text" class="quantity__input" value="${initialValue}" aria-label="Количество" name="quantity-input">
         <button class="quantity__increase" type="button">${createIncreaseIcon()}</button>
     `;
 

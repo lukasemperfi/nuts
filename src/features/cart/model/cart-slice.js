@@ -1,4 +1,5 @@
 import { store } from "@/app/store/index.js";
+import { productsApi } from "../../../entities/product/api/products";
 
 export const CART_STATUS = {
   IDLE: "idle",
@@ -11,7 +12,10 @@ const initialState = {
   items: [],
   status: CART_STATUS.IDLE,
   error: null,
-  lastFetched: null,
+
+  products: [],
+  isProductsLoading: false,
+  productsError: null,
 };
 
 export const cartSlice = {
@@ -118,6 +122,84 @@ export const cartSlice = {
     },
 
     resetCart: () => initialState,
+
+    setCartProductsLoading: (state) => ({
+      ...state,
+      isProductsLoading: true,
+      productsError: null,
+    }),
+    setCartProducts: (state, action) => ({
+      ...state,
+      products: action.payload,
+      isProductsLoading: false,
+      productsError: null,
+    }),
+    setCartProductsError: (state, action) => ({
+      ...state,
+      isProductsLoading: false,
+      productsError: action.payload,
+    }),
+  },
+};
+
+export async function fetchCartProducts() {
+  const state = store.getState().cart;
+  const productIds = state.items.map((p) => p.productId);
+
+  store.dispatch({ type: "cart/setCartProductsLoading" });
+
+  try {
+    const products = await productsApi.getProductsByIds(productIds);
+
+    store.dispatch({
+      type: "cart/setCartProducts",
+      payload: products,
+    });
+
+    return products;
+  } catch (err) {
+    const errorMessage = err.message || "Unknown error";
+    store.dispatch({
+      type: "cart/setCartProductsError",
+      payload: errorMessage,
+    });
+    throw err;
+  }
+}
+
+export const cartThunks = {
+  addItem: (productId) => {
+    const stateBefore = store.getState().cart;
+    const existsBefore = stateBefore.items.find(
+      (item) => item.productId === productId
+    );
+
+    store.dispatch({
+      type: "cart/addItem",
+      payload: { productId },
+    });
+
+    if (!existsBefore) {
+      fetchCartProducts();
+    }
+  },
+
+  removeItem: (productId) => {
+    store.dispatch({
+      type: "cart/removeItem",
+      payload: { productId },
+    });
+
+    fetchCartProducts();
+  },
+
+  setQuantity: (payload) => {
+    store.dispatch({
+      type: "cart/setQuantity",
+      payload: payload,
+    });
+
+    fetchCartProducts();
   },
 };
 
@@ -126,3 +208,20 @@ export const selectCartProductIds = (state) =>
 
 export const selectCartCount = (state) =>
   state.items.reduce((totalCount, item) => totalCount + item.quantity, 0);
+
+// setQuantity: ({ productId, quantity }) => {
+//         const stateBefore = store.getState().cart;
+//         const existsBefore = stateBefore.items.some(item => item.productId === productId);
+
+//         store.dispatch({
+//             type: "cart/setQuantity",
+//             payload: { productId, quantity }
+//         });
+
+//         const isRemoved = quantity <= 0 && existsBefore;
+//         const isAdded = quantity > 0 && !existsBefore;
+
+//         if (isRemoved || isAdded) {
+//             fetchCartProducts();
+//         }
+//     },

@@ -1,6 +1,7 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
 import { store } from "@/app/store";
+import { cartThunks } from "../../../../features/cart/model/cart-slice";
 
 const baseUrl =
   import.meta.env.MODE === "development"
@@ -204,12 +205,7 @@ export function createProductCard(product) {
   const addButton = card.querySelector(".product-card__buy-button");
 
   addButton.addEventListener("click", () => {
-    store.dispatch({
-      type: "cart/addItem",
-      payload: {
-        productId: String(id),
-      },
-    });
+    cartThunks.addItem(String(id));
   });
 
   return card;

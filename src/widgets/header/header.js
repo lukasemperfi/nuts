@@ -5,8 +5,6 @@ import { logoutUser } from "@/entities/auth/model/auth-slice";
 import { getSession } from "@/app/providers/auth-guard";
 import { CartPopup } from "@/features/cart/ui/cart-popup";
 import { selectCartCount } from "@/features/cart/model/cart-slice";
-import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
-import { selectCartProductIds } from "@/features/cart/model/cart-slice";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;

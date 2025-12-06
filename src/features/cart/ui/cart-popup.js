@@ -3,7 +3,6 @@ import { QuantityComponent } from "@/shared/ui/table/quantity";
 import { createDeleteButton, createLinkIcon } from "@/shared/ui/table/table";
 import { TableModel } from "@/shared/ui/table/model/table-model";
 import { store } from "@/app/store";
-import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
 import { mapProductsToTableRows } from "./map-products-to-table-rows";
 import { baseUrl } from "../../../shared/helpers/base-url";
 import { PRODUCTS_STATUS } from "../../../entities/product/model/products-slice";
@@ -114,19 +113,15 @@ export function CartPopup({ trigger, cartPopupContainer }) {
   });
 
   store.subscribe("cart", async (newState) => {
-    const cartItems = newState.items;
-    const ids = cartItems.map((item) => String(item.productId));
-    const cartProducts = await fetchProductsWithCache(ids);
-
-    const newRows = mapProductsToTableRows(cartProducts, cartItems);
-
-    tableModel.setRows(newRows);
-    const newTotalAmount = tableModel.calculateTotalAmount();
-
-    table.update({
-      rows: newRows,
-      totalAmount: newTotalAmount,
-    });
+    // const cartItems = newState.items;
+    // const ids = cartItems.map((item) => String(item.productId));
+    // const newRows = mapProductsToTableRows(cartProducts, cartItems);
+    // tableModel.setRows(newRows);
+    // const newTotalAmount = tableModel.calculateTotalAmount();
+    // table.update({
+    //   rows: newRows,
+    //   totalAmount: newTotalAmount,
+    // });
   });
 }
 

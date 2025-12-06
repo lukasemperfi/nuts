@@ -3,7 +3,6 @@ import { QuantityComponent } from "@/shared/ui/table/quantity";
 import { createDeleteButton, createLinkIcon } from "@/shared/ui/table/table";
 import { TableModel } from "@/shared/ui/table/model/table-model";
 import { store } from "@/app/store";
-import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
 import { mapProductsToTableRows } from "./map-products-to-table-rows";
 import { createOverlaySpinner } from "../../../shared/ui/overlay-spinner/overlay-spinner";
 import { PRODUCTS_STATUS } from "../../../entities/product/model/products-slice";
@@ -106,10 +105,6 @@ export function Cart({ container }) {
         },
       });
     }
-  });
-
-  store.subscribe("products", async (newState) => {
-    console.log("products", newState);
   });
 
   store.subscribe("cart", async (newState) => {

@@ -114,8 +114,8 @@ export function CartPopup({ trigger, cartPopupContainer }) {
   store.subscribe("cart", async (newState) => {
     const cartItems = newState.items;
     const ids = cartItems.map((item) => String(item.productId));
-    // const cartProducts = await fetchProductsWithCache(ids);
-    const cartProducts = [];
+    const cartProducts = await fetchProductsWithCache(ids);
+    // const cartProducts = [];
 
     const newRows = mapProductsToTableRows(cartProducts, cartItems);
 

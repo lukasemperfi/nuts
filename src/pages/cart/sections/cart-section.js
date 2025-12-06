@@ -53,19 +53,19 @@ const footer = {
 export const initCartSection = () => {
   const cartContainer = document.querySelector(".cart-section__page-container");
 
-  const initialEmptyRows = [
-    { productName: "Орехи кешью", quantity: 2, price: 150, total: 300, id: 1 },
-  ];
-  const tableModel = new TableModel(initialEmptyRows);
+  // const initialEmptyRows = [
+  //   { productName: "Орехи кешью", quantity: 2, price: 150, total: 300, id: 1 },
+  // ];
+  // const tableModel = new TableModel(initialEmptyRows);
 
-  const initialData = {
-    columns: columns,
-    rows: tableModel.getRows(),
-    totalAmount: tableModel.calculateTotalAmount(),
-    footer: footer,
-    showHeader: true,
-  };
+  // const initialData = {
+  //   columns: columns,
+  //   rows: tableModel.getRows(),
+  //   totalAmount: tableModel.calculateTotalAmount(),
+  //   footer: footer,
+  //   showHeader: true,
+  // };
 
-  const tableCart = new Table(cartContainer, initialData);
-  // Cart({ container: cartContainer });
+  // const tableCart = new Table(cartContainer, initialData);
+  Cart({ container: cartContainer });
 };

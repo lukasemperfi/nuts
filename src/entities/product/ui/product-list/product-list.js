@@ -4,8 +4,20 @@ import { PRODUCTS_STATUS } from "@/entities/product/model/products-slice.js";
 import { createProductCard } from "@/entities/product/ui/product-card/product-card.js";
 
 export const filteredProductList = async (containerSelector) => {
+  let prevProducts = null;
+
   store.subscribe("products", (newState) => {
     if (newState.status === PRODUCTS_STATUS.SUCCEEDED) {
+      const same =
+        prevProducts &&
+        JSON.stringify(prevProducts) === JSON.stringify(newState.items);
+
+      if (same) {
+        return;
+      }
+
+      prevProducts = newState.items;
+
       renderProductList(newState.items, containerSelector);
     }
   });
@@ -26,15 +38,33 @@ export const filteredProductList = async (containerSelector) => {
 export const productList = async (containerSelector) => {
   const state = store.getState().products;
 
+  let prevProducts = null;
+
   store.subscribe("products", (newState) => {
     if (newState.status === PRODUCTS_STATUS.SUCCEEDED) {
+      console.log("renderProductList from subscribe");
+
+      const same =
+        prevProducts &&
+        JSON.stringify(prevProducts) === JSON.stringify(newState.items);
+
+      if (same) {
+        return;
+      }
+
+      prevProducts = newState.items;
+
       renderProductList(newState.items, containerSelector);
     }
   });
 
   if (state.items.length === 0 && state.status === PRODUCTS_STATUS.IDLE) {
+    console.log("fetchProductList");
+
     await fetchProducts();
   } else if (state.status === PRODUCTS_STATUS.SUCCEEDED) {
+    console.log("renderProductList from existing state");
+
     renderProductList(state.items, containerSelector);
   }
 };

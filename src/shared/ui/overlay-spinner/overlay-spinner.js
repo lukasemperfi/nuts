@@ -1,6 +1,17 @@
-export function createOverlaySpinner(successText = "Успех!") {
-  const overlay = document.createElement("div");
-  overlay.className = "overlay";
+export function createOverlaySpinner(
+  successText = "Успех!",
+  className = "spinner",
+  container
+) {
+  let overlay = null;
+
+  if (container) {
+    overlay = container;
+  } else {
+    overlay = document.createElement("div");
+  }
+
+  overlay.classList.add("overlay", className);
 
   const spinner = createSpinner();
   const successBox = createSuccessBox(successText);

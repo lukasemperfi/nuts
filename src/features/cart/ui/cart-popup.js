@@ -6,6 +6,8 @@ import { store } from "@/app/store";
 import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
 import { mapProductsToTableRows } from "./map-products-to-table-rows";
 import { baseUrl } from "../../../shared/helpers/base-url";
+import { PRODUCTS_STATUS } from "../../../entities/product/model/products-slice";
+import { createOverlaySpinner } from "../../../shared/ui/overlay-spinner/overlay-spinner";
 
 export function CartPopup({ trigger, cartPopupContainer }) {
   const columns = [
@@ -111,11 +113,16 @@ export function CartPopup({ trigger, cartPopupContainer }) {
     }
   });
 
+  store.subscribe("products", (newState) => {
+    if (newState.cachedStatus === PRODUCTS_STATUS.LOADING) {
+      //TODO: show loading spinner
+    }
+  });
+
   store.subscribe("cart", async (newState) => {
     const cartItems = newState.items;
     const ids = cartItems.map((item) => String(item.productId));
     const cartProducts = await fetchProductsWithCache(ids);
-    // const cartProducts = [];
 
     const newRows = mapProductsToTableRows(cartProducts, cartItems);
 

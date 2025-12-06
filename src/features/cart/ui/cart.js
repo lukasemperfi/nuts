@@ -108,16 +108,29 @@ export function Cart({ container }) {
   });
 
   store.subscribe("cart", async (newState) => {
-    // const cartItems = newState.items;
-    // const ids = cartItems.map((item) => String(item.productId));
-    // const cartProducts = await fetchProductsWithCache(ids);
-    // const newRows = mapProductsToTableRows(cartProducts, cartItems);
-    // tableModel.setRows(newRows);
-    // const newTotalAmount = tableModel.calculateTotalAmount();
-    // table.update({
-    //   rows: newRows,
-    //   totalAmount: newTotalAmount,
-    // });
+    const cartItems = newState.items;
+    const cartProducts = newState.products;
+    const isCartProductsLoading = newState.isProductsLoading;
+
+    if (isCartProductsLoading) {
+      overlay.show();
+      table.element.style.visibility = "hidden";
+      return;
+    }
+    overlay.hide();
+
+    table.element.style.visibility = "visible";
+
+    const newRows = mapProductsToTableRows(cartProducts, cartItems);
+
+    tableModel.setRows(newRows);
+
+    const newTotalAmount = tableModel.calculateTotalAmount();
+
+    table.update({
+      rows: newRows,
+      totalAmount: newTotalAmount,
+    });
   });
 }
 

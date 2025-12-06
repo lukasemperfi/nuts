@@ -49,6 +49,8 @@ export const cartSlice = {
       return {
         ...state,
         items: state.items.filter((i) => i.productId !== productId),
+
+        products: state.products.filter((p) => String(p.id) !== productId),
       };
     },
 
@@ -190,16 +192,26 @@ export const cartThunks = {
       payload: { productId },
     });
 
-    fetchCartProducts();
+    // fetchCartProducts();
   },
 
-  setQuantity: (payload) => {
+  setQuantity: ({ productId, quantity }) => {
+    const stateBefore = store.getState().cart;
+    const existsBefore = stateBefore.items.some(
+      (item) => item.productId === productId
+    );
+
     store.dispatch({
       type: "cart/setQuantity",
-      payload: payload,
+      payload: { productId, quantity },
     });
 
-    fetchCartProducts();
+    const isRemoved = quantity <= 0 && existsBefore;
+    const isAdded = quantity > 0 && !existsBefore;
+
+    if (isRemoved || isAdded) {
+      fetchCartProducts();
+    }
   },
 };
 
@@ -208,20 +220,3 @@ export const selectCartProductIds = (state) =>
 
 export const selectCartCount = (state) =>
   state.items.reduce((totalCount, item) => totalCount + item.quantity, 0);
-
-// setQuantity: ({ productId, quantity }) => {
-//         const stateBefore = store.getState().cart;
-//         const existsBefore = stateBefore.items.some(item => item.productId === productId);
-
-//         store.dispatch({
-//             type: "cart/setQuantity",
-//             payload: { productId, quantity }
-//         });
-
-//         const isRemoved = quantity <= 0 && existsBefore;
-//         const isAdded = quantity > 0 && !existsBefore;
-
-//         if (isRemoved || isAdded) {
-//             fetchCartProducts();
-//         }
-//     },

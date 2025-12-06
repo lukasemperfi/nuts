@@ -1,7 +1,7 @@
 export class Table {
   #container;
   #props;
-  #element;
+  element;
 
   constructor(containerElement, initialProps = {}) {
     if (!containerElement) {
@@ -11,8 +11,8 @@ export class Table {
 
     this.#container = containerElement;
     this.#props = initialProps;
-    this.#element = this.#createBaseElement();
-    this.#container.appendChild(this.#element);
+    this.element = this.#createBaseElement();
+    this.#container.appendChild(this.element);
 
     this.#setupEventListeners();
 
@@ -36,16 +36,13 @@ export class Table {
   }
 
   #setupEventListeners() {
-    this.#element.addEventListener(
-      "quantityChange",
-      this.#handleQuantityChange
-    );
+    this.element.addEventListener("quantityChange", this.#handleQuantityChange);
   }
 
   #handleQuantityChange = (event) => {
     const { itemId, newQuantity } = event.detail;
 
-    this.#element.dispatchEvent(
+    this.element.dispatchEvent(
       new CustomEvent("dataUpdateRequest", {
         bubbles: true,
         detail: {
@@ -73,21 +70,21 @@ export class Table {
       showHeader = true,
     } = this.#props;
 
-    this.#element.innerHTML = "";
+    this.element.innerHTML = "";
 
     if (rows.length === 0) {
-      this.#element.innerHTML =
+      this.element.innerHTML =
         '<div class="table__empty-message">Корзина пуста!</div>';
       return;
     }
 
     if (columns.length > 0) {
       const templateString = columns.map((col) => col.width).join(" ");
-      this.#element.style.gridTemplateColumns = templateString;
+      this.element.style.gridTemplateColumns = templateString;
 
       if (showHeader) {
         const headerElement = this.#createTableHeader(columns);
-        this.#element.appendChild(headerElement);
+        this.element.appendChild(headerElement);
       }
     } else {
       console.warn("Table requires columns");
@@ -95,7 +92,7 @@ export class Table {
     }
 
     const bodyElement = this.#createTableBody(rows, columns);
-    this.#element.appendChild(bodyElement);
+    this.element.appendChild(bodyElement);
 
     const formattedTotal = Number(totalAmount).toFixed(2);
 
@@ -103,7 +100,7 @@ export class Table {
       ...footer,
       totalAmount: formattedTotal,
     });
-    this.#element.appendChild(footerElement);
+    this.element.appendChild(footerElement);
   }
 }
 

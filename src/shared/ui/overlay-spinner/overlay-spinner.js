@@ -1,8 +1,9 @@
-export function createOverlaySpinner(
+export function createOverlaySpinner({
   successText = "Успех!",
   className = "spinner",
-  container
-) {
+  container,
+  blockBody = true,
+}) {
   let overlay = null;
 
   if (container) {
@@ -22,7 +23,10 @@ export function createOverlaySpinner(
 
   function show() {
     overlay.classList.add("show");
-    document.body.style.overflow = "hidden";
+
+    if (blockBody) {
+      document.body.style.overflow = "hidden";
+    }
 
     spinner.style.display = "flex";
     successBox.style.display = "none";
@@ -30,7 +34,10 @@ export function createOverlaySpinner(
 
   function hide() {
     overlay.classList.remove("show");
-    document.body.style.overflow = "";
+
+    if (blockBody) {
+      document.body.style.overflow = "";
+    }
   }
 
   function success() {
@@ -46,6 +53,7 @@ export function createOverlaySpinner(
     show,
     hide,
     success,
+    element: overlay,
   };
 }
 

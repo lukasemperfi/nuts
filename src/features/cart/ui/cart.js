@@ -5,6 +5,9 @@ import { TableModel } from "@/shared/ui/table/model/table-model";
 import { store } from "@/app/store";
 import { fetchProductsWithCache } from "@/entities/product/model/products-slice";
 import { mapProductsToTableRows } from "./map-products-to-table-rows";
+import { createOverlaySpinner } from "../../../shared/ui/overlay-spinner/overlay-spinner";
+import { PRODUCTS_STATUS } from "../../../entities/product/model/products-slice";
+import { CART_STATUS } from "../model/cart-slice";
 
 export function Cart({ container }) {
   const columns = [
@@ -68,6 +71,9 @@ export function Cart({ container }) {
     ],
   };
 
+  const cartContainer = document.createElement("div");
+  cartContainer.classList.add("cart");
+
   const initialEmptyRows = [];
   const tableModel = new TableModel(initialEmptyRows);
 
@@ -79,9 +85,16 @@ export function Cart({ container }) {
     showHeader: true,
   };
 
-  const table = new Table(container, initialData);
+  const table = new Table(cartContainer, initialData);
+  const overlay = createOverlaySpinner({
+    className: "cart__overlay",
+    blockBody: false,
+  });
+  cartContainer.appendChild(overlay.element);
 
-  container.addEventListener("dataUpdateRequest", (event) => {
+  container.appendChild(cartContainer);
+
+  cartContainer.addEventListener("dataUpdateRequest", (event) => {
     const { action, itemId, newQuantity } = event.detail;
 
     if (action === "updateQuantity") {
@@ -95,20 +108,21 @@ export function Cart({ container }) {
     }
   });
 
+  store.subscribe("products", async (newState) => {
+    console.log("products", newState);
+  });
+
   store.subscribe("cart", async (newState) => {
-    const cartItems = newState.items;
-    const ids = cartItems.map((item) => String(item.productId));
-    const cartProducts = await fetchProductsWithCache(ids);
-
-    const newRows = mapProductsToTableRows(cartProducts, cartItems);
-
-    tableModel.setRows(newRows);
-    const newTotalAmount = tableModel.calculateTotalAmount();
-
-    table.update({
-      rows: newRows,
-      totalAmount: newTotalAmount,
-    });
+    // const cartItems = newState.items;
+    // const ids = cartItems.map((item) => String(item.productId));
+    // const cartProducts = await fetchProductsWithCache(ids);
+    // const newRows = mapProductsToTableRows(cartProducts, cartItems);
+    // tableModel.setRows(newRows);
+    // const newTotalAmount = tableModel.calculateTotalAmount();
+    // table.update({
+    //   rows: newRows,
+    //   totalAmount: newTotalAmount,
+    // });
   });
 }
 

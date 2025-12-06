@@ -13,7 +13,7 @@ const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
 
 export const initForgotPasswordForm = () => {
-  const overlay = createOverlaySpinner("Пароль изменен!");
+  const overlay = createOverlaySpinner({successText: "Пароль изменен!"});
   const sendPasswordValidator = initSendPasswordToEmailFormValidation();
   const resetPasswordValidator = initResetPasswordFormValidation();
 

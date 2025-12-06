@@ -234,7 +234,7 @@ export const initRegistrationForm = () => {
       const payload = Object.fromEntries(formData.entries());
       const finalPayload = groupRegistrationData(payload);
 
-      const overlay = createOverlaySpinner("Регистрация прошла успешно!");
+      const overlay = createOverlaySpinner({successText:"Регистрация прошла успешно!"});
 
       store.subscribe("auth", async (newState) => {
         if (newState.status === AUTH_STATUS.LOADING) {

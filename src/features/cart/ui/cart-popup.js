@@ -113,12 +113,6 @@ export function CartPopup({ trigger, cartPopupContainer }) {
     }
   });
 
-  store.subscribe("products", (newState) => {
-    if (newState.cachedStatus === PRODUCTS_STATUS.LOADING) {
-      //TODO: show loading spinner
-    }
-  });
-
   store.subscribe("cart", async (newState) => {
     const cartItems = newState.items;
     const ids = cartItems.map((item) => String(item.productId));

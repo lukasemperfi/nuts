@@ -1,5 +1,4 @@
 import { Table } from "@/shared/ui/table/table";
-import { QuantityComponent } from "@/shared/ui/table/quantity";
 import { TableModel } from "@/shared/ui/table/model/table-model";
 import { store } from "@/app/store";
 import { mapProductsToTableRows } from "./map-products-to-table-rows";
@@ -9,7 +8,6 @@ export function Cart({
   columns = [],
   footer = {},
   showHeader = true,
-  fakeData = [],
 }) {
   const cartContainer = document.createElement("div");
   cartContainer.classList.add("cart");
@@ -33,6 +31,8 @@ export function Cart({
     const { action, itemId, newQuantity } = event.detail;
 
     if (action === "updateQuantity") {
+      console.log("event from change", event);
+
       store.dispatch({
         type: "cart/setQuantity",
         payload: {
@@ -46,10 +46,6 @@ export function Cart({
   store.subscribe("cart", async (newState) => {
     const cartItems = newState.items;
     const cartProducts = newState.products;
-
-    if (fakeData) {
-    }
-
     const newRows = mapProductsToTableRows(cartProducts, cartItems);
 
     tableModel.setRows(newRows);

@@ -1,28 +1,12 @@
-{%import "src/shared/ui/icons/icons.html" as icons%}
+{%from "src/features/checkout/ui/checkout-form.html" import checkoutForm%}
+{%from "src/shared/ui/user-info-bar/user-info-bar.html" import userInfoBar%}
 
-{%macro checkoutSection()%}
+{%macro checkoutSection(baseUrl)%}
 <section class="checkout-section">
     <div class="checkout-section__page-container page-container">
         {{userInfoBar(title="Оформление заказа", showMeta=false)}}
+        <div class="checkout-section__cart"></div>
+        {{checkoutForm(baseUrl)}}
     </div>
 </section>
-{%endmacro%}
-
-
-{%macro userInfoBar(title="", showMeta=false)%}
-<div class="user-info-bar">
-    <div class="user-info-bar__title">{{title}}</div>
-    <div class="user-info-bar__manager-contacts">
-        <div class="manager-contacts">
-            <div class="manager-contacts__name">Ваш личный менеджер Олег</div>
-            <div class="manager-contacts__phone">
-                {{icons.phone()}}
-                <span>+38 067 777 14 12</span>
-            </div>
-        </div>
-    </div>
-    {%if showMeta%}
-    <div class="manager-contacts__meta">Ваша персональная скидка - 5%</div>
-    {%endif%}
-</div>
 {%endmacro%}

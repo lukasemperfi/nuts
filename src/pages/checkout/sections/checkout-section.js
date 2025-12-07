@@ -56,9 +56,7 @@ const footer = {
 };
 
 export const initCheckoutSection = () => {
-  const checkoutContainer = document.querySelector(
-    ".checkout-section__page-container"
-  );
+  const checkoutContainer = document.querySelector(".checkout-section__cart");
 
   Cart({ container: checkoutContainer, columns, footer });
 };

@@ -10,18 +10,18 @@
 <form action="#" class="registration-form" id="registration-form">
     <div class="registration-form__title">Регистрация</div>
     <div class="registration-form__body">
-        <div class="registration-form__item registration-form-item registration-form-item_contacts">
-            <div class="registration-form-item__title">1. Контактные данные</div>
-            <div class="registration-form-item__fields">
+        <div class="registration-form__item form-item registration-form-item_contacts">
+            <div class="form-item__title">1. Контактные данные</div>
+            <div class="form-item__fields">
                 {{ formField(name="full_name", placeholder="ФИО", required=true, id="registration-full-name")
                 }}
                 {{ formField(name="email", placeholder="Email", required=true, id="registration-email") }}
                 {{ formField(name="phone", placeholder="Телефон", required=true, id="registration-phone") }}
             </div>
         </div>
-        <div class="registration-form__item registration-form-item registration-form-item_address">
-            <div class="registration-form-item__title">2. Адрес</div>
-            <div class="registration-form-item__fields">
+        <div class="registration-form__item form-item registration-form-item_address">
+            <div class="form-item__title">2. Адрес</div>
+            <div class="form-item__fields">
                 {{dropdown(name="country",
                 class="registration-form__country-dropdown
                 dropdown_select dropdown_highlight-selected",
@@ -33,16 +33,16 @@
                 {{ formField(name="address", placeholder="Адрес", id="registration-address") }}
             </div>
         </div>
-        <div class="registration-form__item registration-form-item registration-form-item_password">
-            <div class="registration-form-item__title">3. Пароль</div>
-            <div class="registration-form-item__fields">
+        <div class="registration-form__item form-item registration-form-item_password">
+            <div class="form-item__title">3. Пароль</div>
+            <div class="form-item__fields">
                 {{ formField(name="password", placeholder="Пароль", required=true, id="registration-password") }}
                 {{ formField(name="confirm_password", placeholder="Подтвердите пароль", required=true,
                 id="registration-confirm-password") }}
             </div>
         </div>
 
-        <div class="registration-form__item registration-form-item registration-form-item_person-type">
+        <div class="registration-form__item form-item registration-form-item_person-type">
             {{uploadPhoto(class="registration-form__avatar", id="registration__avatar-file", baseUrl=baseUrl)}}
             <div class="registration-form__person-type-group">
                 {{ radio("person_type", "physical", "Физ. лицо", "id-physical", true) }}
@@ -73,15 +73,15 @@
 
 {%macro legalEntity()%}
 <div class="legal-entity hidden">
-    <div class="registration-form__item registration-form-item">
-        <div class="registration-form-item__title">1. Реквизиты</div>
-        <div class="registration-form-item__fields">
+    <div class="registration-form__item form-item">
+        <div class="form-item__title">1. Реквизиты</div>
+        <div class="form-item__fields">
             {{ formField(name="legal_entity_okpo", placeholder="ОКПО", id="registration-legal-entity-okpo") }}
         </div>
     </div>
-    <div class="registration-form__item registration-form-item">
-        <div class="registration-form-item__title">2. Юридический адрес</div>
-        <div class="registration-form-item__fields">
+    <div class="registration-form__item form-item">
+        <div class="form-item__title">2. Юридический адрес</div>
+        <div class="form-item__fields">
             {{dropdown(name="legal_entity_country",
             class="registration-form__legal-entity-country-dropdown
             dropdown_select dropdown_highlight-selected",
@@ -102,15 +102,15 @@
 
 {%macro fopEntity()%}
 <div class="fop-entity hidden">
-    <div class="registration-form__item registration-form-item">
-        <div class="registration-form-item__title">1. Реквизиты</div>
-        <div class="registration-form-item__fields">
+    <div class="registration-form__item form-item">
+        <div class="form-item__title">1. Реквизиты</div>
+        <div class="form-item__fields">
             {{ formField(name="fop_edrpou", placeholder="ЕДРПО", id="registration-fop-edrpou") }}
         </div>
     </div>
-    <div class="registration-form__item registration-form-item">
-        <div class="registration-form-item__title">2. Адрес ФОП</div>
-        <div class="registration-form-item__fields">
+    <div class="registration-form__item form-item">
+        <div class="form-item__title">2. Адрес ФОП</div>
+        <div class="form-item__fields">
             {{dropdown(name="fop_country",
             class="registration-form__fop-country-dropdown
             dropdown_select dropdown_highlight-selected",

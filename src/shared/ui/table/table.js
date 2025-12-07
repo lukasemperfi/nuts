@@ -45,6 +45,7 @@ export class Table {
   }
 
   #handleQuantityChange = (event) => {
+    event.stopPropagation();
     const { itemId, newQuantity } = event.detail;
 
     this.element.dispatchEvent(
@@ -57,8 +58,6 @@ export class Table {
         },
       })
     );
-
-    event.stopPropagation();
   };
 
   update(newProps) {

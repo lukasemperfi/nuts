@@ -75,7 +75,7 @@ export function CartPopup({ trigger, cartPopupContainer }) {
   };
 
   if (!cartPopupContainer) {
-    console.error("Контейнер .middle-header__cart-popup не найден.");
+    console.error("Контейнер не найден.");
     return;
   }
 

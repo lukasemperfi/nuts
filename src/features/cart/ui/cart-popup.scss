@@ -2,6 +2,16 @@
   padding-top: 30px;
   padding-inline: 30px;
   border: 1.5px solid var(--border-color-secondary);
+  // display: none;
+
+  // &:popover-open {
+  //   display: block;
+  //   // opacity: 1;
+
+  //   // @starting-style {
+  //   //   opacity: 0;
+  //   // }
+  // }
 
   .table__row {
     padding-inline: 0;

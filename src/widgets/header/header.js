@@ -106,9 +106,7 @@ async function initHeaderAuth() {
 
 function initCartPopup() {
   const cartPopupBtn = document.querySelector(".cart-btn");
-  const cartPopupContainer = document.querySelector(
-    ".middle-header__cart-popup"
-  );
+  const cartPopupContainer = document.querySelector(".middle-header__content");
 
   CartPopup({ trigger: cartPopupBtn, cartPopupContainer });
 }

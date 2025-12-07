@@ -2,6 +2,7 @@ export class Table {
   #container;
   #props;
   element;
+  #instanceId;
 
   constructor(containerElement, initialProps = {}) {
     if (!containerElement) {
@@ -11,6 +12,10 @@ export class Table {
 
     this.#container = containerElement;
     this.#props = initialProps;
+    this.#instanceId = `table-${Date.now()}-${Math.floor(
+      Math.random() * 1000
+    )}`;
+
     this.element = this.#createBaseElement();
     this.#container.appendChild(this.element);
 
@@ -20,7 +25,7 @@ export class Table {
   }
 
   #createBaseElement() {
-    return createTableElement(["table"]);
+    return createTableElement(["table", this.#instanceId]);
   }
 
   #createTableHeader(columns) {
@@ -244,10 +249,11 @@ function createFooterElement(config, totalAmount) {
     case "total":
       element = document.createElement("div");
       element.classList.add("table-footer__total-group", "total-group");
+      const formattedAmount = Number(totalAmount).toFixed(2);
 
       element.innerHTML = `
               <span class="total-group__text">${config.text}</span>
-              <span class="total-group__price">${totalAmount}</span>
+              <span class="total-group__price">${formattedAmount}</span>
               <span class="total-group__unit">${config.unit}</span>
           `;
       break;

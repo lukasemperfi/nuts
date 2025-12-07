@@ -2,13 +2,14 @@ import { Cart } from "@/features/cart/ui/cart";
 import { Table } from "../../../shared/ui/table/table";
 import { TableModel } from "../../../shared/ui/table/model/table-model";
 import { QuantityComponent } from "../../../shared/ui/table/quantity";
+import { createFormattedCurrencyElement } from "@/features/cart/ui/helpers";
 
 const columns = [
   {
     key: "productName",
     label: "Товар",
     type: "text",
-    width: "1fr",
+    width: "max-content",
     align: "left",
   },
 
@@ -21,9 +22,27 @@ const columns = [
 
       return quantityComp.element;
     },
-    width: "1fr",
+    width: "max-content",
   },
-  { key: "price", label: "Цена", type: "currency", width: "1fr" },
+  {
+    key: "price",
+    label: "Цена за товар",
+    type: "currency",
+    width: "max-content",
+    render: (rowData) => {
+      console.log("rowDat", rowData);
+      return createFormattedCurrencyElement(rowData.price, "грн.");
+    },
+  },
+  {
+    key: "total",
+    label: "Итоговая стоимость",
+    type: "currency",
+    width: "max-content",
+    render: (rowData) => {
+      return createFormattedCurrencyElement(rowData.total, "грн.");
+    },
+  },
 ];
 
 const footer = {
@@ -67,5 +86,5 @@ export const initCartSection = () => {
   // };
 
   // const tableCart = new Table(cartContainer, initialData);
-  Cart({ container: cartContainer });
+  Cart({ container: cartContainer, columns, footer });
 };

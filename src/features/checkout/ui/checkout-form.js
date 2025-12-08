@@ -5,8 +5,9 @@ import {
   initCheckoutFormValidation,
 } from "../model/validation";
 import { REQUIRED_RULE } from "../../../shared/lib/just-validate/rules";
+import { mapCheckoutPayload } from "./checkout-data-mapper";
 
-export const initCheckoutForm = (products) => {
+export const initCheckoutForm = (products = []) => {
   const checkoutValidator = initCheckoutFormValidation().onSuccess(
     async (event) => {
       event.preventDefault();
@@ -14,7 +15,10 @@ export const initCheckoutForm = (products) => {
       const form = document.querySelector(CHECKOUT_FORM_SELECTORS.FORM);
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
-      console.log("order data", payload);
+
+      const mapped = mapCheckoutPayload(payload);
+
+      console.log("order data", mapped);
     }
   );
 
@@ -47,7 +51,7 @@ export const initCheckoutForm = (products) => {
 function initDeliveryMethodSwitcher(validator, dropdowns) {
   const { countryDropdown, regionDropdown } = dropdowns;
   const form = document.getElementById("checkout-form");
-  const radios = form.querySelectorAll('input[name="dalivery_method"]');
+  const radios = form.querySelectorAll('input[name="delivery_method"]');
   const novaPoshta = form.querySelector(".nova-poshta__fields");
   const courier = form.querySelector(".courier__fields");
 
@@ -103,8 +107,8 @@ function initDeliveryMethodSwitcher(validator, dropdowns) {
   let prevValue = "";
 
   const updateVisibility = (value) => {
-    countryDropdown.reset(); // <-- ***ДОБАВЛЕНО***
-    regionDropdown.reset(); // <-- ***ДОБАВЛЕНО***
+    countryDropdown.reset();
+    regionDropdown.reset();
     regionDropdown.setDisabled(true);
 
     clearFormFields(novaPoshta);
@@ -143,7 +147,7 @@ function initDeliveryMethodSwitcher(validator, dropdowns) {
   });
 
   const checked = document.querySelector(
-    'input[name="dalivery_method"]:checked'
+    'input[name="delivery_method"]:checked'
   );
 
   if (checked) {

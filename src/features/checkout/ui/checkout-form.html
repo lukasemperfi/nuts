@@ -23,7 +23,7 @@
             <div class="form-item__title">2. Способы доставки</div>
             <div class="form-item__fields">
                 <div class="radio-item">
-                    {{ radio("dalivery_method", "nova-poshta", "Новая почта (по Украине оплата за счет Клиента)",
+                    {{ radio("delivery_method", "nova-poshta", "Новая почта (по Украине оплата за счет Клиента)",
                     "id-nova-poshta", true) }}
                     <div class="form-item__fields nova-poshta__fields delivery-fields">
                         {{dropdown(name="country",
@@ -36,14 +36,14 @@
                     </div>
                 </div>
                 <div class="radio-item">
-                    {{ radio("dalivery_method", "courier", "Курьер по Одессе ", "id-courier") }}
+                    {{ radio("delivery_method", "courier", "Курьер по Одессе ", "id-courier") }}
                     <div class="form-item__fields courier__fields delivery-fields">
                         {{ formField(name="address", placeholder="Адрес", id="checkout-form-address", required=true) }}
                     </div>
                 </div>
                 <div class="radio-item">
                     <div class="form-item__flag-wrapper">
-                        {{ radio("dalivery_method", "pickup", "Самовывоз со склада", "id-pickup") }}
+                        {{ radio("delivery_method", "pickup", "Самовывоз со склада", "id-pickup") }}
                         {{ flag("Бесплатно") }}
                     </div>
                 </div>

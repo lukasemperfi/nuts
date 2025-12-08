@@ -17,16 +17,18 @@
   }
 
   .delivery-fields {
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: max-height 0.3s ease, opacity 0.2s ease;
-  }
-
-  .delivery-fields.active {
     max-height: 500px;
     opacity: 1;
     visibility: visible;
     margin-top: 17px;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+  }
+
+  .hidden {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: max-height 0.2s ease, opacity 0.2s ease;
   }
 }

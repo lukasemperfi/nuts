@@ -37,7 +37,6 @@ export const initRegistrationForm = () => {
         if (newState.status === AUTH_STATUS.SUCCEEDED) {
           overlay.success();
           redirect(baseUrl, 2000);
-          //TODO: clearForm
         }
       });
 

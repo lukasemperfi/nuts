@@ -1,38 +1,202 @@
-export const initCheckoutForm = () => {
-  initDeliveryMethodSwitcher();
+import { initDropdown } from "@/shared/ui/dropdown/dropdown";
+import { countries, regionsByCountry } from "../../../shared/lib/location";
+import {
+  CHECKOUT_FORM_SELECTORS,
+  initCheckoutFormValidation,
+} from "../model/validation";
+import { REQUIRED_RULE } from "../../../shared/lib/just-validate/rules";
+
+export const initCheckoutForm = (products) => {
+  const checkoutValidator = initCheckoutFormValidation().onSuccess(
+    async (event) => {
+      event.preventDefault();
+
+      const form = document.querySelector(CHECKOUT_FORM_SELECTORS.FORM);
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      console.log("order data", payload);
+    }
+  );
+
+  const regionDropdown = initDropdown({
+    selector: ".checkout-form__region-dropdown",
+    disabled: true,
+  });
+
+  const countryDropdown = initDropdown({
+    selector: ".checkout-form__country-dropdown",
+    items: countries,
+    onChange: (type, value) => {
+      updateDependentDropdown(
+        value,
+        regionDropdown,
+        regionsByCountry
+        // checkoutValidator,
+        // REG_FORM_SELECTORS.REGION
+      );
+    },
+  });
+
+  initDeliveryMethodSwitcher(checkoutValidator, {
+    // <-- ***ДОБАВИЛ***
+    countryDropdown,
+    regionDropdown,
+  });
 };
 
-export function initDeliveryMethodSwitcher() {
+function initDeliveryMethodSwitcher(validator, dropdowns) {
+  const { countryDropdown, regionDropdown } = dropdowns;
   const form = document.getElementById("checkout-form");
-  if (!form) {
-    return;
-  }
-
-  const novaPoshtaFields = form.querySelector(".nova-poshta__fields");
-  const courierFields = form.querySelector(".courier__fields");
   const radios = form.querySelectorAll('input[name="dalivery_method"]');
+  const novaPoshta = form.querySelector(".nova-poshta__fields");
+  const courier = form.querySelector(".courier__fields");
 
-  function updateVisibility(value) {
-    if (value === "nova-poshta") {
-      novaPoshtaFields.classList.add("active");
-      courierFields.classList.remove("active");
-    } else if (value === "courier") {
-      courierFields.classList.add("active");
-      novaPoshtaFields.classList.remove("active");
-    } else {
-      novaPoshtaFields.classList.remove("active");
-      courierFields.classList.remove("active");
+  const toggleFieldsDisabled = (container, isDisabled) => {
+    if (!container) {
+      return;
     }
-  }
 
-  const checked = form.querySelector('input[name="dalivery_method"]:checked');
+    const fields = container.querySelectorAll("input, select, textarea");
+
+    fields.forEach((field) => {
+      field.disabled = isDisabled;
+    });
+  };
+
+  const clearCustomDropdownFormFields = (container) => {
+    if (!container) {
+      return;
+    }
+    const dropdownFields = container.querySelectorAll(".dropdown_select");
+
+    dropdownFields.forEach((dropdown) => {
+      const selected = dropdown.querySelector(".dropdown__selected");
+      const selectedOption = dropdown.querySelector(
+        '.dropdown__option[aria-selected="true"]'
+      );
+
+      selected.innerHTML = selected.dataset.placeholder;
+
+      if (selectedOption) {
+        selectedOption.removeAttribute("aria-selected");
+      }
+    });
+  };
+  const clearFormFields = (container) => {
+    if (!container) {
+      return;
+    }
+
+    const fields = container.querySelectorAll("input, select, textarea");
+
+    fields.forEach((field) => {
+      if (field.type === "checkbox" || field.type === "radio") {
+        field.checked = false;
+      } else {
+        field.value = "";
+      }
+    });
+
+    clearCustomDropdownFormFields(container);
+  };
+
+  let prevValue = "";
+
+  const updateVisibility = (value) => {
+    countryDropdown.reset(); // <-- ***ДОБАВЛЕНО***
+    regionDropdown.reset(); // <-- ***ДОБАВЛЕНО***
+    regionDropdown.setDisabled(true);
+
+    clearFormFields(novaPoshta);
+    clearFormFields(courier);
+
+    if (prevValue === "nova-poshta") {
+      removeNovaPoshtaValidationFields(validator);
+    }
+
+    if (prevValue === "courier") {
+      removeCourierValidationFields(validator);
+    }
+
+    toggleFieldsDisabled(novaPoshta, true);
+    toggleFieldsDisabled(courier, true);
+
+    novaPoshta.classList.add("hidden");
+    courier.classList.add("hidden");
+
+    if (value === "nova-poshta") {
+      novaPoshta.classList.remove("hidden");
+      toggleFieldsDisabled(novaPoshta, false);
+      addNovaPoshtaValidationFields(validator);
+    }
+    if (value === "courier") {
+      courier.classList.remove("hidden");
+      toggleFieldsDisabled(courier, false);
+      addCourierValidationFields(validator);
+    }
+
+    prevValue = value;
+  };
+
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => updateVisibility(radio.value));
+  });
+
+  const checked = document.querySelector(
+    'input[name="dalivery_method"]:checked'
+  );
+
   if (checked) {
     updateVisibility(checked.value);
   }
+}
 
-  radios.forEach((radio) => {
-    radio.addEventListener("change", (e) => {
-      updateVisibility(e.target.value);
-    });
+function updateDependentDropdown(
+  value,
+  targetDropdown,
+  dataMap,
+  validator,
+  validateField
+) {
+  const options = dataMap[value] || [];
+
+  targetDropdown.updateOptions(options);
+
+  if (options.length > 0) {
+    targetDropdown.setDisabled(false);
+  } else {
+    targetDropdown.setDisabled(true);
+  }
+}
+
+function addNovaPoshtaValidationFields(validator) {
+  const fields = [
+    [CHECKOUT_FORM_SELECTORS.COUNTRY, [REQUIRED_RULE]],
+    [CHECKOUT_FORM_SELECTORS.REGION, [REQUIRED_RULE]],
+    [CHECKOUT_FORM_SELECTORS.CITY, [REQUIRED_RULE]],
+  ];
+
+  fields.forEach(([selector, rules]) => {
+    validator.addField(selector, rules);
   });
+}
+
+function removeNovaPoshtaValidationFields(validator) {
+  const fields = [
+    CHECKOUT_FORM_SELECTORS.COUNTRY,
+    CHECKOUT_FORM_SELECTORS.REGION,
+    CHECKOUT_FORM_SELECTORS.CITY,
+  ];
+
+  fields.forEach((selector) => {
+    validator.removeField(selector);
+  });
+}
+
+function addCourierValidationFields(validator) {
+  validator.addField(CHECKOUT_FORM_SELECTORS.ADDRESS, [REQUIRED_RULE]);
+}
+
+function removeCourierValidationFields(validator) {
+  validator.removeField(CHECKOUT_FORM_SELECTORS.ADDRESS);
 }

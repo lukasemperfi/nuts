@@ -22,29 +22,37 @@
         <div class="checkout-form__item form-item checkout-form-item_address">
             <div class="form-item__title">2. Способы доставки</div>
             <div class="form-item__fields">
-                {{ radio("dalivery_method", "nova-poshta", "Новая почта (по Украине оплата за счет Клиента)",
-                "id-nova-poshta", true) }}
-                {{ radio("dalivery_method", "courier", "Курьер по Одессе ", "id-courier") }}
-                <div class="form-item__flag-wrapper">
-                    {{ radio("dalivery_method", "pickup", "Самовывоз со склада", "id-pickup") }}
-                    {{ flag("Бесплатно") }}
+                <div class="radio-item">
+                    {{ radio("dalivery_method", "nova-poshta", "Новая почта (по Украине оплата за счет Клиента)",
+                    "id-nova-poshta", true) }}
+                    <div class="form-item__fields nova-poshta__fields delivery-fields">
+                        {{dropdown(name="country",
+                        class="checkout-form__country-dropdown dropdown_select dropdown_highlight-selected",
+                        placeholder="Страна", id="checkout-form-country")}}
+                        {{dropdown(name="region", class="checkout-form__region-dropdown dropdown_select
+                        dropdown_highlight-selected",
+                        placeholder="Область", id="checkout-form-region")}}
+                        {{ formField(name="city", placeholder="Город", required=true, id="checkout-form-city") }}
+                    </div>
+                </div>
+                <div class="radio-item">
+                    {{ radio("dalivery_method", "courier", "Курьер по Одессе ", "id-courier") }}
+                    <div class="form-item__fields courier__fields delivery-fields">
+                        {{ formField(name="address", placeholder="Адрес", id="checkout-form-address", required=true) }}
+                    </div>
+                </div>
+                <div class="radio-item">
+                    <div class="form-item__flag-wrapper">
+                        {{ radio("dalivery_method", "pickup", "Самовывоз со склада", "id-pickup") }}
+                        {{ flag("Бесплатно") }}
+                    </div>
                 </div>
 
-
-                <!-- {{dropdown(name="country",
-                class="checkout-form__country-dropdown
-                dropdown_select dropdown_highlight-selected",
-                placeholder="Страна", id="checkout-form-country")}}
-                {{dropdown(name="region", class="checkout-form__region-dropdown
-                dropdown_select dropdown_highlight-selected",
-                placeholder="Область", id="checkout-form-region")}}
-                {{ formField(name="city", placeholder="Город", required=true, id="checkout-form-city") }}
-                {{ formField(name="address", placeholder="Адрес", id="checkout-form-address") }} -->
             </div>
         </div>
         <div class="checkout-form__item form-item checkout-form-item_password">
             <div class="form-item__title">3. Способы оплаты</div>
-            <div class="form-item__fields">
+            <div class="form-item__fields form-item__fields_radio">
                 {{ radio("payment_method", "cashless", "Безналичный расчет", "id-cashless", true) }}
                 {{ radio("payment_method", "liqpay", "LiqPay/Приват24", "id-liqpay") }}
                 {{ radio("payment_method", "cash", "Наличными при получении (Наложенным платежом)", "id-cash") }}
@@ -57,7 +65,6 @@
     </div>
 </form>
 {%endmacro%}
-
 
 
 <!-- <div class="checkout-form__person-type-group">

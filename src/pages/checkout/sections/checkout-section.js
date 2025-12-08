@@ -1,6 +1,7 @@
 import { QuantityComponent } from "@/shared/ui/table/quantity";
 import { Cart } from "@/features/cart/ui/cart";
 import { createFormattedCurrencyElement } from "@/features/cart/ui/helpers";
+import { initCheckoutForm } from "../../../features/checkout/ui/checkout-form";
 
 const columns = [
   {
@@ -59,4 +60,6 @@ export const initCheckoutSection = () => {
   const checkoutContainer = document.querySelector(".checkout-section__cart");
 
   Cart({ container: checkoutContainer, columns, footer });
+
+  initCheckoutForm();
 };

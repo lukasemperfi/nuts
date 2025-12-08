@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   initHeader();
   initCheckoutPageBreadcrumbs();
   initCheckoutSection();
-
   initPageFooter();
 
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });

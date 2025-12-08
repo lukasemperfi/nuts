@@ -6,17 +6,19 @@ import {
 } from "../model/validation";
 import { REQUIRED_RULE } from "../../../shared/lib/just-validate/rules";
 import { mapCheckoutPayload } from "./checkout-data-mapper";
+import { store } from "../../../app/store";
 
-export const initCheckoutForm = (products = []) => {
+export const initCheckoutForm = () => {
   const checkoutValidator = initCheckoutFormValidation().onSuccess(
     async (event) => {
       event.preventDefault();
 
+      const products = store.getState().cart.items;
       const form = document.querySelector(CHECKOUT_FORM_SELECTORS.FORM);
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
 
-      const mapped = mapCheckoutPayload(payload);
+      const mapped = mapCheckoutPayload(payload, products);
 
       console.log("order data", mapped);
     }

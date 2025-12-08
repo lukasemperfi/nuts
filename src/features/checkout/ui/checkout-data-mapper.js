@@ -1,4 +1,4 @@
-export const mapCheckoutPayload = (payload) => {
+export const mapCheckoutPayload = (payload, products) => {
   const deliveryMethod = payload["delivery_method"];
 
   if (deliveryMethod === "nova-poshta") {
@@ -29,5 +29,5 @@ export const mapCheckoutPayload = (payload) => {
     payload.delivery_method = deliveryMethod;
   }
 
-  return payload;
+  return { ...payload, products };
 };

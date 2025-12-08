@@ -29,7 +29,6 @@ const columns = [
     type: "currency",
     width: "max-content",
     render: (rowData) => {
-      console.log("rowDat", rowData);
       return createFormattedCurrencyElement(rowData.price, "грн.");
     },
   },

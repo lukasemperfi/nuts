@@ -23,7 +23,7 @@ export const initCheckoutForm = () => {
 
       console.log("order data", orderData);
 
-      await ordersApi.createOrder(orderData);
+      // await ordersApi.createOrder(orderData);
     }
   );
 

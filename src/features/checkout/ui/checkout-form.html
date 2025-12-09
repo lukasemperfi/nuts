@@ -23,9 +23,9 @@
             <div class="form-item__title">2. Способы доставки</div>
             <div class="form-item__fields">
                 <div class="radio-item">
-                    {{ radio("delivery_method", "nova-poshta", "Новая почта (по Украине оплата за счет Клиента)",
-                    "id-nova-poshta", true) }}
-                    <div class="form-item__fields nova-poshta__fields delivery-fields">
+                    {{ radio("delivery_method", "nova_poshta", "Новая почта (по Украине оплата за счет Клиента)",
+                    "id-nova_poshta", true) }}
+                    <div class="form-item__fields nova_poshta__fields delivery-fields">
                         {{dropdown(name="country",
                         class="checkout-form__country-dropdown dropdown_select dropdown_highlight-selected",
                         placeholder="Страна", id="checkout-form-country")}}

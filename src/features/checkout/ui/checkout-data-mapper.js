@@ -1,7 +1,7 @@
 export const mapCheckoutPayload = (payload, products) => {
   const deliveryMethod = payload["delivery_method"];
 
-  if (deliveryMethod === "nova-poshta") {
+  if (deliveryMethod === "nova_poshta") {
     const novaPoshtaData = {
       country: payload.country,
       region: payload.region,

@@ -7,6 +7,7 @@ import {
 import { REQUIRED_RULE } from "../../../shared/lib/just-validate/rules";
 import { mapCheckoutPayload } from "./checkout-data-mapper";
 import { store } from "../../../app/store";
+import { ordersApi } from "../../../entities/order/api/order";
 
 export const initCheckoutForm = () => {
   const checkoutValidator = initCheckoutFormValidation().onSuccess(
@@ -18,9 +19,11 @@ export const initCheckoutForm = () => {
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
 
-      const mapped = mapCheckoutPayload(payload, products);
+      const orderData = mapCheckoutPayload(payload, products);
 
-      console.log("order data", mapped);
+      console.log("order data", orderData);
+
+      await ordersApi.createOrder(orderData);
     }
   );
 
@@ -54,7 +57,7 @@ function initDeliveryMethodSwitcher(validator, dropdowns) {
   const { countryDropdown, regionDropdown } = dropdowns;
   const form = document.getElementById("checkout-form");
   const radios = form.querySelectorAll('input[name="delivery_method"]');
-  const novaPoshta = form.querySelector(".nova-poshta__fields");
+  const novaPoshta = form.querySelector(".nova_poshta__fields");
   const courier = form.querySelector(".courier__fields");
 
   const toggleFieldsDisabled = (container, isDisabled) => {
@@ -116,7 +119,7 @@ function initDeliveryMethodSwitcher(validator, dropdowns) {
     clearFormFields(novaPoshta);
     clearFormFields(courier);
 
-    if (prevValue === "nova-poshta") {
+    if (prevValue === "nova_poshta") {
       removeNovaPoshtaValidationFields(validator);
     }
 
@@ -130,7 +133,7 @@ function initDeliveryMethodSwitcher(validator, dropdowns) {
     novaPoshta.classList.add("hidden");
     courier.classList.add("hidden");
 
-    if (value === "nova-poshta") {
+    if (value === "nova_poshta") {
       novaPoshta.classList.remove("hidden");
       toggleFieldsDisabled(novaPoshta, false);
       addNovaPoshtaValidationFields(validator);

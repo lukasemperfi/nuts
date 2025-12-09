@@ -12,7 +12,9 @@ const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
 
 export const initLoginForm = () => {
-  const overlay = createOverlaySpinner({successText:"Вы успешно вошли в систему!"});
+  const overlay = createOverlaySpinner({
+    successText: "Вы успешно вошли в систему!",
+  });
   const validator = initLoginFormValidation();
 
   validator.onSuccess(async (event) => {

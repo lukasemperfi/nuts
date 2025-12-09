@@ -12,7 +12,7 @@ export function createOverlaySpinner({
     overlay = document.createElement("div");
   }
 
-  overlay.classList.add("overlay", className);
+  overlay.classList.add("overlay");
 
   const spinner = createSpinner();
   const successBox = createSuccessBox(successText);

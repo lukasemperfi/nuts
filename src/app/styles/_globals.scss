@@ -64,6 +64,11 @@ body {
   display: none;
 }
 
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 // .spinner {
 //   width: 48px;
 //   height: 48px;

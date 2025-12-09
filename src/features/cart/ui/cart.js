@@ -8,6 +8,7 @@ export function Cart({
   columns = [],
   footer = {},
   showHeader = true,
+  onChange,
 }) {
   const cartContainer = document.createElement("div");
   cartContainer.classList.add("cart");
@@ -31,8 +32,6 @@ export function Cart({
     const { action, itemId, newQuantity } = event.detail;
 
     if (action === "updateQuantity") {
-      console.log("event from change", event);
-
       store.dispatch({
         type: "cart/setQuantity",
         payload: {
@@ -56,6 +55,10 @@ export function Cart({
       rows: newRows,
       totalAmount: newTotalAmount,
     });
+
+    if (onChange) {
+      onChange();
+    }
   });
 }
 

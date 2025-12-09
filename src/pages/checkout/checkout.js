@@ -7,10 +7,25 @@ import { initCheckoutPageBreadcrumbs } from "./sections/breadcrumbs/breadcrumbs"
 import { baseUrl } from "@/shared/helpers/base-url";
 import { store } from "@/app/store";
 import { requireAuth } from "@/app/providers/auth-guard";
+import { getSession } from "@/app/providers/auth-guard";
+import { redirect } from "@/shared/helpers/redirect";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await requireAuth();
-  requireCart();
+  await requireCartAndAuth();
+
+  store.subscribe("cart", () => {
+    const isCartEmpty = store.getState().cart.items.length === 0;
+
+    if (isCartEmpty) {
+      redirect(`${baseUrl}`, 0, true);
+    }
+  });
+
+  store.subscribe("auth", (newState) => {
+    if (!newState.isAuth) {
+      redirect(`${baseUrl}`, 0, true);
+    }
+  });
 
   initDropdown({ selector: ".top-header__lang" });
   initHeader();
@@ -20,12 +35,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 });
-//TODO: Если удалить корзину через попап, то нужно делать редирект
+
 function requireCart() {
-  if (store.getState().cart.items.length === 0) {
+  const isCartEmpty = store.getState().cart.items.length === 0;
+
+  if (isCartEmpty) {
     window.location.replace(`${baseUrl}`);
     return;
   }
+
+  const privateContent = document.querySelector("#private-content");
+
+  if (privateContent) {
+    privateContent.removeAttribute("id");
+  }
+}
+
+async function requireCartAndAuth() {
+  const isAuthenticated = await getSession();
+  const isCartEmpty = store.getState().cart.items.length === 0;
+
+  if (!isAuthenticated || isCartEmpty) {
+    redirect(`${baseUrl}`, 0, true);
+    return;
+  }
+
   const privateContent = document.querySelector("#private-content");
 
   if (privateContent) {

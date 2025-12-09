@@ -88,6 +88,14 @@ export async function loginUser(email, password) {
   try {
     const data = await authApi.login({ email, password });
 
+    store.dispatch({
+      type: "auth/setAuth",
+      payload: {
+        user: data.user,
+        session: data.session,
+      },
+    });
+
     return data;
   } catch (err) {
     store.dispatch({

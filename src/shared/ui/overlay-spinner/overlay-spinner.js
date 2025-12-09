@@ -3,7 +3,7 @@ export function createOverlaySpinner({
   className = "spinner",
   container,
   blockBody = true,
-}) {
+} = {}) {
   let overlay = null;
 
   if (container) {

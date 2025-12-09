@@ -1,15 +1,20 @@
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
-import { countries, regionsByCountry } from "../../../shared/lib/location";
+import { countries, regionsByCountry } from "@/shared/lib/location";
 import {
   CHECKOUT_FORM_SELECTORS,
   initCheckoutFormValidation,
 } from "../model/validation";
-import { REQUIRED_RULE } from "../../../shared/lib/just-validate/rules";
+import { REQUIRED_RULE } from "@/shared/lib/just-validate/rules";
 import { mapCheckoutPayload } from "./checkout-data-mapper";
-import { store } from "../../../app/store";
-import { ordersApi } from "../../../entities/order/api/order";
+import { store } from "@/app/store";
+import { ordersApi } from "@/entities/order/api/order";
+import { createOverlaySpinner } from "@/shared/ui/overlay-spinner/overlay-spinner";
+import { redirect } from "../../../shared/helpers/redirect";
+import { baseUrl } from "../../../shared/helpers/base-url";
 
 export const initCheckoutForm = () => {
+  const overlaySpinner = createOverlaySpinner();
+
   const checkoutValidator = initCheckoutFormValidation().onSuccess(
     async (event) => {
       event.preventDefault();
@@ -23,9 +28,32 @@ export const initCheckoutForm = () => {
 
       console.log("order data", orderData);
 
-      // await ordersApi.createOrder(orderData);
+      overlaySpinner.show();
+
+      try {
+        await ordersApi.createOrder(orderData);
+        // await mockCreateOrder(orderData);
+
+        store.dispatch({ type: "cart/clearCart" });
+
+        redirect(`${baseUrl}thank-you/`, 0, true);
+      } catch (error) {
+        console.error("Order error:", error);
+      } finally {
+        overlaySpinner.hide();
+      }
     }
   );
+
+  function mockCreateOrder(orderData) {
+    return new Promise((resolve) => {
+      console.log("Mock API: creating order...", orderData);
+
+      setTimeout(() => {
+        resolve({ success: true });
+      }, 1500);
+    });
+  }
 
   const regionDropdown = initDropdown({
     selector: ".checkout-form__region-dropdown",

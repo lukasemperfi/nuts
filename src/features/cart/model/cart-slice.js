@@ -123,7 +123,7 @@ export const cartSlice = {
       };
     },
 
-    resetCart: () => initialState,
+    clearCart: () => initialState,
 
     setCartProductsLoading: (state) => ({
       ...state,

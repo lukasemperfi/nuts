@@ -12,6 +12,7 @@ const breadcrumbNames = {
   "forgot-password": "Восстановление пароля",
   registration: "Регистрация",
   checkout: "Оформление заказа",
+  profile: "Личный кабинет",
 };
 
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {

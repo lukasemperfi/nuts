@@ -53,17 +53,17 @@
         font-size: 12px;
       }
     }
+  }
 
-    &__meta {
-      font-family: var(--font-family-secondary);
-      font-weight: 600;
-      font-size: 16px;
-      color: var(--foreground-tertiary);
-      justify-self: flex-end;
+  &__meta {
+    font-family: var(--font-family-secondary);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--foreground-tertiary);
+    justify-self: flex-end;
 
-      @include mixins.respond-to(sm) {
-        font-size: 14px;
-      }
+    @include mixins.respond-to(sm) {
+      font-size: 14px;
     }
   }
 }

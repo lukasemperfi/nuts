@@ -1,0 +1,15 @@
+{%from "src/shared/ui/user-info-bar/user-info-bar.html" import userInfoBar%}
+
+{%macro profileSection()%}
+<section class="profile-section">
+    <div class="profile-section__page-container page-container">
+        <div class="profile-section__wrapper">
+            {{userInfoBar(title="Учетная запись", showMeta=true)}}
+            <div class="profile-section__body">
+                <div class="profile-section__menu account-menu">menu</div>
+                <div class="profile-section__content">content</div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endmacro%}

@@ -1,8 +1,13 @@
 {%import "src/shared/ui/icons/icons.html" as icons%}
 
-{%macro userInfoBar(title="", showMeta=false)%}
+{%macro userInfoBar(title="", showMeta=false, showMenuButton=false)%}
 <div class="user-info-bar">
-    <div class="user-info-bar__title">{{title}}</div>
+    <div class="user-info-bar__title">
+        {%if showMenuButton%}
+        <button class="user-info-bar__menu-button">Click</button>
+        {%endif%}
+        {{title}}
+    </div>
     <div class="user-info-bar__manager-contacts">
         <div class="manager-contacts">
             <div class="manager-contacts__name">Ваш личный менеджер Олег</div>

@@ -22,6 +22,7 @@
     display: grid;
     grid-template-columns: subgrid;
     padding-top: 0;
+    gap: normal;
   }
   &__body {
     grid-column: 1 / -1;
@@ -29,9 +30,23 @@
     grid-template-columns: subgrid;
   }
 
+  &__menu {
+    overflow: hidden;
+    transform: translateX(0);
+  }
+
+  &__menu.is-collapsed {
+    display: none;
+  }
+
   &__content {
     background-color: rgb(94, 94, 233);
     grid-column: 2/-1;
+    min-height: 260px;
+  }
+
+  &__menu.is-collapsed + .profile-section__content {
+    grid-column: 1 / -1;
   }
 
   .account-menu {

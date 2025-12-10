@@ -61,6 +61,7 @@
     font-size: 16px;
     color: var(--foreground-tertiary);
     justify-self: flex-end;
+    line-height: 32px;
 
     @include mixins.respond-to(sm) {
       font-size: 14px;

@@ -6,7 +6,6 @@ import { getSession } from "@/app/providers/auth-guard";
 import { store } from "@/app/store";
 
 export const initCartSection = async () => {
-  // const isAuthenticated = await getSession();
   const columns = [
     {
       key: "productName",
@@ -76,45 +75,74 @@ export const initCartSection = async () => {
     ],
   };
   const cartContainer = document.querySelector(".cart-section__page-container");
+  const loader = document.getElementById("loader-spinner");
 
-  Cart({
-    container: cartContainer,
-    columns,
-    footer,
-    onChange: () => {
-      const orderLink = cartContainer.querySelector(".order-link");
+  try {
+    Cart({
+      container: cartContainer,
+      columns,
+      footer,
+      onChange: () => {
+        const orderLink = cartContainer.querySelector(".order-link");
 
-      store.subscribe("auth", (newCartState) => {
-        const isAuthenticated = newCartState.isAuth;
-        console.log("orderLink", orderLink);
+        store.subscribe("auth", (newCartState) => {
+          const isAuthenticated = newCartState.isAuth;
 
-        if (!isAuthenticated) {
-          if (orderLink) {
-            orderLink.classList.add("disabled-link");
+          if (!isAuthenticated) {
+            if (orderLink) {
+              orderLink.classList.add("disabled-link");
+            }
+          } else {
+            if (orderLink) {
+              orderLink.classList.remove("disabled-link");
+            }
           }
-        } else {
-          if (orderLink) {
-            orderLink.classList.remove("disabled-link");
-          }
+        });
+      },
+    });
+    let isAuth = null;
+
+    store.subscribe("auth", (newCartState) => {
+      const isAuthenticated = newCartState.isAuth;
+      const authItem = cartContainer.querySelector(".auth-item");
+
+      isAuth = isAuthenticated;
+
+      if (!isAuthenticated) {
+        if (!authItem) {
+          const authItem = createAuthItem();
+
+          cartContainer.appendChild(authItem);
         }
-      });
-    },
-  });
-
-  store.subscribe("auth", (newCartState) => {
-    const isAuthenticated = newCartState.isAuth;
-    const authItem = cartContainer.querySelector(".auth-item");
-
-    if (!isAuthenticated) {
-      const authItem = createAuthItem();
-
-      cartContainer.appendChild(authItem);
-    } else {
-      if (authItem) {
-        cartContainer.removeChild(authItem);
+      } else {
+        if (authItem) {
+          cartContainer.removeChild(authItem);
+        }
       }
-    }
-  });
+    });
+
+    store.subscribe("cart", (newState) => {
+      const emptyCart = newState.items.length === 0;
+      const authItem = cartContainer.querySelector(".auth-item");
+
+      if (!emptyCart) {
+        if (!authItem && !isAuth) {
+          const authItem = createAuthItem();
+
+          cartContainer.appendChild(authItem);
+        }
+      } else {
+        if (authItem) {
+          cartContainer.removeChild(authItem);
+        }
+      }
+    });
+  } catch (error) {
+    console.error("Ошибка при инициализации корзины:", error);
+  } finally {
+    if (loader) loader.classList.add("hidden"); // Скрываем лоадер
+    if (cartContainer) cartContainer.classList.remove("hidden");
+  }
 };
 //TODO: add rediraction path to login/registration page
 function createAuthItem() {

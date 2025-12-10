@@ -1,6 +1,6 @@
 import { Cart } from "@/features/cart/ui/cart";
 import { QuantityComponent } from "@/shared/ui/table/quantity";
-import { createFormattedCurrencyElement } from "@/features/cart/ui/helpers";
+import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 import { baseUrl } from "@/shared/helpers/base-url";
 import { getSession } from "@/app/providers/auth-guard";
 import { store } from "@/app/store";
@@ -35,7 +35,6 @@ export const initCartSection = async () => {
       type: "currency",
       width: "max-content",
       render: (rowData) => {
-        console.log("rowDat", rowData);
         return createFormattedCurrencyElement(rowData.price, "грн.");
       },
     },

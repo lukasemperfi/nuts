@@ -8,7 +8,7 @@ import { baseUrl } from "../../../shared/helpers/base-url";
 import { PRODUCTS_STATUS } from "../../../entities/product/model/products-slice";
 import { createOverlaySpinner } from "../../../shared/ui/overlay-spinner/overlay-spinner";
 import { Cart } from "./cart";
-import { createFormattedCurrencyElement } from "./helpers";
+import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 
 export function CartPopup({ trigger, cartPopupContainer }) {
   const columns = [

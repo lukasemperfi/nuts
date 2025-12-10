@@ -1,6 +1,6 @@
 import { QuantityComponent } from "@/shared/ui/table/quantity";
 import { Cart } from "@/features/cart/ui/cart";
-import { createFormattedCurrencyElement } from "@/features/cart/ui/helpers";
+import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 import { initCheckoutForm } from "../../../features/checkout/ui/checkout-form";
 
 const columns = [

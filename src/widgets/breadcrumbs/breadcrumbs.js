@@ -13,8 +13,9 @@ const breadcrumbNames = {
   registration: "Регистрация",
   checkout: "Оформление заказа",
   profile: "Личный кабинет",
+  orders: "История заказов",
 };
-
+//TODO: баг если есть вложенность. не меняет url, а добавляет
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {
   const container = document.querySelector(containerSelector);
   if (!container) {

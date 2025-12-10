@@ -18,15 +18,6 @@ class Orders {
     const deliveryDetails = orderData[orderData.delivery_method];
     let orderId = null;
 
-    console.log(
-      "delivery details",
-      deliveryDetails,
-      "order data",
-      orderData,
-      "method",
-      orderData.delivery_method
-    );
-
     try {
       const orderPayload = {
         user_id: userId,
@@ -37,6 +28,7 @@ class Orders {
         delivery_method: orderData.delivery_method,
         payment_method: orderData.payment_method,
         status: "новый",
+        total_amount: orderData.total_amount,
       };
 
       const { data, error } = await supabase

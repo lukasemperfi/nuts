@@ -9,8 +9,8 @@ import { mapCheckoutPayload } from "./checkout-data-mapper";
 import { store } from "@/app/store";
 import { ordersApi } from "@/entities/order/api/order";
 import { createOverlaySpinner } from "@/shared/ui/overlay-spinner/overlay-spinner";
-import { redirect } from "../../../shared/helpers/redirect";
-import { baseUrl } from "../../../shared/helpers/base-url";
+import { redirect } from "@/shared/helpers/redirect";
+import { baseUrl } from "@/shared/helpers/base-url";
 
 export const initCheckoutForm = () => {
   const overlaySpinner = createOverlaySpinner();
@@ -19,23 +19,22 @@ export const initCheckoutForm = () => {
     async (event) => {
       event.preventDefault();
 
-      const products = store.getState().cart.items;
+      const cartItems = store.getState().cart.items;
+      const products = store.getState().cart.products;
       const form = document.querySelector(CHECKOUT_FORM_SELECTORS.FORM);
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
 
-      const orderData = mapCheckoutPayload(payload, products);
+      const orderData = mapCheckoutPayload(payload, cartItems);
 
-      console.log("order data", orderData);
+      orderData.total_amount = calculateTotalAmount(cartItems, products);
 
       overlaySpinner.show();
 
       try {
         await ordersApi.createOrder(orderData);
         // await mockCreateOrder(orderData);
-
         store.dispatch({ type: "cart/clearCart" });
-
         redirect(`${baseUrl}thank-you/`, 0, true);
       } catch (error) {
         console.error("Order error:", error);
@@ -44,6 +43,21 @@ export const initCheckoutForm = () => {
       }
     }
   );
+
+  function calculateTotalAmount(cartItems, products) {
+    const quantityMap = new Map();
+    cartItems.forEach((item) => {
+      quantityMap.set(Number(item.productId), item.quantity);
+    });
+
+    const map = quantityMap || new Map();
+    const DEFAULT_QUANTITY = 1;
+
+    return products.reduce((sum, product) => {
+      const quantity = map.get(product.id) || DEFAULT_QUANTITY;
+      return sum + quantity * product.price;
+    }, 0);
+  }
 
   function mockCreateOrder(orderData) {
     return new Promise((resolve) => {

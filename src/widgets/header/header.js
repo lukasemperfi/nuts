@@ -5,6 +5,8 @@ import { logoutUser } from "@/entities/auth/model/auth-slice";
 import { getSession } from "@/app/providers/auth-guard";
 import { CartPopup } from "@/features/cart/ui/cart-popup";
 import { selectCartCount } from "@/features/cart/model/cart-slice";
+import { supabase } from "../../shared/api/supabase/client";
+import { userProfileApi } from "../../entities/profile/api/profile";
 
 const mode = import.meta.env.MODE;
 let baseUrl = mode === "production" ? "/nuts/" : import.meta.env.BASE_URL;
@@ -64,9 +66,14 @@ function initResizeHandler() {
 }
 
 async function initHeaderAuth() {
+  const isAuth = await getSession();
+  const profileData = await userProfileApi.getProfile();
+
+  console.log("profileData", profileData);
   const auth = createAuthComponent({ baseUrl });
+
   const profile = createProfile({
-    name: "Анатолий Лукьяненко",
+    name: profileData["full_name"] || "Профиль",
     items: [
       { label: "Профиль", href: `${baseUrl}profile/` },
       {
@@ -80,7 +87,6 @@ async function initHeaderAuth() {
   });
 
   const authContainer = document.querySelector(".top-header__auth");
-  const isAuth = await getSession();
 
   if (isAuth) {
     auth.mount(authContainer);

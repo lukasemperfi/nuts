@@ -137,6 +137,8 @@
       }
 
       .dropdown__button {
+        background-color: transparent;
+
         @include mixins.respond-to(md) {
           padding-right: 23px;
           padding-block: 10.5px;

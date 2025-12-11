@@ -1,0 +1,21 @@
+.phisical-form {
+  $items-gap: 20.5px;
+  max-width: 635px;
+
+  &__body {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__item {
+    margin-bottom: $items-gap;
+
+    &_contacts {
+      flex: 1 1 auto;
+    }
+  }
+
+  .form-item__fields {
+    gap: $items-gap;
+  }
+}

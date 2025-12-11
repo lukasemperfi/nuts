@@ -67,13 +67,17 @@ function initResizeHandler() {
 
 async function initHeaderAuth() {
   const isAuth = await getSession();
-  const profileData = await userProfileApi.getProfile();
+  let profileData = null;
+
+  if (isAuth) {
+    profileData = await userProfileApi.getProfile();
+  }
 
   console.log("profileData", profileData);
   const auth = createAuthComponent({ baseUrl });
 
   const profile = createProfile({
-    name: profileData["full_name"] || "Профиль",
+    name: profileData ? profileData["full_name"] : "",
     items: [
       { label: "Профиль", href: `${baseUrl}profile/` },
       {

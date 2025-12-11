@@ -1,0 +1,1 @@
+import{i as e,a as o,b as t,l as i}from"../../../footer-BnmDAafM.js";import{i as a,a as n}from"../../../profile-section-Bwml6nFc.js";import"../../../breadcrumbs-Bdl_gLzY.js";document.addEventListener("DOMContentLoaded",async()=>{document.querySelector(".profile-section__content"),e({selector:".top-header__lang"}),o(),a(),n(),t(),i(".lazy",{rootMargin:"200px 0px"})});

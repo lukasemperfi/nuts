@@ -50,10 +50,10 @@
     font-size: 14px;
     line-height: 32px;
     color: var(--foreground);
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // min-width: 0;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
     justify-self: center;
 
     &_head {
@@ -180,6 +180,16 @@
 }
 
 .copy-button {
+  $button-width: 16px;
+  min-width: $button-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: $button-width;
+  }
+
   @media (hover: hover) {
     &:hover {
       path {
@@ -194,5 +204,55 @@
 
   &.copy-fail {
     color: var(--error);
+  }
+}
+
+.table-action-cell {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 13px;
+}
+
+.view-link {
+  position: relative;
+  display: inline-flex;
+
+  &__popup {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    padding: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: center;
+    color: var(--foreground-secondary);
+    background-color: var(--background-tertiary);
+    opacity: 0.9;
+    pointer-events: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 0;
+      height: 0;
+      border-width: 6px;
+      border-style: solid;
+      border-color: var(--background-tertiary) transparent transparent
+        transparent;
+    }
+  }
+
+  &:hover &__popup {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 }

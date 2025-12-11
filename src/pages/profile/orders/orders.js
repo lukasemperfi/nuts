@@ -9,6 +9,7 @@ import { TableModel } from "@/shared/ui/table/model/table-model";
 import { store } from "@/app/store";
 import { ordersApi } from "@/entities/order/api/order";
 import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
+import { createTableActionCell } from "../../../shared/ui/table/action-cell";
 
 export const ordersColumns = [
   {
@@ -46,6 +47,13 @@ export const ordersColumns = [
       return createFormattedCurrencyElement(rowData.total, "грн.");
     },
   },
+  {
+    key: "actions",
+    label: "Функции",
+    type: "component",
+    width: "1fr",
+    render: (rowData) => createTableActionCell(rowData),
+  },
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -60,8 +68,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   initPageFooter();
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 
-  const orders = await ordersApi.getOrders();
-  // const orders = mockOrders;
+  // const orders = await ordersApi.getOrders();
+  const orders = mockOrders;
   const rows = mapOrdersToRows(orders);
 
   console.log("orders", orders, "mappedRows", rows);

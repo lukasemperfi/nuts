@@ -301,20 +301,6 @@ export function createTableRow(rowData, columns, tableInstance) {
   return row;
 }
 
-export function createLinkIcon(href, iconSvg) {
-  const link = document.createElement("a");
-  link.href = href;
-  link.classList.add("table__order-link");
-  link.setAttribute(
-    "aria-label",
-    `Перейти к детали заказа №${href.split("/").pop()}`
-  );
-
-  link.innerHTML = iconSvg;
-
-  return link;
-}
-
 export function createDeleteButton(itemId, onClickHandler) {
   const button = document.createElement("button");
   button.classList.add("button", "button_icon", "button_delete-action");

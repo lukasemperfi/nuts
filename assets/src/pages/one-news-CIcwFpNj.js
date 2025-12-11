@@ -1,1 +1,0 @@
-import{i as a,a as e,b as o,l as t}from"../../footer-BnmDAafM.js";import{i}from"../../breadcrumbs-CV4MB0qS.js";import"../../breadcrumbs-Bdl_gLzY.js";document.addEventListener("DOMContentLoaded",async()=>{a({selector:".top-header__lang"}),e(),i(),o(),t(".lazy",{rootMargin:"200px 0px"})});

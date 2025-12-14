@@ -68,8 +68,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initPageFooter();
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 
-  // const orders = await ordersApi.getOrders();
-  const orders = mockOrders;
+  const orders = await ordersApi.getOrders();
   const rows = mapOrdersToRows(orders);
 
   console.log("orders", orders, "mappedRows", rows);

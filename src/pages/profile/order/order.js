@@ -77,10 +77,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const orderTableContainer = document.querySelector(
     ".profile-section__content"
   );
+  const title = document.querySelector(".user-info-bar__title");
+
   const urlParams = new URLSearchParams(window.location.search);
 
   const orderId = urlParams.get("orderId");
-  console.log("orderId", orderId);
+
+  title.innerHTML = `Заказ №${orderId}`;
 
   initDropdown({ selector: ".top-header__lang" });
   initHeader();

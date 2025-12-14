@@ -1,20 +1,21 @@
 import { createOverlaySpinner } from "@/shared/ui/overlay-spinner/overlay-spinner";
 import {
-  ADDRESS_FORM_SELECTORS,
-  initAddressFormValidation,
+  LEGAL_ADDRESS_FORM_SELECTORS,
+  initLegalAddressFormValidation,
 } from "./validation";
 import { initDropdown } from "@/shared/ui/dropdown/dropdown";
 import { countries, regionsByCountry } from "@/shared/lib/location";
 import { userProfileApi } from "@/entities/profile/api/profile";
 
-export const initAddressForm = () => {
-  initAddressFormValidation().onSuccess(async (event) => {
+export const initLegalAddressForm = () => {
+  initLegalAddressFormValidation().onSuccess(async (event) => {
     event.preventDefault();
 
-    const form = document.querySelector(ADDRESS_FORM_SELECTORS.FORM);
+    const form = document.querySelector(LEGAL_ADDRESS_FORM_SELECTORS.FORM);
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
-    const finalPayload = groupRegistrationData(payload);
+    const payloadWithPersonType = { ...payload, person_type: "legal" };
+    const finalPayload = groupRegistrationData(payloadWithPersonType);
 
     const overlay = createOverlaySpinner({
       successText: "Данные изменены успешно!",
@@ -36,15 +37,33 @@ export const initAddressForm = () => {
   });
 
   const regionDropdown = initDropdown({
-    selector: ".address-form__region-dropdown",
+    selector: ".legal-address-form__region-dropdown",
     disabled: true,
   });
 
   const countryDropdown = initDropdown({
-    selector: ".address-form__country-dropdown",
+    selector: ".legal-address-form__country-dropdown",
     items: countries,
     onChange: (type, value) => {
       updateDependentDropdown(value, regionDropdown, regionsByCountry);
+    },
+  });
+
+  const legalEntityRegionDropdown = initDropdown({
+    selector: ".legal-address-form__legal-entity-region-dropdown",
+    disabled: true,
+  });
+
+  initDropdown({
+    selector: ".legal-address-form__legal-entity-country-dropdown",
+    items: countries,
+    onChange: (type, value) => {
+      updateDependentDropdown(
+        value,
+        legalEntityRegionDropdown,
+        regionsByCountry,
+        LEGAL_ADDRESS_FORM_SELECTORS.LEGAL_REGION
+      );
     },
   });
 };

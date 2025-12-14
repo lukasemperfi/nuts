@@ -131,7 +131,8 @@ class UserProfile {
         }
       }
     } else if (personType === "legal") {
-      const legalPayload = getDetailsPayload(newData, "legal");
+      const legalPayload = newData.legal_entity;
+
       if (legalPayload) {
         try {
           const { error } = await supabase

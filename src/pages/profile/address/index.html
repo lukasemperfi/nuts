@@ -4,7 +4,7 @@
 {%from "src/widgets/footer/footer.html" import footer%}
 {%from "src/pages/profile/sections/breadcrumbs/breadcrumbs.html" import profilePageBreadcrumbs%}
 {%from "src/pages/profile/sections/profile-section/profile-section.html" import profileSection%}
-{%from "src/pages/profile/address/ui/address-form/address-form.html" import addressForm%}
+{%from "src/pages/profile/address/ui/switch-forms.html" import switchForms%}
 
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
     {{header(baseUrl)}}
     <main>
         {{profilePageBreadcrumbs()}}
-        {{profileSection(baseUrl, content=addressForm(baseUrl))}}
+        {{profileSection(baseUrl, content=switchForms(baseUrl))}}
         {{contactsSection(class="contacts-section_color_secondary")}}
         {{footer(baseUrl)}}
     </main>

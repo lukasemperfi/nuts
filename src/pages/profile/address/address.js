@@ -18,9 +18,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const userProfileData = await userProfileApi.getProfile();
 
     if (userProfileData.person_type === "legal") {
-      const lefalAddressForm = document.querySelector("#legal-address-form");
+      const lefalAddressForm = document.querySelector(
+        ".legal-address-form-wrapper"
+      );
 
-      lefalAddressForm.style.display = "block";
+      lefalAddressForm.style.display = "flex";
 
       initLegalAddressForm();
     } else {

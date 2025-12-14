@@ -14,6 +14,7 @@ const breadcrumbNames = {
   checkout: "Оформление заказа",
   profile: "Личный кабинет",
   orders: "История заказов",
+  order: "Заказ",
 };
 //TODO: баг если есть вложенность. не меняет url, а добавляет
 export const initBreadcrumbs = (containerSelector, breadcrumbClass = "") => {

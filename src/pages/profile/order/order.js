@@ -10,82 +10,102 @@ import { store } from "@/app/store";
 import { ordersApi } from "@/entities/order/api/order";
 import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 import { createTableActionCell } from "../../../shared/ui/table/action-cell";
+import { QuantityComponent } from "../../../shared/ui/table/quantity";
+import { baseUrl } from "../../../shared/helpers/base-url";
+import { mapProductsToTableRows } from "../../../features/cart/ui/map-products-to-table-rows";
 
-export const ordersColumns = [
+const orderColumns = [
   {
-    key: "orderNumber",
-    label: "№ Заказа",
+    key: "productName",
+    label: "Товар",
     type: "text",
     width: "1fr",
     align: "left",
   },
+
   {
-    key: "date",
-    label: "Дата",
-    type: "text",
+    key: "quantity",
+    label: "Кол-во",
+    type: "component",
+    render: (rowData) => {
+      const quantityComp = new QuantityComponent(rowData.quantity, rowData.id);
+
+      return quantityComp.element;
+    },
     width: "1fr",
   },
   {
-    key: "itemsCount",
-    label: "Кол-во товаров",
-    type: "text",
+    key: "price",
+    label: "Цена за товар",
+    type: "currency",
     width: "1fr",
-  },
-  {
-    key: "status",
-    label: "Статус",
-    type: "text",
-    width: "1fr",
+    render: (rowData) => {
+      return createFormattedCurrencyElement(rowData.price, "грн.");
+    },
   },
   {
     key: "total",
-    label: "Стоимость",
+    label: "Итоговая стоимость",
     type: "currency",
     width: "1fr",
-
     render: (rowData) => {
       return createFormattedCurrencyElement(rowData.total, "грн.");
     },
   },
-  {
-    key: "actions",
-    label: "Функции",
-    type: "component",
-    width: "1fr",
-    render: (rowData) => createTableActionCell(rowData),
-  },
 ];
 
+const footer = {
+  leftAction: null,
+
+  rightGroup: [
+    {
+      type: "total",
+      text: "Всего",
+      amountKey: "totalAmount",
+      unit: "грн.",
+    },
+    {
+      type: "button",
+      text: "Оформить заказ",
+      className: "button_primary button_size-lg order-link",
+      href: `${baseUrl}checkout/`,
+    },
+  ],
+};
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const ordersTableContainer = document.querySelector(
+  const orderTableContainer = document.querySelector(
     ".profile-section__content"
   );
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const orderId = urlParams.get("orderId");
+  console.log("orderId", orderId);
 
   initDropdown({ selector: ".top-header__lang" });
   initHeader();
   initProfilePageBreadcrumbs();
-  initProfileSection();
+
   initPageFooter();
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 
-  // const orders = await ordersApi.getOrders();
-  const orders = mockOrders;
-  const rows = mapOrdersToRows(orders);
+  const order = await ordersApi.getOrderById(orderId);
 
-  console.log("orders", orders, "mappedRows", rows);
+  const rows = mapProductsToTableRows(order.products, order.items);
 
-  if (orders.length === 0) {
-    ordersTableContainer.innerHTML = `<div class="table__empty-message" style="height: 100%">У вас нет заказов!</div>`;
+  if (order.length === 0) {
+    orderTableContainer.innerHTML = `<div class="table__empty-message" style="height: 100%">У вас нет заказов!</div>`;
   } else {
-    OrdersTable({
-      container: ordersTableContainer,
-      columns: ordersColumns,
+    OrderTable({
+      container: orderTableContainer,
+      columns: orderColumns,
+      footer,
       rows,
     });
   }
 });
 
-export function OrdersTable({
+export function OrderTable({
   container,
   columns = [],
   rows = [],
@@ -95,7 +115,7 @@ export function OrdersTable({
   container.innerHTML = "";
 
   const tableContainer = document.createElement("div");
-  tableContainer.classList.add("orders-table");
+  tableContainer.classList.add("order-table");
 
   const tableModel = new TableModel(rows);
 

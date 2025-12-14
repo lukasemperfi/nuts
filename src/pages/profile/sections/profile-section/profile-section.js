@@ -3,18 +3,22 @@ export const initProfileSection = () => {
 };
 
 function initAccountMenu() {
-  const currentUrl = window.location.href;
-  const menuLinks = document.querySelectorAll(".account-menu-list__link");
-  toogleAccountMenu();
+  try {
+    const currentUrl = window.location.href;
+    const menuLinks = document.querySelectorAll(".account-menu-list__link");
+    // toogleAccountMenu();
 
-  menuLinks.forEach((link) => {
-    const linkUrl = link.href;
+    menuLinks.forEach((link) => {
+      const linkUrl = link.href;
 
-    if (linkUrl === currentUrl) {
-      link.classList.add("active");
-      link.setAttribute("aria-current", "page");
-    }
-  });
+      if (linkUrl === currentUrl) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function toogleAccountMenu() {

@@ -136,6 +136,82 @@ class Orders {
     }
   }
 
+  async getOrderById(orderId) {
+    if (!orderId) {
+      throw new Error("ID заказа не указан.");
+    }
+
+    try {
+      const { data: rawItems, error: itemsError } = await supabase
+        .from("order_items")
+        .select(
+          `
+            product_id,
+            quantity
+        `
+        )
+        .eq("order_id", orderId);
+
+      if (itemsError) {
+        console.error("Ошибка Supabase при получении order_items:", itemsError);
+        throw new Error(
+          itemsError.message || "Не удалось получить позиции заказа."
+        );
+      }
+
+      if (!rawItems || rawItems.length === 0) {
+        const { error: orderCheckError } = await supabase
+          .from("orders")
+          .select("id", { count: "exact" })
+          .eq("id", orderId)
+          .single();
+
+        if (orderCheckError && orderCheckError.code === "PGRST116") {
+          throw new Error(`Заказ с ID ${orderId} не найден.`);
+        }
+
+        return { items: [], products: [] };
+      }
+
+      const items = rawItems.map((item) => ({
+        productId: String(item.product_id),
+        quantity: item.quantity,
+      }));
+
+      const uniqueProductIds = Array.from(
+        new Set(rawItems.map((item) => item.product_id))
+      );
+
+      const { data: products, error: productsError } = await supabase
+        .from("products")
+        .select(
+          `
+            *,
+            product_images (*),
+            product_flavors (flavors (*), flavor_id),
+            packaging_types (*),
+            product_statuses (*)
+        `
+        )
+        .in("id", uniqueProductIds);
+
+      if (productsError) {
+        console.error("Ошибка Supabase при получении products:", productsError);
+        throw new Error(
+          productsError.message || "Не удалось получить данные о продуктах."
+        );
+      }
+
+      return {
+        items,
+        products,
+      };
+    } catch (e) {
+      console.error("Ошибка в ordersApi.getOrderById:", e);
+      throw e;
+    }
+  }
+
   generateOrderNumber() {
     return (
       Date.now().toString().slice(-8) +

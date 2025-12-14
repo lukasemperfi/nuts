@@ -16,7 +16,7 @@ export function createTableActionCell(rowData) {
 
 export function renderDetailsLink(rowData) {
   const orderId = rowData.id;
-  const url = `${baseUrl}profile/orders/?orderId=${orderId}`;
+  const url = `${baseUrl}profile/order/?orderId=${orderId}`;
 
   const iconHtml = `
         <svg

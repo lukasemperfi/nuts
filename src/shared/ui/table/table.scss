@@ -250,9 +250,11 @@
     }
   }
 
-  &:hover &__popup {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  @media (hover: hover) {
+    &:hover &__popup {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

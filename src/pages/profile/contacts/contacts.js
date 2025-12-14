@@ -4,14 +4,14 @@ import { lazyLoadElements } from "@/shared/helpers/lazy-loading/lazy-loading.js"
 import { initPageFooter } from "@/widgets/footer/footer.js";
 import { initProfilePageBreadcrumbs } from "@//pages/profile/sections/breadcrumbs/breadcrumbs";
 import { initProfileSection } from "@//pages/profile/sections/profile-section/profile-section";
+import { initPhisicalForm } from "./ui/phisical-form/phisical-form";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const contactsContainer = document.querySelector(".profile-section__content");
-
   initDropdown({ selector: ".top-header__lang" });
   initHeader();
   initProfilePageBreadcrumbs();
   initProfileSection();
+  initPhisicalForm();
   initPageFooter();
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 });

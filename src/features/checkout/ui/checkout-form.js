@@ -78,18 +78,11 @@ export const initCheckoutForm = () => {
     selector: ".checkout-form__country-dropdown",
     items: countries,
     onChange: (type, value) => {
-      updateDependentDropdown(
-        value,
-        regionDropdown,
-        regionsByCountry
-        // checkoutValidator,
-        // REG_FORM_SELECTORS.REGION
-      );
+      updateDependentDropdown(value, regionDropdown, regionsByCountry);
     },
   });
 
   initDeliveryMethodSwitcher(checkoutValidator, {
-    // <-- ***ДОБАВИЛ***
     countryDropdown,
     regionDropdown,
   });
@@ -202,13 +195,7 @@ function initDeliveryMethodSwitcher(validator, dropdowns) {
   }
 }
 
-function updateDependentDropdown(
-  value,
-  targetDropdown,
-  dataMap,
-  validator,
-  validateField
-) {
+function updateDependentDropdown(value, targetDropdown, dataMap) {
   const options = dataMap[value] || [];
 
   targetDropdown.updateOptions(options);

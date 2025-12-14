@@ -4,7 +4,7 @@ import {
   initProfileContactsFormValidation,
 } from "./validation";
 import { initUploadPhoto } from "@/shared/ui/upload-photo/upload-photo.js";
-import { userProfileApi } from "../../../../../entities/profile/api/profile";
+import { userProfileApi } from "@/entities/profile/api/profile";
 
 export const initPhisicalForm = () => {
   const registrationValidator = initProfileContactsFormValidation().onSuccess(

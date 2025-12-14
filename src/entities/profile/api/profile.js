@@ -113,23 +113,7 @@ class UserProfile {
       }
     }
 
-    let currentPersonType = personType;
-    if (
-      !currentPersonType &&
-      (newData.edrpou || newData.okpo || newData.city)
-    ) {
-      const { data: profileData } = await supabase
-        .from("profiles")
-        .select("person_type")
-        .eq("id", userId)
-        .maybeSingle();
-
-      if (profileData) {
-        currentPersonType = profileData.person_type;
-      }
-    }
-
-    if (currentPersonType === "fop") {
+    if (personType === "fop") {
       const fopPayload = getDetailsPayload(newData, "fop");
       if (fopPayload) {
         try {
@@ -146,7 +130,7 @@ class UserProfile {
           throw new Error("Не удалось обновить детали ФОП.");
         }
       }
-    } else if (currentPersonType === "legal") {
+    } else if (personType === "legal") {
       const legalPayload = getDetailsPayload(newData, "legal");
       if (legalPayload) {
         try {

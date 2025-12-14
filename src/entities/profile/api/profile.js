@@ -66,11 +66,44 @@ class UserProfile {
     const profilePayload = getProfilePayload(newData);
     const personType = newData.person_type;
 
-    if (Object.keys(profilePayload).length > 0) {
+    let avatarUrl = null;
+    const upload_file = newData.upload_file;
+
+    if (upload_file && upload_file.name) {
+      const fileExt = upload_file.name.split(".").pop();
+      const filePath = `${userId}.${fileExt}`;
+
+      const { error: uploadErr } = await supabase.storage
+        .from("avatars")
+        .upload(filePath, upload_file, {
+          cacheControl: "no-cache",
+          upsert: true,
+        });
+
+      if (uploadErr) {
+        console.warn(
+          "Предупреждение: Ошибка загрузки аватара, продолжение регистрации:",
+          uploadErr.message
+        );
+      }
+
+      const { data: urlData } = supabase.storage
+        .from("avatars")
+        .getPublicUrl(filePath);
+
+      avatarUrl = urlData.publicUrl;
+    }
+
+    const profileDataWtihAvatar = {
+      ...profilePayload,
+      avatar_url: avatarUrl,
+    };
+
+    if (Object.keys(profileDataWtihAvatar).length > 0) {
       try {
         const { error } = await supabase
           .from("profiles")
-          .update(profilePayload)
+          .update(profileDataWtihAvatar)
           .eq("id", userId);
 
         if (error) throw error;

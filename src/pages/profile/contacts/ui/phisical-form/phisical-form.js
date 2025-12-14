@@ -15,12 +15,22 @@ export const initPhisicalForm = () => {
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
       const finalPayload = groupRegistrationData(payload);
-
-      await userProfileApi.updateProfile(finalPayload);
-
       const overlay = createOverlaySpinner({
         successText: "Данные изменены успешно!",
       });
+
+      try {
+        await userProfileApi.updateProfile(finalPayload);
+
+        overlay.success();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } catch (error) {
+        console.error("Ошибка при обновлении профиля:", error);
+        overlay.hide();
+      }
     }
   );
 

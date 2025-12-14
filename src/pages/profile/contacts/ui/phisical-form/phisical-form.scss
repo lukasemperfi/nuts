@@ -18,4 +18,8 @@
   .form-item__fields {
     gap: $items-gap;
   }
+
+  &__submit-btn {
+    padding-inline: 72px;
+  }
 }

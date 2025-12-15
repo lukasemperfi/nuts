@@ -7,8 +7,10 @@ import { initProfileSection } from "@//pages/profile/sections/profile-section/pr
 import { initAddressForm } from "./ui/address-form/address-form";
 import { initLegalAddressForm } from "./ui/legal-address-form/legal-address-form";
 import { userProfileApi } from "../../../entities/profile/api/profile";
+import { requireAuth } from "../../../app/providers/auth-guard";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await requireAuth();
   try {
     initDropdown({ selector: ".top-header__lang" });
     initHeader();

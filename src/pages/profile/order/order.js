@@ -11,6 +11,7 @@ import { QuantityComponent } from "../../../shared/ui/table/quantity";
 import { baseUrl } from "../../../shared/helpers/base-url";
 import { mapProductsToTableRows } from "../../../features/cart/ui/map-products-to-table-rows";
 import { OrderTable } from "./order-table";
+import { requireAuth } from "../../../app/providers/auth-guard";
 
 const orderColumns = [
   {
@@ -53,6 +54,8 @@ const orderColumns = [
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await requireAuth();
+
   const orderTableContainer = document.querySelector(
     ".profile-section__content"
   );

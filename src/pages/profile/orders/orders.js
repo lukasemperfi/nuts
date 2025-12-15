@@ -10,6 +10,7 @@ import { store } from "@/app/store";
 import { ordersApi } from "@/entities/order/api/order";
 import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 import { createTableActionCell } from "../../../shared/ui/table/action-cell";
+import { requireAuth } from "../../../app/providers/auth-guard";
 
 export const ordersColumns = [
   {
@@ -57,6 +58,8 @@ export const ordersColumns = [
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await requireAuth();
+
   const ordersTableContainer = document.querySelector(
     ".profile-section__content"
   );

@@ -84,6 +84,7 @@ async function initHeaderAuth() {
         label: "Выйти",
         onClick: async () => {
           await logoutUser();
+          window.location.reload();
         },
         className: "logout",
       },

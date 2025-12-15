@@ -5,8 +5,11 @@ import { initPageFooter } from "@/widgets/footer/footer.js";
 import { initProfilePageBreadcrumbs } from "@//pages/profile/sections/breadcrumbs/breadcrumbs";
 import { initProfileSection } from "@//pages/profile/sections/profile-section/profile-section";
 import { initPasswordForm } from "./ui/password-form/password-form";
+import { requireAuth } from "../../../app/providers/auth-guard";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await requireAuth();
+
   initDropdown({ selector: ".top-header__lang" });
   initHeader();
   initProfilePageBreadcrumbs();

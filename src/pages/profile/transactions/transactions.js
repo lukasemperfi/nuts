@@ -8,6 +8,7 @@ import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 import { TransactionsTable } from "./transactions-table";
 import { renderDetailsLink } from "../../../shared/ui/table/action-cell";
 import { initProfileSection } from "../sections/profile-section/profile-section";
+import { requireAuth } from "../../../app/providers/auth-guard";
 
 const transactionsColumns = [
   {
@@ -48,6 +49,8 @@ const transactionsColumns = [
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await requireAuth();
+
   const transactionsTableContainer = document.querySelector(
     ".profile-section__content"
   );

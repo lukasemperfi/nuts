@@ -3,6 +3,7 @@
 @use "@/app/styles/mixins" as mixins;
 @use "@/shared/ui/overlay-spinner/overlay-spinner.scss" as *;
 @use "@/features/cart/ui/cart.scss" as *;
+@use "@/shared/ui/toast/toast.scss" as *;
 
 body {
   font-family: var(--font-family-primary);

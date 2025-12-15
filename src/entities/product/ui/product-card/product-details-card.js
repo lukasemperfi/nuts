@@ -1,5 +1,8 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
+import { cartThunks } from "@/features/cart/model/cart-slice";
+import { debounce } from "@/shared/helpers/debounce";
+import { showToast } from "@/shared/ui/toast/toast";
 
 export function renderProductDetailsCard(product, containerSelector) {
   if (!product || Object.keys(product).length === 0) {
@@ -26,6 +29,7 @@ export function renderProductDetailsCard(product, containerSelector) {
 
 export function createProductDetailsCard(product) {
   const {
+    id,
     product_images,
     title,
     sku,
@@ -185,6 +189,21 @@ export function createProductDetailsCard(product) {
     `;
 
   initProductDetailsCardSwiper(card);
+
+  const addButton = card.querySelector(
+    '.info__button[name="product-card-button"]'
+  );
+
+  const addItemHandler = (id) => {
+    cartThunks.addItem(String(id));
+    showToast("Товар успешно добавлен в корзину!", "success");
+  };
+
+  const debouncedAddItem = debounce(addItemHandler, 300);
+
+  addButton.addEventListener("click", () => {
+    debouncedAddItem(id);
+  });
 
   return card;
 }

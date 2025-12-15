@@ -19,5 +19,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   initPageFooter();
 
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
-
 });

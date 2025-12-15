@@ -1,8 +1,8 @@
 import { initSwiper } from "@/shared/lib/swiper/init-swiper.js";
 import { Navigation } from "swiper/modules";
-import { store } from "@/app/store";
-import { cartThunks } from "../../../../features/cart/model/cart-slice";
-import { debounce } from "../../../../shared/helpers/debounce";
+import { cartThunks } from "@/features/cart/model/cart-slice";
+import { debounce } from "@/shared/helpers/debounce";
+import { showToast } from "@/shared/ui/toast/toast";
 
 const baseUrl =
   import.meta.env.MODE === "development"
@@ -207,6 +207,7 @@ export function createProductCard(product) {
 
   const addItemHandler = (id) => {
     cartThunks.addItem(String(id));
+    showToast("Товар успешно добавлен в корзину!", "success");
   };
 
   const debouncedAddItem = debounce(addItemHandler, 300);

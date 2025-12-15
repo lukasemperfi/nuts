@@ -4,7 +4,8 @@
 
   &__body {
     display: flex;
-    gap: 30px;
+    flex-wrap: wrap;
+    column-gap: 30px;
   }
 
   &__item {
@@ -17,9 +18,18 @@
 
   .form-item__fields {
     gap: $items-gap;
+    padding: 2px;
+  }
+
+  .form-field {
+    min-width: 330px;
   }
 
   &__submit-btn {
     padding-inline: 72px;
+  }
+
+  &__footer {
+    margin-top: $items-gap;
   }
 }

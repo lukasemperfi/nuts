@@ -27,7 +27,22 @@ export function OrderTable({
     showHeader,
   };
 
-  new Table(tableContainer, initialData);
+  const table = new Table(tableContainer, initialData);
 
   container.appendChild(tableContainer);
+
+  table.element.addEventListener("dataUpdateRequest", (event) => {
+    const { action, itemId, newQuantity } = event.detail;
+
+    if (action === "updateQuantity") {
+      const updatedRows = tableModel.updateQuantity(itemId, newQuantity);
+
+      const newTotalAmount = tableModel.calculateTotalAmount();
+
+      table.update({
+        rows: updatedRows,
+        totalAmount: newTotalAmount,
+      });
+    }
+  });
 }

@@ -97,7 +97,7 @@
     align-items: center;
 
     @include mixins.respond-to(1230px) {
-      align-items: flex-end;
+      // align-items: flex-end;
     }
 
     &__icon-wrapper {

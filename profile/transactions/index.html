@@ -1,0 +1,804 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy the best nuts. Fresh, tasty, and delivered straight to your door.">
+    <title>Transactions Page</title>
+
+  <style>@charset "UTF-8";@media (max-width:1337px){.owner-section__image-wrapper{grid-area:image;aspect-ratio:auto}.owner-section .owner-info{grid-area:owner-info}.owner-section .company-history{grid-area:company-history;padding-block:clamp(10px,1.3461538462vw + 5.1538461538px,31px);padding-inline:clamp(10px,2.0512820513vw + 2.6153846154px,42px)}}.banner{position:relative;width:100%;aspect-ratio:1920/600;display:flex;justify-content:center;align-items:center;padding-block:121.5px}.banner__image-wrapper{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.banner__image{width:100%;height:100%;object-fit:cover}.banner__content{display:flex;flex-direction:column;align-items:center;justify-content:center}.banner__title{font-family:var(--font-family-primary);font-weight:800;font-size:clamp(28px,2.1794871795vw + 20.1538461538px,62px);letter-spacing:.01em;color:var(--foreground-secondary);margin-bottom:clamp(14px,1.1538461538vw + 9.8461538462px,32px);text-align:center}@media (max-width:767px){.product-filters-bar__flavor-select{grid-area:flavor-select}.product-filters-bar__weight-select{grid-area:weight-select}.product-filters-bar .filter-actions{justify-self:flex-start;grid-area:filter-actions}}.user-info-bar{display:flex;flex-wrap:wrap;column-gap:72px;row-gap:14px;padding-block:46px}.user-info-bar__title{font-family:var(--font-family-secondary);font-weight:800;font-size:32px;line-height:32px;letter-spacing:.01em;color:var(--foreground);white-space:nowrap}.user-info-bar .manager-contacts__name{font-weight:500;font-size:16px;line-height:33px;letter-spacing:.01em;color:var(--foreground);white-space:nowrap}.user-info-bar .manager-contacts__phone{font-family:var(--font-family-secondary);font-weight:600;font-size:14px;line-height:1.2;letter-spacing:.01em;color:var(--foreground-tertiary);display:flex;gap:6px}.profile-page-breadcrumbs__container{padding-bottom:7px;padding-top:31px}.profile-section{padding-top:46px;padding-bottom:90px}@media (max-width:1337px){.user-info-bar{column-gap:clamp(24px,3.0769230769vw + 12.9230769231px,72px);padding-block:clamp(20px,1.6666666667vw + 14px,46px)}.user-info-bar__title{font-size:clamp(24px,.5128205128vw + 22.1538461538px,32px)}.profile-section{padding-top:clamp(20px,1.6666666667vw + 14px,46px);padding-bottom:clamp(20px,4.4871794872vw + 3.8461538462px,90px)}}.profile-section .user-info-bar{padding-top:0;column-gap:normal}.profile-section .user-info-bar__title{flex:0 1 25%;margin-right:50px}.profile-section__body{display:flex;overflow-x:auto}.profile-section__menu{transform:translate(0);flex:0 1 25%;margin-right:50px}.profile-section__menu-toggle{display:none}@media (max-width:1023px){.profile-section__menu{display:none}.profile-section__menu-toggle{display:block;margin-bottom:20px}}.profile-section__menu-toggle-right-icon{display:block}.profile-section__menu-toggle-left-icon{display:none}.profile-section__content{min-height:260px;flex:1}.profile-section .profile-section__menu-toggle{margin-bottom:20px}.profile-section .account-menu{display:flex;flex-direction:column;gap:32px}.profile-section .account-menu .account-menu-item__title{font-weight:700;font-size:18px;line-height:32px;letter-spacing:.01em;color:var(--foreground);margin-bottom:7px;white-space:nowrap}.profile-section .account-menu .account-menu-item .account-menu-list__link{font-weight:500;font-size:16px;line-height:29px;letter-spacing:.01em;color:var(--foreground);white-space:nowrap}.form-item_contacts{grid-area:contacts}.form-item_address{grid-area:address}.form-item_password{grid-area:password;margin-bottom:0}.form-item_person-type{grid-area:person-type}.form-item_entity-details{grid-area:entity-details;margin-bottom:0}*{padding:0;margin:0;border:0}*,:after,:before{box-sizing:border-box}:active,:focus{outline:0}footer,header,nav{display:block}body,html{min-height:100%;width:100%;font-size:100%;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%}button{font-family:inherit;color:inherit}button{background-color:transparent;display:inline-flex}button::-moz-focus-inner{padding:0;border:0}a{display:inline-flex}a,a:visited{text-decoration:none}ul li{list-style:none}img{vertical-align:top;max-width:100%}html{font-size:16px;font-size:100%}body{font-family:var(--font-family-primary);background-color:var(--background);color:var(--foreground);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}.page-container{max-width:1338px;padding-inline:24px;margin:0 auto}@media (max-width:767px){.user-info-bar .manager-contacts__name{font-size:14px}.user-info-bar .manager-contacts__phone{font-size:12px}.page-container{padding-inline:12px}}.title-h2{font-family:var(--font-family-primary);font-weight:800;letter-spacing:.01em;text-align:center;margin-bottom:clamp(14px,1.0256410256vw + 10.3076923077px,30px);color:var(--foreground)}.title-h2{font-size:clamp(20px,1.6025641026vw + 14.2307692308px,45px)}.lazy{opacity:0!important;visibility:hidden!important}#private-content{display:none}:root{--light-green:rgba(51, 125, 90, .1);--light-gray:rgba(0, 0, 0, .08);--background:#ffffff;--background-secondary:#fbfbfb;--background-tertiary:#337d5a;--skeleton-background:#bdbdbd;--foreground:#1a2f3f;--foreground-secondary:#ffffff;--foreground-tertiary:#337d5a;--muted-text:#8a8a8a;--accent:#337d5a;--error:#ff2c2c;--border-color:#93b474;--border-color-secondary:#337d5a;--font-family-primary:"Raleway",sans-serif;--font-family-secondary:"Montserrat",sans-serif;--z-index-sticky:100;--z-index-overlay:8000;--z-index-header:6000;--z-index-header-nav-mobile:7000}:root{--swiper-theme-color:#007aff}:host{position:relative;display:block;margin-left:auto;margin-right:auto;z-index:1}.header{position:sticky;top:0;left:0;right:0;width:100%;z-index:var(--z-index-header);background-color:var(--background)}.header .promo{font-family:var(--font-family-secondary);font-weight:600;font-size:14px;color:var(--accent);white-space:nowrap}.header .top-header{background-color:var(--background-secondary);padding-block:5px;padding-bottom:6px}.header .top-header__content{display:flex;align-items:center}.header .top-header__phone{display:none}@media (max-width:1023px){.header .top-header{padding-block:0px}.header .top-header__phone{display:flex;align-items:center;gap:5px;font-size:12px;order:1}}.header .top-header__call-btn{display:none}@media (max-width:1023px){.header .top-header__call-btn{display:flex;font-family:var(--font-family-primary);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--foreground-tertiary);border-bottom:1px solid var(--border-color-secondary);padding-block:3px;order:3;margin:0}.header .top-header .socials{display:none}}@media (max-width:599px){.header .top-header__call-btn{margin-left:auto}.header .top-header__promo{display:none}}.header .top-header__promo{margin-left:457px}@media (max-width:1337px){.header .top-header__promo{margin:0 auto}}.header .top-header__auth{margin-left:auto}@media (max-width:1337px){.header .top-header__auth{margin-left:0}}.header .top-header__lang{margin-left:35px;min-width:45px}@media (max-width:1337px){.header .top-header__lang{margin-left:0}}.header .top-header__lang .dropdown__button{background-color:transparent}.header .middle-header{padding-block:16px;border-bottom:1px solid rgba(0,0,0,.06)}@media (max-width:1023px){.header .top-header__promo{font-size:13px;order:2}.header .top-header__auth{display:none}.header .top-header__lang{margin-right:-12px;min-width:55px;min-height:38px;order:4}.header .top-header__lang .dropdown__icon{right:12px;width:10px;height:7px;transform:translateY(-39%)}.header .top-header__lang .dropdown__button{padding-right:23px;padding-block:10.5px;padding-left:11px}.header .middle-header{padding-top:11px;padding-bottom:7px}}.header .middle-header__content{display:flex;align-items:center}.header .middle-header__burger-btn{display:none}.header .middle-header__contacts-block{margin-left:329px}@media (max-width:1337px){.header .middle-header__contacts-block{margin:0 auto}}.header .middle-header__button{margin-left:93px}@media (max-width:1337px){.header .middle-header__button{margin-left:-76px}}@media (max-width:1023px){.header .middle-header__content{justify-content:space-between}.header .middle-header__burger-btn{display:block}.header .middle-header .logo{flex-direction:column}.header .middle-header .logo__image{width:29px;height:28px}.header .middle-header .logo__text{text-align:center;font-size:11px}.header .middle-header__contacts-block{display:none}.header .middle-header__button{display:none}}.header .middle-header__text{font-family:var(--font-family-secondary);font-weight:500;font-size:12px;letter-spacing:.02em;color:var(--muted-text);display:inline-flex;max-width:143px;margin-left:14px;white-space:nowrap}.header .middle-header__cart-btn{margin-left:auto}@media (max-width:1337px){.header .middle-header__cart-btn{margin-left:65px}}.header .middle-header .cart-btn{position:relative}.header .middle-header .cart-btn_counter{position:absolute;top:0;right:-5px;min-width:15px;height:15px;border-radius:9999px;background-color:#93b474;font-family:var(--font-family-secondary);font-weight:700;font-size:8px;color:var(--foreground-secondary);display:flex;align-items:center;justify-content:center;padding-inline:4px}.header .bottom-header{padding-top:11px}@media (max-width:1023px){.header .middle-header__text{display:none}.header .middle-header__cart-btn{margin-left:0}.header .bottom-header{display:none}.header .bottom-header .nav-menu{display:none}}@media (max-width:599px){.header .bottom-header{padding-top:7px;padding-bottom:10px;display:block}}.header .bottom-header__promo{display:none}@media (max-width:599px){.header .bottom-header__promo{display:flex;justify-content:center;font-size:13px}}.auth{display:flex;gap:26px;align-items:center}.auth__link{font-family:var(--font-family-primary);font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--foreground);display:inline-flex;position:relative}.auth__link:after{content:"";position:absolute;bottom:-2px;left:0;width:100%;height:2px;background-color:var(--accent);transform:scaleX(0)}.auth__login{display:flex;align-items:center;gap:6px}.mobile-menu{display:flex;flex-direction:column;position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:#93b474;background-color:var(--background);z-index:var(--z-index-header-nav-mobile);transform:translate(-100%);opacity:0;visibility:hidden;overflow-y:auto}.mobile-menu__row-1{display:flex;align-items:center;justify-content:space-between;padding-inline:12px;padding-block:14px}.mobile-menu__row-2{display:flex;align-items:center;justify-content:space-between;padding-inline:12px;background-color:var(--background-secondary);padding-block:12px}.mobile-menu__row-4{flex:1;min-height:185px}.mobile-menu__nav-menu .nav-menu__link{width:100%;font-family:var(--font-family-primary);font-weight:500;font-size:15px;letter-spacing:.02em;color:var(--foreground);border-bottom:1px solid rgba(0,0,0,.04);padding-block:14px;padding-inline:12px}.mobile-menu .banner{position:relative;width:100%;height:100%}.mobile-menu .banner__image-wrapper{position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1}.mobile-menu .banner__image{width:100%;height:100%;object-fit:cover}.mobile-menu .banner__content{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}.mobile-menu .banner__title{font-family:var(--font-family-primary);font-weight:800;font-size:24px;letter-spacing:.01em;color:var(--foreground-secondary);margin-bottom:10px}.mobile-menu .banner__text{font-family:var(--font-family-primary);font-weight:600;font-size:15px;line-height:18px;letter-spacing:.01em;text-align:center;color:var(--foreground-secondary);max-width:223px}.cart-btn{anchor-name:--cart-btn}@media (max-width:700px){.cart-popup .table__cell_product-name{grid-area:product-name;justify-self:flex-start!important}.cart-popup .table__cell_delete-action{grid-area:delete-action;justify-self:flex-end!important}.cart-popup .table__cell_quantity{grid-area:quantity;justify-self:flex-start!important}.cart-popup .table__cell_total-cost{grid-area:total-cost;justify-self:flex-end!important}}.socials{display:flex;gap:19px}.socials__link{display:flex;align-items:center;justify-content:center}.dropdown{--select-border-radius:88px;--select-text-color:var(--foreground);--select-border-color:#c4c4c4;--select-bg-hover:var(--accent);position:relative;display:inline-block;color:var(--select-text-color)}.dropdown__button{appearance:none;background-color:var(--background);color:var(--select-text-color);font-weight:600;font-size:13px;font-family:var(--font-family-primary);padding-block:6px;padding-left:13px;padding-right:13px;letter-spacing:.06em;position:relative;outline:0;width:100%;text-align:left;display:flex;align-items:center}.dropdown__selected{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dropdown__icon{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(0);color:currentColor}.dropdown__dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;padding:8px 0;margin:0;list-style:none;overflow-y:hidden;width:fit-content;z-index:100;opacity:0;visibility:hidden;transform:translateY(-10px)}.dropdown__option{padding-inline:13px;font-weight:600;font-size:13px;letter-spacing:.06em;white-space:nowrap;position:relative}.dropdown__option:after{content:"";position:absolute;bottom:0;left:50%;transform:translate(-50%);width:90%;height:1px;background-color:#00000014}.dropdown__label{padding-block:13px}.logo{display:flex;align-items:center;justify-content:center;gap:7px}.logo__image{width:54px;height:53px}.logo__text{font-weight:800;font-size:15px;letter-spacing:.02em;color:var(--foreground);text-align:left}.contacts-block{display:flex;gap:32px}.contacts-block__messengers{display:flex;align-items:center;gap:10px}.contacts-block__messenger{width:31px;height:31px;aspect-ratio:1;border-radius:50%;background-color:var(--background-tertiary);display:flex;align-items:center;justify-content:center}.contacts-block__phones{display:flex;flex-direction:column;gap:3px}.contacts-block__phone{font-family:var(--font-family-secondary);font-size:13px;font-weight:500;color:var(--foreground);white-space:nowrap}.contacts-block_highlight-code{color:var(--accent);font-weight:600}.contacts-block_reverse{flex-direction:row-reverse}.button{font-family:var(--font-family-primary);letter-spacing:.02em;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;width:fit-content}.button_primary{background-color:var(--background-tertiary);color:var(--foreground-secondary);border:1.5px solid var(--background-tertiary)}.button_size-sm{font-weight:600;font-size:13px;padding-block:12px;padding-inline:22px}.nav-menu_horizontal{--link-padding-inline:34.5px;display:flex;justify-content:center}.nav-menu_horizontal .nav-menu__list{display:flex;justify-content:center;flex-wrap:wrap}.nav-menu_horizontal .nav-menu__link{padding-inline:var(--link-padding-inline);font-family:var(--font-family-primary);font-weight:500;font-size:15px;letter-spacing:.02em;color:var(--foreground);padding-block:13px;position:relative;white-space:nowrap}.contacts-section{padding-top:clamp(25px,4.9358974359vw + 7.2307692308px,102px);padding-bottom:clamp(25px,4.1666666667vw + 10px,90px)}.contacts-section_color_secondary{background-color:var(--background-secondary)}.contacts-section__content{display:grid;grid-template-columns:1fr minmax(0,739px);gap:clamp(24px,1.6666666667vw + 18px,50px)}@media (max-width:1337px){.header .bottom-header .nav-menu__link{font-size:14px;--link-padding-inline:18.5px}.contacts-section__content{grid-template-columns:minmax(0,739px);justify-content:center}}.contacts-section__col-1{flex:1;padding-top:11px;padding-bottom:34px}.contacts-section__col-2{flex:1 1 14.574%;aspect-ratio:739/518}.contacts-section__title{text-align:left;margin-bottom:clamp(14px,3.8461538462vw + .1538461538px,74px)}.contacts-section__info{display:grid;gap:clamp(30px,1.0256410256vw + 26.3076923077px,46px)}@media (max-width:1337px){.contacts-section__title{text-align:center}.contacts-section__info{grid-template-columns:repeat(2,max-content);grid-template-rows:repeat(2,1fr);justify-content:space-between}}@media (max-width:661px){.contacts-section__info{grid-template-columns:max-content;grid-template-rows:auto;justify-content:center}}.contacts-section .info-item{display:grid;grid-template-columns:16px max-content;column-gap:14px;align-items:center}.contacts-section .info-item_type_secondary{grid-template-columns:16px max-content;grid-template-areas:"icon-wrapper title" ". label";align-items:baseline;row-gap:18px}.contacts-section .info-item_type_secondary .info-item__icon-wrapper{grid-area:icon-wrapper}.contacts-section .info-item_type_secondary .info-item__title{grid-area:title}.contacts-section .info-item_type_secondary .info-item__label{grid-area:label}.contacts-section .info-item__icon-wrapper{display:flex;justify-content:center}.contacts-section .info-item__label{font-family:var(--font-family-secondary);font-weight:500;font-size:14px;line-height:21px;letter-spacing:.01em;color:var(--foreground)}.contacts-section .info-item__title{font-weight:800;font-size:17px;letter-spacing:.01em;color:var(--foreground)}.contacts-section .info-item .contacts-block{gap:47px}.contacts-section .info-item .contacts-block__phone{font-family:var(--font-family-secondary);font-weight:500;font-size:14px;letter-spacing:.01em}.contacts-section__map{width:100%;height:100%;border:none;padding:0;display:block}.page-footer .page-footer-main{padding-block:clamp(20px,.4487179487vw + 18.3846153846px,27px)}.page-footer .page-footer-main__content{display:grid;grid-template-columns:max-content 1fr;justify-content:space-between;align-items:flex-end}@media (max-width:1337px){.page-footer .page-footer-main__content{align-items:center}}.page-footer .page-footer-main .nav-menu_horizontal{--link-padding-inline:29.5px;height:max-content;display:flex;justify-content:flex-end}@media (max-width:450px){.page-footer .page-footer-main .nav-menu_horizontal{justify-content:flex-start}}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__list{height:max-content;display:grid;width:max-content;grid-template-columns:repeat(6,max-content)}@media (max-width:1337px){.page-footer .page-footer-main .nav-menu_horizontal{--link-padding-inline:10px}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__list{grid-template-columns:repeat(3,max-content);justify-content:space-around;width:100%}}@media (max-width:899px){.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__list{grid-template-columns:repeat(2,max-content)}}@media (max-width:767px){.page-footer .page-footer-main__content{grid-template-columns:1fr;row-gap:24px}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__list{grid-template-columns:repeat(3,max-content);justify-content:space-between}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__link{font-size:14px;padding-inline:10px}}@media (max-width:669px){.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__list{grid-template-columns:repeat(2,max-content)}}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__item:first-child .nav-menu__link{padding-left:0}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__item:last-child .nav-menu__link{padding-right:0}@media (max-width:1337px){.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__item:first-child .nav-menu__link{padding-left:var(--link-padding-inline)}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__item:last-child .nav-menu__link{padding-right:var(--link-padding-inline)}}.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__link{padding-block:10px}@media (max-width:450px){.page-footer .page-footer-main .nav-menu_horizontal .nav-menu__list{grid-template-columns:repeat(1,max-content);justify-content:flex-start;margin-left:-10px}.page-footer .page-footer-main .logo{justify-content:flex-start}}.page-footer .page-footer-bottom{padding-block:clamp(12px,.8974358974vw + 8.7692307692px,26px);border-top:1px solid rgba(0,0,0,.08)}.page-footer .page-footer-bottom__content{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-family-secondary);font-weight:400;font-size:12px;color:var(--foreground);flex-wrap:wrap;gap:16px}.page-footer .page-footer-bottom__highlight{font-weight:400;color:#337d5a}.page-footer .page-footer-bottom__highlight_bold{font-weight:600}</style>
+  <script type="module" crossorigin="" src="/nuts/assets/src/pages/profile/transactions-Lrb4EuSB.js"></script>
+  <link rel="modulepreload" crossorigin="" href="/nuts/assets/footer-kwW1Dzn6.js">
+  <link rel="modulepreload" crossorigin="" href="/nuts/assets/breadcrumbs-CCIHsRy6.js">
+  <link rel="modulepreload" crossorigin="" href="/nuts/assets/breadcrumbs-k0QsKmE3.js">
+  <link rel="modulepreload" crossorigin="" href="/nuts/assets/action-cell-Yh6qb5xd.js">
+  <link rel="modulepreload" crossorigin="" href="/nuts/assets/profile-section-Lnmzs4iE.js">
+  <link rel="stylesheet" crossorigin="" href="/nuts/assets/transactions-DYcLfEUA.css" media="print" onload="this.media='all'">
+</head>
+
+<body id="private-content">
+    
+
+<header class="header">
+    <div class="header__top top-header">
+        <div class="page-container">
+            <div class="top-header__content">
+                <a class="contacts-block__phone top-header__phone" href="tel:+79999999999" name="phone"
+                    aria-label="Телефон">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_14178_3393)">
+                            <path
+                                d="M9.98009 7.74817C9.9518 7.66295 9.77185 7.5374 9.44036 7.37183C9.35056 7.31964 9.2226 7.24872 9.05702 7.15874C8.8913 7.06877 8.74088 6.98586 8.60602 6.91008C8.4709 6.83434 8.34431 6.76095 8.22602 6.69003C8.20712 6.67583 8.14794 6.63446 8.04851 6.56565C7.94898 6.49705 7.86505 6.44613 7.79627 6.41292C7.72764 6.37991 7.66012 6.36329 7.59383 6.36329C7.49915 6.36329 7.38089 6.4308 7.2389 6.56565C7.09691 6.70068 6.96666 6.84735 6.84835 7.0061C6.73002 7.16479 6.60452 7.31145 6.47208 7.4464C6.33945 7.58141 6.23047 7.64884 6.14534 7.64884C6.10261 7.64884 6.04932 7.63693 5.98547 7.61342C5.92163 7.58976 5.87308 7.56949 5.83974 7.55315C5.80671 7.53646 5.75002 7.50342 5.66947 7.45354C5.58877 7.40382 5.5439 7.37658 5.53444 7.37183C4.88581 7.0119 4.32951 6.59996 3.86545 6.1361C3.40155 5.67197 2.98955 5.11572 2.62973 4.46701C2.625 4.45753 2.59771 4.41253 2.54804 4.33209C2.49828 4.25156 2.46512 4.19482 2.44856 4.16159C2.43199 4.12848 2.41187 4.07992 2.38823 4.01601C2.3646 3.95211 2.35274 3.89887 2.35274 3.85621C2.35274 3.77104 2.42022 3.66208 2.55517 3.5295C2.6901 3.39698 2.83692 3.27146 2.99548 3.15317C3.15416 3.03489 3.30083 2.90464 3.4358 2.76265C3.57073 2.62059 3.63819 2.50228 3.63819 2.4076C3.63819 2.34136 3.62162 2.27382 3.58851 2.20519C3.55538 2.1364 3.50448 2.05247 3.4358 1.95299C3.36709 1.85357 3.32568 1.79444 3.31145 1.77541C3.2405 1.65712 3.16719 1.53048 3.09135 1.39553C3.0155 1.2606 2.93271 1.1102 2.84271 0.944507C2.75279 0.778885 2.68182 0.650998 2.62968 0.561048C2.46405 0.229678 2.33861 0.0496769 2.25336 0.0213683C2.2202 0.00716422 2.17045 0 2.10423 0C1.97632 0 1.80945 0.023632 1.6035 0.0710451C1.39748 0.118384 1.23537 0.168036 1.11698 0.2202C0.880241 0.319579 0.629319 0.608386 0.364144 1.08652C0.122675 1.5315 0.00195312 1.97193 0.00195312 2.40747C0.00195312 2.53521 0.0102367 2.65949 0.026804 2.78034C0.0433712 2.90106 0.0729734 3.0372 0.115635 3.18875C0.158223 3.34024 0.192576 3.45278 0.218546 3.52606C0.244541 3.5994 0.293074 3.73076 0.364119 3.92022C0.435065 4.10962 0.477727 4.22557 0.491931 4.26818C0.657628 4.73221 0.854122 5.14647 1.08136 5.51107C1.45524 6.11709 1.96547 6.74339 2.61174 7.38971C3.25804 8.03598 3.88421 8.54619 4.49028 8.92022C4.85484 9.14743 5.26924 9.3439 5.7332 9.50972C5.77584 9.52385 5.89178 9.56642 6.08111 9.63761C6.27052 9.7086 6.40193 9.75714 6.47527 9.78318C6.54863 9.80925 6.66119 9.84363 6.81256 9.88629C6.96425 9.92896 7.10027 9.95856 7.22099 9.97525C7.34179 9.99159 7.46609 10 7.59386 10C8.02938 10 8.46983 9.87923 8.91488 9.63778C9.39297 9.37271 9.6817 9.12174 9.78113 8.88482C9.83342 8.76656 9.88295 8.6044 9.93029 8.39838C9.97777 8.19245 10.0014 8.02561 10.0014 7.89773C10.0015 7.83123 9.99436 7.78161 9.98009 7.74817Z"
+                                fill="#337D5A" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_14178_3393">
+                                <rect width="10" height="10" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <span class="contacts-block_highlight-code">
+                        +38&nbsp;(044)</span>750-50-11</a>
+                <button class="top-header__call-btn" name="call-button" aria-label="Заказать звонок">Заказать
+                    звонок</button>
+                
+<div class="socials ">
+    <a href="#" class="socials__link" name="social-link" aria-label="WhatsApp">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3.42647 6.9238H4.85148V12.7903C4.85148 12.9061 4.94534 13 5.06116 13H7.47732C7.59314 13 7.68699 12.9061 7.68699 12.7903V6.95144H9.32516C9.43168 6.95144 9.52129 6.87151 9.53345 6.7657L9.78226 4.60594C9.78909 4.54652 9.77026 4.48701 9.73051 4.44244C9.69071 4.39782 9.63376 4.37228 9.57401 4.37228H7.68708V3.01843C7.68708 2.61032 7.90682 2.40336 8.34026 2.40336C8.40204 2.40336 9.57401 2.40336 9.57401 2.40336C9.68983 2.40336 9.78368 2.30947 9.78368 2.19369V0.211229C9.78368 0.0954032 9.68983 0.00155161 9.57401 0.00155161H7.87373C7.86174 0.000964516 7.83511 0 7.79586 0C7.50084 0 6.47539 0.0579128 5.66537 0.803106C4.76786 1.6289 4.89262 2.61766 4.92244 2.78909V4.37224H3.42647C3.31065 4.37224 3.2168 4.46609 3.2168 4.58191V6.71408C3.2168 6.82991 3.31065 6.9238 3.42647 6.9238Z"
+                fill="#93B474" />
+        </svg>
+    </a>
+    <a href="#" class="socials__link" name="social-link" aria-label="Telegram">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_9_42)">
+                <path
+                    d="M9.48744 0H3.51256C1.57574 0 0 1.57574 0 3.51256V9.48744C0 11.4243 1.57574 13 3.51256 13H9.48744C11.4243 13 13 11.4243 13 9.48744V3.51256C13 1.57574 11.4243 0 9.48744 0ZM11.9497 9.48744C11.9497 10.8451 10.8452 11.9497 9.48744 11.9497H3.51256C2.15485 11.9497 1.05026 10.8452 1.05026 9.48744V3.51256C1.05026 2.15485 2.15483 1.05026 3.51256 1.05026H9.48744C10.8451 1.05026 11.9497 2.15483 11.9497 3.51256V9.48744Z"
+                    fill="#323232" />
+                <path
+                    d="M9.40961 6.04611C9.31719 5.42284 9.03284 4.85795 8.58731 4.41242C8.14178 3.96692 7.57689 3.68254 6.95365 3.59015C6.66988 3.54808 6.38218 3.54808 6.09844 3.59015C5.32819 3.70438 4.64856 4.1117 4.1847 4.73709C3.72084 5.36249 3.52825 6.13112 3.64248 6.90131C3.75671 7.67154 4.16403 8.35117 4.78943 8.81506C5.29714 9.19163 5.89915 9.38937 6.51987 9.38937C6.66376 9.38937 6.80869 9.37876 6.95362 9.35725C7.72387 9.24302 8.4035 8.8357 8.86737 8.2103C9.33125 7.58493 9.52384 6.81633 9.40961 6.04611ZM6.79958 8.31834C6.30687 8.39152 5.81518 8.26824 5.4151 7.9715C5.01502 7.67476 4.75446 7.23998 4.68142 6.74727C4.60834 6.25456 4.73151 5.76288 5.02825 5.36279C5.32502 4.96271 5.75978 4.70216 6.25251 4.62908C6.34326 4.61562 6.43464 4.6089 6.52602 4.6089C6.6174 4.6089 6.70881 4.61562 6.79955 4.62911C7.61792 4.75045 8.24931 5.38181 8.37067 6.2002C8.52149 7.2173 7.81673 8.16752 6.79958 8.31834Z"
+                    fill="#323232" />
+                <path
+                    d="M10.1572 2.84229C10.0594 2.74451 9.92407 2.68848 9.7859 2.68848C9.64772 2.68848 9.51236 2.74449 9.41456 2.84229C9.31678 2.9401 9.26074 3.07523 9.26074 3.21363C9.26074 3.35204 9.31678 3.48717 9.41456 3.58497C9.51236 3.68275 9.64772 3.73879 9.7859 3.73879C9.92407 3.73879 10.0594 3.68277 10.1572 3.58497C10.255 3.48717 10.3111 3.35181 10.3111 3.21363C10.3111 3.07543 10.255 2.94007 10.1572 2.84229Z"
+                    fill="#323232" />
+            </g>
+            <defs>
+                <clipPath id="clip0_9_42">
+                    <rect width="13" height="13" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+    </a>
+    <a href="#" class="socials__link" name="social-link" aria-label="Viber">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M15.3764 12.6633C14.7988 13.3498 13.7325 13.6299 11.6961 13.6299H4.30379C2.22075 13.6299 1.13636 13.3318 0.560981 12.6008C0 11.8882 0 10.8381 0 9.38477V6.61476C0 3.79922 0.6656 2.3697 4.30379 2.3697H11.6961C13.4621 2.3697 14.4407 2.61682 15.0738 3.22271C15.723 3.84402 16 4.85848 16 6.61476V9.38477C16 10.9174 15.9566 11.9737 15.3764 12.6633ZM10.2721 7.61734L6.91525 5.86297C6.84021 5.82374 6.75814 5.80428 6.67618 5.80428C6.58338 5.80428 6.49079 5.82926 6.40877 5.87892C6.25435 5.97249 6.16005 6.13987 6.16005 6.32041V9.81791C6.16005 9.99814 6.25409 10.1654 6.40821 10.259C6.56237 10.3526 6.75412 10.359 6.91406 10.2759L10.2709 8.53285C10.4417 8.44418 10.5489 8.26787 10.5492 8.07551C10.5494 7.88299 10.4426 7.70642 10.2721 7.61734Z"
+                fill="#323232" />
+        </svg>
+    </a>
+</div>
+
+                
+<div class="promo top-header__promo">Ваша персональная скидка - 5%</div>
+
+                <div class="top-header__auth"></div>
+                
+
+
+<div class="dropdown top-header__lang" data-name="lang" >
+    <button type="button" class="dropdown__button" aria-haspopup="listbox" aria-expanded="false" name="dropdown-button">
+        <span class="dropdown__selected">
+            Ru
+        </span>
+    </button>
+    <div class="dropdown__icon-wrapper">
+        
+<svg width="8" height="6" viewBox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg" class="dropdown__icon">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M3.99485 4.07389L0.978121 1.2L0 2.20892L3.99485 6L8 2.20892L7.02188 1.2L3.99485 4.07389Z" fill="#93B474" />
+</svg>
+
+    </div>
+
+    <ul class="dropdown__dropdown" role="listbox">
+        
+        <li class="dropdown__option" role="option" data-value="ru">
+            <div class="dropdown__label">Ru</div>
+            
+        </li>
+        
+        <li class="dropdown__option" role="option" data-value="ua">
+            <div class="dropdown__label">Ua</div>
+            
+        </li>
+        
+    </ul>
+
+    <select name="lang" id="lang-native-select"  style="display:none"
+        autocomplete="off">
+        <option value="">Please select an option</option>
+        
+        <option value="ru">Ru</option>
+        
+        <option value="ua">Ua</option>
+        
+    </select>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="header__middle middle-header">
+        <div class="page-container">
+            <div class="middle-header__content">
+                <button class="middle-header__burger-btn" name="burger-button" aria-label="Открыть меню">
+                    <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_14178_3383)">
+                            <path
+                                d="M19 2.59972C12.6656 2.59972 6.33111 2.59972 0 2.59972C0 1.74005 0 0.876929 0 0C6.33445 0 12.6689 0 19 0C19 0.876929 19 1.74005 19 2.59972Z"
+                                fill="black" />
+                            <path
+                                d="M0 7.18164C6.33445 7.18164 12.6689 7.18164 19 7.18164C19 8.05512 19 8.9286 19 9.79863C12.6656 9.79863 6.33111 9.79863 0 9.79863C0 8.9286 0 8.05512 0 7.18164Z"
+                                fill="black" />
+                            <path
+                                d="M0 14.3828C4.25637 14.3828 8.51609 14.3828 13.0397 14.3828C12.6589 15.3771 12.3448 16.1884 12.0341 16.9998C8.10849 16.9998 4.18287 16.9998 0 16.9998C0 16.1401 0 15.2597 0 14.3828Z"
+                                fill="black" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_14178_3383">
+                                <rect width="19" height="17" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+                
+<a href="/nuts/" class="logo " name="logo"
+    aria-label="Логотип компании Орех Причерноморья. Перейти на главную страницу">
+    <img class="logo__image" src="/nuts/images/logo.jpg" alt="logo" aria-label="Логотип компании Орех Причерноморья">
+    <span class="logo__text">ОРЕХ<br>ПРИЧЕРНОМОРЬЯ</span>
+</a>
+
+                
+<div class="contacts-block  middle-header__contacts-block">
+    <div class="contacts-block__messengers">
+        <a href="#" class="contacts-block__messenger" name="messenger" aria-label="WhatsApp">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14215_7)">
+                    <path
+                        d="M5.15356 16.9995C4.96393 16.9996 4.81021 16.8454 4.81021 16.6558C4.81021 15.7904 4.80862 14.9236 4.81179 14.0583C4.81179 13.9597 4.77846 13.9027 4.6864 13.8704C4.51021 13.8073 4.3356 13.738 4.15624 13.681C3.09116 13.3454 2.35782 12.6463 1.84354 11.7071C1.56259 11.1913 1.39275 10.6385 1.26259 10.0719C1.05148 9.15426 0.97846 8.22427 1.00386 7.28505C1.02132 6.6784 1.07211 6.07483 1.16576 5.47588C1.23878 5.00319 1.30544 4.52742 1.41497 4.06088C1.67211 2.97076 2.28481 2.10082 3.20862 1.43721C3.77528 1.03072 4.40544 0.745875 5.07211 0.533394C5.61655 0.359406 6.17687 0.245467 6.74354 0.159243C7.55147 0.0360657 8.36417 -0.0209038 9.18005 0.00527138C9.67846 0.0222083 10.1785 0.0576217 10.6753 0.105353C11.3816 0.1731 12.0816 0.28396 12.7689 0.461027C13.4277 0.630396 14.0546 0.873671 14.6308 1.23089C15.6324 1.84985 16.2546 2.73211 16.5594 3.83762C16.7515 4.53358 16.8785 5.24184 16.9435 5.95935C17.0134 6.72767 17.015 7.49599 16.9673 8.26585C16.9388 8.7216 16.9023 9.17582 16.8213 9.62542C16.6642 10.5015 16.3975 11.3407 15.9372 12.1136C15.5896 12.6956 15.0927 13.1375 14.4927 13.4716C13.9689 13.7626 13.4039 13.9489 12.8181 14.0767C12.3546 14.1784 11.8864 14.2384 11.4134 14.2754C10.3483 14.3554 9.28322 14.3878 8.21497 14.4155C8.18005 14.417 8.13401 14.4309 8.11179 14.4555C7.47052 15.1361 6.78481 15.775 6.10703 16.4202C5.91655 16.6019 5.72449 16.7836 5.52925 16.9622C5.50703 16.9837 5.46894 16.9976 5.43719 16.9976C5.3429 16.999 5.24861 16.9994 5.15356 16.9995ZM5.57193 15.8051C5.5699 15.8331 5.60553 15.8496 5.62449 15.8289C5.85148 15.6134 6.08163 15.4024 6.30544 15.1822C6.71655 14.7788 7.12449 14.3724 7.52925 13.9613C7.71179 13.7765 7.93084 13.6826 8.18957 13.6733C8.94513 13.6441 9.70068 13.621 10.4546 13.5917C11.0753 13.5671 11.6943 13.524 12.307 13.4193C12.9039 13.3177 13.48 13.1575 14.0181 12.8819C14.6181 12.5755 15.0848 12.1382 15.3896 11.5485C15.7483 10.8541 15.9753 10.1181 16.0943 9.34981C16.1864 8.75086 16.2213 8.14729 16.234 7.54372C16.2531 6.71535 16.2023 5.89007 16.0578 5.07248C15.9785 4.62442 15.8816 4.18098 15.7356 3.74986C15.4975 3.04467 15.0832 2.45958 14.4642 2.01614C13.9689 1.66201 13.4166 1.42027 12.8308 1.24628C12.3404 1.10155 11.8388 1.00763 11.334 0.93218C10.8118 0.855194 10.288 0.795146 9.76259 0.764351C9.01338 0.7197 8.26417 0.727398 7.51655 0.805924C6.93401 0.865973 6.35782 0.953736 5.79116 1.09693C5.09751 1.27092 4.44036 1.52497 3.83719 1.90528C2.95624 2.46112 2.38163 3.23098 2.15782 4.22871C2.05465 4.68755 1.98798 5.15562 1.91497 5.62062C1.82767 6.18877 1.78005 6.76 1.76576 7.33278C1.74671 8.02873 1.78798 8.7216 1.90703 9.40832C1.99116 9.89025 2.10386 10.366 2.27529 10.8264C2.47687 11.3638 2.75941 11.8534 3.18322 12.2583C3.48005 12.5416 3.81179 12.7726 4.21338 12.9019C4.45306 12.9789 4.68798 13.0728 4.92449 13.1637C5.09751 13.2299 5.25782 13.3177 5.37846 13.4608C5.52449 13.6333 5.57211 13.835 5.57211 14.0536C5.57211 14.6372 5.57211 15.2192 5.57211 15.8028C5.57205 15.8035 5.57199 15.8043 5.57193 15.8051Z"
+                        fill="white" />
+                    <path
+                        d="M11.4188 12.1948C11.2744 12.1932 11.0966 12.1501 10.9252 12.0793C9.7188 11.5835 8.59976 10.946 7.59499 10.1269C6.63309 9.3432 5.82992 8.42707 5.16642 7.39238C4.77912 6.79035 4.48388 6.14829 4.22833 5.48621C4.17912 5.35995 4.11245 5.23832 4.08706 5.10744C3.96801 4.49155 4.20293 4.0127 4.71245 3.64933C4.93626 3.49074 5.19023 3.3922 5.46166 3.33831C5.72198 3.28596 5.94261 3.37372 6.12992 3.54463C6.49976 3.88029 6.8188 4.25752 7.08388 4.67632C7.20769 4.87032 7.32039 5.07203 7.42674 5.27527C7.58547 5.57859 7.52992 5.83573 7.26642 6.06206C7.16642 6.14675 7.06007 6.22527 6.95849 6.30842C6.61087 6.59635 6.5315 6.88273 6.69976 7.29538C6.95055 7.91434 7.34261 8.43631 7.86325 8.86897C8.26166 9.2 8.70928 9.45098 9.19341 9.6419C9.53626 9.7774 9.83468 9.65268 10.0442 9.36167C10.141 9.22618 10.241 9.09684 10.3823 9.00292C10.6426 8.83047 10.9204 8.83047 11.2061 8.92901C11.3982 8.99522 11.568 9.103 11.7299 9.22002C12.1029 9.48947 12.4807 9.75584 12.849 10.0315C13.0204 10.1592 13.149 10.3225 13.1823 10.5396C13.2045 10.6951 13.1648 10.8413 13.1029 10.983C12.8871 11.4665 12.5252 11.8144 12.0379 12.0408C11.7886 12.1624 11.6537 12.1948 11.4188 12.1948Z"
+                        fill="white" />
+                    <path
+                        d="M9.46287 2.58496C10.62 2.59112 11.6724 3.0284 12.5105 3.92297C13.0756 4.52808 13.4121 5.24251 13.5248 6.0524C13.5914 6.52355 13.5692 6.99317 13.4645 7.45816C13.4248 7.63523 13.3041 7.74763 13.1375 7.76149C12.9613 7.77534 12.7978 7.68604 12.7343 7.54131C12.6994 7.4597 12.7041 7.37656 12.7216 7.29187C12.9232 6.32801 12.7438 5.43805 12.1407 4.6451C11.5883 3.91989 10.8391 3.49339 9.91843 3.35944C9.49938 3.29785 9.0851 3.32402 8.67081 3.41025C8.46764 3.45182 8.2851 3.33018 8.24065 3.13156C8.19303 2.92678 8.30097 2.74355 8.50414 2.69428C8.78986 2.62345 9.08033 2.5942 9.46287 2.58496Z"
+                        fill="white" />
+                    <path
+                        d="M12.4 6.20306C12.4403 6.47987 12.4295 6.76274 12.3917 7.03989C12.3883 7.06425 12.3848 7.08866 12.3809 7.11303C12.3492 7.3132 12.1778 7.42713 11.9587 7.4025C11.7555 7.3794 11.6159 7.22235 11.6301 7.02527C11.6397 6.88977 11.6651 6.75428 11.6666 6.61724C11.6778 5.65338 11.0397 4.80808 10.0889 4.52785C9.75395 4.42931 9.41109 4.40621 9.06506 4.46472C8.7095 4.52631 8.55077 4.21529 8.62061 3.98279C8.66188 3.84883 8.75871 3.76569 8.89839 3.74259C9.93807 3.57938 10.8381 3.85653 11.5809 4.5802C12.0413 5.02826 12.3095 5.5764 12.4 6.20306Z"
+                        fill="white" />
+                    <path
+                        d="M9.41205 4.80571C10.3359 4.81803 11.1374 5.50321 11.2613 6.38084C11.2771 6.49632 11.2882 6.61642 11.274 6.73036C11.2486 6.92744 11.0787 7.03984 10.8597 7.02291C10.6676 7.00905 10.5263 6.86585 10.5232 6.67493C10.5216 6.44397 10.466 6.22841 10.3311 6.03749C10.1009 5.71261 9.7803 5.55094 9.37396 5.54324C9.21046 5.54016 9.08348 5.47549 9.02316 5.3246C8.96284 5.17217 8.98348 5.02897 9.10094 4.90734C9.18983 4.81957 9.30094 4.79956 9.41205 4.80571Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14215_7">
+                        <rect width="16" height="17" fill="white" transform="translate(1)" />
+                    </clipPath>
+                </defs>
+            </svg>
+
+        </a>
+        <a href="#" class="contacts-block__messenger" name="messenger" aria-label="Telegram">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14215_17)">
+                    <path
+                        d="M11.2704 13.2609C11.161 13.2609 11.0524 13.2286 10.9593 13.1654L7.4391 10.7776L5.55108 12.1361C5.40301 12.2426 5.21215 12.2694 5.04021 12.2079C4.8685 12.1463 4.73808 12.0041 4.69153 11.8277L3.74353 8.23505L0.356233 6.93984C0.142988 6.85827 0.00156457 6.65426 1.28942e-05 6.42595C-0.00153878 6.19763 0.137077 5.9917 0.349287 5.90724L13.2291 0.782292C13.2875 0.757465 13.3493 0.74313 13.4117 0.739288C13.434 0.737958 13.4564 0.737958 13.4787 0.739214C13.6078 0.746899 13.7347 0.799508 13.8337 0.896598C13.844 0.906647 13.8537 0.916918 13.8629 0.927632C13.945 1.02132 13.99 1.13556 13.9985 1.25193C14.0006 1.28119 14.0005 1.31082 13.9979 1.34045C13.9961 1.36158 13.9931 1.38264 13.9888 1.40355L11.8147 12.8105C11.7798 12.9937 11.6551 13.1471 11.4828 13.2186C11.4144 13.2469 11.3422 13.2609 11.2704 13.2609ZM7.74818 9.64796L10.8838 11.7749L12.5754 2.89899L6.46576 8.77806L7.7334 9.63798C7.7385 9.64116 7.74337 9.64456 7.74818 9.64796ZM5.1379 9.17499L5.55773 10.7658L6.46228 10.1149L5.27784 9.31146C5.22279 9.27422 5.17565 9.22782 5.1379 9.17499ZM2.07896 6.41183L4.40484 7.30109C4.57146 7.36478 4.69722 7.50487 4.74274 7.67733L5.0377 8.7952C5.05122 8.66626 5.10967 8.54494 5.20462 8.45354L11.0263 2.85171L2.07896 6.41183Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14215_17">
+                        <rect width="14" height="14" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </a>
+        <a href="#" class="contacts-block__messenger" name="messenger" aria-label="Viber">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14215_22)">
+                    <path
+                        d="M15 7.30704C15 11.3423 11.7033 14.6136 7.63573 14.6136C6.34493 14.6136 5.13239 14.2834 4.07686 13.7053L0 15L1.32895 11.0787C0.658852 9.97815 0.272932 8.68588 0.272932 7.30655C0.273421 3.27127 3.56915 0 7.63671 0C11.7038 0.00097825 15 3.27176 15 7.30704ZM7.63524 1.1651C4.22164 1.1651 1.44488 3.92083 1.44488 7.30851C1.44488 8.65262 1.88313 9.89696 2.62416 10.9094L1.85134 13.1902L4.22947 12.4345C5.20772 13.0763 6.37819 13.45 7.63524 13.45C11.0488 13.45 13.8266 10.6947 13.8266 7.30704C13.8276 3.92083 11.0493 1.1651 7.63524 1.1651ZM11.3546 8.99012C11.3086 8.91626 11.1882 8.87126 11.0083 8.78126C10.8287 8.69126 9.94 8.25839 9.77517 8.19969C9.60886 8.13953 9.48854 8.10921 9.36821 8.28871C9.24936 8.46822 8.90306 8.87126 8.79692 8.99159C8.69175 9.11142 8.58659 9.12659 8.4061 9.03805C8.22562 8.94708 7.64356 8.75925 6.95389 8.14931C6.41732 7.67388 6.05488 7.0884 5.95021 6.90889C5.84407 6.72987 5.93945 6.63303 6.02896 6.54401C6.10966 6.4633 6.20944 6.33466 6.29993 6.2295C6.39042 6.12531 6.42026 6.05146 6.48042 5.93162C6.5396 5.81178 6.50977 5.7076 6.46526 5.61711C6.42026 5.52711 6.05977 4.64669 5.90863 4.28816C5.75847 3.93012 5.60831 3.9893 5.50266 3.9893C5.3975 3.9893 5.27717 3.97463 5.15685 3.97463C5.03652 3.97463 4.84087 4.01816 4.67604 4.19767C4.5112 4.37718 4.04458 4.81006 4.04458 5.69146C4.04458 6.57384 4.69071 7.42443 4.7812 7.54378C4.87218 7.66263 6.03042 9.5306 7.86513 10.2477C9.70082 10.9642 9.70082 10.725 10.0315 10.6947C10.3631 10.6644 11.0997 10.2618 11.2494 9.84413C11.4 9.42446 11.4 9.06496 11.3546 8.99012Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14215_22">
+                        <rect width="15" height="15" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </a>
+    </div>
+    <div class="contacts-block__phones">
+        <a class="contacts-block__phone" href="tel:+79999999999" name="phone" aria-label="Телефон 1"><span class="contacts-block_highlight-code" >+38&nbsp;(044)</span>&nbsp;750-50-11</a>
+        <a class="contacts-block__phone" href="tel:+79999999999" name="phone" aria-label="Телефон 2"><span class="contacts-block_highlight-code" >+38&nbsp;(097)</span>&nbsp;775-50-51</a>
+    </div>
+</div>
+
+                
+<button class="button button_primary button_size-sm middle-header__button">
+    Заказать звонок
+</button>
+
+                <div class="middle-header__text">Ждем Вашего звонка<br>ежедневно с 9 до 18</div>
+                <button class="middle-header__cart-btn cart-btn" name="cart-button" aria-label="Корзина">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.5734 23.255L21.2009 6.27062C21.1738 5.93557 20.894 5.67742 20.5578 5.67742H16.8732V4.86065C16.8732 2.18047 14.7215 0 12.0412 0H11.9561C9.2759 0 7.06678 2.18047 7.06678 4.86065V5.67742H3.43951C3.10334 5.67742 2.82351 5.93557 2.79642 6.27062L1.42007 23.3029C1.40554 23.4825 1.46678 23.6599 1.58893 23.7923C1.71108 23.9246 1.88313 24 2.06317 24H21.9341C21.9347 24 21.9353 24 21.9359 24C22.2922 24 22.581 23.7112 22.581 23.3548C22.581 23.3209 22.5784 23.2875 22.5734 23.255ZM8.3571 4.86065C8.3571 2.89196 9.98738 1.29032 11.9561 1.29032H12.0412C14.0099 1.29032 15.5829 2.89196 15.5829 4.86065V5.67742H8.3571V4.86065Z"
+                            fill="#337D5A" />
+                    </svg>
+                    <span class="cart-btn_counter">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header__bottom bottom-header">
+        <div class="page-container">
+            
+<nav class="nav-menu nav-menu_horizontal">
+    <ul class="nav-menu__list">
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/nuts/catalog/" name="Магазин"
+                aria-label="Магазин">Магазин</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/nuts/production/" name="О производстве"
+                aria-label="О производстве">О производстве</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/nuts/payment-delivery/" name="Оплата и доставка"
+                aria-label="Оплата и доставка">Оплата и доставка</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/nuts/corporate-customers/" name="Оптовым и корпоративным клиентам"
+                aria-label="Оптовым и корпоративным клиентам">Оптовым и корпоративным клиентам</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/nuts/news/" name="Новости и статьи"
+                aria-label="Новости и статьи">Новости и статьи</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link nav-menu__link_hover_secondary" href="/nuts/contacts/" name="Контакты"
+                aria-label="Контакты">Контакты</a>
+        </li>
+        
+    </ul>
+</nav>
+
+            
+<div class="promo bottom-header__promo">Ваша персональная скидка - 5%</div>
+
+        </div>
+    </div>
+</header>
+
+    <main>
+        
+<div class="profile-page-breadcrumbs">
+    <div class="page-container profile-page-breadcrumbs__container"></div>
+</div>
+
+        
+<section class="profile-section">
+    <div class="profile-section__page-container page-container">
+        <div class="profile-section__wrapper">
+            
+<div class="user-info-bar">
+    <div class="user-info-bar__title">
+        
+        Учетная запись
+    </div>
+    <div class="user-info-bar__manager-contacts">
+        <div class="manager-contacts">
+            <div class="manager-contacts__name">Ваш личный менеджер Олег</div>
+            <div class="manager-contacts__phone">
+                
+
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_162_35)">
+        <path
+            d="M13.9713 10.8474C13.9317 10.7281 13.6798 10.5524 13.2157 10.3206C13.09 10.2475 12.9109 10.1482 12.679 10.0222C12.447 9.89627 12.2364 9.7802 12.0477 9.67412C11.8585 9.56807 11.6812 9.46533 11.5157 9.36605C11.4892 9.34616 11.4063 9.28825 11.2671 9.19192C11.1278 9.09587 11.0103 9.02458 10.914 8.97808C10.8179 8.93187 10.7234 8.90861 10.6306 8.90861C10.498 8.90861 10.3325 9.00312 10.1337 9.19192C9.9349 9.38095 9.75255 9.58629 9.58692 9.80855C9.42125 10.0307 9.24555 10.236 9.06014 10.425C8.87444 10.614 8.72187 10.7084 8.6027 10.7084C8.54287 10.7084 8.46827 10.6917 8.37887 10.6588C8.28951 10.6257 8.22153 10.5973 8.17486 10.5744C8.12861 10.551 8.04924 10.5048 7.93647 10.435C7.8235 10.3653 7.76067 10.3272 7.74744 10.3206C6.83935 9.81666 6.06054 9.23994 5.41086 8.59054C4.76138 7.94076 4.1846 7.16201 3.68084 6.25382C3.67422 6.24055 3.63602 6.17755 3.56647 6.06492C3.49682 5.95219 3.45039 5.87275 3.4272 5.82622C3.404 5.77987 3.37583 5.71189 3.34275 5.62242C3.30966 5.53295 3.29305 5.45843 3.29305 5.3987C3.29305 5.27945 3.38753 5.12692 3.57646 4.94129C3.76536 4.75577 3.9709 4.58004 4.19288 4.41444C4.41504 4.24885 4.62037 4.0665 4.80934 3.86771C4.99824 3.66882 5.09268 3.50319 5.09268 3.37064C5.09268 3.2779 5.06949 3.18334 5.02314 3.08726C4.97675 2.99097 4.90549 2.87346 4.80934 2.73419C4.71315 2.59499 4.65516 2.51221 4.63524 2.48557C4.53592 2.31997 4.43329 2.14267 4.3271 1.95374C4.22092 1.76484 4.10502 1.55429 3.97902 1.32231C3.85312 1.09044 3.75376 0.911398 3.68077 0.785467C3.4489 0.321549 3.27327 0.0695476 3.15392 0.0299156C3.1075 0.0100299 3.03784 0 2.94514 0C2.76606 0 2.53245 0.0330847 2.24412 0.0994632C1.95569 0.165737 1.72873 0.23525 1.563 0.30828C1.23156 0.44741 0.880266 0.851741 0.50902 1.52113C0.170964 2.1441 0.00195312 2.7607 0.00195312 3.37046C0.00195312 3.5493 0.0135502 3.72329 0.0367443 3.89247C0.0599385 4.06148 0.101381 4.25209 0.161108 4.46425C0.22073 4.67634 0.268825 4.83389 0.305183 4.93649C0.341577 5.03915 0.409522 5.22307 0.508985 5.48831C0.608309 5.75347 0.668036 5.9158 0.687922 5.97545C0.919898 6.6251 1.19499 7.20506 1.51312 7.7155C2.03656 8.56393 2.75088 9.44075 3.65566 10.3456C4.56047 11.2504 5.43711 11.9647 6.28562 12.4883C6.79599 12.8064 7.37616 13.0815 8.0257 13.3136C8.08539 13.3334 8.24771 13.393 8.51278 13.4927C8.77794 13.592 8.96193 13.66 9.06459 13.6965C9.1673 13.733 9.32488 13.7811 9.5368 13.8408C9.74917 13.9005 9.9396 13.942 10.1086 13.9653C10.2777 13.9882 10.4517 14 10.6306 14C11.2404 14 11.857 13.8309 12.4801 13.4929C13.1494 13.1218 13.5536 12.7704 13.6928 12.4387C13.766 12.2732 13.8353 12.0462 13.9016 11.7577C13.9681 11.4694 14.0011 11.2359 14.0011 11.0568C14.0013 10.9637 13.9913 10.8942 13.9713 10.8474Z"
+            fill="#337D5A" />
+    </g>
+    <defs>
+        <clipPath id="clip0_162_35">
+            <rect width="14" height="14" fill="white" />
+        </clipPath>
+    </defs>
+</svg>
+
+
+                <span>+38 067 777 14 12</span>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+            <button class="profile-section__menu-toggle">
+                
+<svg class="profile-section__menu-toggle-right-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M2 5C2 4.44772 2.44772 4 3 4H14C14.5523 4 15 4.44772 15 5C15 5.55228 14.5523 6 14 6H3C2.44772 6 2 5.55228 2 5ZM17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289L21.7071 11.2929C22.0976 11.6834 22.0976 12.3166 21.7071 12.7071L18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071C16.9024 15.3166 16.9024 14.6834 17.2929 14.2929L18.5858 13H3C2.44772 13 2 12.5523 2 12C2 11.4477 2.44772 11 3 11H18.5858L17.2929 9.70711C16.9024 9.31658 16.9024 8.68342 17.2929 8.29289ZM2 19C2 18.4477 2.44772 18 3 18H14C14.5523 18 15 18.4477 15 19C15 19.5523 14.5523 20 14 20H3C2.44772 20 2 19.5523 2 19Z"
+        fill="black" />
+</svg>
+
+                
+<svg class="profile-section__menu-toggle-left-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M9 5C9 4.44772 9.44772 4 10 4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H10C9.44772 6 9 5.55228 9 5ZM6.70711 8.29289C7.09763 8.68342 7.09763 9.31658 6.70711 9.70711L5.41421 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H5.41421L6.70711 14.2929C7.09763 14.6834 7.09763 15.3166 6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071L2.29289 12.7071C1.90237 12.3166 1.90237 11.6834 2.29289 11.2929L5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289ZM9 19C9 18.4477 9.44772 18 10 18H21C21.5523 18 22 18.4477 22 19C22 19.5523 21.5523 20 21 20H10C9.44772 20 9 19.5523 9 19Z"
+        fill="black" />
+</svg>
+
+            </button>
+
+            <div class="profile-section__body">
+                <div class="profile-section__menu">
+                    
+<div class="account-menu">
+    <div class="account-menu__item account-menu-item">
+        <div class="account-menu-item__title">Мои заказы</div>
+        <ul class="account-menu-item__list account-menu-list">
+            <li class="account-menu-list__item">
+                <a class="account-menu-list__link" href="/nuts/profile/orders/">История заказов</a>
+            </li>
+            <li class="account-menu-list__item">
+                <a class="account-menu-list__link" href="/nuts/profile/transactions/">История транзакций</a>
+            </li>
+        </ul>
+    </div>
+    <div class="account-menu__item account-menu-item">
+        <div class="account-menu-item__title">Моя учетная запись</div>
+        <ul class="account-menu-item__list account-menu-list">
+            <li class="account-menu-list__item">
+                <a class="account-menu-list__link" href="/nuts/profile/contacts/">Контактная информация</a>
+            </li>
+            <li class="account-menu-list__item">
+                <a class="account-menu-list__link" href="/nuts/profile/password/">Пароль</a>
+            </li>
+            <li class="account-menu-list__item">
+                <a class="account-menu-list__link" href="/nuts/profile/address/">Адрес реквизиты</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+                </div>
+                <div class="profile-section__content"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+<section class="contacts-section contacts-section_color_secondary">
+    <div class="page-container">
+        <div class="contacts-section__content">
+            <div class="contacts-section__col-1">
+                <div class="contacts-section__title title-h2">Контакты</div>
+                <div class="contacts-section__info info">
+                    <div class="info__item info-item">
+                        <div class="info-item__icon-wrapper">
+
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_162_35)">
+        <path
+            d="M13.9713 10.8474C13.9317 10.7281 13.6798 10.5524 13.2157 10.3206C13.09 10.2475 12.9109 10.1482 12.679 10.0222C12.447 9.89627 12.2364 9.7802 12.0477 9.67412C11.8585 9.56807 11.6812 9.46533 11.5157 9.36605C11.4892 9.34616 11.4063 9.28825 11.2671 9.19192C11.1278 9.09587 11.0103 9.02458 10.914 8.97808C10.8179 8.93187 10.7234 8.90861 10.6306 8.90861C10.498 8.90861 10.3325 9.00312 10.1337 9.19192C9.9349 9.38095 9.75255 9.58629 9.58692 9.80855C9.42125 10.0307 9.24555 10.236 9.06014 10.425C8.87444 10.614 8.72187 10.7084 8.6027 10.7084C8.54287 10.7084 8.46827 10.6917 8.37887 10.6588C8.28951 10.6257 8.22153 10.5973 8.17486 10.5744C8.12861 10.551 8.04924 10.5048 7.93647 10.435C7.8235 10.3653 7.76067 10.3272 7.74744 10.3206C6.83935 9.81666 6.06054 9.23994 5.41086 8.59054C4.76138 7.94076 4.1846 7.16201 3.68084 6.25382C3.67422 6.24055 3.63602 6.17755 3.56647 6.06492C3.49682 5.95219 3.45039 5.87275 3.4272 5.82622C3.404 5.77987 3.37583 5.71189 3.34275 5.62242C3.30966 5.53295 3.29305 5.45843 3.29305 5.3987C3.29305 5.27945 3.38753 5.12692 3.57646 4.94129C3.76536 4.75577 3.9709 4.58004 4.19288 4.41444C4.41504 4.24885 4.62037 4.0665 4.80934 3.86771C4.99824 3.66882 5.09268 3.50319 5.09268 3.37064C5.09268 3.2779 5.06949 3.18334 5.02314 3.08726C4.97675 2.99097 4.90549 2.87346 4.80934 2.73419C4.71315 2.59499 4.65516 2.51221 4.63524 2.48557C4.53592 2.31997 4.43329 2.14267 4.3271 1.95374C4.22092 1.76484 4.10502 1.55429 3.97902 1.32231C3.85312 1.09044 3.75376 0.911398 3.68077 0.785467C3.4489 0.321549 3.27327 0.0695476 3.15392 0.0299156C3.1075 0.0100299 3.03784 0 2.94514 0C2.76606 0 2.53245 0.0330847 2.24412 0.0994632C1.95569 0.165737 1.72873 0.23525 1.563 0.30828C1.23156 0.44741 0.880266 0.851741 0.50902 1.52113C0.170964 2.1441 0.00195312 2.7607 0.00195312 3.37046C0.00195312 3.5493 0.0135502 3.72329 0.0367443 3.89247C0.0599385 4.06148 0.101381 4.25209 0.161108 4.46425C0.22073 4.67634 0.268825 4.83389 0.305183 4.93649C0.341577 5.03915 0.409522 5.22307 0.508985 5.48831C0.608309 5.75347 0.668036 5.9158 0.687922 5.97545C0.919898 6.6251 1.19499 7.20506 1.51312 7.7155C2.03656 8.56393 2.75088 9.44075 3.65566 10.3456C4.56047 11.2504 5.43711 11.9647 6.28562 12.4883C6.79599 12.8064 7.37616 13.0815 8.0257 13.3136C8.08539 13.3334 8.24771 13.393 8.51278 13.4927C8.77794 13.592 8.96193 13.66 9.06459 13.6965C9.1673 13.733 9.32488 13.7811 9.5368 13.8408C9.74917 13.9005 9.9396 13.942 10.1086 13.9653C10.2777 13.9882 10.4517 14 10.6306 14C11.2404 14 11.857 13.8309 12.4801 13.4929C13.1494 13.1218 13.5536 12.7704 13.6928 12.4387C13.766 12.2732 13.8353 12.0462 13.9016 11.7577C13.9681 11.4694 14.0011 11.2359 14.0011 11.0568C14.0013 10.9637 13.9913 10.8942 13.9713 10.8474Z"
+            fill="#337D5A" />
+    </g>
+    <defs>
+        <clipPath id="clip0_162_35">
+            <rect width="14" height="14" fill="white" />
+        </clipPath>
+    </defs>
+</svg>
+
+</div>
+                        <div class="info-item__content">
+                            
+<div class="contacts-block contacts-block_reverse ">
+    <div class="contacts-block__messengers">
+        <a href="#" class="contacts-block__messenger" name="messenger" aria-label="WhatsApp">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14215_7)">
+                    <path
+                        d="M5.15356 16.9995C4.96393 16.9996 4.81021 16.8454 4.81021 16.6558C4.81021 15.7904 4.80862 14.9236 4.81179 14.0583C4.81179 13.9597 4.77846 13.9027 4.6864 13.8704C4.51021 13.8073 4.3356 13.738 4.15624 13.681C3.09116 13.3454 2.35782 12.6463 1.84354 11.7071C1.56259 11.1913 1.39275 10.6385 1.26259 10.0719C1.05148 9.15426 0.97846 8.22427 1.00386 7.28505C1.02132 6.6784 1.07211 6.07483 1.16576 5.47588C1.23878 5.00319 1.30544 4.52742 1.41497 4.06088C1.67211 2.97076 2.28481 2.10082 3.20862 1.43721C3.77528 1.03072 4.40544 0.745875 5.07211 0.533394C5.61655 0.359406 6.17687 0.245467 6.74354 0.159243C7.55147 0.0360657 8.36417 -0.0209038 9.18005 0.00527138C9.67846 0.0222083 10.1785 0.0576217 10.6753 0.105353C11.3816 0.1731 12.0816 0.28396 12.7689 0.461027C13.4277 0.630396 14.0546 0.873671 14.6308 1.23089C15.6324 1.84985 16.2546 2.73211 16.5594 3.83762C16.7515 4.53358 16.8785 5.24184 16.9435 5.95935C17.0134 6.72767 17.015 7.49599 16.9673 8.26585C16.9388 8.7216 16.9023 9.17582 16.8213 9.62542C16.6642 10.5015 16.3975 11.3407 15.9372 12.1136C15.5896 12.6956 15.0927 13.1375 14.4927 13.4716C13.9689 13.7626 13.4039 13.9489 12.8181 14.0767C12.3546 14.1784 11.8864 14.2384 11.4134 14.2754C10.3483 14.3554 9.28322 14.3878 8.21497 14.4155C8.18005 14.417 8.13401 14.4309 8.11179 14.4555C7.47052 15.1361 6.78481 15.775 6.10703 16.4202C5.91655 16.6019 5.72449 16.7836 5.52925 16.9622C5.50703 16.9837 5.46894 16.9976 5.43719 16.9976C5.3429 16.999 5.24861 16.9994 5.15356 16.9995ZM5.57193 15.8051C5.5699 15.8331 5.60553 15.8496 5.62449 15.8289C5.85148 15.6134 6.08163 15.4024 6.30544 15.1822C6.71655 14.7788 7.12449 14.3724 7.52925 13.9613C7.71179 13.7765 7.93084 13.6826 8.18957 13.6733C8.94513 13.6441 9.70068 13.621 10.4546 13.5917C11.0753 13.5671 11.6943 13.524 12.307 13.4193C12.9039 13.3177 13.48 13.1575 14.0181 12.8819C14.6181 12.5755 15.0848 12.1382 15.3896 11.5485C15.7483 10.8541 15.9753 10.1181 16.0943 9.34981C16.1864 8.75086 16.2213 8.14729 16.234 7.54372C16.2531 6.71535 16.2023 5.89007 16.0578 5.07248C15.9785 4.62442 15.8816 4.18098 15.7356 3.74986C15.4975 3.04467 15.0832 2.45958 14.4642 2.01614C13.9689 1.66201 13.4166 1.42027 12.8308 1.24628C12.3404 1.10155 11.8388 1.00763 11.334 0.93218C10.8118 0.855194 10.288 0.795146 9.76259 0.764351C9.01338 0.7197 8.26417 0.727398 7.51655 0.805924C6.93401 0.865973 6.35782 0.953736 5.79116 1.09693C5.09751 1.27092 4.44036 1.52497 3.83719 1.90528C2.95624 2.46112 2.38163 3.23098 2.15782 4.22871C2.05465 4.68755 1.98798 5.15562 1.91497 5.62062C1.82767 6.18877 1.78005 6.76 1.76576 7.33278C1.74671 8.02873 1.78798 8.7216 1.90703 9.40832C1.99116 9.89025 2.10386 10.366 2.27529 10.8264C2.47687 11.3638 2.75941 11.8534 3.18322 12.2583C3.48005 12.5416 3.81179 12.7726 4.21338 12.9019C4.45306 12.9789 4.68798 13.0728 4.92449 13.1637C5.09751 13.2299 5.25782 13.3177 5.37846 13.4608C5.52449 13.6333 5.57211 13.835 5.57211 14.0536C5.57211 14.6372 5.57211 15.2192 5.57211 15.8028C5.57205 15.8035 5.57199 15.8043 5.57193 15.8051Z"
+                        fill="white" />
+                    <path
+                        d="M11.4188 12.1948C11.2744 12.1932 11.0966 12.1501 10.9252 12.0793C9.7188 11.5835 8.59976 10.946 7.59499 10.1269C6.63309 9.3432 5.82992 8.42707 5.16642 7.39238C4.77912 6.79035 4.48388 6.14829 4.22833 5.48621C4.17912 5.35995 4.11245 5.23832 4.08706 5.10744C3.96801 4.49155 4.20293 4.0127 4.71245 3.64933C4.93626 3.49074 5.19023 3.3922 5.46166 3.33831C5.72198 3.28596 5.94261 3.37372 6.12992 3.54463C6.49976 3.88029 6.8188 4.25752 7.08388 4.67632C7.20769 4.87032 7.32039 5.07203 7.42674 5.27527C7.58547 5.57859 7.52992 5.83573 7.26642 6.06206C7.16642 6.14675 7.06007 6.22527 6.95849 6.30842C6.61087 6.59635 6.5315 6.88273 6.69976 7.29538C6.95055 7.91434 7.34261 8.43631 7.86325 8.86897C8.26166 9.2 8.70928 9.45098 9.19341 9.6419C9.53626 9.7774 9.83468 9.65268 10.0442 9.36167C10.141 9.22618 10.241 9.09684 10.3823 9.00292C10.6426 8.83047 10.9204 8.83047 11.2061 8.92901C11.3982 8.99522 11.568 9.103 11.7299 9.22002C12.1029 9.48947 12.4807 9.75584 12.849 10.0315C13.0204 10.1592 13.149 10.3225 13.1823 10.5396C13.2045 10.6951 13.1648 10.8413 13.1029 10.983C12.8871 11.4665 12.5252 11.8144 12.0379 12.0408C11.7886 12.1624 11.6537 12.1948 11.4188 12.1948Z"
+                        fill="white" />
+                    <path
+                        d="M9.46287 2.58496C10.62 2.59112 11.6724 3.0284 12.5105 3.92297C13.0756 4.52808 13.4121 5.24251 13.5248 6.0524C13.5914 6.52355 13.5692 6.99317 13.4645 7.45816C13.4248 7.63523 13.3041 7.74763 13.1375 7.76149C12.9613 7.77534 12.7978 7.68604 12.7343 7.54131C12.6994 7.4597 12.7041 7.37656 12.7216 7.29187C12.9232 6.32801 12.7438 5.43805 12.1407 4.6451C11.5883 3.91989 10.8391 3.49339 9.91843 3.35944C9.49938 3.29785 9.0851 3.32402 8.67081 3.41025C8.46764 3.45182 8.2851 3.33018 8.24065 3.13156C8.19303 2.92678 8.30097 2.74355 8.50414 2.69428C8.78986 2.62345 9.08033 2.5942 9.46287 2.58496Z"
+                        fill="white" />
+                    <path
+                        d="M12.4 6.20306C12.4403 6.47987 12.4295 6.76274 12.3917 7.03989C12.3883 7.06425 12.3848 7.08866 12.3809 7.11303C12.3492 7.3132 12.1778 7.42713 11.9587 7.4025C11.7555 7.3794 11.6159 7.22235 11.6301 7.02527C11.6397 6.88977 11.6651 6.75428 11.6666 6.61724C11.6778 5.65338 11.0397 4.80808 10.0889 4.52785C9.75395 4.42931 9.41109 4.40621 9.06506 4.46472C8.7095 4.52631 8.55077 4.21529 8.62061 3.98279C8.66188 3.84883 8.75871 3.76569 8.89839 3.74259C9.93807 3.57938 10.8381 3.85653 11.5809 4.5802C12.0413 5.02826 12.3095 5.5764 12.4 6.20306Z"
+                        fill="white" />
+                    <path
+                        d="M9.41205 4.80571C10.3359 4.81803 11.1374 5.50321 11.2613 6.38084C11.2771 6.49632 11.2882 6.61642 11.274 6.73036C11.2486 6.92744 11.0787 7.03984 10.8597 7.02291C10.6676 7.00905 10.5263 6.86585 10.5232 6.67493C10.5216 6.44397 10.466 6.22841 10.3311 6.03749C10.1009 5.71261 9.7803 5.55094 9.37396 5.54324C9.21046 5.54016 9.08348 5.47549 9.02316 5.3246C8.96284 5.17217 8.98348 5.02897 9.10094 4.90734C9.18983 4.81957 9.30094 4.79956 9.41205 4.80571Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14215_7">
+                        <rect width="16" height="17" fill="white" transform="translate(1)" />
+                    </clipPath>
+                </defs>
+            </svg>
+
+        </a>
+        <a href="#" class="contacts-block__messenger" name="messenger" aria-label="Telegram">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14215_17)">
+                    <path
+                        d="M11.2704 13.2609C11.161 13.2609 11.0524 13.2286 10.9593 13.1654L7.4391 10.7776L5.55108 12.1361C5.40301 12.2426 5.21215 12.2694 5.04021 12.2079C4.8685 12.1463 4.73808 12.0041 4.69153 11.8277L3.74353 8.23505L0.356233 6.93984C0.142988 6.85827 0.00156457 6.65426 1.28942e-05 6.42595C-0.00153878 6.19763 0.137077 5.9917 0.349287 5.90724L13.2291 0.782292C13.2875 0.757465 13.3493 0.74313 13.4117 0.739288C13.434 0.737958 13.4564 0.737958 13.4787 0.739214C13.6078 0.746899 13.7347 0.799508 13.8337 0.896598C13.844 0.906647 13.8537 0.916918 13.8629 0.927632C13.945 1.02132 13.99 1.13556 13.9985 1.25193C14.0006 1.28119 14.0005 1.31082 13.9979 1.34045C13.9961 1.36158 13.9931 1.38264 13.9888 1.40355L11.8147 12.8105C11.7798 12.9937 11.6551 13.1471 11.4828 13.2186C11.4144 13.2469 11.3422 13.2609 11.2704 13.2609ZM7.74818 9.64796L10.8838 11.7749L12.5754 2.89899L6.46576 8.77806L7.7334 9.63798C7.7385 9.64116 7.74337 9.64456 7.74818 9.64796ZM5.1379 9.17499L5.55773 10.7658L6.46228 10.1149L5.27784 9.31146C5.22279 9.27422 5.17565 9.22782 5.1379 9.17499ZM2.07896 6.41183L4.40484 7.30109C4.57146 7.36478 4.69722 7.50487 4.74274 7.67733L5.0377 8.7952C5.05122 8.66626 5.10967 8.54494 5.20462 8.45354L11.0263 2.85171L2.07896 6.41183Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14215_17">
+                        <rect width="14" height="14" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </a>
+        <a href="#" class="contacts-block__messenger" name="messenger" aria-label="Viber">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14215_22)">
+                    <path
+                        d="M15 7.30704C15 11.3423 11.7033 14.6136 7.63573 14.6136C6.34493 14.6136 5.13239 14.2834 4.07686 13.7053L0 15L1.32895 11.0787C0.658852 9.97815 0.272932 8.68588 0.272932 7.30655C0.273421 3.27127 3.56915 0 7.63671 0C11.7038 0.00097825 15 3.27176 15 7.30704ZM7.63524 1.1651C4.22164 1.1651 1.44488 3.92083 1.44488 7.30851C1.44488 8.65262 1.88313 9.89696 2.62416 10.9094L1.85134 13.1902L4.22947 12.4345C5.20772 13.0763 6.37819 13.45 7.63524 13.45C11.0488 13.45 13.8266 10.6947 13.8266 7.30704C13.8276 3.92083 11.0493 1.1651 7.63524 1.1651ZM11.3546 8.99012C11.3086 8.91626 11.1882 8.87126 11.0083 8.78126C10.8287 8.69126 9.94 8.25839 9.77517 8.19969C9.60886 8.13953 9.48854 8.10921 9.36821 8.28871C9.24936 8.46822 8.90306 8.87126 8.79692 8.99159C8.69175 9.11142 8.58659 9.12659 8.4061 9.03805C8.22562 8.94708 7.64356 8.75925 6.95389 8.14931C6.41732 7.67388 6.05488 7.0884 5.95021 6.90889C5.84407 6.72987 5.93945 6.63303 6.02896 6.54401C6.10966 6.4633 6.20944 6.33466 6.29993 6.2295C6.39042 6.12531 6.42026 6.05146 6.48042 5.93162C6.5396 5.81178 6.50977 5.7076 6.46526 5.61711C6.42026 5.52711 6.05977 4.64669 5.90863 4.28816C5.75847 3.93012 5.60831 3.9893 5.50266 3.9893C5.3975 3.9893 5.27717 3.97463 5.15685 3.97463C5.03652 3.97463 4.84087 4.01816 4.67604 4.19767C4.5112 4.37718 4.04458 4.81006 4.04458 5.69146C4.04458 6.57384 4.69071 7.42443 4.7812 7.54378C4.87218 7.66263 6.03042 9.5306 7.86513 10.2477C9.70082 10.9642 9.70082 10.725 10.0315 10.6947C10.3631 10.6644 11.0997 10.2618 11.2494 9.84413C11.4 9.42446 11.4 9.06496 11.3546 8.99012Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14215_22">
+                        <rect width="15" height="15" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </a>
+    </div>
+    <div class="contacts-block__phones">
+        <a class="contacts-block__phone" href="tel:+79999999999" name="phone" aria-label="Телефон 1"><span >+38&nbsp;(095)</span>&nbsp;711 11 11</a>
+        <a class="contacts-block__phone" href="tel:+79999999999" name="phone" aria-label="Телефон 2"><span >+38&nbsp;(095)</span>&nbsp;711 11 11</a>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                    <div class="info__item info-item">
+                        <div class="info-item__icon-wrapper">
+<svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M1.4397 4.24022C1.62945 4.37412 2.20142 4.77179 3.15564 5.43304C4.1099 6.09428 4.84092 6.60342 5.34874 6.96049C5.40453 6.99963 5.52307 7.08471 5.7044 7.21585C5.88576 7.34708 6.03646 7.45313 6.15637 7.53402C6.27637 7.61488 6.42144 7.70559 6.59172 7.806C6.76194 7.90633 6.9224 7.9818 7.07307 8.03175C7.22376 8.08212 7.36326 8.10707 7.49159 8.10707H7.5H7.50844C7.63677 8.10707 7.77632 8.08209 7.92702 8.03175C8.07763 7.9818 8.23823 7.90624 8.40831 7.806C8.57847 7.70547 8.72354 7.61485 8.84354 7.53402C8.96354 7.45313 9.11412 7.34708 9.29554 7.21585C9.47684 7.0846 9.59552 6.99963 9.65132 6.96049C10.1646 6.60342 11.4705 5.69658 13.5687 4.24005C13.976 3.95557 14.3164 3.61231 14.5897 3.21051C14.8633 2.80887 15 2.38754 15 1.94674C15 1.57839 14.8674 1.26307 14.6023 1.00081C14.3372 0.738504 14.0233 0.607422 13.6607 0.607422H1.33923C0.909571 0.607422 0.578919 0.752489 0.347334 1.04262C0.115778 1.33282 0 1.69554 0 2.13077C0 2.48233 0.153511 2.86329 0.460385 3.27342C0.76723 3.68359 1.09378 4.00588 1.4397 4.24022Z"
+        fill="#337D5A" />
+    <path
+        d="M14.1628 5.13641C12.3327 6.37514 10.943 7.33783 9.99446 8.02429C9.67638 8.25858 9.41835 8.44146 9.22019 8.57252C9.02203 8.70366 8.75849 8.83758 8.42918 8.97424C8.1 9.11109 7.79321 9.17932 7.50856 9.17932H7.50003H7.49161C7.20702 9.17932 6.90006 9.11109 6.57087 8.97424C6.24169 8.83758 5.97797 8.70366 5.77987 8.57252C5.58182 8.44146 5.3237 8.25858 5.00566 8.02429C4.25227 7.47188 2.86557 6.50912 0.84551 5.13641C0.527348 4.9245 0.245541 4.6816 0 4.4082V11.0542C0 11.4228 0.131082 11.7379 0.393393 12.0002C0.655645 12.2625 0.970992 12.3937 1.33932 12.3937H13.6608C14.029 12.3937 14.3444 12.2625 14.6066 12.0002C14.869 11.7378 15 11.4228 15 11.0542V4.4082C14.76 4.67594 14.4811 4.91884 14.1628 5.13641Z"
+        fill="#337D5A" />
+</svg>
+
+</div>
+                        <div class="info-item__label">
+                            nuts@nbsc.com.ua
+                        </div>
+                    </div>
+                    <div class="info__item info-item info-item_type_secondary">
+                        <div class="info-item__icon-wrapper">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_162_26)">
+        <path
+            d="M15.7996 7.81344C16.0896 7.49445 16.0616 7.00554 15.737 6.72171L8.58642 0.464889C8.26186 0.181057 7.7415 0.187003 7.42377 0.478293L0.248846 7.0553C-0.0688875 7.34659 -0.0844821 7.83487 0.214319 8.14546L0.394204 8.3328C0.69264 8.64339 1.17503 8.68042 1.47096 8.41526L2.00717 7.93507V14.9653C2.00717 15.3966 2.35667 15.7458 2.78769 15.7458H5.58449C6.01551 15.7458 6.365 15.3966 6.365 14.9653V10.047H9.93236V14.9653C9.92615 15.3963 10.2345 15.7455 10.6656 15.7455H13.6295C14.0605 15.7455 14.41 15.3963 14.41 14.9649V8.03406C14.41 8.03406 14.5581 8.16382 14.7408 8.32441C14.9232 8.48468 15.3063 8.35617 15.5963 8.03687L15.7996 7.81344Z"
+            fill="#337D5A" />
+    </g>
+    <defs>
+        <clipPath id="clip0_162_26">
+            <rect width="16" height="16" fill="white" />
+        </clipPath>
+    </defs>
+</svg>
+
+</div>
+                        <div class="info-item__title">Офис и отдел продаж</div>
+                        <div class="info-item__label">
+                            Украина, г. Одесса,<br> ул. Космонавтов, 32
+                        </div>
+                    </div>
+                    <div class="info__item info-item info-item_type_secondary">
+                        <div class="info-item__icon-wrapper">
+<svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M14.926 5.81376C14.5392 5.5155 14.2607 5.04769 14.3095 4.58894C14.4817 2.9697 13.55 1.58672 12.0439 1.33439C11.7765 1.28951 11.5102 1.16723 11.2691 1.02969C10.8147 0.770297 10.3412 0.674772 9.85155 0.820226C9.58712 0.898845 9.42443 0.863754 9.21428 0.661116C8.01548 -0.495 6.13669 -0.081813 5.54936 1.48733C5.38075 1.938 5.1314 2.20104 4.74047 2.37249C4.65319 2.4108 4.5574 2.45403 4.4954 2.52477C4.30026 2.74737 4.1143 2.69245 3.87789 2.58534C2.35173 1.89293 0.708183 3.03227 0.644574 4.79417C0.635544 5.04581 0.537573 5.31903 0.410847 5.53601C-0.0428307 6.31351 -0.123051 7.0935 0.181497 7.90165C-0.0378073 8.48518 0.153452 9.21271 0.693637 9.63476C1.28637 10.098 1.96989 9.85627 2.49371 9.40786C2.64198 9.39286 2.79286 9.36086 2.9469 9.31063C3.25483 9.21005 3.53285 9.08991 3.79249 9.22384C3.8336 9.25637 3.87585 9.28529 3.91872 9.31198C3.93019 9.32215 3.94162 9.33167 3.95306 9.34303C3.95457 9.3405 3.95583 9.33847 3.95734 9.33594C4.04283 9.38508 4.13149 9.42231 4.22229 9.4507C4.72601 11.3469 5.80885 13.0078 7.29584 14.1849C7.2052 15.3448 6.91535 16.4819 6.37529 17.5962C5.77248 17.9887 5.03706 17.7048 4.40584 17.5187C3.84781 17.354 3.30448 17.2934 2.74735 17.4828C2.63205 17.522 2.57837 17.6191 2.5727 17.7197C2.57196 17.7225 2.57082 17.7248 2.57017 17.7277C2.52792 17.9211 2.48567 18.1145 2.44341 18.3078C2.40394 18.4887 2.52629 18.6126 2.65893 18.637C2.67967 18.6426 2.70167 18.6465 2.72608 18.6465H13.0367C13.1271 18.6465 13.1914 18.6042 13.2313 18.5442C13.2907 18.4947 13.3301 18.419 13.3301 18.3339V17.9321C13.3301 17.8132 13.2536 17.7114 13.1512 17.6774C13.1121 17.6423 13.0605 17.6196 12.9947 17.6196H9.87925C9.72448 17.4292 9.56691 17.2368 9.40422 17.0466C8.95156 16.5171 8.75188 15.9278 8.95535 15.2149C9.02601 14.9672 9.07693 14.7097 9.10633 14.4527C9.1932 13.6911 9.27444 12.926 9.35682 12.1497C10.4025 12.0436 11.348 11.5687 12.0821 10.763C12.3866 10.7622 12.66 10.666 12.8879 10.5027L12.9794 10.4725C13.4762 10.8995 14.2425 10.9435 14.8214 10.7158C15.3578 10.5049 15.8217 9.93338 15.8379 9.30512C15.8394 9.24629 15.8366 9.18806 15.8319 9.13032C16.2495 7.9848 15.8676 6.53998 14.926 5.81376ZM5.83169 9.26468C5.8376 9.26228 5.8425 9.26037 5.84839 9.25798C5.95641 9.21419 6.14465 9.26441 6.24185 9.34487C6.3789 9.45845 6.50852 9.5822 6.63528 9.70809C6.6378 9.7188 6.63793 9.72871 6.64107 9.73971C6.83458 10.4285 7.02812 11.1175 7.2216 11.8063C7.26776 12.1534 7.29716 12.4983 7.31313 12.8414C6.3119 11.9645 5.76416 10.6624 5.83169 9.26468ZM9.58793 11.2556C9.6332 11.1401 9.67856 11.0247 9.72575 10.9098C9.74146 10.9098 9.7573 10.9098 9.77302 10.9096C9.77302 10.8699 9.77388 10.8299 9.77515 10.7899C9.90428 10.4815 10.0454 10.1799 10.2038 9.89166C10.4056 10.0812 10.6158 10.2514 10.8398 10.3903C10.4648 10.7433 10.0445 11.0331 9.58793 11.2556Z"
+        fill="#337D5A" />
+</svg>
+</div>
+                        <div class="info-item__title">Производство</div>
+                        <div class="info-item__label">
+                            Украина, Одесская обл,<br> с. Яськи, ул. Центральная, 232
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="contacts-section__col-2">
+                <iframe class="contacts-section__map lazy"
+                    data-src="https://www.openstreetmap.org/export/embed.html?bbox=30.720439553260807%2C46.42226509089123%2C30.729398131370548%2C46.42558570182441&amp;layer=mapnik&amp;marker=46.42392542164024%2C30.724918842315674"
+                    title="map"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+
+
+<footer class="page-footer">
+    <div class="page-footer__content">
+        <div class="page-footer__main page-footer-main">
+            <div class="page-container">
+                <div class="page-footer-main__content">
+                    
+<a href="/nuts/" class="logo " name="logo"
+    aria-label="Логотип компании Орех Причерноморья. Перейти на главную страницу">
+    <img class="logo__image" src="/nuts/images/logo.jpg" alt="logo" aria-label="Логотип компании Орех Причерноморья">
+    <span class="logo__text">ОРЕХ<br>ПРИЧЕРНОМОРЬЯ</span>
+</a>
+
+                    
+<nav class="nav-menu nav-menu_horizontal">
+    <ul class="nav-menu__list">
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/catalog/" name="Магазин"
+                aria-label="Магазин">Магазин</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/corporate-customers/" name="Корпоративным клиентам"
+                aria-label="Корпоративным клиентам">Корпоративным клиентам</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/payment-delivery/" name="Оплата и доставка"
+                aria-label="Оплата и доставка">Оплата и доставка</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/production/" name="О производстве"
+                aria-label="О производстве">О производстве</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/news/" name="Новости и статьи"
+                aria-label="Новости и статьи">Новости и статьи</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/gallery/" name="Галерея"
+                aria-label="Галерея">Галерея</a>
+        </li>
+        
+    </ul>
+</nav>
+
+                </div>
+            </div>
+        </div>
+        <div class="page-footer__bottom page-footer-bottom">
+            <div class="page-container">
+                <div class=" page-footer-bottom__content">
+                    <div class="page-footer__developer">Разработано <strong
+                            class="page-footer-bottom__highlight page-footer-bottom__highlight_bold">AVADA</strong>
+                        <strong class="page-footer-bottom__highlight"> MEDIA</strong>
+                    </div>
+                    <div class="page-footer__copyright">Copyright © 2019. Все права защищены</div>
+                    
+<div class="socials ">
+    <a href="#" class="socials__link" name="social-link" aria-label="WhatsApp">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3.42647 6.9238H4.85148V12.7903C4.85148 12.9061 4.94534 13 5.06116 13H7.47732C7.59314 13 7.68699 12.9061 7.68699 12.7903V6.95144H9.32516C9.43168 6.95144 9.52129 6.87151 9.53345 6.7657L9.78226 4.60594C9.78909 4.54652 9.77026 4.48701 9.73051 4.44244C9.69071 4.39782 9.63376 4.37228 9.57401 4.37228H7.68708V3.01843C7.68708 2.61032 7.90682 2.40336 8.34026 2.40336C8.40204 2.40336 9.57401 2.40336 9.57401 2.40336C9.68983 2.40336 9.78368 2.30947 9.78368 2.19369V0.211229C9.78368 0.0954032 9.68983 0.00155161 9.57401 0.00155161H7.87373C7.86174 0.000964516 7.83511 0 7.79586 0C7.50084 0 6.47539 0.0579128 5.66537 0.803106C4.76786 1.6289 4.89262 2.61766 4.92244 2.78909V4.37224H3.42647C3.31065 4.37224 3.2168 4.46609 3.2168 4.58191V6.71408C3.2168 6.82991 3.31065 6.9238 3.42647 6.9238Z"
+                fill="#93B474" />
+        </svg>
+    </a>
+    <a href="#" class="socials__link" name="social-link" aria-label="Telegram">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_9_42)">
+                <path
+                    d="M9.48744 0H3.51256C1.57574 0 0 1.57574 0 3.51256V9.48744C0 11.4243 1.57574 13 3.51256 13H9.48744C11.4243 13 13 11.4243 13 9.48744V3.51256C13 1.57574 11.4243 0 9.48744 0ZM11.9497 9.48744C11.9497 10.8451 10.8452 11.9497 9.48744 11.9497H3.51256C2.15485 11.9497 1.05026 10.8452 1.05026 9.48744V3.51256C1.05026 2.15485 2.15483 1.05026 3.51256 1.05026H9.48744C10.8451 1.05026 11.9497 2.15483 11.9497 3.51256V9.48744Z"
+                    fill="#323232" />
+                <path
+                    d="M9.40961 6.04611C9.31719 5.42284 9.03284 4.85795 8.58731 4.41242C8.14178 3.96692 7.57689 3.68254 6.95365 3.59015C6.66988 3.54808 6.38218 3.54808 6.09844 3.59015C5.32819 3.70438 4.64856 4.1117 4.1847 4.73709C3.72084 5.36249 3.52825 6.13112 3.64248 6.90131C3.75671 7.67154 4.16403 8.35117 4.78943 8.81506C5.29714 9.19163 5.89915 9.38937 6.51987 9.38937C6.66376 9.38937 6.80869 9.37876 6.95362 9.35725C7.72387 9.24302 8.4035 8.8357 8.86737 8.2103C9.33125 7.58493 9.52384 6.81633 9.40961 6.04611ZM6.79958 8.31834C6.30687 8.39152 5.81518 8.26824 5.4151 7.9715C5.01502 7.67476 4.75446 7.23998 4.68142 6.74727C4.60834 6.25456 4.73151 5.76288 5.02825 5.36279C5.32502 4.96271 5.75978 4.70216 6.25251 4.62908C6.34326 4.61562 6.43464 4.6089 6.52602 4.6089C6.6174 4.6089 6.70881 4.61562 6.79955 4.62911C7.61792 4.75045 8.24931 5.38181 8.37067 6.2002C8.52149 7.2173 7.81673 8.16752 6.79958 8.31834Z"
+                    fill="#323232" />
+                <path
+                    d="M10.1572 2.84229C10.0594 2.74451 9.92407 2.68848 9.7859 2.68848C9.64772 2.68848 9.51236 2.74449 9.41456 2.84229C9.31678 2.9401 9.26074 3.07523 9.26074 3.21363C9.26074 3.35204 9.31678 3.48717 9.41456 3.58497C9.51236 3.68275 9.64772 3.73879 9.7859 3.73879C9.92407 3.73879 10.0594 3.68277 10.1572 3.58497C10.255 3.48717 10.3111 3.35181 10.3111 3.21363C10.3111 3.07543 10.255 2.94007 10.1572 2.84229Z"
+                    fill="#323232" />
+            </g>
+            <defs>
+                <clipPath id="clip0_9_42">
+                    <rect width="13" height="13" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+    </a>
+    <a href="#" class="socials__link" name="social-link" aria-label="Viber">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M15.3764 12.6633C14.7988 13.3498 13.7325 13.6299 11.6961 13.6299H4.30379C2.22075 13.6299 1.13636 13.3318 0.560981 12.6008C0 11.8882 0 10.8381 0 9.38477V6.61476C0 3.79922 0.6656 2.3697 4.30379 2.3697H11.6961C13.4621 2.3697 14.4407 2.61682 15.0738 3.22271C15.723 3.84402 16 4.85848 16 6.61476V9.38477C16 10.9174 15.9566 11.9737 15.3764 12.6633ZM10.2721 7.61734L6.91525 5.86297C6.84021 5.82374 6.75814 5.80428 6.67618 5.80428C6.58338 5.80428 6.49079 5.82926 6.40877 5.87892C6.25435 5.97249 6.16005 6.13987 6.16005 6.32041V9.81791C6.16005 9.99814 6.25409 10.1654 6.40821 10.259C6.56237 10.3526 6.75412 10.359 6.91406 10.2759L10.2709 8.53285C10.4417 8.44418 10.5489 8.26787 10.5492 8.07551C10.5494 7.88299 10.4426 7.70642 10.2721 7.61734Z"
+                fill="#323232" />
+        </svg>
+    </a>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </main>
+    <div class="portal-root">
+        
+
+
+<div class="mobile-menu">
+    <div class="mobile-menu__row-1">
+        
+<a href="logo_size_sm" class="logo /nuts/" name="logo"
+    aria-label="Логотип компании Орех Причерноморья. Перейти на главную страницу">
+    <img class="logo__image" src="/nuts/images/logo.jpg" alt="logo" aria-label="Логотип компании Орех Причерноморья">
+    <span class="logo__text">ОРЕХ<br>ПРИЧЕРНОМОРЬЯ</span>
+</a>
+
+        <button class="mobile-menu__close" name="close-button" aria-label="Закрыть меню">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_14178_3455)">
+                    <path d="M16 14.4L14.4 16L8 9.6L1.6 16L0 14.4L6.4 8L0 1.6L1.6 0L8 6.4L14.4 0L16 1.6L9.6 8L16 14.4Z"
+                        fill="#1A2F3F" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_14178_3455">
+                        <rect width="16" height="16" fill="white" transform="matrix(1 0 0 -1 0 16)" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+    <div class="mobile-menu__row-2">
+        
+<div class="auth mobile-menu__auth">
+    <a href="/login/" class="auth__login" name="login" aria-label="Вход">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M5.49977 5.37972C6.72278 5.37972 7.71432 4.17544 7.71432 2.68988C7.71432 1.20428 7.38879 0 5.49977 0C3.61076 0 3.28516 1.20428 3.28516 2.68988C3.28516 4.17544 4.2767 5.37972 5.49977 5.37972Z"
+                fill="#93B474" />
+            <path d="M9.68262 9.55787C9.68303 9.38582 9.68381 9.53307 9.68262 9.55787V9.55787Z" fill="#93B474" />
+            <path
+                d="M9.67726 9.37801C9.63624 6.79012 9.29826 6.05271 6.71191 5.58594C6.71191 5.58594 6.34784 6.04985 5.49927 6.04985C4.6507 6.04985 4.28656 5.58594 4.28656 5.58594C1.72843 6.04762 1.3699 6.77409 1.32275 9.29394C1.31889 9.4997 1.3171 9.51052 1.31641 9.48663C1.31656 9.53138 1.31675 9.61417 1.31675 9.75852C1.31675 9.75852 1.9325 10.9998 5.49927 10.9998C9.06597 10.9998 9.68178 9.75852 9.68178 9.75852C9.68178 9.66577 9.68185 9.60128 9.68194 9.55741C9.68125 9.57218 9.67987 9.54355 9.67726 9.37801Z"
+                fill="#93B474" />
+        </svg>
+        <span class="auth__link">Вход</span>
+    </a>
+    <a href="/registration/" class="auth__link" name="registration" aria-label="Регистрация">Регистрация</a>
+</div>
+
+        
+<div class="socials mobile-menu__socials">
+    <a href="#" class="socials__link" name="social-link" aria-label="WhatsApp">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M3.42647 6.9238H4.85148V12.7903C4.85148 12.9061 4.94534 13 5.06116 13H7.47732C7.59314 13 7.68699 12.9061 7.68699 12.7903V6.95144H9.32516C9.43168 6.95144 9.52129 6.87151 9.53345 6.7657L9.78226 4.60594C9.78909 4.54652 9.77026 4.48701 9.73051 4.44244C9.69071 4.39782 9.63376 4.37228 9.57401 4.37228H7.68708V3.01843C7.68708 2.61032 7.90682 2.40336 8.34026 2.40336C8.40204 2.40336 9.57401 2.40336 9.57401 2.40336C9.68983 2.40336 9.78368 2.30947 9.78368 2.19369V0.211229C9.78368 0.0954032 9.68983 0.00155161 9.57401 0.00155161H7.87373C7.86174 0.000964516 7.83511 0 7.79586 0C7.50084 0 6.47539 0.0579128 5.66537 0.803106C4.76786 1.6289 4.89262 2.61766 4.92244 2.78909V4.37224H3.42647C3.31065 4.37224 3.2168 4.46609 3.2168 4.58191V6.71408C3.2168 6.82991 3.31065 6.9238 3.42647 6.9238Z"
+                fill="#93B474" />
+        </svg>
+    </a>
+    <a href="#" class="socials__link" name="social-link" aria-label="Telegram">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_9_42)">
+                <path
+                    d="M9.48744 0H3.51256C1.57574 0 0 1.57574 0 3.51256V9.48744C0 11.4243 1.57574 13 3.51256 13H9.48744C11.4243 13 13 11.4243 13 9.48744V3.51256C13 1.57574 11.4243 0 9.48744 0ZM11.9497 9.48744C11.9497 10.8451 10.8452 11.9497 9.48744 11.9497H3.51256C2.15485 11.9497 1.05026 10.8452 1.05026 9.48744V3.51256C1.05026 2.15485 2.15483 1.05026 3.51256 1.05026H9.48744C10.8451 1.05026 11.9497 2.15483 11.9497 3.51256V9.48744Z"
+                    fill="#323232" />
+                <path
+                    d="M9.40961 6.04611C9.31719 5.42284 9.03284 4.85795 8.58731 4.41242C8.14178 3.96692 7.57689 3.68254 6.95365 3.59015C6.66988 3.54808 6.38218 3.54808 6.09844 3.59015C5.32819 3.70438 4.64856 4.1117 4.1847 4.73709C3.72084 5.36249 3.52825 6.13112 3.64248 6.90131C3.75671 7.67154 4.16403 8.35117 4.78943 8.81506C5.29714 9.19163 5.89915 9.38937 6.51987 9.38937C6.66376 9.38937 6.80869 9.37876 6.95362 9.35725C7.72387 9.24302 8.4035 8.8357 8.86737 8.2103C9.33125 7.58493 9.52384 6.81633 9.40961 6.04611ZM6.79958 8.31834C6.30687 8.39152 5.81518 8.26824 5.4151 7.9715C5.01502 7.67476 4.75446 7.23998 4.68142 6.74727C4.60834 6.25456 4.73151 5.76288 5.02825 5.36279C5.32502 4.96271 5.75978 4.70216 6.25251 4.62908C6.34326 4.61562 6.43464 4.6089 6.52602 4.6089C6.6174 4.6089 6.70881 4.61562 6.79955 4.62911C7.61792 4.75045 8.24931 5.38181 8.37067 6.2002C8.52149 7.2173 7.81673 8.16752 6.79958 8.31834Z"
+                    fill="#323232" />
+                <path
+                    d="M10.1572 2.84229C10.0594 2.74451 9.92407 2.68848 9.7859 2.68848C9.64772 2.68848 9.51236 2.74449 9.41456 2.84229C9.31678 2.9401 9.26074 3.07523 9.26074 3.21363C9.26074 3.35204 9.31678 3.48717 9.41456 3.58497C9.51236 3.68275 9.64772 3.73879 9.7859 3.73879C9.92407 3.73879 10.0594 3.68277 10.1572 3.58497C10.255 3.48717 10.3111 3.35181 10.3111 3.21363C10.3111 3.07543 10.255 2.94007 10.1572 2.84229Z"
+                    fill="#323232" />
+            </g>
+            <defs>
+                <clipPath id="clip0_9_42">
+                    <rect width="13" height="13" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+    </a>
+    <a href="#" class="socials__link" name="social-link" aria-label="Viber">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M15.3764 12.6633C14.7988 13.3498 13.7325 13.6299 11.6961 13.6299H4.30379C2.22075 13.6299 1.13636 13.3318 0.560981 12.6008C0 11.8882 0 10.8381 0 9.38477V6.61476C0 3.79922 0.6656 2.3697 4.30379 2.3697H11.6961C13.4621 2.3697 14.4407 2.61682 15.0738 3.22271C15.723 3.84402 16 4.85848 16 6.61476V9.38477C16 10.9174 15.9566 11.9737 15.3764 12.6633ZM10.2721 7.61734L6.91525 5.86297C6.84021 5.82374 6.75814 5.80428 6.67618 5.80428C6.58338 5.80428 6.49079 5.82926 6.40877 5.87892C6.25435 5.97249 6.16005 6.13987 6.16005 6.32041V9.81791C6.16005 9.99814 6.25409 10.1654 6.40821 10.259C6.56237 10.3526 6.75412 10.359 6.91406 10.2759L10.2709 8.53285C10.4417 8.44418 10.5489 8.26787 10.5492 8.07551C10.5494 7.88299 10.4426 7.70642 10.2721 7.61734Z"
+                fill="#323232" />
+        </svg>
+    </a>
+</div>
+
+    </div>
+    <div class="mobile-menu__row-3">
+        
+<nav class="nav-menu mobile-menu__nav-menu">
+    <ul class="nav-menu__list">
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/catalog/" name="Магазин"
+                aria-label="Магазин">Магазин</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/production/" name="О производстве"
+                aria-label="О производстве">О производстве</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/payment-delivery/" name="Оплата и доставка"
+                aria-label="Оплата и доставка">Оплата и доставка</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/corporate-customers/" name="Оптовым и корпоративным клиентам"
+                aria-label="Оптовым и корпоративным клиентам">Оптовым и корпоративным клиентам</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/news/" name="Новости и статьи"
+                aria-label="Новости и статьи">Новости и статьи</a>
+        </li>
+        
+        <li class="nav-menu__item">
+            <a class="nav-menu__link " href="/nuts/contacts/" name="Контакты"
+                aria-label="Контакты">Контакты</a>
+        </li>
+        
+    </ul>
+</nav>
+
+    </div>
+    <div class="mobile-menu__row-4">
+        <div class="banner mobile-menu__banner">
+            <div class="banner__image-wrapper">
+                <img class="banner__image" src="/nuts/images/mobile-menu/banner.jpg" alt="banner">
+            </div>
+            <div class="banner__content">
+                <div class="banner__title">
+                    Орех Причерноморья
+                </div>
+                <div class="banner__text">
+                    Единственный в Украине сад совместного выращивания фундука и грецкого ореха
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+        <noscript><link rel="stylesheet" crossorigin="" href="/nuts/assets/transactions-DYcLfEUA.css"></noscript>
+    </body>
+
+</html>

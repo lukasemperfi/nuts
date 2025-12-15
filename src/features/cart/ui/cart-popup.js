@@ -18,12 +18,14 @@ export function CartPopup({ trigger, cartPopupContainer }) {
       type: "text",
       width: "1fr",
       align: "left",
+      cellClass: "table__cell_product-name",
     },
 
     {
       key: "quantity",
       label: "Кол-во",
       type: "component",
+      cellClass: "table__cell_quantity",
       render: (rowData) => {
         const quantityComp = new QuantityComponent(
           rowData.quantity,
@@ -40,6 +42,7 @@ export function CartPopup({ trigger, cartPopupContainer }) {
       type: "currency",
       width: "0.5fr",
       align: "left",
+      cellClass: "table__cell_total-cost",
       render: (rowData) => {
         return createFormattedCurrencyElement(rowData.total, "грн.");
       },
@@ -50,6 +53,7 @@ export function CartPopup({ trigger, cartPopupContainer }) {
       type: "action",
       width: "50px",
       align: "right",
+      cellClass: "table__cell_delete-action",
       render: (rowData) => {
         return createDeleteButton(rowData.id, handleItemDelete);
       },

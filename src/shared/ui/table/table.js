@@ -285,6 +285,11 @@ export function createTableRow(rowData, columns, tableInstance) {
     const alignment = column.align || "center";
     cell.style.justifySelf = `${alignment}`;
 
+    const cellClass = column.cellClass || "";
+    if (cellClass) {
+      cell.classList.add(...cellClass.split(" "));
+    }
+
     if (column.render) {
       const customContent = column.render(rowData, tableInstance);
 

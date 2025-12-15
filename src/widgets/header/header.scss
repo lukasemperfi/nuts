@@ -558,11 +558,89 @@
   anchor-name: --cart-btn;
 }
 .cart-popup {
-  position-anchor: --cart-btn;
+  $mobile-breakpoint: 700px;
 
+  position-anchor: --cart-btn;
   position: absolute;
   inset: auto;
   top: anchor(bottom);
   right: anchor(right);
   margin-block-start: 30px;
+
+  @include mixins.respond-to($mobile-breakpoint) {
+    width: calc(100% - 24px);
+  }
+
+  .cart {
+    // overflow-y: auto;
+    // max-height: 230px;
+  }
+
+  .table {
+    $padding-horizontal: 12px;
+
+    display: block;
+
+    &__body {
+      display: block;
+      overflow-y: auto;
+      max-height: 230px;
+      padding-inline: $padding-horizontal;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 0.5fr 50px;
+
+      @include mixins.respond-to($mobile-breakpoint) {
+        grid-template-columns: auto;
+        grid-template-areas:
+          "product-name delete-action"
+          "quantity     total-cost";
+        row-gap: 20px;
+      }
+    }
+
+    &__cell_product-name {
+      @include mixins.respond-to($mobile-breakpoint) {
+        grid-area: product-name;
+        justify-self: flex-start !important;
+      }
+    }
+
+    &__cell_delete-action {
+      @include mixins.respond-to($mobile-breakpoint) {
+        grid-area: delete-action;
+        justify-self: flex-end !important;
+      }
+    }
+
+    &__cell_quantity {
+      @include mixins.respond-to($mobile-breakpoint) {
+        grid-area: quantity;
+        justify-self: flex-start !important;
+      }
+    }
+
+    &__cell_total-cost {
+      @include mixins.respond-to($mobile-breakpoint) {
+        grid-area: total-cost;
+        justify-self: flex-end !important;
+      }
+    }
+
+    .currency-cell {
+      min-width: 100px;
+    }
+
+    .table-footer {
+      padding-inline: $padding-horizontal;
+
+      &__right-group {
+        @include mixins.respond-to($mobile-breakpoint) {
+          flex-direction: column;
+        }
+      }
+    }
+  }
 }

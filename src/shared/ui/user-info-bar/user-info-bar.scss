@@ -10,6 +10,7 @@
 
   @include mixins.respond-to(lg-sm) {
     column-gap: functions.fluidValue(24px, 72px, 360px, 1920px);
+    padding-block: functions.fluidValue(20px, 46px, 360px, 1920px);
   }
 
   &__title {

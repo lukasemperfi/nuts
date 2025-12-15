@@ -6,7 +6,7 @@ function initAccountMenu() {
   try {
     const currentUrl = window.location.href;
     const menuLinks = document.querySelectorAll(".account-menu-list__link");
-    // toogleAccountMenu();
+    toogleAccountMenu();
 
     menuLinks.forEach((link) => {
       const linkUrl = link.href;
@@ -23,9 +23,16 @@ function initAccountMenu() {
 
 function toogleAccountMenu() {
   const menu = document.querySelector(".profile-section__menu");
-  const toggleBtn = document.querySelector(".user-info-bar__menu-button");
+  const toggleBtn = document.querySelector(".profile-section__menu-toggle");
+  const rightIcon = document.querySelector(
+    ".profile-section__menu-toggle-right-icon"
+  );
+  const leftIcon = document.querySelector(
+    ".profile-section__menu-toggle-left-icon"
+  );
 
   toggleBtn.addEventListener("click", () => {
-    menu.classList.toggle("is-collapsed");
+    menu.classList.toggle("show");
+    toggleBtn.classList.toggle("show");
   });
 }

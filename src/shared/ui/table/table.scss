@@ -1,8 +1,9 @@
 .table {
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 20px;
+  column-gap: 50px;
   width: 100%;
+  overflow-x: auto;
 
   &__head,
   &__body {
@@ -55,6 +56,7 @@
     // text-overflow: ellipsis;
     // white-space: nowrap;
     justify-self: center;
+    white-space: nowrap;
 
     &_head {
       font-family: var(--font-family-primary);

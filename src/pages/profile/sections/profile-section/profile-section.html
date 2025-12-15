@@ -1,10 +1,16 @@
 {%from "src/shared/ui/user-info-bar/user-info-bar.html" import userInfoBar%}
+{%import "src/shared/ui/icons/icons.html" as icons%}
 
 {%macro profileSection(baseUrl="", content=null)%}
 <section class="profile-section">
     <div class="profile-section__page-container page-container">
         <div class="profile-section__wrapper">
             {{userInfoBar(title="Учетная запись", showMeta=false, showMenuButton=false)}}
+            <button class="profile-section__menu-toggle">
+                {{icons.asideMenuRight("profile-section__menu-toggle-right-icon")}}
+                {{icons.asideMenuLeft("profile-section__menu-toggle-left-icon")}}
+            </button>
+
             <div class="profile-section__body">
                 <div class="profile-section__menu">
                     {{accountMenu(baseUrl)}}

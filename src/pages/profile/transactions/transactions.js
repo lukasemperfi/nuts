@@ -7,6 +7,7 @@ import { initProfilePageBreadcrumbs } from "@//pages/profile/sections/breadcrumb
 import { createFormattedCurrencyElement } from "@/shared/ui/table/helpers";
 import { TransactionsTable } from "./transactions-table";
 import { renderDetailsLink } from "../../../shared/ui/table/action-cell";
+import { initProfileSection } from "../sections/profile-section/profile-section";
 
 const transactionsColumns = [
   {
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initDropdown({ selector: ".top-header__lang" });
   initHeader();
   initProfilePageBreadcrumbs();
-
+  initProfileSection();
   initPageFooter();
   lazyLoadElements(".lazy", { rootMargin: "200px 0px" });
 

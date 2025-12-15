@@ -135,7 +135,6 @@ export function initAuthListener() {
     }
 
     if (event === "SIGNED_OUT") {
-      console.log("log out");
       store.dispatch({ type: "auth/resetAuth" });
 
       return;

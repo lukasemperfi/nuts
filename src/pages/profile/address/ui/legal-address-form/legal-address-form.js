@@ -20,7 +20,6 @@ export const initLegalAddressForm = () => {
     const overlay = createOverlaySpinner({
       successText: "Данные изменены успешно!",
     });
-    console.log("finalPayload", finalPayload);
 
     try {
       await userProfileApi.updateProfile(finalPayload);

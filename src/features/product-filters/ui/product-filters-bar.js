@@ -17,7 +17,7 @@ export const initProductFilters = () => {
   function updateFilter(type, value) {
     if (type === "sort") {
       filters.sort = value;
-      console.log(filters);
+
       return;
     }
 
@@ -28,8 +28,6 @@ export const initProductFilters = () => {
     } else {
       filters[type].push(value);
     }
-
-    console.log(filters);
   }
 
   function resetFilters() {
@@ -40,7 +38,6 @@ export const initProductFilters = () => {
     resetURL();
 
     // store.dispatch(productFiltersActions.resetFilters());
-    console.log("Фильтры сброшены:", filters);
   }
 
   function updateURL() {
@@ -64,8 +61,6 @@ export const initProductFilters = () => {
   function resetURL() {
     const newUrl = window.location.pathname;
     window.history.replaceState({}, "", newUrl);
-
-    console.log("Фильтры сброшены:", filters);
   }
 
   function loadFiltersFromURL() {
@@ -105,7 +100,7 @@ export const initProductFilters = () => {
     onClick: () => {
       updateURL();
       // store.dispatch(productFiltersActions.setFilters(filters));
-      console.log("Applied filters:", filters);
+
       location.reload();
     },
   });

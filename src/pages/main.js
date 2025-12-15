@@ -9,13 +9,9 @@ async function initializeApp() {
 
 initializeApp();
 
-store.subscribe("auth", async (newState) => {
-  console.log("Auth State Changed:", newState);
-});
+store.subscribe("auth", async (newState) => {});
 
-store.subscribe("cart", async (newState) => {
-  console.log("Cart State Changed:", newState);
-});
+store.subscribe("cart", async (newState) => {});
 
 function initializeCart() {
   try {
@@ -24,7 +20,6 @@ function initializeCart() {
     if (cartItems && cartItems.length > 0) {
       fetchCartProducts();
     } else {
-      console.log("Кошик порожній, деталі продуктів не завантажуються.");
     }
   } catch (error) {
     console.error("Помилка під час ініціалізації кошика:", error);

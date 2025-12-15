@@ -61,8 +61,6 @@ export const initCheckoutForm = () => {
 
   function mockCreateOrder(orderData) {
     return new Promise((resolve) => {
-      console.log("Mock API: creating order...", orderData);
-
       setTimeout(() => {
         resolve({ success: true });
       }, 1500);

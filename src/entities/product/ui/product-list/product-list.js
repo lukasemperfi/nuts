@@ -25,7 +25,6 @@ export const filteredProductList = async (containerSelector) => {
   store.subscribe("productFilters", async (newState) => {
     const newFilters = newState.filters;
     const isInitialized = newState.isInitialized;
-    console.log("Filters changed, fetching products:", newState);
 
     if (!isInitialized) {
       return;
@@ -42,8 +41,6 @@ export const productList = async (containerSelector) => {
 
   store.subscribe("products", (newState) => {
     if (newState.status === PRODUCTS_STATUS.SUCCEEDED) {
-      console.log("renderProductList from subscribe");
-
       const same =
         prevProducts &&
         JSON.stringify(prevProducts) === JSON.stringify(newState.items);
@@ -59,12 +56,8 @@ export const productList = async (containerSelector) => {
   });
 
   if (state.items.length === 0 && state.status === PRODUCTS_STATUS.IDLE) {
-    console.log("fetchProductList");
-
     await fetchProducts();
   } else if (state.status === PRODUCTS_STATUS.SUCCEEDED) {
-    console.log("renderProductList from existing state");
-
     renderProductList(state.items, containerSelector);
   }
 };

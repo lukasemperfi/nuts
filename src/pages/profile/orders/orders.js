@@ -74,8 +74,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const orders = await ordersApi.getOrders();
   const rows = mapOrdersToRows(orders);
 
-  console.log("orders", orders, "mappedRows", rows);
-
   if (orders.length === 0) {
     ordersTableContainer.innerHTML = `<div class="table__empty-message" style="height: 100%">У вас нет заказов!</div>`;
   } else {

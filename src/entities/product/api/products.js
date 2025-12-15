@@ -2,7 +2,6 @@ import { supabase } from "@/shared/api/supabase/client.js";
 
 class Products {
   getAllProducts = async (filters = {}) => {
-    console.log("from API:", filters);
     const { flavor = [], weight = [], sort = null } = filters;
 
     let query = supabase

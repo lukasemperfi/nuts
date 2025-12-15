@@ -115,7 +115,6 @@ function setCartPopupTarget(cartPopup, cartPopupId) {
 }
 
 function handleItemDelete(itemId) {
-  console.log("delete", itemId);
   store.dispatch({
     type: "cart/removeItem",
     payload: { productId: itemId },

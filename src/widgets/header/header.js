@@ -73,7 +73,6 @@ async function initHeaderAuth() {
     profileData = await userProfileApi.getProfile();
   }
 
-  console.log("profileData", profileData);
   const auth = createAuthComponent({ baseUrl });
   const authMobile = createAuthComponent({ baseUrl });
 

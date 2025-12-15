@@ -46,7 +46,6 @@ export class CopyButton {
 
     try {
       await navigator.clipboard.writeText(copyText);
-      console.log("Строка успешно скопирована:", copyText);
 
       this.#showFeedback(true);
     } catch (err) {

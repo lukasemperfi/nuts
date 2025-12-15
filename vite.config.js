@@ -37,9 +37,6 @@ export default defineConfig(({ mode }) => {
   const baseUrl = mode === "production" ? "/nuts/" : "/";
   // const baseUrl = "/";
 
-  console.log("baseUrl", baseUrl);
-  console.log("mode", mode);
-
   return {
     base: baseUrl,
     resolve: {

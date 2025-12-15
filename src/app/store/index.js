@@ -83,12 +83,10 @@ class Store {
     if (this.listeners.get(sliceName).size === 0) {
       this.listeners.delete(sliceName);
     }
-    console.log(`Отписана функция от события: ${sliceName}`);
   }
 
   notify(sliceName, data) {
     if (!this.listeners.has(sliceName)) {
-      console.log(`Нет подписчиков на событие: ${sliceName}`);
       return;
     }
 

@@ -1,3 +1,6 @@
+@use "@/app/styles/functions" as functions;
+@use "@/app/styles/mixins" as mixins;
+
 .address-form {
   $items-gap: 20.5px;
   max-width: 474px;
@@ -28,6 +31,11 @@
 
   .form-item__fields {
     gap: $items-gap;
+    padding: 2px;
+  }
+
+  .form-field {
+    min-width: 330px;
   }
 
   &__submit-btn {
@@ -37,5 +45,11 @@
   &__footer {
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+@include mixins.respond-to(md) {
+  .profile-section__menu:not(.show) ~ .profile-section__content .address-form {
+    margin: auto;
   }
 }

@@ -75,6 +75,7 @@ async function initHeaderAuth() {
 
   console.log("profileData", profileData);
   const auth = createAuthComponent({ baseUrl });
+  const authMobile = createAuthComponent({ baseUrl });
 
   const profile = createProfile({
     name: profileData ? profileData["full_name"] : "",
@@ -91,22 +92,43 @@ async function initHeaderAuth() {
     ],
   });
 
+  const profileMobile = createProfile({
+    name: profileData ? profileData["full_name"] : "",
+    items: [
+      { label: "Профиль", href: `${baseUrl}profile/` },
+      {
+        label: "Выйти",
+        onClick: async () => {
+          await logoutUser();
+          window.location.reload();
+        },
+        className: "logout",
+      },
+    ],
+  });
+
   const authContainer = document.querySelector(".top-header__auth");
+  const mobileAuthContainer = document.querySelector(".mobile-menu__auth");
 
   if (isAuth) {
     auth.mount(authContainer);
+    authMobile.mount(mobileAuthContainer);
   } else {
     profile.mount(authContainer);
+    profileMobile.mount(mobileAuthContainer);
   }
 
   const renderHeaderUI = (state) => {
     authContainer.innerHTML = "";
+    mobileAuthContainer.innerHTML = "";
 
     if (!state.isAuth && state.status === AUTH_STATUS.IDLE) {
       auth.mount(authContainer);
+      authMobile.mount(mobileAuthContainer);
     }
     if (state.isAuth && state.status === AUTH_STATUS.SUCCEEDED) {
       profile.mount(authContainer);
+      profileMobile.mount(mobileAuthContainer);
     }
   };
 

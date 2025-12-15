@@ -11,15 +11,20 @@ import { getSession } from "@/app/providers/auth-guard";
 import { redirect } from "@/shared/helpers/redirect";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await requireCartAndAuth();
+  const urlParams = new URLSearchParams(window.location.search);
+  const orderId = urlParams.get("orderId");
 
-  store.subscribe("cart", () => {
-    const isCartEmpty = store.getState().cart.items.length === 0;
+  await requireCartAndAuth(orderId);
 
-    if (isCartEmpty) {
-      redirect(`${baseUrl}`, 0, true);
-    }
-  });
+  if (!orderId) {
+    store.subscribe("cart", () => {
+      const isCartEmpty = store.getState().cart.items.length === 0;
+
+      if (isCartEmpty) {
+        redirect(`${baseUrl}`, 0, true);
+      }
+    });
+  }
 
   store.subscribe("auth", (newState) => {
     if (!newState.isAuth) {
@@ -51,13 +56,20 @@ function requireCart() {
   }
 }
 
-async function requireCartAndAuth() {
+async function requireCartAndAuth(orderId) {
   const isAuthenticated = await getSession();
   const isCartEmpty = store.getState().cart.items.length === 0;
 
-  if (!isAuthenticated || isCartEmpty) {
+  if (!isAuthenticated) {
     redirect(`${baseUrl}`, 0, true);
     return;
+  }
+
+  if (!orderId) {
+    if (isCartEmpty) {
+      redirect(`${baseUrl}`, 0, true);
+      return;
+    }
   }
 
   const privateContent = document.querySelector("#private-content");
